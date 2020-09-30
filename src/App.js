@@ -7,7 +7,7 @@ import Routes from './routes.js';
 function App() {
   return (
     <div className="App">
-      <Router history={history}>
+      <Router history={history} basename="/">
         <Routes />
       </Router>
     </div>

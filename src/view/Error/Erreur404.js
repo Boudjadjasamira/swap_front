@@ -11,7 +11,7 @@ export default class Erreur404 extends Component {
     return (
         <div>
             <Header></Header>
-            <h2 style={{color: "white"}}>Erreur</h2>
+            <h2 style={{color: "red"}}>Erreur</h2>
             <Footer></Footer>
         </div>
     );
