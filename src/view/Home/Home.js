@@ -20,7 +20,7 @@ export default class Home extends Component {
           {/* HEADER */}
           <Header title="Home"></Header>
 
-          <Hamburger />
+
 
 
           {/* FOOTER */}
