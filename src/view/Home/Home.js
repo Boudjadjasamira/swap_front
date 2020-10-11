@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Fade as Hamburger } from 'hamburger-react';
-import './Home.css'
+import './Home.css';
+
+
 
 //Inclu les fichiers communs
 import Header from '../Common/Header';
@@ -16,7 +17,7 @@ export default class Home extends Component {
   render() {
    
     return (
-        <div>
+        <div className="body">
           {/* HEADER */}
           <Header title="Home"></Header>
 

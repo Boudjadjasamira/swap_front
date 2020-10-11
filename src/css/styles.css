@@ -8,14 +8,16 @@
   html {
     height: auto;
     font-family: 'Poppins', sans-serif;
-    background-image: url("/public/assets/img/bg.png");
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-size: cover;
     padding-left: 8px;
     padding-right: 8px;
   }
   
+  .background{
+    background-image: url("/public/assets/img/bg.png");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+  }
   
   /*---------------------------------------------*/
   
