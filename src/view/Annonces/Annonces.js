@@ -9,7 +9,7 @@ export default class Annonces extends Component {
     
   render() {
     return (
-<div>
+<div className="body" id="bodyHome">
 
   <div className="container">
     <div className="form-check form-check-inline">

@@ -8,7 +8,7 @@ export default class Myprofil extends Component {
     
   render() {
     return (
-<div>
+<div  className="body" id="bodyHome">
 
     
   <div className="container profile shadow-lg p-3 mb-5 bg-white rounded">

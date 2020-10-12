@@ -4,7 +4,7 @@
     box-sizing: border-box;
   }
   
-  body,
+  #bodyHome,
   html {
     height: auto;
     font-family: 'Poppins', sans-serif;

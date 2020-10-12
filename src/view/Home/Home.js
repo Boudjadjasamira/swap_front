@@ -19,7 +19,7 @@ export default class Home extends Component {
   render() {
    
     return (
-        <div className="body">
+        <div className="body" id="bodyHome">
           {/* HEADER */}
           <Header title="Home"></Header>
 
