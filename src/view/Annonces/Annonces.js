@@ -309,7 +309,6 @@ export default class Annonces extends Component {
   </center>
   <br />
   <br />
-  <Footer></Footer>
 </div>
 
 
