@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+//Inclu les fichiers communs
+import Header from '../../view/Common/Header';
+import Footer from '../..//view/Common/Footer';
 
 
 export default class Myprofil extends Component {
@@ -10,7 +12,11 @@ export default class Myprofil extends Component {
     return (
 <div  className="body" id="bodyHome">
 
-    
+{/* HEADER */}
+<Header></Header>
+<br />
+<br />
+<br />
   <div className="container profile shadow-lg p-3 mb-5 bg-white rounded">
     <div className="container">
       <div className="text-center-profil">
@@ -272,7 +278,8 @@ export default class Myprofil extends Component {
     </div>
     {/* end share */}
   </div>
-
+{/* FOOTER */}
+<Footer></Footer>
   </div>
   
   );

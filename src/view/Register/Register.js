@@ -14,10 +14,10 @@ export default class Register extends Component {
             <div className="container-login100">
             <div className="wrap-login100">
                 <div className="login100-pic js-tilt" data-tilt>
-                <img src="assets/img/img2.png" alt="IMG" />
+                <img  class="img-fluid" src="assets/img/img2.png" alt="IMG" />
                 </div>
                 <form className="login100-form validate-form">
-                <img src="assets/img/logo.png" alt="logo" />
+                <img  class="img-fluid" src="assets/img/logo.png" alt="logo" />
                 <br />
                 <br />
                 <div

@@ -20,7 +20,7 @@ a {
 	font-family: 'Poppins', sans-serif;
 	font-size: 18px;
 	line-height: 1.7;
-	color: #666666;
+	color: #161616;
 	margin: 0px;
 	transition: all 0.4s;
 	-webkit-transition: all 0.4s;
@@ -34,7 +34,7 @@ a:focus {
 
 a:hover {
 	text-decoration: none;
-  color: #797979;
+  color: #ff5757;
 }
 
 /*---------------------------------------------*/

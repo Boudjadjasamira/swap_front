@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../css/styles.css';
-
-
-
-
 //Inclu les fichiers communs
 import Header from '../Common/Header';
 import Footer from '../Common/Footer';
@@ -25,7 +21,7 @@ export default class Home extends Component {
 
           <div>
   <center>
-    <img src="assets/img/img3.png" alt="logo" width="60%" />
+    <img class="img-fluid" src="assets/img/img3.png" alt="logo" width="60%" />
   </center>
   <br />
   <br />
@@ -93,7 +89,7 @@ export default class Home extends Component {
   <br />
   {/*Fin card catégorie */}
   <center>
-    <img src="assets/img/img4.png" alt="logo" width="60%" />
+    <img class="img-fluid" src="assets/img/img4.png" alt="logo" width="60%" />
   </center>
   <br />
   <br />
@@ -190,7 +186,7 @@ export default class Home extends Component {
           />
             
           <div className="media-body align-self-center">
-            <a href="view.html">
+            <a id="a" href="view.html">
               <h4> Titre annonce </h4>
             </a>
             <small>
@@ -222,7 +218,7 @@ export default class Home extends Component {
           />
             
           <div className="media-body align-self-center">
-            <a href="view.html">
+            <a id="a" href="view.html">
               <h4> Titre annonce </h4>
             </a>
             <small>
@@ -254,7 +250,7 @@ export default class Home extends Component {
           />
             
           <div className="media-body align-self-center">
-            <a href="view.html">
+            <a id="a" href="view.html">
               <h4> Titre annonce </h4>
             </a>
             <small>
@@ -286,7 +282,7 @@ export default class Home extends Component {
           />
             
           <div className="media-body align-self-center">
-            <a href="view.html">
+            <a id="a" href="view.html">
               <h4> Titre annonce </h4>
             </a>
             <small>
@@ -318,7 +314,7 @@ export default class Home extends Component {
           />
             
           <div className="media-body align-self-center">
-            <a href="view.html">
+            <a id="a" href="view.html">
               <h4> Titre annonce </h4>
             </a>
             <small>
@@ -350,12 +346,12 @@ export default class Home extends Component {
           />
             
           <div className="media-body align-self-center">
-            <h4>
-              Titre annonce{" "}
+            <a id="a" href="view.html">
+              <h4> Titre annonce </h4>
+            </a>
               <small>
                 <i> Posté par @Pseudo, le 00/00/0000</i>
               </small>
-            </h4>
             <hr />
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
@@ -382,7 +378,7 @@ export default class Home extends Component {
           />
             
           <div className="media-body align-self-center">
-            <a href="view.html">
+            <a id="a" href="view.html">
               <h4> Titre annonce </h4>
             </a>
             <small>
@@ -414,7 +410,7 @@ export default class Home extends Component {
           />
             
           <div className="media-body align-self-center">
-            <a href="view.html">
+            <a id="a" href="view.html">
               <h4> Titre annonce </h4>
             </a>
             <small>
