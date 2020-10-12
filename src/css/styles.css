@@ -10,21 +10,24 @@
     font-family: 'Poppins', sans-serif;
     padding-left: 8px;
     padding-right: 8px;
-  }
-  
-  .background{
     background-image: url("/public/assets/img/bg.png");
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-size: cover;
   }
   
+
+  .nav-link {
+    font-size: 19px;
+  }
+ 
+  
   /*---------------------------------------------*/
   
   a {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 19px;
     line-height: 1.7;
     color: black;
     margin: 0px;
