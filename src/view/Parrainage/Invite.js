@@ -6,7 +6,7 @@ import Header from '../../view/Common/Header';
 import Footer from '../..//view/Common/Footer';
 
 
-export default class Account extends Component {
+export default class Invite extends Component {
     
   render() {
     return (
@@ -16,41 +16,15 @@ export default class Account extends Component {
 <Header></Header>
 
 <div>
-  {/* ./Infos compte */}
   <div className="container">
-    <h1>Informations Personnelles</h1>
+    <h1>Parrainage</h1>
     <hr />
     <div className="row">
-      {/* Module colonne gauche */}
+      {/* left column */}
       <div className="col-md-3">
         <div className="text-center">
           <div className="col-sm-4">
             <div className="item">
-              <span className="notify-badge">
-                <div className="image-upload">
-                  <label htmlFor="file-input">
-                    <svg
-                      width="1.5em"
-                      height="1.3em"
-                      viewBox="0 0 16 16"
-                      className="bi bi-camera"
-                      fill="currentColor"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M15 12V6a1 1 0 0 0-1-1h-1.172a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 9.173 3H6.828a1 1 0 0 0-.707.293l-.828.828A3 3 0 0 1 3.172 5H2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"
-                      />
-                      <path
-                        fillRule="evenodd"
-                        d="M8 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"
-                      />
-                      <path d="M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
-                    </svg>
-                  </label>
-                  <input id="file-input" type="file" />
-                </div>
-              </span>
               <img src="assets/img/avatar.png" alt="avatar" width="240px" />
               <br />
               <h1>@Pseudo</h1>
@@ -74,7 +48,7 @@ export default class Account extends Component {
                 </svg>{" "}
                 &nbsp;
                 <span>
-                <Link  to={process.env.PUBLIC_URL + "/Publish"}> Publier une annonce</Link>
+                <Link to={process.env.PUBLIC_URL + "/Myprofil"}> Publier une annonce</Link>
                 </span>
                 <br />
                 <svg
@@ -94,7 +68,7 @@ export default class Account extends Component {
                 </svg>{" "}
                 &nbsp;
                 <span>
-                  <a href="/Account"> Infos</a>
+                <Link to={process.env.PUBLIC_URL + "/Account"}> Infos</Link>
                 </span>
                 <br />
                 <svg
@@ -117,7 +91,7 @@ export default class Account extends Component {
                 </svg>{" "}
                 &nbsp;
                 <span>
-                <Link  to={process.env.PUBLIC_URL + "/Services"}> Mes services</Link>
+                <Link to={process.env.PUBLIC_URL + "/Services"}>  Mes services</Link>
                 </span>
                 <br />
                 <svg
@@ -135,7 +109,7 @@ export default class Account extends Component {
                 </svg>{" "}
                 &nbsp;
                 <span>
-                <Link  to={process.env.PUBLIC_URL + "/Review"}> Mes avis</Link>
+                <Link to={process.env.PUBLIC_URL + "/Review"}> Mes Avis</Link>
                 </span>
                 <br />
                 <svg
@@ -153,7 +127,7 @@ export default class Account extends Component {
                 </svg>{" "}
                 &nbsp;
                 <span>
-                <Link  to={process.env.PUBLIC_URL + "/Reward"}> Récompenses</Link>
+                <Link to={process.env.PUBLIC_URL + "/Reward"}> Récompenses</Link>
                 </span>
                 <br />
                 <svg
@@ -171,7 +145,7 @@ export default class Account extends Component {
                 </svg>{" "}
                 &nbsp;
                 <span>
-                <Link  to={process.env.PUBLIC_URL + "/Invite"}> Parrainage</Link>
+                <Link to={process.env.PUBLIC_URL + "/Invite"}> Parrainage</Link>
                 </span>
                 <br />
                 <svg
@@ -189,145 +163,134 @@ export default class Account extends Component {
                 </svg>{" "}
                 &nbsp;
                 <span>
-                <Link  to={process.env.PUBLIC_URL + "/Trophy"}> Trophées</Link>
+                <Link to={process.env.PUBLIC_URL + "/Myprofil"}> Trophées</Link>
                 </span>
                 <br />
               </div>
             </div>
           </div>
         </div>
-      </div>
-      {/* module colonn droite */}
+      </div>    {/* edit form column */}
       <div className="col-md-9 personal-info">
-        <div
-          className="alert alert-info alert-dismissible fade show"
-          role="alert"
-        >
-          Vos changements ont été sauvergardés !
-          <button
-            type="button"
-            className="close"
-            data-dismiss="alert"
-            aria-label="Close"
-          >
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
         <form className="form-horizontal" role="form">
-          <div className="form-group">
-            <div className="col-lg-12">
-              <input
-                className="form-control"
-                type="text"
-                placeholder="Pseudo*"
-              />
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="col-lg-12">
-              <input className="form-control" type="text" placeholder="Nom*" />
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="col-lg-12">
-              <input
-                className="form-control"
-                type="text"
-                placeholder="Prenom*"
-              />
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="col-lg-12">
-              <input
-                className="form-control"
-                type="text"
-                placeholder="Email@mail.com*"
-              />
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="col-lg-12">
-              <input
-                className="form-control"
-                type="text"
-                placeholder="Code parrainage (Optionnel)"
-                pattern="[A-Za-z]{2}+-[0-30][1-12]{4}+-[0-100]{2,3}"
-              />
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="col-lg-12">
-              <input
-                className="form-control"
-                type="text"
-                placeholder="Code Postal"
-              />
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="col-md-12">
-              <textarea
-                className="form-control"
-                id="exampleFormControlTextarea1"
-                rows={3}
-                placeholder="Présentez vous en quelques mots..."
-                defaultValue={""}
-              />
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="col-md-12">
-              <input
-                className="form-control"
-                type="password"
-                placeholder="Entrer votre mot de passe"
-              />
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="col-md-12">
-              <input
-                className="form-control"
-                type="password"
-                placeholder="Confirmer votre mot de passe"
-              />
-            </div>
-          </div>
-          <div className="form-group">
-            <label className="col-md-3 control-label" />
-            <div className="col-md-12">
-              <button type="button" className="btn-enregistrer">
-                &nbsp;Enregistrer&nbsp;
-              </button>
-              <button type="button" className="btn btn-dark ">
-                <svg
-                  width="1.5em"
-                  height="1.3em"
-                  viewBox="0 0 16 16"
-                  className="bi bi-trash"
-                  fill="white"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                  <path
-                    fillRule="evenodd"
-                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
-                  />
-                </svg>
-                &nbsp;Supprimer mon profil
-              </button>
+          <div className="row justify-content-start">
+            <div className="col-12">
+              <div className="media border p-3 flex-column flex-md-row">
+                <div className="media-body align-self-center">
+                  <h4>Mon code parrainage </h4>
+                  <p>
+                    Partagez votre code parrainage et obtenez 10 points des
+                    l'inscription de votre filleuil.
+                  </p>
+                  <br />
+                  <div className="input-group">
+                    <input
+                      type="text"
+                      className="form-control"
+                      defaultValue="J-B-0101-78"
+                      placeholder="Some path"
+                      id="copy-input"
+                    />
+                    <span className="input-group-btn">
+                      &nbsp;
+                      <button
+                        className="btn btn-default"
+                        type="button"
+                        id="copy-button"
+                        data-toggle="tooltip"
+                        data-placement="button"
+                        title="Copy to Clipboard"
+                      >
+                        Copier
+                      </button>
+                    </span>
+                  </div>
+                  <div id="social-links" className=" col-lg-12">
+                    <div className="row justify-content-center">
+                      <div className="col-xs-6 col-sm-3 col-md-2 col-lg-3 social-btn-holder">
+                        <a
+                          title="google"
+                          className="btn btn-social btn-block btn-google"
+                          target="_BLANK"
+                          href
+                        >
+                          <i className="fa fa-google" />
+                        </a>
+                      </div>
+                      <div className="col-xs-6 col-sm-3 col-md-2 col-lg-3 social-btn-holder">
+                        <a
+                          title="twitter"
+                          className="btn btn-social btn-block btn-twitter"
+                          target="_BLANK"
+                          href
+                        >
+                          <i className="fa fa-twitter" />
+                        </a>
+                      </div>
+                      <div className="col-xs-6 col-sm-3 col-md-2 col-lg-3 social-btn-holder">
+                        <a
+                          title="github"
+                          className="btn btn-social btn-block btn-facebook"
+                          target="_BLANK"
+                          href
+                        >
+                          <i className="fa fa-facebook" />
+                        </a>
+                      </div>
+                      <div className="col-xs-6 col-sm-3 col-md-2 col-lg-3 social-btn-holder">
+                        <a
+                          title="github"
+                          className="btn btn-social btn-block btn-mail"
+                          target="_BLANK"
+                          href
+                        >
+                          <i className="fa fa-envelope" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <br />
+                  <h4>Mes Filleuils </h4>
+                  <br />
+                  <ul className="list-group">
+                    <li className="list-group-item d-flex justify-content-between align-items-center">
+                      Nom Prenom
+                      <span className="badge badge-info badge-pill">10pts</span>
+                    </li>
+                    <li className="list-group-item d-flex justify-content-between align-items-center">
+                      Nom Prenom
+                      <span className="badge badge-info badge-pill">10pts</span>
+                    </li>
+                    <li className="list-group-item d-flex justify-content-between align-items-center">
+                      Nom Prenom
+                      <span className="badge badge-info badge-pill">10pts</span>
+                    </li>
+                    <li className="list-group-item d-flex justify-content-between align-items-center">
+                      Nom Prenom
+                      <span className="badge badge-info badge-pill">10pts</span>
+                    </li>
+                    <li className="list-group-item d-flex justify-content-between align-items-center">
+                      Nom Prenom
+                      <span className="badge badge-info badge-pill">10pts</span>
+                    </li>
+                    <li className="list-group-item d-flex justify-content-between align-items-center">
+                      Nom Prenom
+                      <span className="badge badge-info badge-pill">10pts</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </form>
+        <br />
+        <br />
       </div>
     </div>
   </div>
   <br />
   <br />
-  {/*Fin infos compte */}
 </div>;
-
 
 
 {/* FOOTER */}

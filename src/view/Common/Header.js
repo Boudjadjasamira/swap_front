@@ -27,7 +27,7 @@ export default class Header extends Component {
                     &nbsp; Mon compte
                   </Link>
                   &nbsp;
-                  <Link className="btn btn-outline-dark my-2 my-sm-0" to={process.env.PUBLIC_URL + "/Login"}>
+                  <Link className="btn btn-outline-dark my-2 my-sm-0" to={process.env.PUBLIC_URL + "/Account"}>
                     <img src={process.env.PUBLIC_URL + 'assets/icone/edit.png'} alt="logo" width="15cm" height="15cm" />
                     &nbsp; Publier un article
                   </Link>        
@@ -37,5 +37,4 @@ export default class Header extends Component {
     );
   }
 }
-
 

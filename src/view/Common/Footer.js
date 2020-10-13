@@ -28,13 +28,13 @@ export default class Footer extends Component {
                           <ul className="list-unstyled quick-links">
                             <br />
                             <li>
-                              <a href="faq.html">FAQ</a>
+                            <Link className="nav-link" to={process.env.PUBLIC_URL + "/Faq"}>FAQ</Link>
                             </li>
                             <li>
-                              <a href="contact.html">Contactez-nous</a>
+                            <Link className="nav-link" to={process.env.PUBLIC_URL + "/Contact"}>Contactez-nous</Link>
                             </li>
                             <li>
-                              <a href="annonces.html">Annonces</a>
+                            <Link className="nav-link" to={process.env.PUBLIC_URL + "/Annonces"}>Annonces</Link>
                             </li>
                           </ul>
                         </div>
@@ -44,13 +44,13 @@ export default class Footer extends Component {
                           <ul className="list-unstyled quick-links">
                             <br />
                             <li>
-                              <a href="#">Conditions d'utilisations</a>
+                            <Link className="nav-link" to={process.env.PUBLIC_URL + "/Termsofuse"}>Conditions d'utilisations</Link>
                             </li>
                             <li>
-                              <a href="#">Politique de confidentialité</a>
+                            <Link className="nav-link" to={process.env.PUBLIC_URL + "/Privacypolicy"}>Politique de confidentialité</Link>
                             </li>
                             <li>
-                              <a href="#">Mentions légales</a>
+                            <Link className="nav-link" to={process.env.PUBLIC_URL + "/Legalenotice"}>Mentions légales</Link>
                             </li>
                           </ul>
                         </div>

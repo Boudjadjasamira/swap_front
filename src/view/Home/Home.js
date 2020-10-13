@@ -4,6 +4,7 @@ import '../../css/styles.css';
 //Inclu les fichiers communs
 import Header from '../Common/Header';
 import Footer from '../Common/Footer';
+import { Link } from 'react-router-dom';
 
 export default class Home extends Component {
 
@@ -184,11 +185,8 @@ export default class Home extends Component {
             className="align-self-center mr-3"
             style={{ width: 100 }}
           />
-            
           <div className="media-body align-self-center">
-            <a id="a" href="view.html">
-              <h4> Titre annonce </h4>
-            </a>
+            <Link  to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
             <small>
               <i>Posté par @Pseudo, le 00/00/0000</i>
             </small>
@@ -218,9 +216,7 @@ export default class Home extends Component {
           />
             
           <div className="media-body align-self-center">
-            <a id="a" href="view.html">
-              <h4> Titre annonce </h4>
-            </a>
+           <Link  to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
             <small>
               <i>Posté par @Pseudo, le 00/00/0000</i>
             </small>
@@ -250,9 +246,7 @@ export default class Home extends Component {
           />
             
           <div className="media-body align-self-center">
-            <a id="a" href="view.html">
-              <h4> Titre annonce </h4>
-            </a>
+           <Link  to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
             <small>
               <i>Posté par @Pseudo, le 00/00/0000</i>
             </small>
@@ -282,9 +276,7 @@ export default class Home extends Component {
           />
             
           <div className="media-body align-self-center">
-            <a id="a" href="view.html">
-              <h4> Titre annonce </h4>
-            </a>
+           <Link  to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
             <small>
               <i>Posté par @Pseudo, le 00/00/0000</i>
             </small>
@@ -314,9 +306,7 @@ export default class Home extends Component {
           />
             
           <div className="media-body align-self-center">
-            <a id="a" href="view.html">
-              <h4> Titre annonce </h4>
-            </a>
+           <Link  to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
             <small>
               <i>Posté par @Pseudo, le 00/00/0000</i>
             </small>
@@ -346,9 +336,7 @@ export default class Home extends Component {
           />
             
           <div className="media-body align-self-center">
-            <a id="a" href="view.html">
-              <h4> Titre annonce </h4>
-            </a>
+           <Link  to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
               <small>
                 <i> Posté par @Pseudo, le 00/00/0000</i>
               </small>
@@ -378,9 +366,7 @@ export default class Home extends Component {
           />
             
           <div className="media-body align-self-center">
-            <a id="a" href="view.html">
-              <h4> Titre annonce </h4>
-            </a>
+           <Link  to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
             <small>
               <i>Posté par @Pseudo, le 00/00/0000</i>
             </small>
@@ -410,9 +396,7 @@ export default class Home extends Component {
           />
             
           <div className="media-body align-self-center">
-            <a id="a" href="view.html">
-              <h4> Titre annonce </h4>
-            </a>
+           <Link  to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
             <small>
               <i>Posté par @Pseudo, le 00/00/0000</i>
             </small>

@@ -9,6 +9,9 @@ import Register from './view/Register/Register.js';
 import Faq from './view/Faq/Faq.js';
 import Account from './view/Account/Account';
 import Contact from './view/Contact/Contact';
+import SingleAnnonce from './view/SingleAnnonce/SingleAnnonce';
+import Publish from './view/Publish/publish.js';
+import Invite from './view/Parrainage/Invite.js';
 
 export default function Routes() {
   
@@ -33,6 +36,9 @@ export default function Routes() {
       <Route path="/Faq" exact component={Faq} />
       <Route path="/Account" exact component={Account} />
       <Route path="/Contact" exact component={Contact} />
+      <Route path="/SingleAnnonce" exact component={SingleAnnonce} />
+      <Route path="/Publish" exact component={Publish} />
+      <Route path="/Invite" exact component={Invite} />
       {/*<PrivateRoute authed={false} path='/dashboard' component={Home} />*/}
       {/* <Route path='*' exact={true} component={Erreur404} /> */}
     </Switch>

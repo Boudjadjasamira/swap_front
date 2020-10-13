@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../css/styles.css';
+import Header from '../Common/Header';
+import Footer from '../Common/Footer';
 
 
 
@@ -10,6 +12,7 @@ export default class Annonces extends Component {
   render() {
     return (
 <div className="body" id="bodyHome">
+  <Header></Header>
 
   <div className="container">
     <div className="form-check form-check-inline">
@@ -309,6 +312,7 @@ export default class Annonces extends Component {
   </center>
   <br />
   <br />
+  <Footer></Footer>
 </div>
 
 
