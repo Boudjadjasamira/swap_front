@@ -130,6 +130,7 @@ export default class Annonces extends Component {
               type="text"
               className="form-control-ann"
               placeholder="Entrez votre recherche..."
+              id="input"
             />
           </div>
         </div>
