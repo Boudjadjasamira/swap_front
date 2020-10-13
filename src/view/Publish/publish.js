@@ -49,7 +49,7 @@ export default class Publish extends Component {
                         </svg>{" "}
                 &nbsp;
                 <span>
-                          <Link to={process.env.PUBLIC_URL + "/Publish"}> Publier une annonce</Link>
+                          <Link to={process.env.PUBLIC_URL + "/Myprofil"}> Publier une annonce</Link>
                         </span>
                         <br />
                         <svg
