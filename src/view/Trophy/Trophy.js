@@ -30,7 +30,7 @@ export default class Trophy extends Component {
                                         <img src="assets/img/avatar.png" alt="avatar" width="240px" />
                                         <br />
                                         <h1>@Pseudo</h1>
-                                        <a href="myprofil.html"> Voir mon profil</a>
+                                        <Link to={process.env.PUBLIC_URL + "/Myprofil"}> Voir mon profil </Link>
                                         <br />
                                         <br />
                                         <div className="menu">
@@ -50,7 +50,7 @@ export default class Trophy extends Component {
                                             </svg>{" "}
               &nbsp;
               <span>
-                                                <a href="publish.html"> Publier une annonce</a>
+                                                <Link to={process.env.PUBLIC_URL + "/Publish"}> Publier une annonce</Link>
                                             </span>
                                             <br />
                                             <svg
@@ -70,7 +70,7 @@ export default class Trophy extends Component {
                                             </svg>{" "}
               &nbsp;
               <span>
-                                                <a href="account.html"> Infos</a>
+                                                <Link to={process.env.PUBLIC_URL + "/Account"}> Infos</Link>
                                             </span>
                                             <br />
                                             <svg
@@ -93,7 +93,7 @@ export default class Trophy extends Component {
                                             </svg>{" "}
               &nbsp;
               <span>
-                                                <a href="services.html"> Mes services</a>
+                                                <Link to={process.env.PUBLIC_URL + "/Services"}> Mes services</Link>
                                             </span>
                                             <br />
                                             <svg
@@ -111,7 +111,7 @@ export default class Trophy extends Component {
                                             </svg>{" "}
               &nbsp;
               <span>
-                                                <a href="review.html"> Mes Avis</a>
+                                                <Link to={process.env.PUBLIC_URL + "/Review"}> Mes avis</Link>
                                             </span>
                                             <br />
                                             <svg
@@ -129,7 +129,7 @@ export default class Trophy extends Component {
                                             </svg>{" "}
               &nbsp;
               <span>
-                                                <a href="reward.html"> Récompenses</a>
+                                                <Link to={process.env.PUBLIC_URL + "/Reward"}> Récompenses</Link>
                                             </span>
                                             <br />
                                             <svg
@@ -147,7 +147,7 @@ export default class Trophy extends Component {
                                             </svg>{" "}
               &nbsp;
               <span>
-                                                <a href="invite.html"> Parrainage</a>
+                                                <Link to={process.env.PUBLIC_URL + "/Invite"}> Parrainage</Link>
                                             </span>
                                             <br />
                                             <svg
@@ -165,7 +165,7 @@ export default class Trophy extends Component {
                                             </svg>{" "}
               &nbsp;
               <span>
-                                                <a href="trophy.html"> Trophées</a>
+                                                <Link to={process.env.PUBLIC_URL + "/Trophy"}> Trophées</Link>
                                             </span>
                                             <br />
                                         </div>

@@ -15,6 +15,7 @@ import Invite from './view/Parrainage/Invite.js';
 import Services from './view/DisplayService/Services';
 import Viewservices from './view/Viewservices/Viewservices.js';
 import Trophy from './view/Trophy/Trophy.js';
+import Review from './view/Review/Review.js';
 
 
 export default function Routes() {
@@ -46,6 +47,7 @@ export default function Routes() {
       <Route path="/Services" exact component={Services} />
       <Route path="/Viewservices" exact component={Viewservices} />
       <Route path="/Trophy" exact component={Trophy} />
+      <Route path="/Review" exact component={Review} />
       {/*<PrivateRoute authed={false} path='/dashboard' component={Home} />*/}
       {/* <Route path='*' exact={true} component={Erreur404} /> */}
     </Switch>
