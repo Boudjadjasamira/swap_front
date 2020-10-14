@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../../css/styles.css';
 //Inclu les fichiers communs
 import Header from '../../view/Common/Header';
-import Footer from '../..//view/Common/Footer';
+import Footer from '../../view/Common/Footer';
 
 
 export default class Invite extends Component {
@@ -212,7 +213,7 @@ export default class Invite extends Component {
                                   title="google"
                                   className="btn btn-social btn-block btn-google"
                                   target="_BLANK"
-                                  href
+
                                 >
                                   <i className="fa fa-google" />
                                 </a>
@@ -222,7 +223,7 @@ export default class Invite extends Component {
                                   title="twitter"
                                   className="btn btn-social btn-block btn-twitter"
                                   target="_BLANK"
-                                  href
+
                                 >
                                   <i className="fa fa-twitter" />
                                 </a>
@@ -232,7 +233,7 @@ export default class Invite extends Component {
                                   title="github"
                                   className="btn btn-social btn-block btn-facebook"
                                   target="_BLANK"
-                                  href
+
                                 >
                                   <i className="fa fa-facebook" />
                                 </a>
@@ -242,7 +243,7 @@ export default class Invite extends Component {
                                   title="github"
                                   className="btn btn-social btn-block btn-mail"
                                   target="_BLANK"
-                                  href
+
                                 >
                                   <i className="fa fa-envelope" />
                                 </a>
