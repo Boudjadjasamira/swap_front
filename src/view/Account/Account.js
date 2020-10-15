@@ -223,6 +223,21 @@ export default class Account extends Component {
                       />
                     </div>
                   </div>
+
+
+                  <div className="form-group">
+                    <div className="col-lg-12">
+                      <select className="form-control custom-select" type="text" placeholder="Genre*">
+                        <option selected disabled>
+                          Vous etes ?
+        </option>
+                        <option>Une femme</option>
+                        <option>Un homme</option>
+                      </select>
+                    </div>
+                  </div>
+
+
                   <div className="form-group">
                     <div className="col-lg-12">
                       <input className="form-control" type="text" placeholder="Nom*" />

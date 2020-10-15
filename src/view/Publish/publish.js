@@ -215,6 +215,26 @@ export default class Publish extends Component {
                   </div>
                   <div className="form-group">
                     <div className="col-lg-12">
+                      <div className="custom-file">
+                        <input
+                          type="file"
+                          className="custom-file-input"
+                          id="customFileLang"
+                          lang="fr"
+                        />
+                        <label className="custom-file-label" htmlFor="customFileLang">
+                          Ajouter des photos (4 Maximum){" "}
+                        </label>
+                      </div>
+                    </div>
+                    <p>
+                      &nbsp;&nbsp;&nbsp;&nbsp;*Format JPEG-PNG
+            </p>
+                  </div>
+
+
+                  <div className="form-group">
+                    <div className="col-lg-12">
                       <input
                         className="form-control"
                         type="text"
@@ -226,6 +246,7 @@ export default class Publish extends Component {
                       votre annonce dans une région et un département.
             </p>
                   </div>
+
                   <div className="form-group">
                     <label className="col-md-3 control-label" />
                     <div className="col-md-12">
