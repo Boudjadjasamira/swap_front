@@ -193,10 +193,10 @@ export default class Trophy extends Component {
                                                                 />
                                                                 <div className="d-block text-truncate mb-1">
                                                                     <br />
-                                                                    <h6 className="trophy title">Nom du trophée</h6>
+                                                                    <h6 className="trophy title">Who i am ?</h6>
                                                                 </div>
                                                                 <div className="trophy d-block">
-                                                                    <span>Création de 10 annonces</span>
+                                                                    <span>Remplir à 100% son profil</span>
                                                                     <br />
                                                                 </div>
                                                                 <div className="percent d-block">
@@ -249,7 +249,7 @@ export default class Trophy extends Component {
                                                                 />
                                                                 <div className="d-block text-truncate mb-1">
                                                                     <br />
-                                                                    <h6 className="trophy title">Nom du trophée</h6>
+                                                                    <h6 className="trophy title">Top services</h6>
                                                                 </div>
                                                                 <div className="trophy d-block">
                                                                     <span>Création de 10 annonces</span>
@@ -277,10 +277,10 @@ export default class Trophy extends Component {
                                                                 />
                                                                 <div className="d-block text-truncate mb-1">
                                                                     <br />
-                                                                    <h6 className="trophy title">Nom du trophée</h6>
+                                                                    <h6 className="trophy title">Godfather</h6>
                                                                 </div>
                                                                 <div className="trophy d-block">
-                                                                    <span>Création de 10 annonces</span>
+                                                                    <span>Parrainer 3 Personnes</span>
                                                                     <br />
                                                                 </div>
                                                                 <div className="percent d-block">
@@ -305,10 +305,10 @@ export default class Trophy extends Component {
                                                                 />
                                                                 <div className="d-block text-truncate mb-1">
                                                                     <br />
-                                                                    <h6 className="trophy title">Nom du trophée</h6>
+                                                                    <h6 className="trophy title">Give me Gift !</h6>
                                                                 </div>
                                                                 <div className="trophy d-block">
-                                                                    <span>Création de 10 annonces</span>
+                                                                    <span>Echanger vos points</span>
                                                                     <br />
                                                                 </div>
                                                                 <div className="percent d-block">
@@ -389,10 +389,11 @@ export default class Trophy extends Component {
                                                                 />
                                                                 <div className="d-block text-truncate mb-1">
                                                                     <br />
-                                                                    <h6 className="trophy title">Advisor</h6>
+                                                                    <h6 className="trophy title">Best rewiever</h6>
                                                                 </div>
                                                                 <div className="trophy d-block">
-                                                                    <span>10 services effectués</span>
+                                                                    <span>Poster 10 avis</span>
+                                                                    <br />
                                                                     <br />
                                                                 </div>
                                                                 <div className="percent d-block">
