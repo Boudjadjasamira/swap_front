@@ -172,7 +172,7 @@ export default class Reward extends Component {
                                 </div>
                             </div>    {/* edit form column */}
                             <div className="col-md-9 personal-info">
-                                <form className="form-horizontal" role="form">
+                                <form className="form-horizontal">
                                     <div className="row justify-content-start">
                                         <div className="col-12">
                                             <div className="media border p-3 flex-column flex-md-row">
@@ -183,6 +183,7 @@ export default class Reward extends Component {
                                                                 <div className="row">
                                                                     <img
                                                                         src="http://placehold.it/100x100"
+                                                                        alt="description annonce"
                                                                         className="mx-auto d-block mb-1 addcartimg"
                                                                     />
                                                                 </div>
@@ -212,6 +213,7 @@ export default class Reward extends Component {
                                                                 <div className="row">
                                                                     <img
                                                                         src="http://placehold.it/100x100"
+                                                                        alt="description annonce"
                                                                         className="mx-auto d-block mb-1 addcartimg"
                                                                     />
                                                                 </div>
@@ -241,6 +243,7 @@ export default class Reward extends Component {
                                                                 <div className="row">
                                                                     <img
                                                                         src="http://placehold.it/100x100"
+                                                                        alt="description annonce"
                                                                         className="mx-auto d-block mb-1 addcartimg"
                                                                     />
                                                                 </div>
@@ -270,6 +273,7 @@ export default class Reward extends Component {
                                                                 <div className="row">
                                                                     <img
                                                                         src="http://placehold.it/100x100"
+                                                                        alt="description annonce"
                                                                         className="mx-auto d-block mb-1 addcartimg"
                                                                     />
                                                                 </div>

@@ -174,7 +174,7 @@ export default class Services extends Component {
                             </div>
                             {/*--------------------------------------Colonne Droite-----------------------------------------------------*/}
                             <div className="col-md-9 personal-info">
-                                <form className="form-horizontal" role="form">
+                                <form className="form-horizontal" >
                                     <button
                                         className="btn btn-outline-dark my-2 my-sm-0"
                                         type="submit"

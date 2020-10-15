@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../css/login.css';
 
 
 export default class login extends Component {
-    
+
   render() {
     return (
-            
-        <div>
+
+      <div>
         <div className="limiter">
           <div className="container-login100">
             <div className="wrap-login100">
@@ -49,9 +48,9 @@ export default class login extends Component {
                 <br />
                 <div className="text-center p-t-12">
                   <span className="txt1">Forgot </span>
-                  <a className="txt2" href="#">
+                  {/*                   <a className="txt2" href="#">
                     Pseudo / Password ?
-                  </a>
+                  </a> */}
                 </div>
                 <div className="text-center p-t-136">
                   <a className="txt2" href="/register">
@@ -64,7 +63,7 @@ export default class login extends Component {
         </div>
         <center>SWAP - 2020 Tous droits réservés</center>
       </div>
-      
+
     );
   }
 }

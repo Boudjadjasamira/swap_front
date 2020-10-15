@@ -174,7 +174,7 @@ export default class Publish extends Component {
               </div>
               {/* Module d'annonce/ colonne Droite */}
               <div className="col-md-9 personal-info">
-                <form className="form-horizontal" role="form">
+                <form className="form-horizontal">
                   <div className="form-group">
                     <div className="col-lg-12">
                       <select

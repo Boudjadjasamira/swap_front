@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 //Inclu les fichiers communs
 import Header from '../../view/Common/Header';
-import Footer from '../..//view/Common/Footer';
+import Footer from '../../view/Common/Footer';
 
 
 export default class Review extends Component {
@@ -11,6 +11,8 @@ export default class Review extends Component {
     render() {
         return (
             <div className="body" id="bodyHome">
+                {/* HEADER */}
+                <Header></Header>
                 <div>
                     <div className="container">
                         <h1>Mes Avis</h1>
@@ -169,7 +171,7 @@ export default class Review extends Component {
                             </div>
                             {/*--------------------------------------Colonne Droite-----------------------------------------------------*/}
                             <div className="col-md-9 personal-info">
-                                <form className="form-horizontal" role="form">
+                                <form className="form-horizontal">
                                     <div className="row justify-content-start">
                                         <div className="col-11">
                                             <div className="media border p-3 flex-column flex-md-row">

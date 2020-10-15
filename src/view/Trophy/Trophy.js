@@ -175,7 +175,7 @@ export default class Trophy extends Component {
                         </div>
                         {/*--------------------------------------Colonne Droite-----------------------------------------------------*/}
                         <div className="col-md-9 personal-info">
-                            <form className="form-horizontal" role="form">
+                            <form className="form-horizontal">
                                 <div className="row justify-content-start">
                                     <div className="col-12">
                                         <div className="media border p-3 flex-column flex-md-row ">
@@ -187,7 +187,7 @@ export default class Trophy extends Component {
                                                             <div className="bg-white rounded   py-4 px-4">
                                                                 <img
                                                                     src="http://placehold.it/100x100"
-                                                                    alt
+                                                                    alt="trophée"
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
                                                                 />
@@ -215,7 +215,7 @@ export default class Trophy extends Component {
                                                             <div className="bg-white rounded  py-4 px-4">
                                                                 <img
                                                                     src="http://placehold.it/100x100"
-                                                                    alt
+                                                                    alt=" trophée"
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
                                                                 />
@@ -243,7 +243,7 @@ export default class Trophy extends Component {
                                                             <div className="bg-white rounded   py-4 px-4">
                                                                 <img
                                                                     src="http://placehold.it/100x100"
-                                                                    alt
+                                                                    alt=" trophée"
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
                                                                 />
@@ -271,7 +271,7 @@ export default class Trophy extends Component {
                                                             <div className="bg-white rounded   py-4 px-4">
                                                                 <img
                                                                     src="http://placehold.it/100x100"
-                                                                    alt
+                                                                    alt=" trophée"
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
                                                                 />
@@ -299,7 +299,7 @@ export default class Trophy extends Component {
                                                             <div className="bg-white rounded   py-4 px-4">
                                                                 <img
                                                                     src="http://placehold.it/100x100"
-                                                                    alt
+                                                                    alt=" trophée"
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
                                                                 />
@@ -327,7 +327,7 @@ export default class Trophy extends Component {
                                                             <div className="bg-white rounded   py-4 px-4">
                                                                 <img
                                                                     src="http://placehold.it/100x100"
-                                                                    alt
+                                                                    alt=" trophée"
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
                                                                 />
@@ -355,7 +355,7 @@ export default class Trophy extends Component {
                                                             <div className="bg-white rounded   py-4 px-4">
                                                                 <img
                                                                     src="http://placehold.it/100x100"
-                                                                    alt
+                                                                    alt=" trophée"
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
                                                                 />
@@ -383,7 +383,7 @@ export default class Trophy extends Component {
                                                             <div className="bg-white rounded   py-4 px-4">
                                                                 <img
                                                                     src="http://placehold.it/100x100"
-                                                                    alt
+                                                                    alt="trophée"
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
                                                                 />

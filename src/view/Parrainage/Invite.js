@@ -173,7 +173,7 @@ export default class Invite extends Component {
                 </div>
               </div>    {/* edit form column */}
               <div className="col-md-9 personal-info">
-                <form className="form-horizontal" role="form">
+                <form className="form-horizontal">
                   <div className="row justify-content-start">
                     <div className="col-12">
                       <div className="media border p-3 flex-column flex-md-row">
@@ -209,44 +209,44 @@ export default class Invite extends Component {
                           <div id="social-links" className=" col-lg-12">
                             <div className="row justify-content-center">
                               <div className="col-xs-6 col-sm-3 col-md-2 col-lg-3 social-btn-holder">
-                                <a
+                                {/* <a
                                   title="google"
                                   className="btn btn-social btn-block btn-google"
                                   target="_BLANK"
 
                                 >
                                   <i className="fa fa-google" />
-                                </a>
+                                </a> */}
                               </div>
                               <div className="col-xs-6 col-sm-3 col-md-2 col-lg-3 social-btn-holder">
-                                <a
+                                {/* <a
                                   title="twitter"
                                   className="btn btn-social btn-block btn-twitter"
                                   target="_BLANK"
 
-                                >
-                                  <i className="fa fa-twitter" />
-                                </a>
+                                > 
+                                <i className="fa fa-twitter" />
+                                </a> */}
                               </div>
                               <div className="col-xs-6 col-sm-3 col-md-2 col-lg-3 social-btn-holder">
-                                <a
+                                {/* <a
                                   title="github"
                                   className="btn btn-social btn-block btn-facebook"
                                   target="_BLANK"
 
                                 >
                                   <i className="fa fa-facebook" />
-                                </a>
+                                </a> */}
                               </div>
                               <div className="col-xs-6 col-sm-3 col-md-2 col-lg-3 social-btn-holder">
-                                <a
+                                {/*  <a
                                   title="github"
                                   className="btn btn-social btn-block btn-mail"
                                   target="_BLANK"
 
                                 >
                                   <i className="fa fa-envelope" />
-                                </a>
+                                </a> */}
                               </div>
                             </div>
                           </div>
@@ -296,7 +296,7 @@ export default class Invite extends Component {
 
         {/* FOOTER */}
         <Footer></Footer>
-      </div>
+      </div >
 
     );
   }

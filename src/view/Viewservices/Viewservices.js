@@ -173,7 +173,7 @@ export default class Viewservices extends Component {
                             </div>
                             {/*--------------------------------------Colonne Droite-----------------------------------------------------*/}
                             <div className="col-md-9 personal-info">
-                                <form className="form-horizontal" role="form">
+                                <form className="form-horizontal">
                                     <button
                                         className="btn btn-outline-dark my-2 my-sm-0"
                                         type="submit"
@@ -192,7 +192,7 @@ export default class Viewservices extends Component {
                                                 fillRule="evenodd"
                                                 d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
                                             />
-                                        </svg>Publier une annonce
+                                        </svg>&nbsp;Publier une annonce
                                      </button>
                                     <div className="row justify-content-start">
                                         <div className="col-12">
@@ -330,7 +330,7 @@ export default class Viewservices extends Component {
                                                                 fillRule="evenodd"
                                                                 d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
                                                             />
-                                                        </svg>Supprimer
+                                                        </svg>&nbsp;Supprimer
                                                     </button>
                                                     <button className="btn btn-outline-dark my-1 my-sm-0">
                                                         <svg
@@ -346,7 +346,7 @@ export default class Viewservices extends Component {
                                                                 fillRule="evenodd"
                                                                 d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
                                                             />
-                                                        </svg>Modifier
+                                                        </svg>&nbsp;Modifier
                                                     </button>
                                                 </div>
                                             </div>
