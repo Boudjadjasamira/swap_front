@@ -19,39 +19,41 @@ import Review from './view/Review/Review.js';
 import Reward from './view/Reward/Reward.js';
 
 
+
 export default function Routes() {
 
-  function PrivateRoute({ component: Component, authed, ...rest }) {
-    return (
-      <Route
-        {...rest}
-        render={(props) => authed === true
-          ? <Component {...props} />
-          : <Redirect to={{ pathname: '../../Login/Login', state: { from: props.location } }} />}
-      />
-    )
-  }
+    function PrivateRoute({ component: Component, authed, ...rest }) {
+        return (
+            <Route
+                {...rest}
+                render={(props) => authed === true
+                    ? <Component {...props} />
+                    : <Redirect to={{ pathname: '../../Login/Login', state: { from: props.location } }} />}
+            />
+        )
+    }
 
-  return (
-    <Switch>
-      <Route path="/" exact component={Home} />
-      <Route path="/Login" exact component={login} />
-      <Route path="/Annonces" exact component={Annonces} />
-      <Route path="/Myprofil" exact component={Myprofil} />
-      <Route path="/Register" exact component={Register} />
-      <Route path="/Faq" exact component={Faq} />
-      <Route path="/Account" exact component={Account} />
-      <Route path="/Contact" exact component={Contact} />
-      <Route path="/SingleAnnonce" exact component={SingleAnnonce} />
-      <Route path="/Publish" exact component={Publish} />
-      <Route path="/Invite" exact component={Invite} />
-      <Route path="/Services" exact component={Services} />
-      <Route path="/Viewservices" exact component={Viewservices} />
-      <Route path="/Trophy" exact component={Trophy} />
-      <Route path="/Review" exact component={Review} />
-      <Route path="/Reward" exact component={Reward} />
-      {/*<PrivateRoute authed={false} path='/dashboard' component={Home} />*/}
-      <Route path='*' exact={true} component={Erreur404} />
-    </Switch>
-  );
+    return (
+        <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/Login" exact component={login} />
+            <Route path="/Annonces" exact component={Annonces} />
+            <Route path="/Myprofil" exact component={Myprofil} />
+            <Route path="/Register" exact component={Register} />
+            <Route path="/Faq" exact component={Faq} />
+            <Route path="/Account" exact component={Account} />
+            <Route path="/Contact" exact component={Contact} />
+            <Route path="/SingleAnnonce" exact component={SingleAnnonce} />
+            <Route path="/Publish" exact component={Publish} />
+            <Route path="/Invite" exact component={Invite} />
+            <Route path="/Services" exact component={Services} />
+            <Route path="/Viewservices" exact component={Viewservices} />
+            <Route path="/Trophy" exact component={Trophy} />
+            <Route path="/Review" exact component={Review} />
+            <Route path="/Reward" exact component={Reward} />
+            {/*<PrivateRoute authed={false} path='/dashboard' component={Home} />*/}
+            <Route path='*' exact={true} component={Erreur404} />
+        </Switch>
+    );
+
 }
