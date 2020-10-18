@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './dashboard.css';
-
 
 export default class Dashboard extends Component {
 
     render() {
         return (
-
             <div>
-
                 {/* Navbar */}
                 <div className="horizontal-menu">
                     <nav className="navbar top-navbar col-lg-12 col-12 p-0">

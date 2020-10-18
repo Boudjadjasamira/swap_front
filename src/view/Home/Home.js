@@ -37,9 +37,9 @@ export default class Home extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-3">
-                <div className="card-counter secondary">
+                <Link className="" to={process.env.PUBLIC_URL + "/Categorie/Bricolage"}><div className="card-counter secondary">
                   <span className="count-name">BRICOLAGE</span>
-                </div>
+                </div></Link>
               </div>
               <div className="col-md-3">
                 <div className="card-counter secondary">

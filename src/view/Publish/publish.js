@@ -4,9 +4,77 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //Inclu les fichiers communs
 import Header from '../../view/Common/Header';
 import Footer from '../..//view/Common/Footer';
+import * as firebase from "firebase";
+import Swal from 'sweetalert2'
+
+import "../../firebase";
 
 
 export default class Publish extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      titre: "",
+      description: "",
+      codePostal: "",
+      categorieS: ""
+    }
+
+    this.addAnnonces = this.addAnnonces.bind(this);
+    this.changeTitre = this.changeTitre.bind(this);
+    this.changeDecription = this.changeDecription.bind(this);
+    this.changeCodePostal = this.changeCodePostal.bind(this);
+  }
+
+  addAnnonces(){
+    //connexion a la bdd
+    const db = firebase.firestore();
+    //recuperation de la data
+    const d = new Date();
+    const laDate = d.getDay() + '/' + d.getMonth() + '/' + d.getYear();
+    //ajout dans la base
+    db.collection("Annonces").add({
+      Pseudo: "Samira",
+      titre: this.state.titre,
+      //categories: this.state.categorieS,
+      codepostal: this.state.codePostal,
+      description: this.state.description,
+      date: laDate.toString()
+    });
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Votre annonce vient d\'être publiée.',
+      showConfirmButton: false,
+      timer: 2500
+    });
+
+    //reset les champs
+    this.setState({
+      titre: "",
+      description: "",
+      codePostal: ""
+    });
+  }
+
+  changeTitre(event){
+    this.setState({
+        titre: event.target.value
+    });
+  }
+
+  changeDecription(event){
+    this.setState({
+        description: event.target.value
+    });
+  }
+
+  changeCodePostal(event){
+    this.setState({
+      codePostal: event.target.value
+    });
+  }
 
   render() {
     return (
@@ -175,6 +243,32 @@ export default class Publish extends Component {
               {/* Module d'annonce/ colonne Droite */}
               <div className="col-md-9 personal-info">
                 <form className="form-horizontal">
+                <div className="container pb-3">
+          <div className="form-check form-check-inline">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="inlineRadioOptions"
+              id="inlineRadio1"
+              defaultValue="option1"
+            />
+            <label className="form-check-label" htmlFor="inlineRadio1">
+              Offres
+      </label>
+          </div>
+          <div className="form-check form-check-inline">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="inlineRadioOptions"
+              id="inlineRadio2"
+              defaultValue="option2"
+            />
+            <label className="form-check-label" htmlFor="inlineRadio2">
+              Demandes
+      </label>
+          </div>
+        </div>
                   <div className="form-group">
                     <div className="col-lg-12">
                       <select
@@ -199,6 +293,8 @@ export default class Publish extends Component {
                         className="form-control"
                         type="text"
                         placeholder="Titre annonce*"
+                        value={this.state.titre}
+                        onChange={this.changeTitre}
                       />
                     </div>
                   </div>
@@ -210,6 +306,8 @@ export default class Publish extends Component {
                         rows={3}
                         placeholder="Description*"
                         defaultValue={""}
+                        value={this.state.description}
+                        onChange={this.changeDecription}
                       />
                     </div>
                   </div>
@@ -239,6 +337,8 @@ export default class Publish extends Component {
                         className="form-control"
                         type="text"
                         placeholder="Code Postal*"
+                        value={this.state.codePostal}
+                        onChange={this.changeCodePostal}
                       />
                     </div>
                     <p>
@@ -250,7 +350,7 @@ export default class Publish extends Component {
                   <div className="form-group">
                     <label className="col-md-3 control-label" />
                     <div className="col-md-12">
-                      <button type="button" className="btn-enregistrer">
+                      <button type="button" className="btn-enregistrer" onClick={this.addAnnonces}>
                         &nbsp;Publier&nbsp;
               </button>
                     </div>

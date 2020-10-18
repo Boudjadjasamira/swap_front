@@ -1,16 +1,64 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../css/styles.css';
 import Header from '../Common/Header';
 import Footer from '../Common/Footer';
+import * as firebase from "firebase";
+import { axios } from 'axios';
 
+import "../../firebase";
 
+//Inclu les components
+import CardAnnonce from '../../components/CardAnnonce/CardAnnonce.js';
 
 export default class Annonces extends Component {
 
+  constructor(props){
+    super(props);
+    this.state = {
+      allAnnonces: [],
+      confirm: true
+    }
+  }
+
+  componentDidMount(){
+    document.title = "Annonces";
+    
+    //Recuperation de la connexion a la bdd
+    const db = firebase.firestore();
+
+    //Je vais chercher dans la collection "Annonces"
+    db.collection("Annonces")
+    //.where('categorie', "==" ,this.props.match.query.categorie)
+    //recuperation de tous
+    .get()
+    //Alors
+    .then(querySnapshot => {
+      //Pour chaque element je le mets dans la varible data
+        const data = querySnapshot.docs.map(doc => doc.data());
+        //recuperation du nombre de commandes
+        //console.log(data);
+        //J'ajoute dans ma variable "state" tous mes data
+        this.setState({allAnnonces: data});
+    });
+
+    /*const axios = require('axios');
+
+    axios.get('http://localhost:8888/annonces')
+    .then(res => {
+      const recupSymfonyBack = res.data;
+      
+      this.setState({ allAnnonces: recupSymfonyBack });
+    })*/
+
+    
+  }
+
   render() {
+//    const [allAnnonces] = useState([]);
     return (
+
       <div className="body" id="bodyHome">
         <Header></Header>
 
@@ -135,156 +183,13 @@ export default class Annonces extends Component {
           </div>
         </div>
         <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <div className="media border p-3 flex-column flex-md-row">
-                <img
-                  src="https://via.placeholder.com/100x100"
-                  alt="#"
-                  className="align-self-center mr-3"
-                  style={{ width: 100 }}
-                />
-
-                <div className="media-body align-self-center">
-                  <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
-                  <small>
-                    <i>Posté par @Pseudo, le 00/00/0000</i>
-                  </small>
-                  <hr />
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
-                    ipsum aliquam metus facilisis scelerisque. Quisque vitae
-                    condimentum nulla. Vestibulum lobortis ullamcorper augue id
-                    consequat. Orci varius natoque penatibus et magnis dis parturient
-                    montes, nascetur ridiculus mus. Phasellus at aliquet dui. Mauris
-                    dapibus lectus id laoreet iaculis. Duis auctor augue augue, eget
-                    lobortis quam auctor at.
-            </p>
-                </div>
+          {this.state.allAnnonces.map((e) => (
+            <div className="row">
+              <div className="col-12">
+                <CardAnnonce titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} pseudoEnvoi={e.Pseudo} ></CardAnnonce>
               </div>
             </div>
-          </div>
-          <br />
-          <div className="row">
-            <div className="col-12">
-              <div className="media border p-3 flex-column flex-md-row">
-                <img
-                  src="https://via.placeholder.com/100x100"
-                  alt="#"
-                  className="align-self-center mr-3"
-                  style={{ width: 100 }}
-                />
-
-                <div className="media-body align-self-center">
-                  <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
-                  <small>
-                    <i>Posté par @Pseudo, le 00/00/0000</i>
-                  </small>
-                  <hr />
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
-                    ipsum aliquam metus facilisis scelerisque. Quisque vitae
-                    condimentum nulla. Vestibulum lobortis ullamcorper augue id
-                    consequat. Orci varius natoque penatibus et magnis dis parturient
-                    montes, nascetur ridiculus mus. Phasellus at aliquet dui. Mauris
-                    dapibus lectus id laoreet iaculis. Duis auctor augue augue, eget
-                    lobortis quam auctor at.
-            </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <br />
-          <div className="row">
-            <div className="col-12">
-              <div className="media border p-3 flex-column flex-md-row">
-                <img
-                  src="https://via.placeholder.com/100x100"
-                  alt="#"
-                  className="align-self-center mr-3"
-                  style={{ width: 100 }}
-                />
-
-                <div className="media-body align-self-center">
-                  <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
-                  <small>
-                    <i>Posté par @Pseudo, le 00/00/0000</i>
-                  </small>
-                  <hr />
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
-                    ipsum aliquam metus facilisis scelerisque. Quisque vitae
-                    condimentum nulla. Vestibulum lobortis ullamcorper augue id
-                    consequat. Orci varius natoque penatibus et magnis dis parturient
-                    montes, nascetur ridiculus mus. Phasellus at aliquet dui. Mauris
-                    dapibus lectus id laoreet iaculis. Duis auctor augue augue, eget
-                    lobortis quam auctor at.
-            </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <br />
-          <div className="row">
-            <div className="col-12">
-              <div className="media border p-3 flex-column flex-md-row">
-                <img
-                  src="https://via.placeholder.com/100x100"
-                  alt="#"
-                  className="align-self-center mr-3"
-                  style={{ width: 100 }}
-                />
-
-                <div className="media-body align-self-center">
-                  <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
-                  <small>
-                    <i>Posté par @Pseudo, le 00/00/0000</i>
-                  </small>
-                  <hr />
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
-                    ipsum aliquam metus facilisis scelerisque. Quisque vitae
-                    condimentum nulla. Vestibulum lobortis ullamcorper augue id
-                    consequat. Orci varius natoque penatibus et magnis dis parturient
-                    montes, nascetur ridiculus mus. Phasellus at aliquet dui. Mauris
-                    dapibus lectus id laoreet iaculis. Duis auctor augue augue, eget
-                    lobortis quam auctor at.
-            </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <br />
-          <div className="row">
-            <div className="col-12">
-              <div className="media border p-3 flex-column flex-md-row">
-                <img
-                  src="https://via.placeholder.com/100x100"
-                  alt="#"
-                  className="align-self-center mr-3"
-                  style={{ width: 100 }}
-                />
-
-                <div className="media-body align-self-center">
-                  <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
-                  <small>
-                    <i>Posté par @Pseudo, le 00/00/0000</i>
-                  </small>
-                  <hr />
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
-                    ipsum aliquam metus facilisis scelerisque. Quisque vitae
-                    condimentum nulla. Vestibulum lobortis ullamcorper augue id
-                    consequat. Orci varius natoque penatibus et magnis dis parturient
-                    montes, nascetur ridiculus mus. Phasellus at aliquet dui. Mauris
-                    dapibus lectus id laoreet iaculis. Duis auctor augue augue, eget
-                    lobortis quam auctor at.
-            </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <br />
+          ))}
         </div>
         <center>
           <svg

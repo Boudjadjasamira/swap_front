@@ -4,8 +4,7 @@
   box-sizing: border-box;
 }
 
-#bodyHome,
-html {
+#bodyHome, html {
   height: auto;
   font-family: "Poppins", sans-serif;
   background-image: url("/assets/img/bg.png");
