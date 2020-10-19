@@ -4,9 +4,141 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //Inclu les fichiers communs
 import Header from '../../view/Common/Header';
 import Footer from '../..//view/Common/Footer';
+import Swal from 'sweetalert2';
+import * as firebase from "firebase";
+import "../../firebase";
 
 
 export default class Account extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      pseudo: "",
+      //genre: "",
+      nom: "",
+      prenom: "",
+      mail: "",
+      codeParrainage: "",
+      codePostal: "",
+      description: "",
+      password: ""
+    }
+
+    this.addPseudo = this.addPseudo.bind(this);
+    // this.changeGenre = this.changeGenre.bind(this);
+    this.changeNom = this.changeNom.bind(this);
+    this.changePrenom = this.changePrenom.bind(this);
+    this.changeMail = this.changeMail.bind(this);
+    this.changeCodeParrainage = this.changeCodeParrainage.bind(this);
+    this.changeCodePostal = this.changeCodePostal.bind(this);
+    this.changeDescription = this.changeDescription.bind(this);
+    this.changePassword = this.changePassword.bind(this);
+  }
+
+  addChangements() {
+    //connexion a la bdd
+    const db = firebase.firestore();
+
+
+    //ajout dans la base
+    db.collection("Utilisateurs").add({
+      pseudo: this.state.pseudo,
+      //genre: this.state.genre,
+      nom: this.state.nom,
+      prenom: this.state.prenom,
+      mail: this.state.mail,
+      codeParrainage: this.state.codeParrainage,
+      codePostal: this.state.codePostal,
+      description: this.state.description,
+      password: this.state.password
+    });
+
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Changements sauvegardés.',
+      showConfirmButton: false,
+      timer: 2500
+    });
+
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Une erreur s\'est produite !',
+    })
+
+
+    //reset les champs
+    this.setState({
+      pseudo: "",
+      //genre: "",
+      nom: "",
+      prenom: "",
+      mail: "",
+      codeParrainage: "",
+      codePostal: "",
+      description: "",
+      password: ""
+    });
+  }
+
+
+  addPseudo(event) {
+    this.setState({
+      pseudo: event.target.value
+    });
+  }
+
+  /*  changeGenre(event) {
+     this.setState({
+       pseudo: event.target.value
+     });
+   } */
+
+  addPseudo(event) {
+    this.setState({
+      pseudo: event.target.value
+    });
+  }
+  changeNom(event) {
+    this.setState({
+      pseudo: event.target.value
+    });
+  }
+  changePrenom(event) {
+    this.setState({
+      pseudo: event.target.value
+    });
+  }
+  changeMail(event) {
+    this.setState({
+      pseudo: event.target.value
+    });
+  }
+  changeCodeParrainage(event) {
+    this.setState({
+      pseudo: event.target.value
+    });
+  }
+  changeCodePostal(event) {
+    this.setState({
+      pseudo: event.target.value
+    });
+  }
+  changeDescription(event) {
+    this.setState({
+      pseudo: event.target.value
+    });
+  }
+
+  changePassword(event) {
+    this.setState({
+      pseudo: event.target.value
+    });
+  }
+
+
 
   render() {
     return (
@@ -199,20 +331,7 @@ export default class Account extends Component {
               </div>
               {/* module colonn droite */}
               <div className="col-md-9 personal-info">
-                <div
-                  className="alert alert-info alert-dismissible fade show"
-                  role="alert"
-                >
-                  Vos changements ont été sauvergardés !
-          <button
-                    type="button"
-                    className="close"
-                    data-dismiss="alert"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">×</span>
-                  </button>
-                </div>
+
                 <form className="form-horizontal">
                   <div className="form-group">
                     <div className="col-lg-12">
@@ -220,6 +339,8 @@ export default class Account extends Component {
                         className="form-control"
                         type="text"
                         placeholder="Pseudo*"
+                        value={this.state.titre}
+                        onChange={this.addPseudo}
                       />
                     </div>
                   </div>
@@ -249,6 +370,8 @@ export default class Account extends Component {
                         className="form-control"
                         type="text"
                         placeholder="Prenom*"
+                        value={this.state.titre}
+                        onChange={this.changePrenom}
                       />
                     </div>
                   </div>
@@ -258,6 +381,8 @@ export default class Account extends Component {
                         className="form-control"
                         type="text"
                         placeholder="Email@mail.com*"
+                        value={this.state.titre}
+                        onChange={this.changeMail}
                       />
                     </div>
                   </div>
@@ -268,6 +393,8 @@ export default class Account extends Component {
                         type="text"
                         placeholder="Code parrainage (Optionnel)"
                         pattern="[A-Za-z]{2}+-[0-30][1-12]{4}+-[0-100]{2,3}"
+                        value={this.state.titre}
+                        onChange={this.changeCodeParrainage}
                       />
                     </div>
                   </div>
@@ -277,6 +404,8 @@ export default class Account extends Component {
                         className="form-control"
                         type="text"
                         placeholder="Code Postal"
+                        value={this.state.titre}
+                        onChange={this.changeCodePostal}
                       />
                     </div>
                   </div>
@@ -288,6 +417,8 @@ export default class Account extends Component {
                         rows={3}
                         placeholder="Présentez vous en quelques mots..."
                         defaultValue={""}
+                        value={this.state.titre}
+                        onChange={this.changeDescription}
                       />
                     </div>
                   </div>
@@ -297,6 +428,8 @@ export default class Account extends Component {
                         className="form-control"
                         type="password"
                         placeholder="Entrer votre mot de passe"
+                        value={this.state.titre}
+                        onChange={this.changePassword}
                       />
                     </div>
                   </div>
@@ -306,13 +439,15 @@ export default class Account extends Component {
                         className="form-control"
                         type="password"
                         placeholder="Confirmer votre mot de passe"
+                        value={this.state.titre}
+                        onChange={this.changePassword}
                       />
                     </div>
                   </div>
                   <div className="form-group">
                     <label className="col-md-3 control-label" />
                     <div className="col-md-12">
-                      <button type="button" className="btn-enregistrer">
+                      <button type="button" className="btn-enregistrer" onClick={this.addChangements}>
                         &nbsp;Enregistrer&nbsp;
               </button>
                       <button type="button" className="btn btn-dark ">
