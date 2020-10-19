@@ -189,7 +189,7 @@ export default class Annonces extends Component {
                 <CardAnnonce titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} pseudoEnvoi={e.Pseudo} ></CardAnnonce>
               </div>
             </div>
-          )}
+          ))},
         </div>
         <center>
           {/* <svg

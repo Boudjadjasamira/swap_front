@@ -5,7 +5,6 @@ import '../../css/styles.css';
 import Header from '../Common/Header';
 import Footer from '../Common/Footer';
 import { Link } from 'react-router-dom';
-import * as firebase from "firebase";
 
 export default class Home extends Component {
 
@@ -177,235 +176,255 @@ export default class Home extends Component {
           {/*Fin barre de recherche */}
           {/* Début Section annonces */}
           <div className="container">
-            {this.state.allAnnonces.map((e) => (
-              <div className="row">
-                <div className="col-12">
-                  <CardAnnonce titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} pseudoEnvoi={e.Pseudo} ></CardAnnonce>
-                </div>
-              </div>
-            ))}
-          </div>
-          <br />
-          <div className="row">
-            <div className="col-12">
-              <div className="media border p-3 flex-column flex-md-row">
-                <img
-                  src="https://via.placeholder.com/100x100"
-                  alt="#"
-                  className="align-self-center mr-3"
-                  style={{ width: 100 }}
-                />
-
-                <div className="media-body align-self-center">
-                  <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
-                  <small>
-                    <i>Posté par @Pseudo, le 00/00/0000</i>
-                  </small>
-                  <hr />
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
-                    ipsum aliquam metus facilisis scelerisque. Quisque vitae
-                    condimentum nulla. Vestibulum lobortis ullamcorper augue id
-                    consequat. Orci varius natoque penatibus et magnis dis parturient
-                    montes, nascetur ridiculus mus. Phasellus at aliquet dui. Mauris
-                    dapibus lectus id laoreet iaculis. Duis auctor augue augue, eget
-                    lobortis quam auctor at.
+            <div className="row">
+              <div className="col-12">
+                <div className="media border p-3 flex-column flex-md-row">
+                  <img
+                    src="https://via.placeholder.com/100x100"
+                    alt="#"
+                    className="align-self-center mr-3"
+                    style={{ width: 100 }}
+                  />
+                  <div className="media-body align-self-center">
+                    <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
+                    <small>
+                      <i>Posté par @Pseudo, le 00/00/0000</i>
+                    </small>
+                    <hr />
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
+                      ipsum aliquam metus facilisis scelerisque. Quisque vitae
+                      condimentum nulla. Vestibulum lobortis ullamcorper augue id
+                      consequat. Orci varius natoque penatibus et magnis dis parturient
+                      montes, nascetur ridiculus mus. Phasellus at aliquet dui. Mauris
+                      dapibus lectus id laoreet iaculis. Duis auctor augue augue, eget
+                      lobortis quam auctor at.
             </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <br />
-          <div className="row">
-            <div className="col-12">
-              <div className="media border p-3 flex-column flex-md-row">
-                <img
-                  src="https://via.placeholder.com/100x100"
-                  alt="#"
-                  className="align-self-center mr-3"
-                  style={{ width: 100 }}
-                />
+            <br />
+            <div className="row">
+              <div className="col-12">
+                <div className="media border p-3 flex-column flex-md-row">
+                  <img
+                    src="https://via.placeholder.com/100x100"
+                    alt="#"
+                    className="align-self-center mr-3"
+                    style={{ width: 100 }}
+                  />
 
-                <div className="media-body align-self-center">
-                  <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
-                  <small>
-                    <i>Posté par @Pseudo, le 00/00/0000</i>
-                  </small>
-                  <hr />
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
-                    ipsum aliquam metus facilisis scelerisque. Quisque vitae
-                    condimentum nulla. Vestibulum lobortis ullamcorper augue id
-                    consequat. Orci varius natoque penatibus et magnis dis parturient
-                    montes, nascetur ridiculus mus. Phasellus at aliquet dui. Mauris
-                    dapibus lectus id laoreet iaculis. Duis auctor augue augue, eget
-                    lobortis quam auctor at.
+                  <div className="media-body align-self-center">
+                    <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
+                    <small>
+                      <i>Posté par @Pseudo, le 00/00/0000</i>
+                    </small>
+                    <hr />
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
+                      ipsum aliquam metus facilisis scelerisque. Quisque vitae
+                      condimentum nulla. Vestibulum lobortis ullamcorper augue id
+                      consequat. Orci varius natoque penatibus et magnis dis parturient
+                      montes, nascetur ridiculus mus. Phasellus at aliquet dui. Mauris
+                      dapibus lectus id laoreet iaculis. Duis auctor augue augue, eget
+                      lobortis quam auctor at.
             </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <br />
-          <div className="row">
-            <div className="col-12">
-              <div className="media border p-3 flex-column flex-md-row">
-                <img
-                  src="https://via.placeholder.com/100x100"
-                  alt="#"
-                  className="align-self-center mr-3"
-                  style={{ width: 100 }}
-                />
+            <br />
+            <div className="row">
+              <div className="col-12">
+                <div className="media border p-3 flex-column flex-md-row">
+                  <img
+                    src="https://via.placeholder.com/100x100"
+                    alt="#"
+                    className="align-self-center mr-3"
+                    style={{ width: 100 }}
+                  />
 
-                <div className="media-body align-self-center">
-                  <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
-                  <small>
-                    <i>Posté par @Pseudo, le 00/00/0000</i>
-                  </small>
-                  <hr />
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
-                    ipsum aliquam metus facilisis scelerisque. Quisque vitae
-                    condimentum nulla. Vestibulum lobortis ullamcorper augue id
-                    consequat. Orci varius natoque penatibus et magnis dis parturient
-                    montes, nascetur ridiculus mus. Phasellus at aliquet dui. Mauris
-                    dapibus lectus id laoreet iaculis. Duis auctor augue augue, eget
-                    lobortis quam auctor at.
+                  <div className="media-body align-self-center">
+                    <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
+                    <small>
+                      <i>Posté par @Pseudo, le 00/00/0000</i>
+                    </small>
+                    <hr />
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
+                      ipsum aliquam metus facilisis scelerisque. Quisque vitae
+                      condimentum nulla. Vestibulum lobortis ullamcorper augue id
+                      consequat. Orci varius natoque penatibus et magnis dis parturient
+                      montes, nascetur ridiculus mus. Phasellus at aliquet dui. Mauris
+                      dapibus lectus id laoreet iaculis. Duis auctor augue augue, eget
+                      lobortis quam auctor at.
             </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <br />
-          <div className="row">
-            <div className="col-12">
-              <div className="media border p-3 flex-column flex-md-row">
-                <img
-                  src="https://via.placeholder.com/100x100"
-                  alt="#"
-                  className="align-self-center mr-3"
-                  style={{ width: 100 }}
-                />
+            <br />
+            <div className="row">
+              <div className="col-12">
+                <div className="media border p-3 flex-column flex-md-row">
+                  <img
+                    src="https://via.placeholder.com/100x100"
+                    alt="#"
+                    className="align-self-center mr-3"
+                    style={{ width: 100 }}
+                  />
 
-                <div className="media-body align-self-center">
-                  <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
-                  <small>
-                    <i>Posté par @Pseudo, le 00/00/0000</i>
-                  </small>
-                  <hr />
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
-                    ipsum aliquam metus facilisis scelerisque. Quisque vitae
-                    condimentum nulla. Vestibulum lobortis ullamcorper augue id
-                    consequat. Orci varius natoque penatibus et magnis dis parturient
-                    montes, nascetur ridiculus mus. Phasellus at aliquet dui. Mauris
-                    dapibus lectus id laoreet iaculis. Duis auctor augue augue, eget
-                    lobortis quam auctor at.
+                  <div className="media-body align-self-center">
+                    <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
+                    <small>
+                      <i>Posté par @Pseudo, le 00/00/0000</i>
+                    </small>
+                    <hr />
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
+                      ipsum aliquam metus facilisis scelerisque. Quisque vitae
+                      condimentum nulla. Vestibulum lobortis ullamcorper augue id
+                      consequat. Orci varius natoque penatibus et magnis dis parturient
+                      montes, nascetur ridiculus mus. Phasellus at aliquet dui. Mauris
+                      dapibus lectus id laoreet iaculis. Duis auctor augue augue, eget
+                      lobortis quam auctor at.
             </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <br />
-          <div className="row">
-            <div className="col-12">
-              <div className="media border p-3 flex-column flex-md-row">
-                <img
-                  src="https://via.placeholder.com/100x100"
-                  alt="#"
-                  className="align-self-center mr-3"
-                  style={{ width: 100 }}
-                />
+            <br />
+            <div className="row">
+              <div className="col-12">
+                <div className="media border p-3 flex-column flex-md-row">
+                  <img
+                    src="https://via.placeholder.com/100x100"
+                    alt="#"
+                    className="align-self-center mr-3"
+                    style={{ width: 100 }}
+                  />
 
-                <div className="media-body align-self-center">
-                  <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
-                  <small>
-                    <i> Posté par @Pseudo, le 00/00/0000</i>
-                  </small>
-                  <hr />
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
-                    ipsum aliquam metus facilisis scelerisque. Quisque vitae
-                    condimentum nulla. Vestibulum lobortis ullamcorper augue id
-                    consequat. Orci varius natoque penatibus et magnis dis parturient
-                    montes, nascetur ridiculus mus. Phasellus at aliquet dui. Mauris
-                    dapibus lectus id laoreet iaculis. Duis auctor augue augue, eget
-                    lobortis quam auctor at.
+                  <div className="media-body align-self-center">
+                    <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
+                    <small>
+                      <i>Posté par @Pseudo, le 00/00/0000</i>
+                    </small>
+                    <hr />
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
+                      ipsum aliquam metus facilisis scelerisque. Quisque vitae
+                      condimentum nulla. Vestibulum lobortis ullamcorper augue id
+                      consequat. Orci varius natoque penatibus et magnis dis parturient
+                      montes, nascetur ridiculus mus. Phasellus at aliquet dui. Mauris
+                      dapibus lectus id laoreet iaculis. Duis auctor augue augue, eget
+                      lobortis quam auctor at.
             </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <br />
-          <div className="row">
-            <div className="col-12">
-              <div className="media border p-3 flex-column flex-md-row">
-                <img
-                  src="https://via.placeholder.com/100x100"
-                  alt="#"
-                  className="align-self-center mr-3"
-                  style={{ width: 100 }}
-                />
+            <br />
+            <div className="row">
+              <div className="col-12">
+                <div className="media border p-3 flex-column flex-md-row">
+                  <img
+                    src="https://via.placeholder.com/100x100"
+                    alt="#"
+                    className="align-self-center mr-3"
+                    style={{ width: 100 }}
+                  />
 
-                <div className="media-body align-self-center">
-                  <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
-                  <small>
-                    <i>Posté par @Pseudo, le 00/00/0000</i>
-                  </small>
-                  <hr />
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
-                    ipsum aliquam metus facilisis scelerisque. Quisque vitae
-                    condimentum nulla. Vestibulum lobortis ullamcorper augue id
-                    consequat. Orci varius natoque penatibus et magnis dis parturient
-                    montes, nascetur ridiculus mus. Phasellus at aliquet dui. Mauris
-                    dapibus lectus id laoreet iaculis. Duis auctor augue augue, eget
-                    lobortis quam auctor at.
+                  <div className="media-body align-self-center">
+                    <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
+                    <small>
+                      <i> Posté par @Pseudo, le 00/00/0000</i>
+                    </small>
+                    <hr />
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
+                      ipsum aliquam metus facilisis scelerisque. Quisque vitae
+                      condimentum nulla. Vestibulum lobortis ullamcorper augue id
+                      consequat. Orci varius natoque penatibus et magnis dis parturient
+                      montes, nascetur ridiculus mus. Phasellus at aliquet dui. Mauris
+                      dapibus lectus id laoreet iaculis. Duis auctor augue augue, eget
+                      lobortis quam auctor at.
             </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <br />
-          <div className="row">
-            <div className="col-12">
-              <div className="media border p-3 flex-column flex-md-row">
-                <img
-                  src="https://via.placeholder.com/100x100"
-                  alt="#"
-                  className="align-self-center mr-3"
-                  style={{ width: 100 }}
-                />
+            <br />
+            <div className="row">
+              <div className="col-12">
+                <div className="media border p-3 flex-column flex-md-row">
+                  <img
+                    src="https://via.placeholder.com/100x100"
+                    alt="#"
+                    className="align-self-center mr-3"
+                    style={{ width: 100 }}
+                  />
 
-                <div className="media-body align-self-center">
-                  <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
-                  <small>
-                    <i>Posté par @Pseudo, le 00/00/0000</i>
-                  </small>
-                  <hr />
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
-                    ipsum aliquam metus facilisis scelerisque. Quisque vitae
-                    condimentum nulla. Vestibulum lobortis ullamcorper augue id
-                    consequat. Orci varius natoque penatibus et magnis dis parturient
-                    montes, nascetur ridiculus mus. Phasellus at aliquet dui. Mauris
-                    dapibus lectus id laoreet iaculis. Duis auctor augue augue, eget
-                    lobortis quam auctor at.
+                  <div className="media-body align-self-center">
+                    <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
+                    <small>
+                      <i>Posté par @Pseudo, le 00/00/0000</i>
+                    </small>
+                    <hr />
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
+                      ipsum aliquam metus facilisis scelerisque. Quisque vitae
+                      condimentum nulla. Vestibulum lobortis ullamcorper augue id
+                      consequat. Orci varius natoque penatibus et magnis dis parturient
+                      montes, nascetur ridiculus mus. Phasellus at aliquet dui. Mauris
+                      dapibus lectus id laoreet iaculis. Duis auctor augue augue, eget
+                      lobortis quam auctor at.
             </p>
+                  </div>
                 </div>
               </div>
             </div>
+            <br />
+            <div className="row">
+              <div className="col-12">
+                <div className="media border p-3 flex-column flex-md-row">
+                  <img
+                    src="https://via.placeholder.com/100x100"
+                    alt="#"
+                    className="align-self-center mr-3"
+                    style={{ width: 100 }}
+                  />
+
+                  <div className="media-body align-self-center">
+                    <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
+                    <small>
+                      <i>Posté par @Pseudo, le 00/00/0000</i>
+                    </small>
+                    <hr />
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
+                      ipsum aliquam metus facilisis scelerisque. Quisque vitae
+                      condimentum nulla. Vestibulum lobortis ullamcorper augue id
+                      consequat. Orci varius natoque penatibus et magnis dis parturient
+                      montes, nascetur ridiculus mus. Phasellus at aliquet dui. Mauris
+                      dapibus lectus id laoreet iaculis. Duis auctor augue augue, eget
+                      lobortis quam auctor at.
+            </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
           </div>
           <br />
-        </div>
-        <br />
-        <br />
-      </div>;
+          <br />
+        </div>;
 
 
 
-    {/* FOOTER */ }
-    <Footer></Footer>
-      </div >
+        {/* FOOTER */}
+        <Footer></Footer>
+      </div>
     );
   }
 }
