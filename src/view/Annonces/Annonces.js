@@ -5,7 +5,7 @@ import '../../css/styles.css';
 import Header from '../Common/Header';
 import Footer from '../Common/Footer';
 import * as firebase from "firebase";
-import { axios } from 'axios';
+//import { axios } from 'axios';
 
 import "../../firebase";
 
@@ -14,7 +14,7 @@ import CardAnnonce from '../../components/CardAnnonce/CardAnnonce.js';
 
 export default class Annonces extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       allAnnonces: [],
@@ -22,26 +22,26 @@ export default class Annonces extends Component {
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     document.title = "Annonces";
-    
+
     //Recuperation de la connexion a la bdd
     const db = firebase.firestore();
 
     //Je vais chercher dans la collection "Annonces"
     db.collection("Annonces")
-    //.where('categorie', "==" ,this.props.match.query.categorie)
-    //recuperation de tous
-    .get()
-    //Alors
-    .then(querySnapshot => {
-      //Pour chaque element je le mets dans la varible data
+      //.where('categorie', "==" ,this.props.match.query.categorie)
+      //recuperation de tous
+      .get()
+      //Alors
+      .then(querySnapshot => {
+        //Pour chaque element je le mets dans la varible data
         const data = querySnapshot.docs.map(doc => doc.data());
         //recuperation du nombre de commandes
         //console.log(data);
         //J'ajoute dans ma variable "state" tous mes data
-        this.setState({allAnnonces: data});
-    });
+        this.setState({ allAnnonces: data });
+      });
 
     /*const axios = require('axios');
 
@@ -52,11 +52,11 @@ export default class Annonces extends Component {
       this.setState({ allAnnonces: recupSymfonyBack });
     })*/
 
-    
+
   }
 
   render() {
-//    const [allAnnonces] = useState([]);
+    //    const [allAnnonces] = useState([]);
     return (
 
       <div className="body" id="bodyHome">
