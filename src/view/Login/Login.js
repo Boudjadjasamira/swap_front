@@ -48,9 +48,9 @@ export default class login extends Component {
                 <br />
                 <div className="text-center p-t-12">
                   <span className="txt1">Forgot </span>
-  <a className="txt2" href="#">
+                  <a className="txt2" href="#">
                     Pseudo / Password ?
-                  </a> 
+                  </a>
                 </div>
                 <div className="text-center p-t-136">
                   <a className="txt2" href="/register">
