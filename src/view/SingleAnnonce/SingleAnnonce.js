@@ -5,6 +5,7 @@ import Header from '../Common/Header';
 import Footer from '../Common/Footer';
 import { Link } from 'react-router-dom';
 import * as firebase from "firebase";
+import "../../firebase";
 
 
 export default class SingleAnnonce extends Component {
