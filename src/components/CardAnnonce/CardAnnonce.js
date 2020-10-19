@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import * as firebase from "firebase";
 
-import "../../firebase";
+import axios from 'axios';
 
 
 export default class CardAnnonce extends Component {
@@ -13,37 +12,23 @@ export default class CardAnnonce extends Component {
             // removed: true,
             effectRemove: "animate__animated animate__fadeInDown"
         }
-        //this.deleteAnnonce = this.deleteAnnonce.bind(this);
+        this.deleteAnnonce = this.deleteAnnonce.bind(this);
     }
 
     deleteAnnonce() {
-        /*
-        const db = firebase.firestore();
-        db.collection('Annonces')
-        .where('Pseudo', "==", this.props.pseudoEnvoi)
-        .where('titre', "==", this.props.titreEnvoi)
-        .get()
-        .then(function(querySnapshot2){
-            const batch = db.batch();
-
-            querySnapshot2.forEach(function(doc) {
-                batch.delete(doc.ref);
-            });
-
-            batch.commit();
-        });
-
-        this.setState({effectRemove: "animate__animated animate__fadeOutRight"});
+        axios.delete('http://localhost:8000/api/annonces/' + this.props.idAnnonce)
+        .then(res => {
+            this.setState({effectRemove: "animate__animated animate__fadeOutRight"});
         
-        setTimeout(() => {
-            this.setState({removed: true});
-        }, 1000);*/
+            setTimeout(() => {
+                this.setState({removed: true});
+            }, 1000);
+        })
     }
 
     render() {
         return (
             <div>
-
                 <div className={"row pb-3 " + this.state.effectRemove}>
                     <div className="col-12">
                         <div className="media border p-3 flex-column flex-md-row">
@@ -54,7 +39,7 @@ export default class CardAnnonce extends Component {
                                 style={{ width: 100 }}
                             />
                             <div className="media-body align-self-center">
-                                <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>{this.props.titreEnvoi}</h4></Link>
+                                <Link to={process.env.PUBLIC_URL + "/Annonces/" + this.props.idAnnonce}><h4>{this.props.titreEnvoi}</h4></Link>
                                 <small>
                                     <i>Posté par {this.props.pseudoEnvoi}, le {this.props.dateEnvoi}</i>
                                 </small>
@@ -62,7 +47,7 @@ export default class CardAnnonce extends Component {
                                 <p>
                                     {this.props.descriptionEnvoi}
                                 </p>
-                                {/*<button onClick={this.deleteAnnonce}>Supprimer</button>*/}
+                                <button onClick={this.deleteAnnonce}>Supprimer</button>
                             </div>
                         </div>
                     </div>

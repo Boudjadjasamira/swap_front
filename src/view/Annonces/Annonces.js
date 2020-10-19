@@ -4,10 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../css/styles.css';
 import Header from '../Common/Header';
 import Footer from '../Common/Footer';
-import * as firebase from "firebase";
-//import { axios } from 'axios';
 
-import "../../firebase";
+import axios from 'axios';
 
 //Inclu les components
 import CardAnnonce from '../../components/CardAnnonce/CardAnnonce.js';
@@ -25,38 +23,16 @@ export default class Annonces extends Component {
   componentDidMount() {
     document.title = "Annonces";
 
-    //Recuperation de la connexion a la bdd
-    const db = firebase.firestore();
-
-    //Je vais chercher dans la collection "Annonces"
-    db.collection("Annonces")
-      //.where('categorie', "==" ,this.props.match.query.categorie)
-      //recuperation de tous
-      .get()
-      //Alors
-      .then(querySnapshot => {
-        //Pour chaque element je le mets dans la varible data
-        const data = querySnapshot.docs.map(doc => doc.data());
-        //recuperation du nombre de commandes
-        //console.log(data);
-        //J'ajoute dans ma variable "state" tous mes data
-        this.setState({ allAnnonces: data });
-      });
-
-    /*const axios = require('axios');
-
-    axios.get('http://localhost:8888/annonces')
+    //recuperation de toutes les annonces
+    axios.get(`http://localhost:8000/api/annonces`)
     .then(res => {
-      const recupSymfonyBack = res.data;
-      
-      this.setState({ allAnnonces: recupSymfonyBack });
-    })*/
-
+      this.setState({allAnnonces: res.data['hydra:member']});
+    })
 
   }
 
   render() {
-    //    const [allAnnonces] = useState([]);
+
     return (
 
       <div className="body" id="bodyHome">
@@ -183,10 +159,10 @@ export default class Annonces extends Component {
           </div>
         </div>
         <div className="container">
-          {this.state.allAnnonces.map((e) => (
+          {this.state.allAnnonces.map(e => (
             <div className="row">
               <div className="col-12">
-                <CardAnnonce titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} pseudoEnvoi={e.Pseudo} ></CardAnnonce>
+                <CardAnnonce  idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} ></CardAnnonce>
               </div>
             </div>
           ))}

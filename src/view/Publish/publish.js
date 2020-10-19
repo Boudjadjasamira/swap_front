@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 //Inclu les fichiers communs
 import Header from '../../view/Common/Header';
 import Footer from '../..//view/Common/Footer';
-import * as firebase from "firebase";
-import Swal from 'sweetalert2'
 
-import "../../firebase";
+import Swal from 'sweetalert2';
+
+import axios from 'axios';
 
 
 export default class Publish extends Component {
@@ -18,47 +19,64 @@ export default class Publish extends Component {
       titre: "",
       description: "",
       codePostal: "",
-      categorieS: ""
+      categorieS: "",
+      allCategorie: []
     }
 
     this.addAnnonces = this.addAnnonces.bind(this);
     this.changeTitre = this.changeTitre.bind(this);
     this.changeDescription = this.changeDescription.bind(this);
     this.changeCodePostal = this.changeCodePostal.bind(this);
+    this.changeCategorie = this.changeCategorie.bind(this);
+  }
+
+  componentDidMount(){
+    //Recuperation des categories
+    axios.get(`http://localhost:8000/api/categories`)
+    .then(res => {
+      this.setState({allCategorie: res.data["hydra:member"]});
+    })
+  }
+
+  changeCategorie(event) {
+    this.setState({
+      categorieS: event.target.value * 1
+    });
   }
 
   addAnnonces() {
-    //connexion a la bdd
-    const db = firebase.firestore();
+    
     //recuperation de la date
     const d = new Date();
     const laDate = ('0' + d.getDate()).slice(-2) + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + d.getFullYear();
 
-
-    //console.log(laDate);
-    //ajout dans la base
-    db.collection("Annonces").add({
-      Pseudo: "Samira",
-      titre: this.state.titre,
-      //categories: this.state.categorieS,
-      codepostal: this.state.codePostal,
-      description: this.state.description,
-      date: laDate.toString()
-    });
-
-    Swal.fire({
-      icon: 'success',
-      title: 'Votre annonce vient d\'être publiée.',
-      showConfirmButton: false,
-      timer: 2500
-    });
-
-    //reset les champs
-    this.setState({
-      titre: "",
-      description: "",
-      codePostal: ""
-    });
+    //Ajout dans la base
+    axios.post("http://localhost:8000/api/annonces",  {
+      titre: this.state.titre.toString(),
+      idCategorie: this.state.categorieS,
+      description: this.state.description.toString(),
+      codePostal: this.state.codePostal.toString(),
+      date: laDate.toString(),
+      photo: ""
+    })
+    .then(res => {
+      console.log(res);
+      console.log(res.data);
+      Swal.fire({
+        icon: 'success',
+        title: 'Votre annonce vient d\'être publiée.',
+        showConfirmButton: false,
+        timer: 2500
+      });
+  
+      //reset les champs
+      this.setState({
+        titre: "",
+        description: "",
+        codePostal: ""
+      });
+    })
+    
   }
 
   changeTitre(event) {
@@ -277,16 +295,12 @@ export default class Publish extends Component {
                       <select
                         className="form-control custom-select"
                         id="exampleFormControlSelect1"
+                        value={this.state.categorieS} onChange={this.changeCategorie}
                       >
                         <option>Catégories</option>
-                        <option>Bricolage</option>
-                        <option>Cours</option>
-                        <option>Aide à la personne</option>
-                        <option>Maison</option>
-                        <option>Mécanique</option>
-                        <option>Beaute</option>
-                        <option>Loisirs</option>
-                        <option>Vacances</option>
+                        {this.state.allCategorie.map( e => 
+                          <option value={e.id}>{e.titre}</option>
+                        )}
                       </select>
                     </div>
                   </div>
