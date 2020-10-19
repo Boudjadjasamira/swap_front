@@ -5,7 +5,9 @@ import Header from '../Common/Header';
 import Footer from '../Common/Footer';
 import { Link } from 'react-router-dom';
 
+
 export default class SingleAnnonce extends Component {
+
 
 
   componentDidMount() {

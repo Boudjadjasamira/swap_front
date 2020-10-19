@@ -12,7 +12,7 @@ import "../../firebase";
 
 export default class Publish extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       titre: "",
@@ -23,16 +23,19 @@ export default class Publish extends Component {
 
     this.addAnnonces = this.addAnnonces.bind(this);
     this.changeTitre = this.changeTitre.bind(this);
-    this.changeDecription = this.changeDecription.bind(this);
+    this.changeDescription = this.changeDescription.bind(this);
     this.changeCodePostal = this.changeCodePostal.bind(this);
   }
 
-  addAnnonces(){
+  addAnnonces() {
     //connexion a la bdd
     const db = firebase.firestore();
-    //recuperation de la data
+    //recuperation de la date
     const d = new Date();
-    const laDate = d.getDay() + '/' + d.getMonth() + '/' + d.getYear();
+    const laDate = ('0' + d.getDate()).slice(-2) + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + d.getFullYear();
+
+
+    //console.log(laDate);
     //ajout dans la base
     db.collection("Annonces").add({
       Pseudo: "Samira",
@@ -58,19 +61,19 @@ export default class Publish extends Component {
     });
   }
 
-  changeTitre(event){
+  changeTitre(event) {
     this.setState({
-        titre: event.target.value
+      titre: event.target.value
     });
   }
 
-  changeDecription(event){
+  changeDescription(event) {
     this.setState({
-        description: event.target.value
+      description: event.target.value
     });
   }
 
-  changeCodePostal(event){
+  changeCodePostal(event) {
     this.setState({
       codePostal: event.target.value
     });
@@ -243,32 +246,32 @@ export default class Publish extends Component {
               {/* Module d'annonce/ colonne Droite */}
               <div className="col-md-9 personal-info">
                 <form className="form-horizontal">
-                <div className="container pb-3">
-          <div className="form-check form-check-inline">
-            <input
-              className="form-check-input"
-              type="radio"
-              name="inlineRadioOptions"
-              id="inlineRadio1"
-              defaultValue="option1"
-            />
-            <label className="form-check-label" htmlFor="inlineRadio1">
-              Offres
+                  <div className="container pb-3">
+                    <div className="form-check form-check-inline">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        name="inlineRadioOptions"
+                        id="inlineRadio1"
+                        defaultValue="option1"
+                      />
+                      <label className="form-check-label" htmlFor="inlineRadio1">
+                        Offres
       </label>
-          </div>
-          <div className="form-check form-check-inline">
-            <input
-              className="form-check-input"
-              type="radio"
-              name="inlineRadioOptions"
-              id="inlineRadio2"
-              defaultValue="option2"
-            />
-            <label className="form-check-label" htmlFor="inlineRadio2">
-              Demandes
+                    </div>
+                    <div className="form-check form-check-inline">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        name="inlineRadioOptions"
+                        id="inlineRadio2"
+                        defaultValue="option2"
+                      />
+                      <label className="form-check-label" htmlFor="inlineRadio2">
+                        Demandes
       </label>
-          </div>
-        </div>
+                    </div>
+                  </div>
                   <div className="form-group">
                     <div className="col-lg-12">
                       <select
@@ -307,7 +310,7 @@ export default class Publish extends Component {
                         placeholder="Description*"
                         defaultValue={""}
                         value={this.state.description}
-                        onChange={this.changeDecription}
+                        onChange={this.changeDescription}
                       />
                     </div>
                   </div>

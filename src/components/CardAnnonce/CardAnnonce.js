@@ -7,16 +7,16 @@ import "../../firebase";
 
 export default class CardAnnonce extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-           // removed: true,
-            effectRemove:"animate__animated animate__fadeInDown"
+            // removed: true,
+            effectRemove: "animate__animated animate__fadeInDown"
         }
         //this.deleteAnnonce = this.deleteAnnonce.bind(this);
     }
 
-    deleteAnnonce(){
+    deleteAnnonce() {
         /*
         const db = firebase.firestore();
         db.collection('Annonces')
@@ -43,8 +43,8 @@ export default class CardAnnonce extends Component {
     render() {
         return (
             <div>
-            
-                <div className={ "row pb-3 " + this.state.effectRemove }>
+
+                <div className={"row pb-3 " + this.state.effectRemove}>
                     <div className="col-12">
                         <div className="media border p-3 flex-column flex-md-row">
                             <img
@@ -56,11 +56,11 @@ export default class CardAnnonce extends Component {
                             <div className="media-body align-self-center">
                                 <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>{this.props.titreEnvoi}</h4></Link>
                                 <small>
-                                    <i>Posté par {/*this.props.pseudoEnvoi*/}, le {this.props.dateEnvoi}</i>
+                                    <i>Posté par {this.props.pseudoEnvoi}, le {this.props.dateEnvoi}</i>
                                 </small>
                                 <hr />
                                 <p>
-                                    {/*this.props.descriptionEnvoi*/}
+                                    {this.props.descriptionEnvoi}
                                 </p>
                                 {/*<button onClick={this.deleteAnnonce}>Supprimer</button>*/}
                             </div>
@@ -69,7 +69,7 @@ export default class CardAnnonce extends Component {
                 </div>
 
             </div>
-           
+
         )
     }
 };
