@@ -18,7 +18,7 @@ export default class Invite extends Component {
 
         <div>
           <div className="container">
-            <h1>Parrainage</h1>
+            <h1>Parrainage</h1> <span>  Partagez votre code parrainage et obtenez 10 points des l'inscription de votre filleuil.  </span>
             <hr />
             <div className="row">
               {/* left column */}
@@ -179,10 +179,7 @@ export default class Invite extends Component {
                       <div className="media border p-3 flex-column flex-md-row">
                         <div className="media-body align-self-center">
                           <h4>Mon code parrainage </h4>
-                          <p>
-                            Partagez votre code parrainage et obtenez 10 points des
-                            l'inscription de votre filleuil.
-                  </p>
+                          
                           <br />
                           <div className="input-group">
                             <input
@@ -250,7 +247,6 @@ export default class Invite extends Component {
                               </div>
                             </div>
                           </div>
-                          <br />
                           <h4>Mes Filleuils </h4>
                           <br />
                           <ul className="list-group">

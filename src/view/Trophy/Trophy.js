@@ -19,7 +19,7 @@ export default class Trophy extends Component {
                     /*--------------------------------------Infos compte-----------------------------------------------------*/
                 }
                 <div className="container ">
-                    <h1>Mes trophées</h1>
+                    <h1>Mes trophées</h1> <span>Tes trophées sont visible sur ton profil ! Indique aux autres quel genre de swapper tu es !</span>
                     <hr />
                     <div className="row">
                         {/*--------------------------------------Colonne gauche-----------------------------------------------------*/}
@@ -174,7 +174,7 @@ export default class Trophy extends Component {
                             </div>
                         </div>
                         {/*--------------------------------------Colonne Droite-----------------------------------------------------*/}
-                        <div className="col-md-9 personal-info">
+                        <div className="col-md-9 personal-info">                
                             <form className="form-horizontal">
                                 <div className="row justify-content-start">
                                     <div className="col-12">
@@ -184,7 +184,7 @@ export default class Trophy extends Component {
                                                     <div className="row text-center">
                                                         {/* Team item */}
                                                         <div className="col-xl-3 col-sm-6 mb-5">
-                                                            <div className="bg-white rounded   py-4 px-4">
+                                                            <div className="bg-white rounded  py-4 px-4 animate__animated animate__pulse ">
                                                                 <img
                                                                     src={process.env.PUBLIC_URL + 'assets/trophy/user.png'}
                                                                     alt="trophée"
@@ -212,7 +212,7 @@ export default class Trophy extends Component {
                                                         {/* End */}
                                                         {/* Team item */}
                                                         <div className="col-xl-3 col-sm-6 mb-5">
-                                                            <div className="bg-white rounded  py-4 px-4">
+                                                            <div className="bg-white rounded  py-4 px-4 animate__animated animate__pulse">
                                                                 <img
                                                                     src={process.env.PUBLIC_URL + 'assets/icone/validate.png'}
                                                                     alt=" trophée"
@@ -240,7 +240,7 @@ export default class Trophy extends Component {
                                                         {/* End */}
                                                         {/* Team item */}
                                                         <div className="col-xl-3 col-sm-6 mb-5">
-                                                            <div className="bg-white rounded   py-4 px-4">
+                                                            <div className="bg-white rounded   py-4 px-4 animate__animated animate__pulse ">
                                                                 <img
                                                                     src={process.env.PUBLIC_URL + 'assets/trophy/annonce.png'}
                                                                     alt=" trophée"
@@ -268,7 +268,7 @@ export default class Trophy extends Component {
                                                         {/* End */}
                                                         {/* Team item */}
                                                         <div className="col-xl-3 col-sm-6 mb-5">
-                                                            <div className="bg-white rounded   py-4 px-4">
+                                                            <div className="bg-white rounded   py-4 px-4 animate__animated animate__pulse">
                                                                 <img
                                                                     src={process.env.PUBLIC_URL + 'assets/trophy/business.png'}
                                                                     alt=" trophée"
@@ -296,7 +296,7 @@ export default class Trophy extends Component {
                                                         {/* End */}
                                                         {/* Team item */}
                                                         <div className="col-xl-3 col-sm-6 mb-5">
-                                                            <div className="bg-white rounded   py-4 px-4">
+                                                            <div className="bg-white rounded   py-4 px-4 animate__animated animate__pulse">
                                                                 <img
                                                                     src={process.env.PUBLIC_URL + 'assets/trophy/gift.png'}
                                                                     alt=" trophée"
@@ -324,7 +324,7 @@ export default class Trophy extends Component {
                                                         {/* End */}
                                                         {/* Team item */}
                                                         <div className="col-xl-3 col-sm-6 mb-5">
-                                                            <div className="bg-white rounded   py-4 px-4">
+                                                            <div className="bg-white rounded   py-4 px-4 animate__animated animate__pulse">
                                                                 <img
                                                                     src={process.env.PUBLIC_URL + 'assets/trophy/swap.png'}
                                                                     alt=" trophée"
@@ -352,7 +352,7 @@ export default class Trophy extends Component {
                                                         {/* End */}
                                                         {/* Team item */}
                                                         <div className="col-xl-3 col-sm-6 mb-5">
-                                                            <div className="bg-white rounded   py-4 px-4">
+                                                            <div className="bg-white rounded   py-4 px-4 animate__animated animate__pulse">
                                                                 <img
                                                                     src={process.env.PUBLIC_URL + 'assets/trophy/email.png'}
                                                                     alt=" trophée"
@@ -380,7 +380,7 @@ export default class Trophy extends Component {
                                                         {/* End */}
                                                         {/* Team item */}
                                                         <div className="col-xl-3 col-sm-6 mb-5">
-                                                            <div className="bg-white rounded   py-4 px-4">
+                                                            <div className="bg-white rounded   py-4 px-4 animate__animated animate__pulse">
                                                                 <img
                                                                     src={process.env.PUBLIC_URL + 'assets/trophy/review.png'}
                                                                     alt="trophée"

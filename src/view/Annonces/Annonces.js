@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../css/styles.css';
 import Header from '../Common/Header';
 import Footer from '../Common/Footer';
-
 import axios from 'axios';
 
 //Inclu les components

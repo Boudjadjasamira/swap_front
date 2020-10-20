@@ -17,7 +17,7 @@ export default class Reward extends Component {
 
                 <div>
                     <div className="container">
-                        <h1>Récompenses</h1>
+                        <h1>Récompenses</h1> <span>Gagnez des points en parrainant des amis, en échangeant des services et obtenez des récompenses !</span>
                         <hr />
                         <div className="row">
                             {/* left column */}
@@ -171,7 +171,7 @@ export default class Reward extends Component {
                                     </div>
                                 </div>
                             </div>    {/* edit form column */}
-                            <div className="col-md-9 personal-info">
+                            <div className="col-md-9 personal-info">                                
                                 <form className="form-horizontal">
                                     <div className="row justify-content-start">
                                         <div className="col-12">
@@ -180,21 +180,22 @@ export default class Reward extends Component {
                                                     <div>
                                                         <div className="row">
                                                             <div className="col-2 col-lg-1 col-xl-2">
-                                                                <div className="row">
+                                                                <div className="bg-white rounded pt-1 animate__animated animate__pulse">
                                                                     <img
-                                                                        src="http://placehold.it/100x100"
+                                                                       src={process.env.PUBLIC_URL + 'assets/reward/money-bag.png'}
                                                                         alt="description annonce"
-                                                                        className="mx-auto d-block mb-1 addcartimg"
+                                                                        className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
                                                                     />
                                                                 </div>
                                                             </div>
                                                             <div className="col-10 col-lg-9 col-xl-10">
                                                                 <div className="d-block text-truncate mb-1">
                                                                     <br />
-                                                                    <h5>Nom Récompense</h5>
+                                                                    <h5>Dans le mille !</h5>
                                                                 </div>
                                                                 <div className="trophy d-block">
-                                                                    <span>Description de la récompense</span>
+                                                                    <span>Gagne 1000 Points et gagne Une carte cadeau d'une valeur de 10€</span>
+                                                                    <br />
                                                                     <br />
                                                                 </div>
                                                                 <div className="percent d-block">
@@ -210,22 +211,24 @@ export default class Reward extends Component {
                                                         <hr />
                                                         <div className="row">
                                                             <div className="col-2 col-lg-1 col-xl-2">
-                                                                <div className="row">
+                                                                <div className="bg-white rounded pt-1 animate__animated animate__pulse">
                                                                     <img
-                                                                        src="http://placehold.it/100x100"
+                                                                       src={process.env.PUBLIC_URL + 'assets/reward/gift-box.png'}
                                                                         alt="description annonce"
-                                                                        className="mx-auto d-block mb-1 addcartimg"
+                                                                        className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
                                                                     />
                                                                 </div>
                                                             </div>
                                                             <div className="col-10 col-lg-9 col-xl-10">
                                                                 <div className="d-block text-truncate mb-1">
                                                                     <br />
-                                                                    <h5>Nom Récompense</h5>
+                                                                    <h5>A votre Service !</h5>
                                                                 </div>
                                                                 <div className="trophy d-block">
-                                                                    <span>Description de la récompense</span>
+                                                                    <span>Accompli 20 services et gagne une carte cadeau Smartbox</span>
                                                                     <br />
+                                                                    <br />
+                                                
                                                                 </div>
                                                                 <div className="percent d-block">
                                                                     <div className="bar">
@@ -240,21 +243,22 @@ export default class Reward extends Component {
                                                         <hr />
                                                         <div className="row">
                                                             <div className="col-2 col-lg-1 col-xl-2">
-                                                                <div className="row">
+                                                                <div className="bg-white rounded pt-1 animate__animated animate__pulse">
                                                                     <img
-                                                                        src="http://placehold.it/100x100"
+                                                                        src={process.env.PUBLIC_URL + 'assets/reward/purse.png'}
                                                                         alt="description annonce"
-                                                                        className="mx-auto d-block mb-1 addcartimg"
+                                                                        className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
                                                                     />
                                                                 </div>
                                                             </div>
                                                             <div className="col-10 col-lg-9 col-xl-10">
                                                                 <div className="d-block text-truncate mb-1">
                                                                     <br />
-                                                                    <h5>Nom Récompense</h5>
+                                                                    <h5>Deux avis valent mieux qu’un !</h5>
                                                                 </div>
                                                                 <div className="trophy d-block">
-                                                                    <span>Description de laRécompenses</span>
+                                                                    <span>Dépose 30 avis et gagne une carte cadeau d'un montant de 30€</span>
+                                                                    <br />
                                                                     <br />
                                                                 </div>
                                                                 <div className="percent d-block">
@@ -270,21 +274,22 @@ export default class Reward extends Component {
                                                         <hr />
                                                         <div className="row">
                                                             <div className="col-2 col-lg-1 col-xl-2">
-                                                                <div className="row">
+                                                                <div className="bg-white rounded pt-1 animate__animated animate__pulse">
                                                                     <img
-                                                                        src="http://placehold.it/100x100"
+                                                                        src={process.env.PUBLIC_URL + 'assets/reward/diamond.png'}
                                                                         alt="description annonce"
-                                                                        className="mx-auto d-block mb-1 addcartimg"
+                                                                        className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
                                                                     />
                                                                 </div>
                                                             </div>
                                                             <div className="col-10 col-lg-9 col-xl-10">
                                                                 <div className="d-block text-truncate mb-1">
                                                                     <br />
-                                                                    <h5>Nom Récompense</h5>
+                                                                    <h5>Mystere !</h5>
                                                                 </div>
                                                                 <div className="trophy d-block">
-                                                                    <span>Description de la récompense</span>
+                                                                    <span>La recompense ultime, chuut c'est une surprise.</span>
+                                                                    <br />
                                                                     <br />
                                                                 </div>
                                                                 <div className="percent d-block">
@@ -297,7 +302,7 @@ export default class Reward extends Component {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>;
+                                                    </div>
 
 
 
