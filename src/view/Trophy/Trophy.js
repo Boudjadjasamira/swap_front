@@ -186,7 +186,7 @@ export default class Trophy extends Component {
                                                         <div className="col-xl-3 col-sm-6 mb-5">
                                                             <div className="bg-white rounded   py-4 px-4">
                                                                 <img
-                                                                    src="http://placehold.it/100x100"
+                                                                    src={process.env.PUBLIC_URL + 'assets/trophy/user.png'}
                                                                     alt="trophée"
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
@@ -214,7 +214,7 @@ export default class Trophy extends Component {
                                                         <div className="col-xl-3 col-sm-6 mb-5">
                                                             <div className="bg-white rounded  py-4 px-4">
                                                                 <img
-                                                                    src="http://placehold.it/100x100"
+                                                                    src={process.env.PUBLIC_URL + 'assets/icone/validate.png'}
                                                                     alt=" trophée"
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
@@ -242,7 +242,7 @@ export default class Trophy extends Component {
                                                         <div className="col-xl-3 col-sm-6 mb-5">
                                                             <div className="bg-white rounded   py-4 px-4">
                                                                 <img
-                                                                    src="http://placehold.it/100x100"
+                                                                    src={process.env.PUBLIC_URL + 'assets/trophy/annonce.png'}
                                                                     alt=" trophée"
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
@@ -252,7 +252,7 @@ export default class Trophy extends Component {
                                                                     <h6 className="trophy title">Top services</h6>
                                                                 </div>
                                                                 <div className="trophy d-block">
-                                                                    <span>Création de 10 annonces</span>
+                                                                    <span>Publier 10 annonces</span>
                                                                     <br />
                                                                 </div>
                                                                 <div className="percent d-block">
@@ -270,7 +270,7 @@ export default class Trophy extends Component {
                                                         <div className="col-xl-3 col-sm-6 mb-5">
                                                             <div className="bg-white rounded   py-4 px-4">
                                                                 <img
-                                                                    src="http://placehold.it/100x100"
+                                                                    src={process.env.PUBLIC_URL + 'assets/trophy/business.png'}
                                                                     alt=" trophée"
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
@@ -298,7 +298,7 @@ export default class Trophy extends Component {
                                                         <div className="col-xl-3 col-sm-6 mb-5">
                                                             <div className="bg-white rounded   py-4 px-4">
                                                                 <img
-                                                                    src="http://placehold.it/100x100"
+                                                                    src={process.env.PUBLIC_URL + 'assets/trophy/gift.png'}
                                                                     alt=" trophée"
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
@@ -326,17 +326,17 @@ export default class Trophy extends Component {
                                                         <div className="col-xl-3 col-sm-6 mb-5">
                                                             <div className="bg-white rounded   py-4 px-4">
                                                                 <img
-                                                                    src="http://placehold.it/100x100"
+                                                                    src={process.env.PUBLIC_URL + 'assets/trophy/swap.png'}
                                                                     alt=" trophée"
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
                                                                 />
                                                                 <div className="d-block text-truncate mb-1">
                                                                     <br />
-                                                                    <h6 className="trophy title">Nom du trophée</h6>
+                                                                    <h6 className="trophy title">Swapper</h6>
                                                                 </div>
                                                                 <div className="trophy d-block">
-                                                                    <span>Création de 10 annonces</span>
+                                                                    <span>échanger 10 services</span>
                                                                     <br />
                                                                 </div>
                                                                 <div className="percent d-block">
@@ -354,7 +354,7 @@ export default class Trophy extends Component {
                                                         <div className="col-xl-3 col-sm-6 mb-5">
                                                             <div className="bg-white rounded   py-4 px-4">
                                                                 <img
-                                                                    src="http://placehold.it/100x100"
+                                                                    src={process.env.PUBLIC_URL + 'assets/trophy/email.png'}
                                                                     alt=" trophée"
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
@@ -382,7 +382,7 @@ export default class Trophy extends Component {
                                                         <div className="col-xl-3 col-sm-6 mb-5">
                                                             <div className="bg-white rounded   py-4 px-4">
                                                                 <img
-                                                                    src="http://placehold.it/100x100"
+                                                                    src={process.env.PUBLIC_URL + 'assets/trophy/review.png'}
                                                                     alt="trophée"
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
