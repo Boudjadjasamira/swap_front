@@ -20,6 +20,7 @@ export default class Publish extends Component {
       description: "",
       codePostal: "",
       categorieS: "",
+      selectedOffreDemande: 0,
       allCategorie: []
     }
 
@@ -28,6 +29,7 @@ export default class Publish extends Component {
     this.changeDescription = this.changeDescription.bind(this);
     this.changeCodePostal = this.changeCodePostal.bind(this);
     this.changeCategorie = this.changeCategorie.bind(this);
+    this.changeOffreDemande = this.changeOffreDemande.bind(this);
   }
 
   componentDidMount(){
@@ -44,6 +46,12 @@ export default class Publish extends Component {
     });
   }
 
+  changeOffreDemande(e){
+    this.setState({
+      selectedOffreDemande: e.target.value 
+    });
+  }
+
   addAnnonces() {
     
     //recuperation de la date
@@ -57,7 +65,8 @@ export default class Publish extends Component {
       description: this.state.description.toString(),
       codePostal: this.state.codePostal.toString(),
       date: laDate.toString(),
-      photo: ""
+      photo: "",
+      type: !!this.state.selectedOffreDemande
     })
     .then(res => {
       console.log(res);
@@ -264,7 +273,7 @@ export default class Publish extends Component {
               {/* Module d'annonce/ colonne Droite */}
               <div className="col-md-9 personal-info">
                 <form className="form-horizontal">
-                  <div className="container pb-3">
+                  <div className="container pb-3" onChange={this.changeOffreDemande}>
                     <div className="form-check form-check-inline">
                       <input
                         className="form-check-input"
@@ -272,10 +281,11 @@ export default class Publish extends Component {
                         name="inlineRadioOptions"
                         id="inlineRadio1"
                         defaultValue="option1"
+                        value="1"
                       />
                       <label className="form-check-label" htmlFor="inlineRadio1">
                         Offres
-      </label>
+                      </label>
                     </div>
                     <div className="form-check form-check-inline">
                       <input
@@ -284,10 +294,11 @@ export default class Publish extends Component {
                         name="inlineRadioOptions"
                         id="inlineRadio2"
                         defaultValue="option2"
+                        value="0"
                       />
                       <label className="form-check-label" htmlFor="inlineRadio2">
                         Demandes
-      </label>
+                      </label>
                     </div>
                   </div>
                   <div className="form-group">

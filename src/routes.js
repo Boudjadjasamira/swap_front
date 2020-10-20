@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Home from './view/Home/Home.js';
 import Erreur404 from './view/Error/Erreur404.js';
 import login from './view/Login/Login.js';
+import logout from './view/Logout/Logout.js';
 import Annonces from './view/Annonces/Annonces.js';
 import Myprofil from './view/Profil/Myprofil.js';
 import Register from './view/Register/Register.js';
@@ -38,6 +39,7 @@ export default function Routes() {
         <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/Login" exact component={login} />
+            <Route path="/Logout" exact component={logout} />
             <Route path="/Annonces" exact component={Annonces} />
             <Route path="/Myprofil" exact component={Myprofil} />
             <Route path="/Register" exact component={Register} />
