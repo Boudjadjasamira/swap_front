@@ -182,7 +182,7 @@ export default class Reward extends Component {
                                                             <div className="col-2 col-lg-1 col-xl-2">
                                                                 <div className="bg-white rounded pt-1 animate__animated animate__pulse">
                                                                     <img
-                                                                       src={process.env.PUBLIC_URL + 'assets/reward/coin.png'}
+                                                                       src={process.env.PUBLIC_URL + 'assets/reward/money-bag.png'}
                                                                         alt="description annonce"
                                                                         className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
                                                                     />
@@ -213,7 +213,7 @@ export default class Reward extends Component {
                                                             <div className="col-2 col-lg-1 col-xl-2">
                                                                 <div className="bg-white rounded pt-1 animate__animated animate__pulse">
                                                                     <img
-                                                                        src="http://placehold.it/100x100"
+                                                                       src={process.env.PUBLIC_URL + 'assets/reward/gift-box.png'}
                                                                         alt="description annonce"
                                                                         className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
                                                                     />
@@ -245,7 +245,7 @@ export default class Reward extends Component {
                                                             <div className="col-2 col-lg-1 col-xl-2">
                                                                 <div className="bg-white rounded pt-1 animate__animated animate__pulse">
                                                                     <img
-                                                                        src="http://placehold.it/100x100"
+                                                                        src={process.env.PUBLIC_URL + 'assets/reward/purse.png'}
                                                                         alt="description annonce"
                                                                         className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
                                                                     />
@@ -276,7 +276,7 @@ export default class Reward extends Component {
                                                             <div className="col-2 col-lg-1 col-xl-2">
                                                                 <div className="bg-white rounded pt-1 animate__animated animate__pulse">
                                                                     <img
-                                                                        src="http://placehold.it/100x100"
+                                                                        src={process.env.PUBLIC_URL + 'assets/reward/diamond.png'}
                                                                         alt="description annonce"
                                                                         className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
                                                                     />

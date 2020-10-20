@@ -184,6 +184,7 @@ export default class Home extends Component {
                     alt="#"
                     className="align-self-center mr-3"
                     style={{ width: 100 }}
+                    className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
                   />
                   <div className="media-body align-self-center">
                     <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
