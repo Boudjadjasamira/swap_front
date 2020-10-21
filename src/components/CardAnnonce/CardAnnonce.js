@@ -16,13 +16,13 @@ export default class CardAnnonce extends Component {
 
     deleteAnnonce() {
         axios.delete('http://localhost:8000/api/annonces/' + this.props.idAnnonce)
-        .then(res => {
-            this.setState({effectRemove: "animate__animated animate__fadeOutRight"});
-        
-            setTimeout(() => {
-                this.setState({removed: true});
-            }, 1000);
-        })
+            .then(res => {
+                this.setState({ effectRemove: "animate__animated animate__fadeOutRight" });
+
+                setTimeout(() => {
+                    this.setState({ removed: true });
+                }, 1000);
+            })
     }
 
     render() {
@@ -34,7 +34,7 @@ export default class CardAnnonce extends Component {
                             <img
                                 src="https://via.placeholder.com/100x100"
                                 alt="#"
-                                className="align-self-center mr-3"
+                                className="align-self-center mr-3 "
                                 style={{ width: 100 }}
                             />
                             <div className="media-body align-self-center">

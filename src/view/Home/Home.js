@@ -184,13 +184,43 @@ export default class Home extends Component {
                     alt="#"
                     className="align-self-center mr-3"
                     style={{ width: 100 }}
-                    className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
+                    className="align-self-center mr-3 img-thumbnail shadow-sm"
                   />
                   <div className="media-body align-self-center">
-                    <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
-                    <small>
-                      <i>Posté par @Pseudo, le 00/00/0000</i>
-                    </small>
+                    <div className="d-flex">
+                      <div className="p-1 "><Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link></div>
+                      <div className="ml-auto p-2"> <small> <i>Posté par @Pseudo, le 00/00/0000</i></small></div>
+                    </div>
+                    <hr />
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
+                      ipsum aliquam metus facilisis scelerisque. Quisque vitae
+                      condimentum nulla. Vestibulum lobortis ullamcorper augue id
+                      consequat. Orci varius natoque penatibus et magnis dis parturient
+                      montes, nascetur ridiculus mus. Phasellus at aliquet dui. Mauris
+                      dapibus lectus id laoreet iaculis. Duis auctor augue augue, eget
+                      lobortis quam auctor at.
+            </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
+            <div className="row">
+              <div className="col-12">
+                <div className="media border p-3 flex-column flex-md-row ">
+                  <img
+                    src="https://via.placeholder.com/100x100"
+                    alt="#"
+                    className="align-self-center mr-3 img-thumbnail shadow-sm"
+                    style={{ width: 100 }}
+                  />
+
+                  <div className="media-body align-self-center">
+                    <div className="d-flex">
+                      <div className="p-1 "><Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link></div>
+                      <div className="ml-auto p-2"> <small> <i>Posté par @Pseudo, le 00/00/0000</i></small></div>
+                    </div>
                     <hr />
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
@@ -212,15 +242,15 @@ export default class Home extends Component {
                   <img
                     src="https://via.placeholder.com/100x100"
                     alt="#"
-                    className="align-self-center mr-3"
+                    className="align-self-center mr-3 img-thumbnail shadow-sm"
                     style={{ width: 100 }}
                   />
 
                   <div className="media-body align-self-center">
-                    <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
-                    <small>
-                      <i>Posté par @Pseudo, le 00/00/0000</i>
-                    </small>
+                    <div className="d-flex">
+                      <div className="p-1 "><Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link></div>
+                      <div className="ml-auto p-2"> <small> <i>Posté par @Pseudo, le 00/00/0000</i></small></div>
+                    </div>
                     <hr />
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
@@ -242,15 +272,15 @@ export default class Home extends Component {
                   <img
                     src="https://via.placeholder.com/100x100"
                     alt="#"
-                    className="align-self-center mr-3"
+                    className="align-self-center mr-3 img-thumbnail shadow-sm"
                     style={{ width: 100 }}
                   />
 
                   <div className="media-body align-self-center">
-                    <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
-                    <small>
-                      <i>Posté par @Pseudo, le 00/00/0000</i>
-                    </small>
+                    <div className="d-flex">
+                      <div className="p-1 "><Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link></div>
+                      <div className="ml-auto p-2"> <small> <i>Posté par @Pseudo, le 00/00/0000</i></small></div>
+                    </div>
                     <hr />
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
@@ -272,15 +302,15 @@ export default class Home extends Component {
                   <img
                     src="https://via.placeholder.com/100x100"
                     alt="#"
-                    className="align-self-center mr-3"
+                    className="align-self-center mr-3 img-thumbnail shadow-sm"
                     style={{ width: 100 }}
                   />
 
                   <div className="media-body align-self-center">
-                    <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
-                    <small>
-                      <i>Posté par @Pseudo, le 00/00/0000</i>
-                    </small>
+                    <div className="d-flex">
+                      <div className="p-1 "><Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link></div>
+                      <div className="ml-auto p-2"> <small> <i>Posté par @Pseudo, le 00/00/0000</i></small></div>
+                    </div>
                     <hr />
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
@@ -302,15 +332,15 @@ export default class Home extends Component {
                   <img
                     src="https://via.placeholder.com/100x100"
                     alt="#"
-                    className="align-self-center mr-3"
+                    className="align-self-center mr-3 img-thumbnail shadow-sm"
                     style={{ width: 100 }}
                   />
 
                   <div className="media-body align-self-center">
-                    <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
-                    <small>
-                      <i>Posté par @Pseudo, le 00/00/0000</i>
-                    </small>
+                    <div className="d-flex">
+                      <div className="p-1 "><Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link></div>
+                      <div className="ml-auto p-2"> <small> <i>Posté par @Pseudo, le 00/00/0000</i></small></div>
+                    </div>
                     <hr />
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
@@ -332,15 +362,15 @@ export default class Home extends Component {
                   <img
                     src="https://via.placeholder.com/100x100"
                     alt="#"
-                    className="align-self-center mr-3"
+                    className="align-self-center mr-3 img-thumbnail shadow-sm"
                     style={{ width: 100 }}
                   />
 
                   <div className="media-body align-self-center">
-                    <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
-                    <small>
-                      <i> Posté par @Pseudo, le 00/00/0000</i>
-                    </small>
+                    <div className="d-flex">
+                      <div className="p-1 "><Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link></div>
+                      <div className="ml-auto p-2"> <small> <i>Posté par @Pseudo, le 00/00/0000</i></small></div>
+                    </div>
                     <hr />
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
@@ -362,45 +392,15 @@ export default class Home extends Component {
                   <img
                     src="https://via.placeholder.com/100x100"
                     alt="#"
-                    className="align-self-center mr-3"
+                    className="align-self-center mr-3 img-thumbnail shadow-sm"
                     style={{ width: 100 }}
                   />
 
                   <div className="media-body align-self-center">
-                    <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
-                    <small>
-                      <i>Posté par @Pseudo, le 00/00/0000</i>
-                    </small>
-                    <hr />
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
-                      ipsum aliquam metus facilisis scelerisque. Quisque vitae
-                      condimentum nulla. Vestibulum lobortis ullamcorper augue id
-                      consequat. Orci varius natoque penatibus et magnis dis parturient
-                      montes, nascetur ridiculus mus. Phasellus at aliquet dui. Mauris
-                      dapibus lectus id laoreet iaculis. Duis auctor augue augue, eget
-                      lobortis quam auctor at.
-            </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <br />
-            <div className="row">
-              <div className="col-12">
-                <div className="media border p-3 flex-column flex-md-row">
-                  <img
-                    src="https://via.placeholder.com/100x100"
-                    alt="#"
-                    className="align-self-center mr-3"
-                    style={{ width: 100 }}
-                  />
-
-                  <div className="media-body align-self-center">
-                    <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link>
-                    <small>
-                      <i>Posté par @Pseudo, le 00/00/0000</i>
-                    </small>
+                    <div className="d-flex">
+                      <div className="p-1 "><Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>Titre annonce</h4></Link></div>
+                      <div className="ml-auto p-2"> <small> <i>Posté par @Pseudo, le 00/00/0000</i></small></div>
+                    </div>
                     <hr />
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel

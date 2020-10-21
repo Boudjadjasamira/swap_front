@@ -24,6 +24,7 @@ export default class Faq extends Component {
             <center>
               <h1>Frequently Asked Questions </h1>
             </center>
+            <br />
             <hr />
             <br />
             <br />
