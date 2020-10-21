@@ -4,7 +4,6 @@ import '../../css/styles.css';
 import Header from '../Common/Header';
 import Footer from '../Common/Footer';
 import { Link } from 'react-router-dom';
-import * as firebase from "firebase";
 
 
 export default class SingleAnnonce extends Component {
@@ -114,13 +113,14 @@ export default class SingleAnnonce extends Component {
               </div>
               {/*/.Carousel Wrapper*/}
               <br />
-              <h5>Titre annonce</h5>
+              <h5 className="p-1 ">Titre annonce</h5>
+
               <hr />
               <p>Catégorie - Nom catégorie</p>
               <p>Ville - Régions</p>
               <p>Posté le 00/00/0000</p>
               <br />
-              <p>
+              <p className="text-justify">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam euismod,
                 neque id auctor laoreet, urna velit tempor ipsum, sed posuere elit nibh
                 sit amet massa. Maecenas sed ipsum id felis molestie dapibus a nec

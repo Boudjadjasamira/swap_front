@@ -5,8 +5,8 @@ import { Redirect } from 'react-router-dom';
 
 
 export default class login extends Component {
-    
-    constructor(props){
+
+    constructor(props) {
         super(props);
         this.state = {
             connected: localStorage.getItem('connected'),
@@ -14,9 +14,9 @@ export default class login extends Component {
         }
     }
 
-    componentDidMount(){
-        if(this.state.connected == 1){
-            this.setState({redirection: true});
+    componentDidMount() {
+        if (this.state.connected == 1) {
+            this.setState({ redirection: true });
             localStorage.setItem('connected', '0');
         }
     }
@@ -24,7 +24,7 @@ export default class login extends Component {
     render() {
         return (
             <div>
-                {this.state.redirection ? 
+                {this.state.redirection ?
                     <Redirect to="/"></Redirect>
                     :
                     <p>Erreur de déconnexion</p>

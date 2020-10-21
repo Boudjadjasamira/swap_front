@@ -5,23 +5,23 @@ import '../../css/styles.css';
 
 export default class Header extends Component {
 
-    constructor(props){
-      super(props);
-      this.state = {
-        connected: localStorage.getItem("connected"),
-        showInfo: false
-      }
+  constructor(props) {
+    super(props);
+    this.state = {
+      connected: localStorage.getItem("connected"),
+      showInfo: false
+    }
+  }
+
+  componentDidMount() {
+    let show = this.state.showInfo;
+    if (this.state.connected == 1) {
+      show = true;
     }
 
-    componentDidMount(){
-      let show = this.state.showInfo;
-      if(this.state.connected == 1){
-        show = true;
-      }
+    this.setState({ showInfo: show });
+  }
 
-      this.setState({showInfo: show});
-    }
-  
 
   render() {
     return (
@@ -41,36 +41,36 @@ export default class Header extends Component {
             <Link className="nav-link" to={process.env.PUBLIC_URL + "/Contact"}>CONTACT</Link>
           </ul>
           {this.state.showInfo ?
-              <div>
-                <Link className="btn btn-outline-dark my-2 my-sm-0" to={process.env.PUBLIC_URL + "/Account"}>
-                    <img src={process.env.PUBLIC_URL + 'assets/icone/user.png'} alt="logo" width="15cm" height="15cm" />
-                    <span>&nbsp;Mon compte</span>
-                </Link>
+            <div>
+              <Link className="btn btn-outline-dark my-2 my-sm-0" to={process.env.PUBLIC_URL + "/Account"}>
+                <img src={process.env.PUBLIC_URL + 'assets/icone/user.png'} alt="logo" width="15cm" height="15cm" />
+                <span>&nbsp;Mon compte</span>
+              </Link>
                 &nbsp;
                 <Link className="btn btn-outline-dark my-2 my-sm-0" to={process.env.PUBLIC_URL + "/Account"}>
-                    <img src={process.env.PUBLIC_URL + 'assets/icone/edit.png'} alt="logo" width="15cm" height="15cm" />
-                    <span>&nbsp;Publier un article</span>
-                </Link>
+                <img src={process.env.PUBLIC_URL + 'assets/icone/edit.png'} alt="logo" width="15cm" height="15cm" />
+                <span>&nbsp;Publier un article</span>
+              </Link>
                 &nbsp;
                 <Link className="btn btn-outline-dark my-2 my-sm-0" to={process.env.PUBLIC_URL + "/Logout"}>
-                  <img src={process.env.PUBLIC_URL + 'assets/icone/user.png'} alt="logo" width="15cm" height="15cm" />
-                    <span>&nbsp; Déconnexion</span>
-                </Link>
-              </div>
+                <img src={process.env.PUBLIC_URL + 'assets/icone/user.png'} alt="logo" width="15cm" height="15cm" />
+                <span>&nbsp; Déconnexion</span>
+              </Link>
+            </div>
             :
-              <div>
-                <Link className="btn btn-outline-dark my-2 my-sm-0" to={process.env.PUBLIC_URL + "/Login"}>
-                  <img src={process.env.PUBLIC_URL + 'assets/icone/user.png'} alt="logo" width="15cm" height="15cm" />
-                  <span>&nbsp;Connexion</span>
-                </Link>
+            <div>
+              <Link className="btn btn-outline-dark my-2 my-sm-0" to={process.env.PUBLIC_URL + "/Login"}>
+                <img src={process.env.PUBLIC_URL + 'assets/icone/user.png'} alt="logo" width="15cm" height="15cm" />
+                <span>&nbsp;Connexion</span>
+              </Link>
                 &nbsp;
                 <Link className="btn btn-outline-dark my-2 my-sm-0" to={process.env.PUBLIC_URL + "/Register"}>
-                    <img src={process.env.PUBLIC_URL + 'assets/icone/edit.png'} alt="logo" width="15cm" height="15cm" />
-                    <span>&nbsp;Inscription</span>
-                </Link>
-              </div>
+                <img src={process.env.PUBLIC_URL + 'assets/icone/edit.png'} alt="logo" width="15cm" height="15cm" />
+                <span>&nbsp;Inscription</span>
+              </Link>
+            </div>
           }
-          
+
         </div>
       </nav>
 
