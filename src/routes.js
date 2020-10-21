@@ -18,7 +18,6 @@ import Viewservices from './view/Viewservices/Viewservices.js';
 import Trophy from './view/Trophy/Trophy.js';
 import Review from './view/Review/Review.js';
 import Reward from './view/Reward/Reward.js';
-import Dashboard from './view/Dashboard/Dashboard.js';
 
 
 
@@ -54,7 +53,6 @@ export default function Routes() {
             <Route path="/Trophy" exact component={Trophy} />
             <Route path="/Review" exact component={Review} />
             <Route path="/Reward" exact component={Reward} />
-            <Route path="/Dashboard" exact component={Dashboard} />
             {/*<PrivateRoute authed={false} path='/dashboard' component={Home} />*/}
             <Route path='*' exact={true} component={Erreur404} />
         </Switch>

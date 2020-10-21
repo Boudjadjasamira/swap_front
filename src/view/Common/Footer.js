@@ -12,21 +12,18 @@ export default class Footer extends Component {
         <div className="container">
           <div className="row text-center text-xs-center text-sm-left text-md-left">
             <div className="col-xs-12 col-sm-4 col-md-4">
-              <p></p>
               <center>
-                <img src="assets/img/logo.png" alt="logo" width="60%" />
+                <img src={process.env.PUBLIC_URL + 'assets/img/logo.png'} alt="logo_swap" width="60%" />
               </center>
-              <p />
-              <p>
+              <p className="text-justify">
                 Met en relation gratuitement les membres qui proposent et recherchent
                 des services à échanger.
-                          </p>
+              </p>
             </div>
             <div className="col-xs-12 col-sm-4 col-md-4">
               <br />
               <h3>Informations</h3>
               <ul className="list-unstyled quick-links">
-                <br />
                 <li>
                   <Link className="nav-link" to={process.env.PUBLIC_URL + "/Faq"}>FAQ</Link>
                 </li>
@@ -42,7 +39,6 @@ export default class Footer extends Component {
               <br />
               <h3>Liens pratiques</h3>
               <ul className="list-unstyled quick-links">
-                <br />
                 <li>
                   <Link className="nav-link" to={process.env.PUBLIC_URL + "/Termsofuse"}>Conditions d'utilisations</Link>
                 </li>

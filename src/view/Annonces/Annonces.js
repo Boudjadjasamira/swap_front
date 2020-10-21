@@ -39,26 +39,14 @@ export default class Annonces extends Component {
         <Header></Header>
 
         <center>
-          <img class="img-fluid" src="assets/img/img4.png" alt="logo" width="60%" />
+          <img class="img-fluid flex-wrap" src="assets/img/img4.png" alt="logo" width="60%" />
         </center>
-
         < br />
         < br />
 
         <SearchBar></SearchBar>
 
         {/* Module annonces */}
-        <div className="container">
-          <div className="form-group has-search">
-            <span className="fa fa-search form-control-feedback" />
-            <input
-              type="text"
-              className="form-control-ann"
-              placeholder="Entrez votre recherche..."
-              id="input"
-            />
-          </div>
-        </div>
         <div className="container">
           {this.state.allAnnonces.map(e => (
             <div className="row">
@@ -83,15 +71,9 @@ export default class Annonces extends Component {
             />
           </svg> */}
         </center>
-        <br />
-        <br />
+
         <Footer></Footer>
       </div>
-
-
-
-
-
     );
   }
 }

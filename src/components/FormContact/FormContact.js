@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-
 
 export default class FormContact extends Component {
 
@@ -15,7 +12,6 @@ export default class FormContact extends Component {
                         <br />
                         <br />
                     </div>
-
                     <div className="container  col-6">
                         <center>
                             <h1>Contact </h1>

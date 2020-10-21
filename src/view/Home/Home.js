@@ -29,20 +29,20 @@ export default class Home extends Component {
 
         <div>
           <center>
-            <img class="img-fluid" src={process.env.PUBLIC_URL + 'assets/img/img3.png'} alt="logo" width="60%" />
+            <img class="img-fluid flex-wrap" src={process.env.PUBLIC_URL + 'assets/img/img3.png'} alt="logo" width="60%" />
           </center>
           <br />
           <br />
           <br />
 
-          {/*Section catégorie */}
+
           <Category></Category>
 
-
-          {/*Section barre de recherche */}
           <SearchBar></SearchBar>
 
           <Search></Search>
+
+
           {/* Début Section annonces */}
           <div className="container">
             <div className="row">

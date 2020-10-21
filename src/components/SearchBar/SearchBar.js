@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 
 export default class SearchBar extends Component {
@@ -35,7 +33,7 @@ export default class SearchBar extends Component {
                     </div>
                 </div>
                 <br />
-                <section className="search-sec-ann">
+                <section className="search-sec-ann ">
                     <div className="container">
                         <form action="#" method="post" noValidate="novalidate">
                             <div className="row">
