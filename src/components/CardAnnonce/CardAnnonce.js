@@ -34,7 +34,7 @@ export default class CardAnnonce extends Component {
                             <img
                                 src="https://via.placeholder.com/100x100"
                                 alt="#"
-                                className="align-self-center mr-3 "
+                                className="align-self-center mr-3"
                                 style={{ width: 100 }}
                             />
                             <div className="media-body align-self-center">
@@ -51,7 +51,6 @@ export default class CardAnnonce extends Component {
                         </div>
                     </div>
                 </div>
-
             </div>
 
         )
