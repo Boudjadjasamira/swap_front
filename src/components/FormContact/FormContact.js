@@ -26,7 +26,7 @@ export default class FormContact extends Component {
                                     className="form-control"
                                     id="exampleInputEmail1"
                                     aria-describedby="emailHelp"
-                                    placeholder="Entre votre Nom*"
+                                    placeholder="Entrez votre Nom*"
                                 />
                             </div>
                             <div className="form-group">
@@ -36,7 +36,7 @@ export default class FormContact extends Component {
                                     className="form-control"
                                     id="exampleInputEmail1"
                                     aria-describedby="emailHelp"
-                                    placeholder="Entre votre prénom*"
+                                    placeholder="Entrez votre prénom*"
                                 />
                             </div>
                             <label htmlFor="exampleInputEmail1">Choisissez une catégorie.</label>

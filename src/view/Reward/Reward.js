@@ -171,7 +171,7 @@ export default class Reward extends Component {
                                     </div>
                                 </div>
                             </div>    {/* edit form column */}
-                            <div className="col-md-9 personal-info">                                
+                            <div className="col-md-9 personal-info">
                                 <form className="form-horizontal">
                                     <div className="row justify-content-start">
                                         <div className="col-12">
@@ -182,7 +182,7 @@ export default class Reward extends Component {
                                                             <div className="col-2 col-lg-1 col-xl-2">
                                                                 <div className="bg-white rounded pt-1 animate__animated animate__pulse">
                                                                     <img
-                                                                       src={process.env.PUBLIC_URL + 'assets/reward/money-bag.png'}
+                                                                        src={process.env.PUBLIC_URL + 'assets/reward/money-bag.png'}
                                                                         alt="description annonce"
                                                                         className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
                                                                     />
@@ -194,7 +194,7 @@ export default class Reward extends Component {
                                                                     <h5>Dans le mille !</h5>
                                                                 </div>
                                                                 <div className="trophy d-block">
-                                                                    <span>Gagne 1000 Points et gagne Une carte cadeau d'une valeur de 10€</span>
+                                                                    <span>Echange 1000 Points et tu en gagnes 500.</span>
                                                                     <br />
                                                                     <br />
                                                                 </div>
@@ -213,7 +213,7 @@ export default class Reward extends Component {
                                                             <div className="col-2 col-lg-1 col-xl-2">
                                                                 <div className="bg-white rounded pt-1 animate__animated animate__pulse">
                                                                     <img
-                                                                       src={process.env.PUBLIC_URL + 'assets/reward/gift-box.png'}
+                                                                        src={process.env.PUBLIC_URL + 'assets/reward/gift-box.png'}
                                                                         alt="description annonce"
                                                                         className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
                                                                     />
@@ -225,10 +225,10 @@ export default class Reward extends Component {
                                                                     <h5>A votre Service !</h5>
                                                                 </div>
                                                                 <div className="trophy d-block">
-                                                                    <span>Accompli 20 services et gagne une carte cadeau Smartbox</span>
+                                                                    <span>Accompli 20 services et gagne 2000 Points</span>
                                                                     <br />
                                                                     <br />
-                                                
+
                                                                 </div>
                                                                 <div className="percent d-block">
                                                                     <div className="bar">
@@ -257,7 +257,7 @@ export default class Reward extends Component {
                                                                     <h5>Deux avis valent mieux qu’un !</h5>
                                                                 </div>
                                                                 <div className="trophy d-block">
-                                                                    <span>Dépose 30 avis et gagne une carte cadeau d'un montant de 30€</span>
+                                                                    <span>Dépose 30 avis et gagne 3000 Points</span>
                                                                     <br />
                                                                     <br />
                                                                 </div>

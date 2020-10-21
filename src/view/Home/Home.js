@@ -49,7 +49,7 @@ export default class Home extends Component {
               <div className="col-12">
                 <div className="media border p-3 flex-column flex-md-row">
                   <img
-                    src="https://via.placeholder.com/100x100"
+                    src={process.env.PUBLIC_URL + 'assets/category/beauty.png'}
                     alt="#"
                     className="align-self-center mr-3"
                     style={{ width: 100 }}
@@ -79,7 +79,7 @@ export default class Home extends Component {
               <div className="col-12">
                 <div className="media border p-3 flex-column flex-md-row ">
                   <img
-                    src="https://via.placeholder.com/100x100"
+                    src={process.env.PUBLIC_URL + 'assets/category/bricolage.png'}
                     alt="#"
                     className="align-self-center mr-3 img-thumbnail shadow-sm"
                     style={{ width: 100 }}
@@ -109,7 +109,7 @@ export default class Home extends Component {
               <div className="col-12">
                 <div className="media border p-3 flex-column flex-md-row">
                   <img
-                    src="https://via.placeholder.com/100x100"
+                    src={process.env.PUBLIC_URL + 'assets/category/cours.png'}
                     alt="#"
                     className="align-self-center mr-3 img-thumbnail shadow-sm"
                     style={{ width: 100 }}
@@ -139,7 +139,7 @@ export default class Home extends Component {
               <div className="col-12">
                 <div className="media border p-3 flex-column flex-md-row">
                   <img
-                    src="https://via.placeholder.com/100x100"
+                    src={process.env.PUBLIC_URL + 'assets/category/help.png'}
                     alt="#"
                     className="align-self-center mr-3 img-thumbnail shadow-sm"
                     style={{ width: 100 }}
@@ -169,7 +169,7 @@ export default class Home extends Component {
               <div className="col-12">
                 <div className="media border p-3 flex-column flex-md-row">
                   <img
-                    src="https://via.placeholder.com/100x100"
+                    src={process.env.PUBLIC_URL + 'assets/category/house.png'}
                     alt="#"
                     className="align-self-center mr-3 img-thumbnail shadow-sm"
                     style={{ width: 100 }}
@@ -199,7 +199,7 @@ export default class Home extends Component {
               <div className="col-12">
                 <div className="media border p-3 flex-column flex-md-row">
                   <img
-                    src="https://via.placeholder.com/100x100"
+                    src={process.env.PUBLIC_URL + 'assets/category/loisirs.png'}
                     alt="#"
                     className="align-self-center mr-3 img-thumbnail shadow-sm"
                     style={{ width: 100 }}
@@ -229,7 +229,7 @@ export default class Home extends Component {
               <div className="col-12">
                 <div className="media border p-3 flex-column flex-md-row">
                   <img
-                    src="https://via.placeholder.com/100x100"
+                    src={process.env.PUBLIC_URL + 'assets/category/mecanique.png'}
                     alt="#"
                     className="align-self-center mr-3 img-thumbnail shadow-sm"
                     style={{ width: 100 }}
@@ -249,7 +249,7 @@ export default class Home extends Component {
                       montes, nascetur ridiculus mus. Phasellus at aliquet dui. Mauris
                       dapibus lectus id laoreet iaculis. Duis auctor augue augue, eget
                       lobortis quam auctor at.
-                 </p>
+                  </p>
                   </div>
                 </div>
               </div>
@@ -259,7 +259,7 @@ export default class Home extends Component {
               <div className="col-12">
                 <div className="media border p-3 flex-column flex-md-row">
                   <img
-                    src="https://via.placeholder.com/100x100"
+                    src={process.env.PUBLIC_URL + 'assets/category/vacance.png'}
                     alt="#"
                     className="align-self-center mr-3 img-thumbnail shadow-sm"
                     style={{ width: 100 }}
