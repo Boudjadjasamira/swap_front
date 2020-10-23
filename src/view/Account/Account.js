@@ -6,7 +6,37 @@ import Header from '../../view/Common/Header';
 import Footer from '../..//view/Common/Footer';
 
 
+import Swal from 'sweetalert2';
+import axios from 'axios';
+
+
 export default class Account extends Component {
+
+
+   constructor(props) {
+    super(props);
+    this.state = {
+      pseudo: "",
+      selectedSexe: 0,
+      nom: "",
+      prenom: "",
+      mail: "",
+      codeParrain: "",
+      codePostal:"",
+      description:"",
+      motDePasse:"", 
+    }
+
+    this.addPseudo = this.addPseudo.bind(this);
+    this.changeSexe = this.changeSexe.bind(this);
+    this.changeNom = this.changeNom.bind(this);
+    this.changePrenom = this.changePrenom.bind(this);
+    this.changeMail = this.changeMail.bind(this);
+    this.changeCodeParrain = this.changeCodeParrain.bind(this);
+    this.changeCodePostal = this.changeCodePostal.bind(this);
+    this.changeDescription = this.changeDescription.bind(this);
+    this.changePassword = this.changePassword.bind(this);
+  }
 
   render() {
     return (
