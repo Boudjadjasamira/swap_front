@@ -24,10 +24,10 @@ export default class Account extends Component {
       codeParrain: "",
       codePostal:"",
       description:"",
-      motDePasse:"", 
+      motDePasse:""
     }
 
-    this.addPseudo = this.addPseudo.bind(this);
+    this.changePseudo = this.changePseudo.bind(this);
     this.changeSexe = this.changeSexe.bind(this);
     this.changeNom = this.changeNom.bind(this);
     this.changePrenom = this.changePrenom.bind(this);
@@ -37,6 +37,104 @@ export default class Account extends Component {
     this.changeDescription = this.changeDescription.bind(this);
     this.changePassword = this.changePassword.bind(this);
   }
+
+
+  componentDidMount(){
+    //Recuperation des infos
+    axios.get(`http://localhost:8000/api/users`)
+    .then(res => res.json)
+  }
+
+
+  changePseudo(event){
+    this.setState({
+      pseudo:event.target.value
+    });
+  }
+
+  changeSexe(event){
+    this.setState({
+      sexe:event.target.value * 1
+    })
+  }
+
+  changeNom(event){
+    this.setState({
+      nom:event.target.value
+    })
+  }
+
+  changePrenom(event){
+    this.setState({
+      prenom:event.target.value
+    })
+  }
+
+  changeMail(event){
+    this.setState({
+      mail:event.target.value
+    })
+  }
+
+  changeCodeParrain(event){
+    this.setState({
+      codeParrain:event.target.value
+    })
+  }
+
+  changeCodePostal(event){
+    this.setState({
+     codePostal:event.target.value
+    })
+  }
+
+  changeDescription(event){
+    this.setState({
+      description:event.target.value
+    })
+  }
+
+  changePassword(event){
+    this.setState({
+      motDePasse:event.target.value
+    })
+  }
+
+  addModification() {
+    axios.patch("http://localhost:8000/api/users/6",  {
+      pseudo: this.state.pseudo,
+      type: !!this.state.selectedSexe,
+      nom: this.state.nom.toString(),
+      prenom: this.state.prenom.toString(),
+      mail: this.state.mail.toString(),
+      codeParrain: this.state.codeParrain.toString(),
+      codePostal: this.state.codePostal.toString(),
+      description: this.state.description.toString(),
+      motDePasse: this.state.motDePasse.toString()
+    })
+    .then(res => {
+      console.log(res);
+      console.log(res.data);
+      Swal.fire({
+        icon: 'success',
+        title: 'Changements sauvegardés !.',
+        showConfirmButton: false,
+        timer: 2500
+      });
+  
+      //reset les champs
+      this.setState({
+      pseudo: "",
+      selectedSexe: 0,
+      mail: "",
+      codePostal:"",
+      motDePasse:""
+      });
+    })
+  }
+
+
+
 
   render() {
     return (
@@ -229,20 +327,6 @@ export default class Account extends Component {
               </div>
               {/* module colonn droite */}
               <div className="col-md-9 personal-info">
-                <div
-                  className="alert alert-info alert-dismissible fade show"
-                  role="alert"
-                >
-                  Vos changements ont été sauvergardés !
-          <button
-                    type="button"
-                    className="close"
-                    data-dismiss="alert"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">×</span>
-                  </button>
-                </div>
                 <form className="form-horizontal">
                   <div className="form-group">
                     <div className="col-lg-12">
@@ -253,11 +337,13 @@ export default class Account extends Component {
                       />
                     </div>
                   </div>
-
-
                   <div className="form-group">
                     <div className="col-lg-12">
-                      <select className="form-control custom-select" type="text" placeholder="Genre*">
+                      <select className="form-control custom-select" 
+                      type="text" 
+                      placeholder="Genre*"
+                      value={this.state.selectedSexe} onChange={this.changeSexe}
+                      >
                         <option selected disabled>
                           Vous etes ?
         </option>
@@ -270,7 +356,12 @@ export default class Account extends Component {
 
                   <div className="form-group">
                     <div className="col-lg-12">
-                      <input className="form-control" type="text" placeholder="Nom*" />
+                      <input 
+                      className="form-control" 
+                      type="text" 
+                      placeholder="Nom*"
+                      value={this.state.nom}
+                      onChange={this.changeNom} />
                     </div>
                   </div>
                   <div className="form-group">
@@ -279,6 +370,8 @@ export default class Account extends Component {
                         className="form-control"
                         type="text"
                         placeholder="Prenom*"
+                        value={this.state.prenom}
+                        onChange={this.changePrenom}
                       />
                     </div>
                   </div>
@@ -288,6 +381,8 @@ export default class Account extends Component {
                         className="form-control"
                         type="text"
                         placeholder="Email@mail.com*"
+                        value={this.state.mail}
+                        onChange={this.changeMail}
                       />
                     </div>
                   </div>
@@ -298,6 +393,8 @@ export default class Account extends Component {
                         type="text"
                         placeholder="Code parrainage (Optionnel)"
                         pattern="[A-Za-z]{2}+-[0-30][1-12]{4}+-[0-100]{2,3}"
+                        value={this.state.codeParrain}
+                        onChange={this.changeCodeParrain}
                       />
                     </div>
                   </div>
@@ -307,6 +404,8 @@ export default class Account extends Component {
                         className="form-control"
                         type="text"
                         placeholder="Code Postal"
+                        value={this.state.codePostal}
+                        onChange={this.changeCodePostal}
                       />
                     </div>
                   </div>
@@ -318,6 +417,8 @@ export default class Account extends Component {
                         rows={3}
                         placeholder="Présentez vous en quelques mots..."
                         defaultValue={""}
+                        value={this.state.description}
+                        onChange={this.changeDescription}
                       />
                     </div>
                   </div>
@@ -327,6 +428,8 @@ export default class Account extends Component {
                         className="form-control"
                         type="password"
                         placeholder="Entrer votre mot de passe"
+                        value={this.state.motDePasse}
+                        onChange={this.changePassword}
                       />
                     </div>
                   </div>
@@ -342,7 +445,7 @@ export default class Account extends Component {
                   <div className="form-group">
                     <label className="col-md-3 control-label" />
                     <div className="col-md-12">
-                      <button type="button" className="btn-enregistrer">
+                      <button type="button" className="btn-enregistrer" onClick={this.addModification}>
                         &nbsp;Enregistrer&nbsp;
               </button>
                       <button type="button" className="btn btn-dark ">
