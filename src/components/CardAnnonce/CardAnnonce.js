@@ -38,15 +38,18 @@ export default class CardAnnonce extends Component {
                                 style={{ width: 100 }}
                             />
                             <div className="media-body align-self-center">
-                                <Link to={process.env.PUBLIC_URL + "/Annonces/" + this.props.idAnnonce}><h4>{this.props.titreEnvoi}</h4></Link>
-                                <small>
-                                    <i>Posté par {this.props.pseudoEnvoi}, le {this.props.dateEnvoi}</i>
-                                </small>
+                            <div className="d-flex">
+                            <div className="p-1 "><Link to={process.env.PUBLIC_URL + "/SingleAnnonce/" + this.props.idAnnonce}><h4>{this.props.titreEnvoi}</h4></Link></div>
+                            <div className="ml-auto p-2"><small><i>Posté par {this.props.pseudoEnvoi}, le {this.props.dateEnvoi}</i></small></div>
+                            </div>
                                 <hr />
-                                <p>
+                                <p className="text-justify">
                                     {this.props.descriptionEnvoi}
                                 </p>
-                                <button onClick={this.deleteAnnonce}>Supprimer</button>
+                                <br />
+                                <button class="btn btn-outline-dark  btn-sm" onClick={this.deleteAnnonce}><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+</svg></button>
                             </div>
                         </div>
                     </div>

@@ -102,7 +102,7 @@ export default class Account extends Component {
 
   addModification() {
     axios.patch("http://localhost:8000/api/users/6",  {
-      pseudo: this.state.pseudo,
+      pseudo: this.state.pseudo.toString(),
       type: !!this.state.selectedSexe,
       nom: this.state.nom.toString(),
       prenom: this.state.prenom.toString(),
@@ -346,14 +346,12 @@ export default class Account extends Component {
                       >
                         <option selected disabled>
                           Vous etes ?
-        </option>
+                        </option>
                         <option>Une femme</option>
                         <option>Un homme</option>
                       </select>
                     </div>
                   </div>
-
-
                   <div className="form-group">
                     <div className="col-lg-12">
                       <input 
