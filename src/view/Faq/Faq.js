@@ -9,13 +9,10 @@ import Footer from '../../view/Common/Footer';
 import FaqComponent from '../../components/FaqComponent/FaqComponent';
 
 
-
-
 export default class Faq extends Component {
 
   render() {
     return (
-
 
       <div className="body" id="bodyHome" >
 

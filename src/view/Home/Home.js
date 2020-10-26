@@ -5,13 +5,12 @@ import '../../css/styles.css';
 //Inclu les fichiers communs
 import Header from '../Common/Header';
 import Footer from '../Common/Footer';
-import { Link } from 'react-router-dom';
 //Inclut les Composants
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Category from '../../components/Category/Category';
 import Search from '../../components/Search/Search';
 import CardAnnonce from '../../components/CardAnnonce/CardAnnonce';
-
+//Inclu Axios
 import axios from 'axios';
 
 

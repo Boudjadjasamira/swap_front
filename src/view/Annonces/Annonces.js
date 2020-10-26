@@ -1,5 +1,4 @@
-import React, { Component, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../css/styles.css';
 import Header from '../Common/Header';

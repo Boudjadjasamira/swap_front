@@ -39,7 +39,7 @@ export default class CardAnnonce extends Component {
                             />
                             <div className="media-body align-self-center">
                             <div className="d-flex">
-                            <div className="p-1 "><Link to={process.env.PUBLIC_URL + "/SingleAnnonce/" + this.props.idAnnonce}><h4>{this.props.titreEnvoi}</h4></Link></div>
+                            <div className="p-1 "><Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>{this.props.titreEnvoi}</h4></Link></div>
                             <div className="ml-auto p-2"><small><i>Posté par {this.props.pseudoEnvoi}, le {this.props.dateEnvoi}</i></small></div>
                             </div>
                                 <hr />
