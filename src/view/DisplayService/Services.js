@@ -3,10 +3,35 @@ import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 //Inclu les fichiers communs
 import Header from '../../view/Common/Header';
-import Footer from '../..//view/Common/Footer';
+import Footer from '../../view/Common/Footer';
+//Inclu les components
+import CardAnnonce from '../../components/CardAnnonce/CardAnnonce';
+//Inclu Axios
+import axios from 'axios';
 
 
 export default class Services extends Component {
+
+    
+  constructor(props) {
+    super(props);
+    this.state = {
+      allAnnonces: [],
+      confirm: true
+    }
+  }
+
+  componentDidMount() {
+    document.title = "Mes Annonces"
+
+     
+    //recuperation de toutes les annonces
+    axios.get(`http://localhost:8000/api/annonces`)
+      .then(res => {
+        this.setState({ allAnnonces: res.data['hydra:member'] });
+      })
+
+  } 
 
     render() {
         return (
@@ -174,7 +199,8 @@ export default class Services extends Component {
                             </div>
                             {/*--------------------------------------Colonne Droite-----------------------------------------------------*/}
                             <div className="col-md-9 personal-info">
-                                <form className="form-horizontal" >
+                                <br />
+                                
                                     <button
                                         className="btn btn-outline-dark my-2 my-sm-0"
                                         type="submit"
@@ -186,116 +212,24 @@ export default class Services extends Component {
                                             width="15cm"
                                             height="15cm"
                                         />
-              Publier une annonce
+                                    Publier une annonce
                                      </button>
+                                     <form className="form-horizontal" >
                                     <div className="row justify-content-start">
+                                    {this.state.allAnnonces.map(e => (
                                         <div className="col-12">
-                                            <br />
-                                            <div className="media border p-2 flex-column flex-md-row">
-                                                <img
-                                                    src="https://via.placeholder.com/100x100"
-                                                    alt="#"
-                                                    className="align-self-center mr-3"
-                                                    style={{ width: 100 }}
-                                                />
-
-                                                <div className="media-body align-self-center">
-                                                    <h5>Titre annonce</h5>{" "}
-                                                    <button
-                                                        className="btn-annonce my-2 my-sm-0 "
-                                                        type="submit"
-                                                        formAction="/Viewservices"
-                                                    >
-                                                        Voir
-                                                     </button>
-                                                </div>
-                                            </div>
+                                        <CardAnnonce idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} codePostalEnvoi={e.codePostal} categorieEnvoi={e.idCategorie}></CardAnnonce>
                                         </div>
-                                    </div>
-                                    <div className="row justify-content-start">
-                                        <div className="col-12">
-                                            <br />
-                                            <div className="media border p-2 flex-column flex-md-row">
-                                                <img
-                                                    src="https://via.placeholder.com/100x100"
-                                                    alt="#"
-                                                    className="align-self-center mr-3"
-                                                    style={{ width: 100 }}
-                                                />
-
-                                                <div className="media-body align-self-center">
-                                                    <h5>Titre annonce </h5>
-                                                    <button
-                                                        className="btn-annonce my-2 my-sm-0 "
-                                                        type="submit"
-                                                        formAction="/Viewservices"
-                                                    >
-                                                        Voir
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="row justify-content-start">
-                                        <div className="col-12">
-                                            <br />
-                                            <div className="media border p-2 flex-column flex-md-row">
-                                                <img
-                                                    src="https://via.placeholder.com/100x100"
-                                                    alt="#"
-                                                    className="align-self-center mr-3"
-                                                    style={{ width: 100 }}
-                                                />
-
-                                                <div className="media-body align-self-center">
-                                                    <h5>Titre annonce </h5>
-                                                    <button
-                                                        className="btn-annonce my-2 my-sm-0 "
-                                                        type="submit"
-                                                        formAction="/Viewservices"
-                                                    >
-                                                        Voir
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="row justify-content-start">
-                                        <div className="col-12">
-                                            <br />
-                                            <div className="media border p-2 flex-column flex-md-row">
-                                                <img
-                                                    src="https://via.placeholder.com/100x100"
-                                                    alt="#"
-                                                    className="align-self-center mr-3"
-                                                    style={{ width: 100 }}
-                                                />
-
-                                                <div className="media-body align-self-center">
-                                                    <h5>Titre annonce </h5>
-                                                    <button
-                                                        className="btn-annonce my-2 my-sm-0 "
-                                                        type="submit"
-                                                        formAction="/Viewservices"
-                                                    >
-                                                        Voir
-                  </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        ))}
+                                    </div>  
                                 </form>
                             </div>
                         </div>
-                    </div>
-                    <br />
-                    <br />
-                </div>;
-
-
-                {/* FOOTER */}
+                     {/* FOOTER */}
                 <Footer></Footer>
-            </div>
+                </div>
+             </div>
+        </div>                
 
         );
     }

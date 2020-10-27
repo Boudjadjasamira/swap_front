@@ -5,7 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from '../../view/Common/Header';
 import Footer from '../..//view/Common/Footer';
 
-
 import Swal from 'sweetalert2';
 import axios from 'axios';
 

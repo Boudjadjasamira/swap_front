@@ -56,7 +56,7 @@ export default class Publish extends Component {
     
     //recuperation de la date
     const d = new Date();
-    const laDate = ('0' + d.getDate()).slice(-2) + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + d.getFullYear();
+    const laDate = ('0' + d.getDate()).slice(-2) + '/' + ('0' + (d.getMonth() + 1)).slice(-2) + '/' + d.getFullYear();
 
     //Ajout dans la base
     axios.post("http://localhost:8000/api/annonces",  {
@@ -308,7 +308,7 @@ export default class Publish extends Component {
                         id="exampleFormControlSelect1"
                         value={this.state.categorieS} onChange={this.changeCategorie}
                       >
-                        <option>Catégories</option>
+                        <option disabled>Catégories</option>
                         {this.state.allCategorie.map( e => 
                           <option value={e.id}>{e.titre}</option>
                         )}

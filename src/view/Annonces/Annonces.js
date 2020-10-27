@@ -8,6 +8,8 @@ import axios from 'axios';
 //Inclu les components
 import CardAnnonce from '../../components/CardAnnonce/CardAnnonce.js';
 import SearchBar from '../../components/SearchBar/SearchBar';
+import Category from '../../components/Category/Category';
+import ImgAnnonce from '../../components/ImgAnnonce/ImgAnnonce';
 
 export default class Annonces extends Component {
 
@@ -35,27 +37,26 @@ export default class Annonces extends Component {
     return (
 
       <div className="body" id="bodyHome">
-        <Header></Header>
+          <Header></Header>
 
-        <center>
-          <img class="img-fluid flex-wrap" src="assets/img/img4.png" alt="logo" width="60%" />
-        </center>
-        < br />
-        < br />
+          <ImgAnnonce></ImgAnnonce>
 
-        <SearchBar></SearchBar>
+          <Category></Category>
 
-        {/* Module annonces */}
-        <div className="container">
-          {this.state.allAnnonces.map(e => (
-            <div className="row">
-              <div className="col-12">
-                <CardAnnonce idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} ></CardAnnonce>
+          <SearchBar></SearchBar>
+
+              {/* Module annonces */}
+              <div className="container">
+                {this.state.allAnnonces.map(e => (
+                  <div className="row">
+                    <div className="col-12">
+                      <CardAnnonce idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} codePostalEnvoi={e.codePostal} categorieEnvoi={e.idCategorie}></CardAnnonce>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </div>
-          ))}
-        </div>
-        <Footer></Footer>
+              
+          <Footer></Footer>
       </div>
     );
   }

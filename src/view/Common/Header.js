@@ -53,7 +53,7 @@ export default class Header extends Component {
               </Link>
                 &nbsp;
                 <Link className="btn btn-outline-dark my-2 my-sm-0" to={process.env.PUBLIC_URL + "/Logout"}>
-                <img src={process.env.PUBLIC_URL + 'assets/icone/user.png'} alt="logo" width="15cm" height="15cm" />
+                <img src={process.env.PUBLIC_URL + 'assets/icone/logout.png'} alt="logo" width="15cm" height="15cm" />
                 <span>&nbsp; Déconnexion</span>
               </Link>
             </div>

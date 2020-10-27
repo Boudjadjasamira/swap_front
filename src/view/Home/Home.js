@@ -7,9 +7,9 @@ import Header from '../Common/Header';
 import Footer from '../Common/Footer';
 //Inclut les Composants
 import SearchBar from '../../components/SearchBar/SearchBar';
-import Category from '../../components/Category/Category';
 import Search from '../../components/Search/Search';
 import CardAnnonce from '../../components/CardAnnonce/CardAnnonce';
+import ImgHome from '../../components/ImgHome/ImgHome';
 //Inclu Axios
 import axios from 'axios';
 
@@ -29,7 +29,6 @@ export default class Home extends Component {
     document.title = "Home"
 
      
-
     //recuperation de toutes les annonces
     axios.get(`http://localhost:8000/api/annonces`)
       .then(res => {
@@ -42,44 +41,35 @@ export default class Home extends Component {
   render() {
 
     return (
+
       <div className="body" id="bodyHome">
 
-        {/* HEADER */}
-        <Header title="Home"></Header>
+        <Header></Header>
 
-        <div>
-          <center>
-            <img class="img-fluid flex-wrap" src={process.env.PUBLIC_URL + 'assets/img/img3.png'} alt="logo" width="60%" />
-          </center>
-          <br />
-          <br />
-          <br />
+        <ImgHome></ImgHome>
+
+        <SearchBar></SearchBar>
+
+        <Search></Search>
 
 
-          <Category></Category>
-
-          <SearchBar></SearchBar>
-
-          <Search></Search>
-
-
-          {/* Début Section annonces */}
-          <div className="container">
-          {this.state.allAnnonces.map(e => (
-            <div className="row">
-              <div className="col-12">
-              <CardAnnonce idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} ></CardAnnonce>
+            {/* Début Section annonces */}
+            <div className="container">
+            {this.state.allAnnonces.map(e => (
+              <div className="row">
+                <div className="col-12">
+                <CardAnnonce idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} codePostalEnvoi={e.codePostal} categorieEnvoi={e.idCategorie} ></CardAnnonce>
+                </div>
               </div>
+              ))}
+              <br />
             </div>
-             ))}
             <br />
-          </div>
-          <br />
-          <br />
-        </div>
-        {/* FOOTER */}
-        < Footer ></Footer >
-      </div >
+            <br />
+
+        <Footer></Footer>
+      </div>
+
     );
   }
 }
