@@ -14,7 +14,7 @@ export default class Category extends Component {
                 </center >
                 <br />
                 <br />
-                <div className="container animate__animated animate__bounce">
+                <div className="container">
                     <div className="row">
                         <div className="col-md-3">
                             <Link className="" to={process.env.PUBLIC_URL + "/Categorie/Bricolage"}>
@@ -47,7 +47,7 @@ export default class Category extends Component {
                     </div>
                 </div>
                 <br />
-                <div className="container animate__animated animate__bounce">
+                <div className="container">
                     <div className="row">
                         <div className="col-md-3">
                             <Link className="" to={process.env.PUBLIC_URL + "/Categorie/Mecanique"}>
