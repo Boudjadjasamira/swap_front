@@ -66,7 +66,7 @@ export default class Myprofil extends Component {
                 src="assets/icone/quote.png"
                 alt="#"
                 className="align-self-center mr-2"
-                style={{ width: 70 }}
+                style={{ width: 50 }}
               />
          Présentation
       </h5>
@@ -80,9 +80,6 @@ export default class Myprofil extends Component {
                       ipsum aliquam metus facilisis scelerisque. Quisque vitae
                       condimentum nulla. Vestibulum lobortis ullamcorper augue id
                       consequat. Orci varius natoque penatibus et magnis dis parturient
-                      montes, nascetur ridiculus mus. Phasellus at aliquet dui. Mauris
-                      dapibus lectus id laoreet iaculis. Duis auctor augue augue, eget
-                      lobortis quam auctor at. Lorem ipsum dolor sit amet, consectetur
               </p>
                   </div>
                 </div>

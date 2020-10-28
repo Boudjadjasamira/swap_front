@@ -126,7 +126,8 @@ export default class Publish extends Component {
                     <div className="item">
                       <img src="assets/img/avatar.png" alt="avatar" width="240px" />
                       <br />
-                      <h1>@Pseudo</h1>
+                      <br />
+                      <h4>@Pseudo</h4>
                       <Link to={process.env.PUBLIC_URL + "/Myprofil"}> Voir mon profil</Link>
                       <br />
                       <br />
