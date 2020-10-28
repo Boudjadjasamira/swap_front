@@ -75,7 +75,7 @@ export default class Membres extends Component {
                                     <div className="row">
                                         <div className="col-sm-6">
                                         <h2>
-                                            Gestion membres
+                                            GESTION MEMBRES
                                         </h2>
                                         </div>
                                         <div className="col-sm-6">
