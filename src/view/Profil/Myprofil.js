@@ -5,8 +5,28 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from '../../view/Common/Header';
 import Footer from '../..//view/Common/Footer';
 
+import axios from 'axios';
 
 export default class Myprofil extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      pseudo: "",
+      description: ""
+    };
+  }
+
+  componentDidMount(){
+    //Recuperation des infos
+    axios.get(`http://localhost:8000/api/users/6`)
+    .then(res =>
+        this.setState({
+          pseudo: res.data.pseudo,
+          description: res.data.description
+        })
+    )
+  }
 
   render() {
     return (
@@ -27,7 +47,7 @@ export default class Myprofil extends Component {
                 <img src="assets/img/avatar.png" alt="avatar" width="240px" />
                 <br />
                 <br />
-                <h1>@Pseudo</h1>
+                <h1>@{this.state.pseudo}</h1>
               </div>
             </div>
             <br />
@@ -76,10 +96,7 @@ export default class Myprofil extends Component {
                 <div className="col-12">
                   <div className="media-body align-self-center">
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel
-                      ipsum aliquam metus facilisis scelerisque. Quisque vitae
-                      condimentum nulla. Vestibulum lobortis ullamcorper augue id
-                      consequat. Orci varius natoque penatibus et magnis dis parturient
+                      {this.state.description}
               </p>
                   </div>
                 </div>

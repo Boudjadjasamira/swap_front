@@ -10,13 +10,17 @@ import FormContact from '../../components/FormContact/FormContact';
 
 export default class Contact extends Component {
 
+  componentDidMount(){
+    document.title = "Contact";
+  }
+
   render() {
     return (
       <div className="body" id="bodyHome">
 
         <Header></Header>
 
-        <FormContact></FormContact>
+        <FormContact ></FormContact>
 
         <Footer></Footer>
 

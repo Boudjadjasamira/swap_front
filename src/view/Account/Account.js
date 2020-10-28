@@ -58,7 +58,6 @@ export default class Account extends Component {
     )
   }
 
-
   changePseudo(event){
     this.setState({
       pseudo:event.target.value
