@@ -461,12 +461,12 @@ section .section-title {
   background: transparent !important;
 }
 
-#footer h5 {
+#footer h3 {
   padding-left: 10px;
-  border-left: 3px solid #eeeeee;
   padding-bottom: 6px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   color: #000000;
+  padding-bottom: 10px;
 }
 
 #footer a {
@@ -474,6 +474,8 @@ section .section-title {
   text-decoration: none !important;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
+  padding: 1px;
+  margin-left: 15px;
 }
 
 #footer ul.social li {
@@ -491,7 +493,6 @@ section .section-title {
 
 #footer ul.social li:hover a i {
   font-size: 30px;
-  margin-top: -10px;
 }
 
 #footer ul.social li a,
@@ -508,6 +509,7 @@ section .section-title {
   -webkit-transition: 0.5s all ease;
   -moz-transition: 0.5s all ease;
   transition: 0.5s all ease;
+  margin: 0px;
 }
 
 #footer ul.quick-links li:hover {
@@ -1304,10 +1306,9 @@ font-weight: normal;
 
 @media (min-width:768px) {
   .search-result-item .image-link {
-      display: inline-block;
       margin: -20px 0 -20px -20px;
       float: left;
-      width: 200px
+      width: 200px;
   }
 }
 
