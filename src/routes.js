@@ -14,7 +14,6 @@ import SingleAnnonce from './view/SingleAnnonce/SingleAnnonce';
 import Publish from './view/Publish/publish.js';
 import Invite from './view/Parrainage/Invite.js';
 import Services from './view/DisplayService/Services';
-import Viewservices from './view/Viewservices/Viewservices.js';
 import Trophy from './view/Trophy/Trophy.js';
 import Review from './view/Review/Review.js';
 import Reward from './view/Reward/Reward.js';
@@ -53,7 +52,6 @@ export default function Routes() {
             <Route path="/Publish" exact component={Publish} />
             <Route path="/Invite" exact component={Invite} />
             <Route path="/Services" exact component={Services} />
-            <Route path="/Viewservices" exact component={Viewservices} />
             <Route path="/Trophy" exact component={Trophy} />
             <Route path="/Review" exact component={Review} />
             <Route path="/Reward" exact component={Reward} />
