@@ -21,7 +21,9 @@ export default class Publish extends Component {
       codePostal: "",
       categorieS: "",
       selectedOffreDemande: 0,
-      allCategorie: []
+      allCategorie: [],
+      images: [],
+      titrePhoto: "Ajouter une photo"
     }
 
     this.addAnnonces = this.addAnnonces.bind(this);
@@ -30,6 +32,7 @@ export default class Publish extends Component {
     this.changeCodePostal = this.changeCodePostal.bind(this);
     this.changeCategorie = this.changeCategorie.bind(this);
     this.changeOffreDemande = this.changeOffreDemande.bind(this);
+    this.changeImage = this.changeImage.bind(this);
   }
 
   componentDidMount(){
@@ -52,11 +55,39 @@ export default class Publish extends Component {
     });
   }
 
+  changeImage(e){
+    this.setState({
+      images: e.target.files,
+      titrePhoto: e.target.files[0].name
+    });
+  }
+
   addAnnonces() {
     
     //recuperation de la date
     const d = new Date();
     const laDate = ('0' + d.getDate()).slice(-2) + '/' + ('0' + (d.getMonth() + 1)).slice(-2) + '/' + d.getFullYear();
+  
+    Swal.fire({
+      title: 'Ajout en cours...',
+      html: '<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>',
+      allowOutsideClick: false,
+      showConfirmButton: false,
+    });
+
+    const formData = new FormData();
+
+    Array.from(this.state.images).forEach(image => {
+      formData.append('files', image);
+    });
+
+    axios.post('http://localhost:8000/uploadAnnonces.php', formData)
+    .then(res => {
+        console.log({res});
+    }).catch(err => {
+        console.error({err});
+    });
+
 
     //Ajout dans la base
     axios.post("http://localhost:8000/api/annonces",  {
@@ -65,12 +96,13 @@ export default class Publish extends Component {
       description: this.state.description.toString(),
       codePostal: this.state.codePostal.toString(),
       date: laDate.toString(),
-      photo: "",
-      type: !!this.state.selectedOffreDemande
+      photo: this.state.images[0].name.toString(),
+      type: Boolean(Number(this.state.selectedOffreDemande))
     })
     .then(res => {
       console.log(res);
       console.log(res.data);
+
       Swal.fire({
         icon: 'success',
         title: 'Votre annonce vient d\'être publiée.',
@@ -348,9 +380,10 @@ export default class Publish extends Component {
                           className="custom-file-input"
                           id="customFileLang"
                           lang="fr"
+                          onChange={this.changeImage}
                         />
                         <label className="custom-file-label" htmlFor="customFileLang">
-                          Ajouter des photos (4 Maximum){" "}
+                          {this.state.titrePhoto}
                         </label>
                       </div>
                     </div>

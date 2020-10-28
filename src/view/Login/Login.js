@@ -1,9 +1,47 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../css/login.css';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { data } from 'jquery';
 
 
 export default class login extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      pseudo: "",
+      password: ""
+    };
+    this.changePseudo = this.changePseudo.bind(this);
+    this.changePassword = this.changePassword.bind(this);
+    this.connect = this.connect.bind(this);
+  }
+
+  changePassword(e){
+    this.setState({password: e.target.value});
+  }
+
+  changePseudo(e){
+    this.setState({pseudo: e.target.value});
+  }
+
+  connect(){
+    axios.post('http://localhost:8000/api/login_check', {
+      pseudo: this.state.pseudo,
+      mot_de_passe: this.state.password
+    }, {
+      headers : { 
+        'authorization': "Bearer c023eb356c2b3f878a5f8d94de1e1697",
+        'Accept' : 'application/json',
+        'Content-Type': 'application/json' 
+      }
+    }).then(res => {
+      console.log(res);
+    })
+  }
+
 
   render() {
     return (
@@ -15,7 +53,7 @@ export default class login extends Component {
               <div className="login100-pic js-tilt" data-tilt>
                 <img class="img-fluid" src="assets/img/img2.png" alt="IMG" />
               </div>
-              <form className="login100-form validate-form">
+              <div className="login100-form validate-form">
                 <img src="assets/img/logo.png" alt="logo" />
                 <br />
                 <br />
@@ -28,6 +66,8 @@ export default class login extends Component {
                     type="text"
                     name="pass"
                     placeholder="Pseudo"
+                    value={this.state.pseudo}
+                    onChange={this.changePseudo}
                   />
                 </div>
                 <br />
@@ -40,10 +80,12 @@ export default class login extends Component {
                     type="password"
                     name="pass"
                     placeholder="Password"
+                    value={this.state.password}
+                    onChange={this.changePassword}
                   />
                 </div>
                 <div className="container-login100-form-btn">
-                  <button className="login100-form-btn">Se connecter</button>
+                  <button className="login100-form-btn" onClick={this.connect}>Se connecter</button>
                 </div>
                 <br />
                 <div className="text-center p-t-12">
@@ -53,11 +95,9 @@ export default class login extends Component {
                   </a>
                 </div>
                 <div className="text-center p-t-136">
-                  <a className="txt2" href="/register">
-                    Create account →
-                  </a>
+                  <Link  className="txt2" to={process.env.PUBLIC_URL + "/Register"}> Créer un compte</Link>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>

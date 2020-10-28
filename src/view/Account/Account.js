@@ -23,7 +23,9 @@ export default class Account extends Component {
       codeParrain: "",
       codePostal:"",
       description:"",
-      motDePasse:""
+      motDePasse:"",
+      images: [],
+      titrePhoto: ""
     }
 
     this.changePseudo = this.changePseudo.bind(this);
@@ -35,13 +37,25 @@ export default class Account extends Component {
     this.changeCodePostal = this.changeCodePostal.bind(this);
     this.changeDescription = this.changeDescription.bind(this);
     this.changePassword = this.changePassword.bind(this);
+    this.changePicture = this.changePicture.bind(this);
+    this.addModification = this.addModification.bind(this);
   }
 
 
   componentDidMount(){
     //Recuperation des infos
-    axios.get(`http://localhost:8000/api/users`)
-    .then(res => res.json)
+    axios.get(`http://localhost:8000/api/users/6`)
+    .then(res =>
+        this.setState({
+          pseudo: res.data.pseudo,
+          nom: res.data.nom,
+          prenom: res.data.prenom,
+          mail: res.data.mail,
+          codePostal: res.data.codePostal,
+          description: res.data.description,
+          titrePhoto: res.data.photo
+        })
+    )
   }
 
 
@@ -53,7 +67,7 @@ export default class Account extends Component {
 
   changeSexe(event){
     this.setState({
-      sexe:event.target.value * 1
+      sexe:event.target.value
     })
   }
 
@@ -99,18 +113,55 @@ export default class Account extends Component {
     })
   }
 
+  changePicture(e){
+    this.setState({
+      images: e.target.files,
+      titrePhoto: e.target.files[0].name
+    });
+    
+    const formData = new FormData();
+
+    Array.from(e.target.files).forEach(image => {
+      formData.append('files', image);
+    });
+
+    axios.post('http://localhost:8000/uploadAvatar.php', formData)
+    .then(res => {
+        console.log({res});
+    }).catch(err => {
+        console.error({err});
+    });
+
+    axios.patch('http://localhost:8000/api/users/6', {
+      photo: e.target.files[0].name
+    },{
+      headers: {
+          'Content-Type': 'application/merge-patch+json'
+      }})
+    .then(res => {
+        console.log({res});
+    }).catch(err => {
+        console.error({err});
+    });
+
+  }
+
   addModification() {
-    axios.patch("http://localhost:8000/api/users/6",  {
+
+    axios.patch("http://localhost:8000/api/users/6", {
       pseudo: this.state.pseudo.toString(),
-      type: !!this.state.selectedSexe,
+      sexe: Boolean(Number(this.state.selectedSexe)),
       nom: this.state.nom.toString(),
       prenom: this.state.prenom.toString(),
       mail: this.state.mail.toString(),
       codeParrain: this.state.codeParrain.toString(),
       codePostal: this.state.codePostal.toString(),
       description: this.state.description.toString(),
-      motDePasse: this.state.motDePasse.toString()
-    })
+      motDePasse: this.state.motDePasse.toString(),
+    },{
+    headers: {
+          'Content-Type': 'application/merge-patch+json'
+    }})
     .then(res => {
       console.log(res);
       console.log(res.data);
@@ -123,11 +174,11 @@ export default class Account extends Component {
   
       //reset les champs
       this.setState({
-      pseudo: "",
-      selectedSexe: 0,
-      mail: "",
-      codePostal:"",
-      motDePasse:""
+        pseudo: "",
+        selectedSexe: 0,
+        mail: "",
+        codePostal:"",
+        motDePasse:""
       });
     })
   }
@@ -175,13 +226,13 @@ export default class Account extends Component {
                               <path d="M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
                             </svg>
                           </label>
-                          <input id="file-input" type="file" />
+                          <input id="file-input" onChange={this.changePicture} type="file" />
                         </div>
                       </span>
-                      <img src="assets/img/avatar.png" alt="avatar" width="240px" />
+                      <img src={"http://localhost:8000/uploads/avatars/" + this.state.titrePhoto} alt={this.state.titrePhoto} width="240px" />
                       <br />
                       <br />
-                      <h4>@Pseudo</h4>
+                      <h4>@{this.state.pseudo}</h4>
                       <Link to={process.env.PUBLIC_URL + "/Myprofil"}> Voir mon profil</Link>
                       <br />
                       <br />
@@ -334,6 +385,8 @@ export default class Account extends Component {
                         className="form-control"
                         type="text"
                         placeholder="Pseudo*"
+                        value={this.state.pseudo}
+                        onChange={this.changePseudo}
                       />
                     </div>
                   </div>
@@ -344,11 +397,11 @@ export default class Account extends Component {
                       placeholder="Genre*"
                       value={this.state.selectedSexe} onChange={this.changeSexe}
                       >
-                        <option selected disabled>
+                        <option disabled>
                           Vous etes ?
                         </option>
-                        <option>Une femme</option>
-                        <option>Un homme</option>
+                        <option value="1">Une femme</option>
+                        <option value="0">Un homme</option>
                       </select>
                     </div>
                   </div>

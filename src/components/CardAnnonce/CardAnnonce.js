@@ -32,7 +32,7 @@ export default class CardAnnonce extends Component {
                         <a className="image-link">
                             <img
                             className="image"
-                            src="https://via.placeholder.com/315x315"
+                            src={"http://localhost:8000/uploads/annonces/" + this.props.photoAnnonce}
                             alt="imageAnnonce"
                             />
                         </a>

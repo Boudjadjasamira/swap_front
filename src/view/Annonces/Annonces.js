@@ -50,7 +50,7 @@ export default class Annonces extends Component {
                 {this.state.allAnnonces.map(e => (
                   <div className="row">
                     <div className="col-12">
-                      <CardAnnonce idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} codePostalEnvoi={e.codePostal} categorieEnvoi={e.idCategorie}></CardAnnonce>
+                      <CardAnnonce photoAnnonce={e.photo} idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} codePostalEnvoi={e.codePostal} categorieEnvoi={e.idCategorie}></CardAnnonce>
                     </div>
                   </div>
                 ))}
