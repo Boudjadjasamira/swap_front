@@ -13,7 +13,8 @@ export default class Myprofil extends Component {
     super(props);
     this.state = {
       pseudo: "",
-      description: ""
+      description: "",
+      dateInscription: ""
     };
   }
 
@@ -23,7 +24,8 @@ export default class Myprofil extends Component {
     .then(res =>
         this.setState({
           pseudo: res.data.pseudo,
-          description: res.data.description
+          description: res.data.description,
+          dateInscription: res.data.dateInscription
         })
     )
   }
@@ -53,7 +55,7 @@ export default class Myprofil extends Component {
             <br />
             {/*---avatar et badge End*/}
             <div className="text-center">
-              <p>Inscrit depuis le 00/00/00</p>
+              <p>Inscrit depuis le {this.state.dateInscription}</p>
               {/*------ Rating----*/}
               <div className="row-center">
                 <div className="rating">

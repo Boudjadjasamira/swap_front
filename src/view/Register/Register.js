@@ -42,6 +42,9 @@ export default class Register extends Component {
 
     addUser(){
 
+        const d = new Date();
+        const laDate = ('0' + d.getDate()).slice(-2) + '/' + ('0' + (d.getMonth() + 1)).slice(-2) + '/' + d.getFullYear();
+
         Swal.fire({
             title: "Ajout dans notre base de donnée",
             html: '<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>',
@@ -52,7 +55,8 @@ export default class Register extends Component {
         axios.post("http://localhost:8000/api/users",  {
             pseudo: this.state.pseudo,
             mail: this.state.mail,
-            motDePasse: this.state.password
+            motDePasse: this.state.password,
+            dateInscription: laDate.toString()
         })
         .then(res => {
             Swal.fire({

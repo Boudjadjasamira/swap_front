@@ -17,12 +17,18 @@ export default class Annonces extends Component {
     super(props);
     this.state = {
       allAnnonces: [],
-      confirm: true
+      confirm: true,
+      allCategories: []
     }
   }
 
   componentDidMount() {
     document.title = "Annonces";
+
+    axios.get(`http://localhost:8000/api/categories`)
+    .then(res => {
+      this.setState({ allCategories: res.data['hydra:member'] });
+    })
 
     //recuperation de toutes les annonces
     axios.get(`http://localhost:8000/api/annonces`)
@@ -50,7 +56,7 @@ export default class Annonces extends Component {
                 {this.state.allAnnonces.map(e => (
                   <div className="row">
                     <div className="col-12">
-                      <CardAnnonce photoAnnonce={e.photo} idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} codePostalEnvoi={e.codePostal} categorieEnvoi={e.idCategorie}></CardAnnonce>
+                      <CardAnnonce lesCategories={this.state.allCategories} photoAnnonce={e.photo} idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} codePostalEnvoi={e.codePostal} categorieEnvoi={e.idCategorie}></CardAnnonce>
                     </div>
                   </div>
                 ))}

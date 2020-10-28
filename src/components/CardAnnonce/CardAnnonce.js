@@ -9,9 +9,20 @@ export default class CardAnnonce extends Component {
         super(props);
         this.state = {
             // removed: true,
-            effectRemove: "animate__animated animate__fadeInDown"
+            effectRemove: "animate__animated animate__fadeInDown",
+            categorieLabel: this.props.categorieEnvoi
         }
         this.deleteAnnonce = this.deleteAnnonce.bind(this);
+    }
+
+    componentDidMount(){
+        this.props.lesCategories.forEach(
+            element => {
+                if(element.id == this.props.categorieEnvoi){
+                    this.setState({categorieLabel: element.titre})
+                }
+            }
+        );
     }
 
     deleteAnnonce() {
@@ -49,7 +60,7 @@ export default class CardAnnonce extends Component {
                             </div>
                             <div className="col-sm-3 text-align-center">
                             <span className="badge badge-pill bg-warning text-white  fw-normal pull-right">
-                                Catégorie {this.props.categorieEnvoi}
+                                Catégorie {this.state.categorieLabel}
                                 </span>
                                 <p className="value3 mt-sm">Posté par {this.props.pseudoEnvoi}</p>
                                 <p className="fs-mini text-muted">le {this.props.dateEnvoi}</p>
