@@ -27,8 +27,7 @@ export default class CardAnnonce extends Component {
 
     render() {
         return (
-            <div >               
-
+            <div > 
                 <section className={"search-result-item border " + this.state.effectRemove}>
                         <a className="image-link">
                             <img
@@ -43,19 +42,18 @@ export default class CardAnnonce extends Component {
                                 <div className="search-result-item-heading">
                                 <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>{this.props.titreEnvoi}</h4></Link>
                                 <hr />
-                                <span className="badge badge-pill bg-warning fw-normal pull-right">
-                                {this.props.categorieEnvoi}
-                                </span>
                                 </div>
-                                <p className="info">{this.props.codePostalEnvoi}</p>
-                                <p className="description">
+                                <p className="description text-justify">
                                 {this.props.descriptionEnvoi}
                                 </p>
                             </div>
                             <div className="col-sm-3 text-align-center">
+                            <span className="badge badge-pill bg-warning text-white  fw-normal pull-right">
+                                Catégorie {this.props.categorieEnvoi}
+                                </span>
                                 <p className="value3 mt-sm">Posté par {this.props.pseudoEnvoi}</p>
                                 <p className="fs-mini text-muted">le {this.props.dateEnvoi}</p>
-                                <br />
+                                <p className="value3 mt-sm">Ville : {this.props.codePostalEnvoi}</p>
                                 <button class="btn btn-outline-dark  btn-sm" onClick={this.deleteAnnonce}><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
                         </svg></button>
@@ -63,8 +61,7 @@ export default class CardAnnonce extends Component {
                             </div>
                         </div>
                 </section>
-                <br />
-
+                < br />
             </div>
 
         )
