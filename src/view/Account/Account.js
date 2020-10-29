@@ -115,7 +115,7 @@ export default class Account extends Component {
   changePicture(e){
     this.setState({
       images: e.target.files,
-      titrePhoto: e.target.files[0].name
+      titrePhoto: e.target.files[0].name,
     });
     
     const formData = new FormData();
@@ -166,7 +166,7 @@ export default class Account extends Component {
       console.log(res.data);
       Swal.fire({
         icon: 'success',
-        title: 'Changements sauvegardés !.',
+        title: 'Changements sauvegardés !',
         showConfirmButton: false,
         timer: 2500
       });
@@ -174,7 +174,7 @@ export default class Account extends Component {
       //reset les champs
       this.setState({
         pseudo: "",
-        selectedSexe: 0,
+        selectedSexe: "",
         mail: "",
         codePostal:"",
         motDePasse:""
@@ -228,7 +228,7 @@ export default class Account extends Component {
                           <input id="file-input" onChange={this.changePicture} type="file" />
                         </div>
                       </span>
-                      <img src={"http://localhost:8000/uploads/avatars/" + this.state.titrePhoto} alt={this.state.titrePhoto} width="240px" />
+                      <img className="image-avatar" src={"http://localhost:8000/uploads/avatars/" + this.state.titrePhoto} alt={this.state.titrePhoto} width="240px" />
                       <br />
                       <br />
                       <h4>@{this.state.pseudo}</h4>

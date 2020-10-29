@@ -1,3 +1,20 @@
+/*
+   _______          __     _____   
+  / ____\ \        / /\   |  __ \  
+ | (___  \ \  /\  / /  \  | |__) | 
+  \___ \  \ \/  \/ / /\ \ |  ___/  
+  ____) |  \  /\  / ____ \| |      
+ |_____/    \/  \/_/    \_\_|      
+                                   
+Application d'échange de service entre particulier
+Fil Rouge 2020
+--------------------------------------------------
+Boudjadja Samira 
+Lecomte Lara                                
+
+*/
+
+
 * {
   margin: 0px;
   padding: 0px;
@@ -21,7 +38,6 @@
   font-family: "Poppins", sans-serif;
 }
 
-/*---------------------------------------------*/
 
 #a {
   font-family: "Poppins", sans-serif;
@@ -102,6 +118,8 @@ hr {
   border: 0;
   border-top: 1px solid rgba(0,0,0,.1);
 }
+
+
 /*---------------------Input------------------------*/
 
 input {
@@ -197,8 +215,7 @@ iframe {
   border: none !important;
 }
 
-/*//////////////////////////////////////////////////////////////////
-  [ Utility ]*/
+ 
 
 .txt1 {
   font-family: "Poppins", sans-serif;
@@ -250,9 +267,7 @@ iframe {
   justify-content: space-between;
   padding: 0px 380px 0px 90px;
 }
-
-/*------------------------------------------------------------------
-  [  ]*/
+/*---------------------------------------------*/
 
 .login100-pic {
   width: 750px;
@@ -262,8 +277,7 @@ iframe {
   max-width: 120%;
 }
 
-/*------------------------------------------------------------------
-  [  ]*/
+/*---------------------------------------------*/
 
 .login100-form {
   width: 290px;
@@ -304,8 +318,7 @@ iframe {
   margin-left: -65px;
 }
 
-/*------------------------------------------------------------------
-  [ Button ]*/
+/*---------------------------------------------*/
 
 .container-login100-form-btn {
   width: 100%;
@@ -342,7 +355,7 @@ iframe {
   font-size: 14px;
 }
 
-/*--------------------card catégories--------------*/
+/*-------------Card catégories--------------*/
 
 .card-counter {
   box-shadow: 2px 2px 10px #dadada;
@@ -1414,3 +1427,23 @@ input:checked[type="checkbox"]:after {
   left:50px;
 }
 
+/*--------image annonce---------*/
+.image-annonce{
+  width: 200px;
+	height: 200px;
+}
+
+
+/*--------image avatar---------*/
+.image-avatar{
+  width: 240px;
+  height: 240px;
+  border-radius: 8px;
+}
+
+/*--------image messages dashboard---------*/
+.image-contact{
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+}
