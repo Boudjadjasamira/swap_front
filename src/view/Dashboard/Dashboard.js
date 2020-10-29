@@ -4,35 +4,44 @@ import '../../css/styles.css';
 import axios from 'axios';
 import CardDashboard from '../../components/CardDashboard/CardDashboard';
 import MessageRow from '../../components/MessageRow/MessageRow';
+import Swal from 'sweetalert2';
 
 export default class Dashboard extends Component {
+
+    
     constructor(props) {
         super(props);
         this.state = {
           allContact: [],
-
         }
-        this.deleteMessage = this.deleteMessage.bind(this);
        
       }
+      
     
       componentDidMount() {
         document.title = "Dashboard";
+        
     
         axios.get(`http://localhost:8000/api/contacts`)
     .then(res => {
       this.setState({ allContact: res.data['hydra:member'] });
     })
     
-
     } 
 
-    deleteMessage() {
+    deleteMessage () {
         axios.delete('http://localhost:8000/api/contacts/' + this.props.idContact)
             .then(res => {
                 this.setState({ allContact: res.data['hydra:member'] });                
             })
+            Swal.fire({
+                icon: 'error',
+                text: 'Message supprimé',
+                showConfirmButton: false,
+            })
     }
+
+    
     
     
     
@@ -147,7 +156,7 @@ export default class Dashboard extends Component {
                                         data-dismiss="modal"
                                         defaultValue="Annuler"
                                         />
-                                        <button className="btn btn-warning" onClick={this.deleteMessage}>Supprimer</button>
+                                        <button className="btn btn-warning" onClick={this.deleteMessage()}>Supprimer</button>
                                     </div>
                                     </form>
                                 </div>
