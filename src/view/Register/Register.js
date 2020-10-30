@@ -49,6 +49,7 @@ export default class Register extends Component {
             title: "Ajout dans notre base de donnée",
             html: '<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>',
             showConfirmButton: false,
+            allowOutsideClick: false
         });
 
         //Ajout dans la base
@@ -63,7 +64,8 @@ export default class Register extends Component {
                 icon: 'success',
                 title: 'Votre compte est bien créé.',
                 showConfirmButton: false,
-                timer: 2500
+                timer: 2500,
+                allowOutsideClick: false
             });
                 
             localStorage.setItem('connected', "1")
