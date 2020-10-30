@@ -14,18 +14,20 @@ export default class Myprofil extends Component {
     this.state = {
       pseudo: "",
       description: "",
-      dateInscription: ""
+      dateInscription: "",
+      photo: ""
     };
   }
 
   componentDidMount(){
     //Recuperation des infos
-    axios.get(`http://localhost:8000/api/users/6`)
+    axios.get(`http://localhost:8000/api/users/` + localStorage.getItem('ID'))
     .then(res =>
         this.setState({
           pseudo: res.data.pseudo,
           description: res.data.description,
-          dateInscription: res.data.dateInscription
+          dateInscription: res.data.dateInscription,
+          photo: res.data.photo
         })
     )
   }
@@ -46,7 +48,7 @@ export default class Myprofil extends Component {
                 <span className="notify-badge-profil">
                   <img src="assets/icone/validate.png" alt="#" style={{ width: 60 }} />
                 </span>
-                <img src="assets/img/avatar.png" alt="avatar" width="240px" />
+                <img src={"http://localhost:8000/uploads/avatars/" + this.state.photo} alt={this.state.photo} width="240px" />
                 <br />
                 <br />
                 <h1>@{this.state.pseudo}</h1>
