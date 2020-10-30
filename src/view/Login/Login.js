@@ -3,8 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../css/login.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { data } from 'jquery';
-
+import { Redirect } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 export default class login extends Component {
 
@@ -12,7 +12,8 @@ export default class login extends Component {
     super(props);
     this.state = {
       pseudo: "",
-      password: ""
+      password: "",
+      redirection: false
     };
     this.changePseudo = this.changePseudo.bind(this);
     this.changePassword = this.changePassword.bind(this);
@@ -31,15 +32,31 @@ export default class login extends Component {
     axios.post('http://localhost:8000/api/login', {
       pseudo: this.state.pseudo,
       motDePasse: this.state.password
-    }).then((res => console.log(res.data)))
-    .catch((err => console.log(err)))
+    }, { headers : {"Content-Type": "application/json"}})
+    .then(res => {
+      if(res.data.user > 0){
+        localStorage.setItem('connected', "1");
+        localStorage.setItem('ID', res.data.user);
+        this.setState({redirection: true})
+      }else{
+        Swal.fire({
+          icon: 'error',
+          title: "Connexion",
+          html: '<p>Impossible de se connecter.</p>',
+          showConfirmButton: true,
+        });
+      }
+    })
   }
 
 
   render() {
     return (
-
       <div>
+        {this.state.redirection ? 
+          <Redirect to="/"></Redirect>
+          :
+        
         <div className="limiter">
           <div className="container-login100">
             <div className="wrap-login100">
@@ -88,13 +105,14 @@ export default class login extends Component {
                   </a>
                 </div>
                 <div className="text-center p-t-136">
-                  <Link  className="txt2" to={process.env.PUBLIC_URL + "/Register"}> Créer un compte</Link>
+                  <Link className="txt2" to={process.env.PUBLIC_URL + "/Register"}> Créer un compte</Link>
                 </div>
               </div>
             </div>
           </div>
+          <center>SWAP - 2020 Tous droits réservés</center>
         </div>
-        <center>SWAP - 2020 Tous droits réservés</center>
+        }
       </div>
 
     );
