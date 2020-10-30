@@ -55,10 +55,10 @@ export default class MessageRow extends Component {
                 <td><img className="image-contact" src={"http://localhost:8000/uploads/contacts/" + this.state.photo} alt="imageContact" /></td>
                 <td>
                     <a href="#editEmployeeModal" className="edit" data-toggle="modal" >
-                        <i className="material-icons" data-toggle="tooltip" title="Répondre"></i>Editer
+                        <i className="material-icons" data-toggle="tooltip" title="Répondre">create</i> 
                     </a>
                     <a href={"#" + this.state.modalNameDelete} className="delete" data-toggle="modal">
-                        <i className="material-icons" data-toggle="tooltip" title="Supprimer"></i>Supprimer
+                        <i className="material-icons" data-toggle="tooltip" title="Supprimer">delete</i>
                     </a>
                 </td>
                 

@@ -85,10 +85,10 @@ export default class AnnoncesRow extends Component {
                 <td>{this.state.description}</td>
                 <td>
                     <a href={"#" + this.state.modalEditer} className="edit" data-toggle="modal">
-                        <i className="material-icons" data-toggle="tooltip" title="Moderer"></i>Moderer
+                        <i className="material-icons" data-toggle="tooltip" title="Moderer">create</i>
                     </a>
                     <a href={"#" + this.state.modalSupprimer} className="delete" data-toggle="modal">
-                        <i className="material-icons" data-toggle="tooltip" title="Supprimer"></i>Supprimer
+                        <i className="material-icons" data-toggle="tooltip" title="Supprimer">delete</i>
                     </a>
                 </td>
 
