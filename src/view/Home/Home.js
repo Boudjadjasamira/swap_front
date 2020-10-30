@@ -58,19 +58,16 @@ export default class Home extends Component {
         <Search></Search>
 
 
-            {/* Début Section annonces */}
-            <div className="container">
-            {this.state.allAnnonces.map(e => (
-              <div className="row">
-                <div className="col-12">
-                <CardAnnonce lesCategories={this.state.allCategories} idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} codePostalEnvoi={e.codePostal} categorieEnvoi={e.idCategorie} ></CardAnnonce>
-                </div>
+             {/* Module annonces */}
+             <div className="container">
+                {this.state.allAnnonces.map(e => (
+                  <div className="row">
+                    <div className="col-12">
+                      <CardAnnonce lesCategories={this.state.allCategories} photoAnnonce={e.photo} idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} codePostalEnvoi={e.codePostal} categorieEnvoi={e.idCategorie}></CardAnnonce>
+                    </div>
+                  </div>
+                ))}
               </div>
-              ))}
-              <br />
-            </div>
-            <br />
-            <br />
 
         <Footer></Footer>
       </div>
