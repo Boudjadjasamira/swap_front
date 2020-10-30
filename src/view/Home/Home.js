@@ -12,6 +12,8 @@ import CardAnnonce from '../../components/CardAnnonce/CardAnnonce';
 import ImgHome from '../../components/ImgHome/ImgHome';
 //Inclu Axios
 import axios from 'axios';
+//Inclu Jquery
+import $ from 'jquery';
 
 
 export default class Home extends Component {
@@ -40,6 +42,29 @@ export default class Home extends Component {
         this.setState({ allAnnonces: res.data['hydra:member'] });
       })
 
+      $(document).ready(function(){
+        $("#searchBarOffresHome").click(function(){
+           if($("#searchBarOffresHome").is(':checked')){
+            $(".search-result-item").each(function( index ) {
+              $(this).show();
+              if($(this).data("type") == false){
+                $(this).hide();
+              }
+            });
+           }
+        })
+
+        $("#searchBarDemandesHome").click(function(){
+         if($("#searchBarDemandesHome").is(':checked')){
+            $(".search-result-item").each(function( index ) {
+              $(this).show();
+              if($(this).data("type") == true){
+                $(this).hide();
+              }
+            });
+         }
+      })
+     })
   } 
 
 
@@ -63,7 +88,7 @@ export default class Home extends Component {
                 {this.state.allAnnonces.map(e => (
                   <div className="row">
                     <div className="col-12">
-                      <CardAnnonce lesCategories={this.state.allCategories} photoAnnonce={e.photo} idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} codePostalEnvoi={e.codePostal} categorieEnvoi={e.idCategorie}></CardAnnonce>
+                      <CardAnnonce lesCategories={this.state.allCategories} typeAnnonce={e.type} photoAnnonce={e.photo} idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} codePostalEnvoi={e.codePostal} categorieEnvoi={e.idCategorie}></CardAnnonce>
                     </div>
                   </div>
                 ))}

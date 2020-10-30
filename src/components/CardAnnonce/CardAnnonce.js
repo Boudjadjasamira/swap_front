@@ -10,7 +10,15 @@ export default class CardAnnonce extends Component {
         this.state = {
             // removed: true,
             effectRemove: "animate__animated animate__fadeInDown",
-            categorieLabel: this.props.categorieEnvoi
+            categorieLabel: this.props.categorieEnvoi,
+            pseudo: "",
+            nom: "",
+            prenom: "",
+            mail: "",
+            codePostal: "",
+            description: "",
+            titrePhoto: "",
+            type: 0
         }
         this.deleteAnnonce = this.deleteAnnonce.bind(this);
     }
@@ -24,20 +32,19 @@ export default class CardAnnonce extends Component {
             }
         );
     
-
-    axios.get(`http://localhost:8000/api/users/`)
-    .then(res =>
-        this.setState({
-          pseudo: res.data.pseudo,
-          nom: res.data.nom,
-          prenom: res.data.prenom,
-          mail: res.data.mail,
-          codePostal: res.data.codePostal,
-          description: res.data.description,
-          titrePhoto: res.data.photo
-        })
-    )
-  }
+        axios.get(`http://localhost:8000/api/users/`)
+        .then(res =>
+            this.setState({
+                pseudo: res.data.pseudo,
+                nom: res.data.nom,
+                prenom: res.data.prenom,
+                mail: res.data.mail,
+                codePostal: res.data.codePostal,
+                description: res.data.description,
+                titrePhoto: res.data.photo,
+            })
+        );
+    }
 
     deleteAnnonce() {
         axios.delete('http://localhost:8000/api/annonces/' + this.props.idAnnonce)
@@ -53,7 +60,7 @@ export default class CardAnnonce extends Component {
     render() {
         return (
             <div > 
-                <section className={"search-result-item border " + this.state.effectRemove}>
+                <section data-type={this.props.typeAnnonce.toString()} className={"search-result-item border " + this.state.effectRemove}>
                         <a className="image-link">
                             <img
                             className="image-annonce"

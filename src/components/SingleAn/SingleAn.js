@@ -23,7 +23,6 @@ export default class SingleAnnonce extends Component {
   componentDidMount() {
     const search = window.location.pathname.toString().split('/')[2];
     let idCategorieZero = 0;
-    var titre = ""
     axios.get('http://localhost:8000/api/annonces/' + search)
     .then(( res => {
        this.setState({
@@ -34,9 +33,7 @@ export default class SingleAnnonce extends Component {
         codePostal: res.data['codePostal'],
         photo: res.data["photo"]
        })
-       titre = res.data['titre']
-       idCategorieZero = res.data["idCategorie"]
-       document.title = "Annonce - " + titre.toString() + " - " + idCategorieZero
+       document.title = "Annonce - " + res.data['titre'].toString() + " - " + res.data["idCategorie"].toString()
     }));
 
     //recuperation de toutes les categories

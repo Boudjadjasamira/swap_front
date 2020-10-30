@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 export default class SearchBar extends Component {
 
     render() {
@@ -12,8 +11,7 @@ export default class SearchBar extends Component {
                             className="form-check-input"
                             type="radio"
                             name="inlineRadioOptions"
-                            id="inlineRadio1"
-                            defaultValue="option1"
+                            id="searchBarOffresHome"
                         />
                         <label className="form-check-label" htmlFor="inlineRadio1">
                             Offres
@@ -24,8 +22,7 @@ export default class SearchBar extends Component {
                             className="form-check-input"
                             type="radio"
                             name="inlineRadioOptions"
-                            id="inlineRadio2"
-                            defaultValue="option2"
+                            id="searchBarDemandesHome"
                         />
                         <label className="form-check-label" htmlFor="inlineRadio2">
                             Demandes
