@@ -28,9 +28,7 @@ export default class CardDashboard extends Component {
         axios.get(`http://localhost:8000/api/users`)
         .then(res => {
             this.setState({ nombreUtilisateurs: res.data['hydra:member'].length.toString() });
-        })
-
-        
+        })        
     } 
 
     render() {
