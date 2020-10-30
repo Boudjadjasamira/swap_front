@@ -60,7 +60,7 @@ export default class CardAnnonce extends Component {
     render() {
         return (
             <div > 
-                <section data-type={this.props.typeAnnonce.toString()} className={"search-result-item border " + this.state.effectRemove}>
+                <section data-type={this.props.typeAnnonce} className={"search-result-item border " + this.state.effectRemove}>
                         <a className="image-link">
                             <img
                             className="image-annonce"

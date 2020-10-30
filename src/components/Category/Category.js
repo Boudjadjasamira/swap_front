@@ -31,7 +31,7 @@ export default class Category extends Component {
                             </Link>
                         </div>
                         <div className="col-md-3">
-                            <Link className="" to={process.env.PUBLIC_URL + "/Categorie/AideALaPersonne"}>
+                            <Link className="" to={process.env.PUBLIC_URL + "/Categorie/Aide-a-la-personne"}>
                                 <div className="card-counter secondary">
                                     <span className="count-name">AIDE A LA PERSONNE</span>
                                 </div>

@@ -9,7 +9,6 @@ import $ from 'jquery';
 //Inclu les components
 import CardAnnonce from '../../components/CardAnnonce/CardAnnonce.js';
 import SearchBar from '../../components/SearchBar/SearchBar';
-import Category from '../../components/Category/Category';
 import ImgAnnonce from '../../components/ImgAnnonce/ImgAnnonce';
 
 export default class Annonces extends Component {
@@ -17,29 +16,48 @@ export default class Annonces extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allAnnonces: [],
+      allAnnoncesCategorie: [],
       confirm: true,
-      allCategories: []
+      allCategories: [],
+      laCategorie: ""
     }
   }
 
   componentDidMount() {
-    document.title = "Annonces";
+    const search = window.location.pathname.toString().split('/')[2];
+    document.title = "Catégorie - "  + search.toString();
+    this.setState({
+        laCategorie: search.toString()
+    })
+
+    var lesCategories = [];
+    var annoncesTrier = [];
+    var idCategorie = 0;
 
     axios.get(`http://localhost:8000/api/categories`)
     .then(res => {
       this.setState({ allCategories: res.data['hydra:member'] });
-    })
+      res.data['hydra:member'].map(e => {
+        if(e['titre'] == search.toString()){
+            idCategorie = e['id'];
+        }
+      });
 
-    //recuperation de toutes les annonces
+    });
     axios.get(`http://localhost:8000/api/annonces`)
-      .then(res => {
-        this.setState({ allAnnonces: res.data['hydra:member'] });
-      })
+    .then(res => {
+        res.data['hydra:member'].map(e => {
+            if(e['idCategorie'] == idCategorie){
+                annoncesTrier.push(e)
+            }
+        })
+        this.setState({allAnnoncesCategorie: annoncesTrier})
+    })
+      
 
       $(document).ready(function(){
         $("#searchBarOffresHome").click(function(){
-           if($("#searchBarOffresHome").is(':checked')){
+            if($("#searchBarOffresHome").is(':checked')){
             $(".search-result-item").each(function( index ) {
               $(this).show();
               if($(this).data("type") == false){
@@ -50,14 +68,14 @@ export default class Annonces extends Component {
         })
 
         $("#searchBarDemandesHome").click(function(){
-         if($("#searchBarDemandesHome").is(':checked')){
-            $(".search-result-item").each(function( index ) {
-              $(this).show();
-              if($(this).data("type") == true){
-                $(this).hide();
-              }
-            });
-         }
+            if($("#searchBarDemandesHome").is(':checked')){
+                $(".search-result-item").each(function( index ) {
+                $(this).show();
+                if($(this).data("type") == true){
+                    $(this).hide();
+                }
+                });
+            }
         })
      })
   }
@@ -67,17 +85,19 @@ export default class Annonces extends Component {
     return (
 
       <div className="body" id="bodyHome">
-          <Header></Header>
+            <Header></Header>
 
-          <ImgAnnonce></ImgAnnonce>
+            <ImgAnnonce></ImgAnnonce>
 
-          <Category></Category>
-
-          <SearchBar></SearchBar>
+            <center>
+                <h1>Catégorie : {this.state.laCategorie}</h1>
+            </center >
+            <br/>
+            <SearchBar></SearchBar>
 
               {/* Module annonces */}
               <div className="container">
-                {this.state.allAnnonces.map(e => (
+                {this.state.allAnnoncesCategorie.map(e => (
                   <div className="row">
                     <div className="col-12">
                       <CardAnnonce lesCategories={this.state.allCategories} typeAnnonce={e.type} photoAnnonce={e.photo} idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} codePostalEnvoi={e.codePostal} categorieEnvoi={e.idCategorie}></CardAnnonce>

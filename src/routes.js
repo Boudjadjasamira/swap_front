@@ -21,7 +21,7 @@ import Dashboard from './view/Dashboard/Dashboard.js';
 import AdminAnnonces from './view/Dashboard/AdminAnnonces.js';
 import Avis from './view/Dashboard/Avis.js';
 import Membres from'./view/Dashboard/Membres.js';
-
+import Categorie from'./view/Categorie/Categorie.js';
 
 
 export default function Routes() {
@@ -49,6 +49,7 @@ export default function Routes() {
             <Route path="/Account" exact component={Account} />
             <Route path="/Contact" exact component={Contact} />
             <Route path="/Annonce/:id" exact component={SingleAnnonce} />
+            <Route path="/Categorie/:name" exact component={Categorie}/>
             <Route path="/Publish" exact component={Publish} />
             <Route path="/Invite" exact component={Invite} />
             <Route path="/Services" exact component={Services} />
