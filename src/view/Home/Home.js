@@ -63,7 +63,7 @@ export default class Home extends Component {
               }
             });
          }
-      })
+        })
      })
   } 
 
@@ -84,7 +84,7 @@ export default class Home extends Component {
 
 
              {/* Module annonces */}
-             <div className="container">
+             <div className="container resulted">
                 {this.state.allAnnonces.map(e => (
                   <div className="row">
                     <div className="col-12">

@@ -1,33 +1,17 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import $ from 'jquery';
 
 export default class Search extends Component {
-    state = {
-      query: '',
-      results: []
+ 
+    componentDidMount(){
+      $("#inputSearchHome").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $(".resulted > .row > .col-12").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
     }
-   
-    getInfo = () => {
-        axios.get('http://localhost:8000/api/annonces' + this.props.titreAnnonce)
-          .then(({ data}) => {
-            this.setState({
-                results: data.data                       
-            })
-          })
-      }
-    
-      handleInputChange = () => {
-        this.setState({
-          query: this.search.value
-        }, () => {
-          if (this.state.query && this.state.query.length > 1) {
-            if (this.state.query.length % 2 === 0) {
-              this.getInfo()
-            }
-          } 
-        })
-      }
-    
 
     render() {
         return (
@@ -40,9 +24,7 @@ export default class Search extends Component {
                             type="text"
                             className="form-control-ann"
                             placeholder="Entrez votre recherche..."
-                            id="input"
-                            ref={input => this.search = input}
-                            onChange={this.handleInputChange}
+                            id="inputSearchHome"
                         />
                     </div>
                 </div>
