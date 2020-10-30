@@ -51,7 +51,7 @@ export default class CardDashboard extends Component {
                             <div className="icon">
                             <i className="fa fa-comment" aria-hidden="true" />
                             </div>
-                            <Link className="card-box-footer" to={process.env.PUBLIC_URL + "/Dashboard"}> View More <i className="fa fa-arrow-circle-right" /></Link>  
+                            <Link className="card-box-footer" to={process.env.PUBLIC_URL + "/Dashboard"}> Voir plus <i className="fa fa-arrow-circle-right" /></Link>  
                         </div>
                         </div>
                         <div className="col-lg-3 col-sm-6">
@@ -63,7 +63,7 @@ export default class CardDashboard extends Component {
                             <div className="icon">
                             <i className="fa fa fa-users" aria-hidden="true" />
                             </div>
-                            <Link className="card-box-footer" to={process.env.PUBLIC_URL + "/Dashboard/Membres"}> View More <i className="fa fa-arrow-circle-right" /></Link>  
+                            <Link className="card-box-footer" to={process.env.PUBLIC_URL + "/Dashboard/Membres"}> Voir plus <i className="fa fa-arrow-circle-right" /></Link>  
                         </div>
                         </div>
                         <div className="col-lg-3 col-sm-6">
@@ -75,7 +75,7 @@ export default class CardDashboard extends Component {
                             <div className="icon">
                             <i className="fa fa-star" aria-hidden="true" />
                             </div>
-                            <Link className="card-box-footer" to={process.env.PUBLIC_URL + "/Dashboard/Avis"}> View More <i className="fa fa-arrow-circle-right" /></Link>  
+                            <Link className="card-box-footer" to={process.env.PUBLIC_URL + "/Dashboard/Avis"}> Voir plus <i className="fa fa-arrow-circle-right" /></Link>  
                         </div>
                         </div>
                         <div className="col-lg-3 col-sm-6">
@@ -87,7 +87,7 @@ export default class CardDashboard extends Component {
                             <div className="icon">
                             <i className="fa fa-list-alt" />
                             </div>
-                            <Link className="card-box-footer" to={process.env.PUBLIC_URL + "/Dashboard/AdminAnnonces"}> View More <i className="fa fa-arrow-circle-right" /></Link>  
+                            <Link className="card-box-footer" to={process.env.PUBLIC_URL + "/Dashboard/AdminAnnonces"}> Voir plus <i className="fa fa-arrow-circle-right" /></Link>  
                         </div>
                         </div>
             </div>
