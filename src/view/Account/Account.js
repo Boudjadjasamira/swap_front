@@ -11,7 +11,6 @@ import axios from 'axios';
 
 export default class Account extends Component {
 
-
    constructor(props) {
     super(props);
     this.state = {
@@ -44,7 +43,7 @@ export default class Account extends Component {
 
   componentDidMount(){
     //Recuperation des infos
-    axios.get(`http://localhost:8000/api/users/6`)
+    axios.get(`http://localhost:8000/api/users/` + localStorage.getItem('ID'))
     .then(res =>
         this.setState({
           pseudo: res.data.pseudo,
@@ -131,7 +130,7 @@ export default class Account extends Component {
         console.error({err});
     });
 
-    axios.patch('http://localhost:8000/api/users/6', {
+    axios.patch('http://localhost:8000/api/users/' + localStorage.getItem('ID'), {
       photo: e.target.files[0].name
     },{
       headers: {
