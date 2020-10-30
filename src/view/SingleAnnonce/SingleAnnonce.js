@@ -5,17 +5,9 @@ import Header from '../Common/Header';
 import Footer from '../Common/Footer';
 import SingleAn from '../../components/SingleAn/SingleAn';
 
-
 export default class SingleAnnonce extends Component {
-
-  componentDidMount() {
-    document.title = "Home"
-  }
-
   render() {
-
     return (
-
       <div className="body" id="bodyHome">
         {/* HEADER */}
         <Header></Header>

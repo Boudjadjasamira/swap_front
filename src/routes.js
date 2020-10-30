@@ -48,7 +48,7 @@ export default function Routes() {
             <Route path="/Faq" exact component={Faq} />
             <Route path="/Account" exact component={Account} />
             <Route path="/Contact" exact component={Contact} />
-            <Route path="/SingleAnnonce" exact component={SingleAnnonce} />
+            <Route path="/Annonce/:id" exact component={SingleAnnonce} />
             <Route path="/Publish" exact component={Publish} />
             <Route path="/Invite" exact component={Invite} />
             <Route path="/Services" exact component={Services} />

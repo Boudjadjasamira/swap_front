@@ -2,130 +2,90 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../css/styles.css';
-
-
+import axios from 'axios';
 
 export default class SingleAnnonce extends Component {
 
+  constructor(props){
+    super(props);
+    this.state = {
+      titre: "",
+      categorie: "",
+      idCategorie: 0,
+      description: "",
+      codePostal: "",
+      date: "",
+      photo: "",
+      allCategories: []
+    }
+  }
+
   componentDidMount() {
-    document.title = "Home"
+    const search = window.location.pathname.toString().split('/')[2];
+    let idCategorieZero = 0;
+    var titre = ""
+    axios.get('http://localhost:8000/api/annonces/' + search)
+    .then(( res => {
+       this.setState({
+        titre: res.data["titre"],
+        idCategorie: res.data["idCategorie"],
+        description: res.data["description"],
+        date: res.data["date"],
+        codePostal: res.data['codePostal'],
+        photo: res.data["photo"]
+       })
+       titre = res.data['titre']
+       idCategorieZero = res.data["idCategorie"]
+       document.title = "Annonce - " + titre.toString() + " - " + idCategorieZero
+    }));
+
+    //recuperation de toutes les categories
+    axios.get(`http://localhost:8000/api/categories`)
+     .then(res => {
+      res.data['hydra:member'].forEach(
+        element => {
+          if(element.id == idCategorieZero){
+            this.setState({categorie: element.titre})
+          }
+        }
+      )
+    });
+
   }
 
   render() {
-
     return (
-
-<div className="container w-50 p-3">
+      <div className="container w-50 p-3">
           <br />
           <div className="media border p-3 flex-column flex-md-row">
             <div className="media-body align-self-center">
               {/*Carousel Wrapper*/}
-              <div
-                id="carousel-example-2"
-                className="carousel slide carousel-fade z-depth-1-half"
-                data-ride="carousel"
-              >
-                {/*Indicators*/}
-                <ol className="carousel-indicators">
-                  <li
-                    data-target="#carousel-example-2"
-                    data-slide-to={0}
-                    className="active"
-                  />
-                  <li data-target="#carousel-example-2" data-slide-to={1} />
-                  <li data-target="#carousel-example-2" data-slide-to={2} />
-                  <li data-target="#carousel-example-2" data-slide-to={3} />
-                </ol>
-                {/*/.Indicators*/}
+              <div id="carousel-example-2" className="carousel slide carousel-fade z-depth-1-half" data-ride="carousel">
                 {/*Slides*/}
                 <div className="carousel-inner" role="listbox">
                   <div className="carousel-item active">
                     <div className="view">
                       <img
                         className="d-block w-100"
-                        src="https://via.placeholder.com/250x150"
-                        alt="First slide"
-                      />
-                      <div className="mask rgba-black-light" />
-                    </div>
-                  </div>
-                  <div className="carousel-item">
-                    {/*Mask color*/}
-                    <div className="view">
-                      <img
-                        className="d-block w-100"
-                        src="https://via.placeholder.com/250x150"
-                        alt="Second slide"
-                      />
-                      <div className="mask rgba-black-light" />
-                    </div>
-                  </div>
-                  <div className="carousel-item">
-                    {/*Mask color*/}
-                    <div className="view">
-                      <img
-                        className="d-block w-100"
-                        src="https://via.placeholder.com/250x150"
-                        alt="Third slide"
-                      />
-                      <div className="mask rgba-black-light" />
-                    </div>
-                  </div>
-                  <div className="carousel-item">
-                    {/*Mask color*/}
-                    <div className="view">
-                      <img
-                        className="d-block w-100"
-                        src="https://via.placeholder.com/250x150"
-                        alt="Four slide"
+                        src={"http://localhost:8000/uploads/annonces/" + this.state.photo}
+                        alt={this.state.photo}
                       />
                       <div className="mask rgba-black-light" />
                     </div>
                   </div>
                 </div>
                 {/*/.Slides*/}
-                {/*Controls*/}
-                <a
-                  className="carousel-control-prev"
-                  href="#carousel-example-2"
-                  role="button"
-                  data-slide="prev"
-                >
-                  <span className="carousel-control-prev-icon" aria-hidden="true" />
-                  <span className="sr-only">Previous</span>
-                </a>
-                <a
-                  className="carousel-control-next"
-                  href="#carousel-example-2"
-                  role="button"
-                  data-slide="next"
-                >
-                  <span className="carousel-control-next-icon" aria-hidden="true" />
-                  <span className="sr-only">Next</span>
-                </a>
-                {/*/.Controls*/}
               </div>
               {/*/.Carousel Wrapper*/}
               <br />
-              <h5 className="p-1 ">Titre annonce</h5>
-
+              <h5 className="p-1 ">{this.state.titre}</h5>
               <hr />
-              <p>Catégorie - Nom catégorie</p>
-              <p>Ville - Régions</p>
-              <p>Posté le 00/00/0000</p>
+              <p>Catégorie - {this.state.categorie}</p>
+              <p>{this.state.codePostal}</p>
+              <p>Posté le {this.state.date}</p>
               <br />
               <p className="text-justify">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam euismod,
-                neque id auctor laoreet, urna velit tempor ipsum, sed posuere elit nibh
-                sit amet massa. Maecenas sed ipsum id felis molestie dapibus a nec
-                risus. Proin auctor dui eu sagittis facilisis. Sed a viverra mi. Morbi
-                nisl sapien, vulputate sit amet blandit eget, auctor nec libero. Duis
-                rutrum viverra augue at efficitur. Fusce massa tortor, tempus ut
-                scelerisque eget, blandit sit amet risus. Aliquam commodo ut velit
-                vestibulum condimentum. Aenean nisi mauris, finibus eget euismod ac,
-                porta a nisi. Suspendisse mattis et est non bibendum. Ut dolor mauris,
-                fermentum nec pretium ac, finibus sed nunc. Nunc et imperdiet ante.
-                Praesent et quam neque. Sed maximus et neque eu vulputate.
+                {this.state.description}
               </p>
               <br />
               <Link className="btn btn-outline-dark my-2 my-sm-0" to={process.env.PUBLIC_URL + "/Account"}>

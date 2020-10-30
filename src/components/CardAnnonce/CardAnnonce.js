@@ -65,7 +65,7 @@ export default class CardAnnonce extends Component {
                             <div className="row">
                             <div className="col-sm-9">
                                 <div className="search-result-item-heading">
-                                <Link to={process.env.PUBLIC_URL + "/SingleAnnonce"}><h4>{this.props.titreEnvoi}</h4></Link>
+                                <Link to={process.env.PUBLIC_URL + "/Annonce/" + this.props.idAnnonce}><h4>{this.props.titreEnvoi}</h4></Link>
                                 <hr />
                                 </div>
                                 <p className="description text-justify">
