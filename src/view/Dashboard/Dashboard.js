@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../css/styles.css';
-import axios from 'axios';
 import CardDashboard from '../../components/CardDashboard/CardDashboard';
 import MessageRow from '../../components/MessageRow/MessageRow';
+import axios from 'axios';
 
 export default class Dashboard extends Component {
 
@@ -25,7 +25,7 @@ export default class Dashboard extends Component {
     render() {
         return (
             <div className="body" id="bodyHome">
-                <CardDashboard nombreMessagesContact={this.state.allContact.length.toString()}> </CardDashboard>
+                <CardDashboard> </CardDashboard>
                 <div className="container-fluid">
                     <div className="table-responsive">
                         <div className="table-wrapper">

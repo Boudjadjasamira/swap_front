@@ -28,18 +28,11 @@ export default class login extends Component {
   }
 
   connect(){
-    axios.post('http://localhost:8000/api/login_check', {
+    axios.post('http://localhost:8000/api/login', {
       pseudo: this.state.pseudo,
-      mot_de_passe: this.state.password
-    }, {
-      headers : { 
-        'authorization': "Bearer c023eb356c2b3f878a5f8d94de1e1697",
-        'Accept' : 'application/json',
-        'Content-Type': 'application/json' 
-      }
-    }).then(res => {
-      console.log(res);
-    })
+      motDePasse: this.state.password
+    }).then((res => console.log(res.data)))
+    .catch((err => console.log(err)))
   }
 
 

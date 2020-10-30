@@ -39,6 +39,7 @@ export default function Routes() {
 
     return (
         <Switch>
+            
             <Route path="/" exact component={Home} />
             <Route path="/Login" exact component={login} />
             <Route path="/Logout" exact component={logout} />
@@ -56,10 +57,11 @@ export default function Routes() {
             <Route path="/Trophy" exact component={Trophy} />
             <Route path="/Review" exact component={Review} />
             <Route path="/Reward" exact component={Reward} />
+
             <Route path="/Dashboard" exact component={Dashboard} />
-            <Route path="/Avis" exact component={Avis} />
-            <Route path="/AdminAnnonces" exact component={AdminAnnonces} />
-            <Route path="/Membres" exact component={Membres} />
+            <Route path="/Dashboard/Avis" exact component={Avis} />
+            <Route path="/Dashboard/AdminAnnonces" exact component={AdminAnnonces} />
+            <Route path="/Dashboard/Membres" exact component={Membres} />
 
             {/*<PrivateRoute authed={false} path='/dashboard' component={Home} />*/}
             <Route path='*' exact={true} component={Erreur404} />

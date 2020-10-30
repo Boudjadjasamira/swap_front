@@ -41,6 +41,8 @@ export default class MessageRow extends Component {
                 supprimerLaLigne: "none"
             })  
         ))
+        let compteur = ($("#nombreMessagesContacts").text() * 1) - 1;
+        $("#nombreMessagesContacts").text(compteur.toString());
     }
     
     render() {
