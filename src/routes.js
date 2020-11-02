@@ -62,7 +62,7 @@ export default function Routes() {
             <PrivateRoute path="/Reward" component={Reward} />
 
             {/* ROUTE ADMIN SECURE */}
-            <PrivateRoute path="/Dashboard" component={Dashboard} />
+            {/*<PrivateRoute path="/Dashboard" component={Dashboard} />*/}
             <PrivateRoute path="/Dashboard/Avis" component={Avis} />
             <PrivateRoute path="/Dashboard/AdminAnnonces" component={AdminAnnonces} />
             <PrivateRoute path="/Dashboard/Membres" component={Membres} />
