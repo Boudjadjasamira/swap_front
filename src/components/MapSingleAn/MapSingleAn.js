@@ -11,8 +11,8 @@ export default class MapSingleAn extends Component {
 
     render() {
         const image = new L.Icon({
-            iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png",
-            iconSize:     [32, 40], // size of the icon
+            iconUrl: "assets/icone/marker.png",
+            iconSize:     [32, 32], // size of the icon
             iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
             popupAnchor:  [-3, -76]// point from which the popup should open relative to the iconAnchor
         });

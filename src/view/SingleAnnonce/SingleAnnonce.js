@@ -5,7 +5,6 @@ import Header from '../Common/Header';
 import Footer from '../Common/Footer';
 import SingleAn from '../../components/SingleAn/SingleAn';
 import axios from 'axios';
-
 import MapSingleAn from '../../components/MapSingleAn/MapSingleAn';
 
 export default class SingleAnnonce extends Component {
@@ -34,7 +33,7 @@ export default class SingleAnnonce extends Component {
   
   render() {
     return (
-      <div className="body" id="bodyHome">
+      <div>
         {/* HEADER */}
         <Header></Header>
 
