@@ -115,7 +115,7 @@ export default class Account extends Component {
 
   addModification() {
 
-    axios.patch("http://localhost:8000/api/users/6", {
+    axios.patch("http://localhost:8000/api/users/" + localStorage.getItem('ID'), {
       pseudo: this.state.pseudo.toString(),
       sexe: Boolean(Number(this.state.selectedSexe)),
       nom: this.state.nom.toString(),
