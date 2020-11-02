@@ -57,10 +57,17 @@ export default class MessageRow extends Component {
                     <a href="#editEmployeeModal" className="edit" data-toggle="modal" >
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                         <i className="material-icons" data-toggle="tooltip" title="Répondre"></i>create
                     </a>
                     <a href={"#" + this.state.modalNameDelete} className="delete" data-toggle="modal">
                         <i className="material-icons" data-toggle="tooltip" title="Supprimer"></i>delete
+=======
+                        <i className="material-icons" data-toggle="tooltip" title="Répondre">create</i> 
+                    </a>
+                    <a href={"#" + this.state.modalNameDelete} className="delete" data-toggle="modal">
+                        <i className="material-icons" data-toggle="tooltip" title="Supprimer">delete</i>
+>>>>>>> 9d7603d1f0249a09a24ee9a3649dfdc2ce3534ea
 =======
                         <i className="material-icons" data-toggle="tooltip" title="Répondre">create</i> 
                     </a>
