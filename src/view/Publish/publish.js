@@ -66,68 +66,86 @@ export default class Publish extends Component {
   }
 
   addAnnonces() {
-    
-    //recuperation de la date
-    const d = new Date();
-    const laDate = ('0' + d.getDate()).slice(-2) + '/' + ('0' + (d.getMonth() + 1)).slice(-2) + '/' + d.getFullYear();
-  
-    Swal.fire({
-      title: 'Ajout en cours...',
-      html: '<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>',
-      allowOutsideClick: false,
-      showConfirmButton: false,
-    });
 
-    const formData = new FormData();
+    let latitude = "";
+    let longitude = "";
+    let ville = "";
 
-    Array.from(this.state.images).forEach(image => {
-      formData.append('files', image);
-    });
-
-    axios.post('http://localhost:8000/uploadAnnonces.php', formData)
+    axios.get('https://api-adresse.data.gouv.fr/search/?q=' + this.state.codePostal)
     .then(res => {
-        console.log({res});
-    }).catch(err => {
-        console.error({err});
+      latitude = res.data.features[0].geometry.coordinates[1];
+      longitude = res.data.features[0].geometry.coordinates[0];
+      ville = res.data.features[0].properties.label;
+
+        //recuperation de la date
+        const d = new Date();
+        const laDate = ('0' + d.getDate()).slice(-2) + '/' + ('0' + (d.getMonth() + 1)).slice(-2) + '/' + d.getFullYear();
+      
+        Swal.fire({
+          title: 'Ajout en cours...',
+          html: '<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>',
+          allowOutsideClick: false,
+          showConfirmButton: false,
+        });
+
+        const formData = new FormData();
+
+        Array.from(this.state.images).forEach(image => {
+          formData.append('files', image);
+        });
+
+        axios.post('http://localhost:8000/uploadAnnonces.php', formData)
+        .then(res => {
+            console.log({res});
+        }).catch(err => {
+            console.error({err});
+        });
+
+        var photoTemp = this.state.images;
+
+        if(photoTemp[0] == null){
+          photoTemp = ""
+        }else{
+          photoTemp = this.state.titrePhoto
+        }
+
+        //Ajout dans la base
+        axios.post("http://localhost:8000/api/annonces",  {
+          titre: this.state.titre.toString(),
+          idCategorie: this.state.categorieS,
+          description: this.state.description.toString(),
+          codePostal: this.state.codePostal.toString(),
+          date: laDate.toString(),
+          photo: photoTemp,
+          type: Boolean(Number(this.state.selectedOffreDemande)),
+          latitude:latitude.toString(),
+          longitude:longitude.toString(),
+          ville:ville.toString(),
+          idUser: localStorage.getItem('ID') * 1
+        })
+        .then(res => {
+          console.log(res);
+          console.log(res.data);
+
+          Swal.fire({
+            icon: 'success',
+            title: 'Votre annonce vient d\'être publiée.',
+            showConfirmButton: false,
+            timer: 2500
+          });
+      
+          //reset les champs
+          this.setState({
+            titre: "",
+            description: "",
+            codePostal: ""
+          });
+        })
+
+
     });
 
-    var photoTemp = this.state.images;
 
-    if(photoTemp[0] == null){
-      photoTemp = ""
-    }else{
-      photoTemp = this.state.titrePhoto
-    }
-
-    //Ajout dans la base
-    axios.post("http://localhost:8000/api/annonces",  {
-      titre: this.state.titre.toString(),
-      idCategorie: this.state.categorieS,
-      description: this.state.description.toString(),
-      codePostal: this.state.codePostal.toString(),
-      date: laDate.toString(),
-      photo: photoTemp,
-      type: Boolean(Number(this.state.selectedOffreDemande)),
-      idUser: localStorage.getItem('ID') * 1
-    })
-    .then(res => {
-      console.log(res);
-      console.log(res.data);
-
-      Swal.fire({
-        icon: 'success',
-        title: 'Votre annonce vient d\'être publiée.',
-        showConfirmButton: false,
-        timer: 2500
-      });
-  
-      //reset les champs
-      this.setState({
-        titre: "",
-        description: "",
-        codePostal: ""
-      });
-    })
     
   }
 
