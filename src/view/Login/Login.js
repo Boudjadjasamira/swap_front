@@ -34,18 +34,29 @@ export default class login extends Component {
       motDePasse: this.state.password
     }, { headers : {"Content-Type": "application/json"}})
     .then(res => {
-      if(res.data.user > 0){
-        localStorage.setItem('connected', "1");
-        localStorage.setItem('ID', res.data.user);
-        this.setState({redirection: true})
-      }else{
-        Swal.fire({
-          icon: 'error',
-          title: "Connexion",
-          html: '<p>Impossible de se connecter.</p>',
-          showConfirmButton: true,
-        });
-      }
+        if(res.data.user > 0){
+          if(res.data.actif == 0){
+            Swal.fire({
+              icon: 'error',
+              title: "Connexion",
+              html: '<p>Impossible de se connecter, l\'utilisateur est désactivé.</p>',
+              showConfirmButton: true,
+            });
+          }else{
+            localStorage.setItem('connected', "1");
+            localStorage.setItem('ID', res.data.user);
+            this.setState({redirection: true})
+          }
+        }else{
+          Swal.fire({
+            icon: 'error',
+            title: "Connexion",
+            html: '<p>Impossible de se connecter.</p>',
+            showConfirmButton: true,
+          });
+        }
+      
+      
     })
   }
 
