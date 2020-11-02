@@ -6,19 +6,30 @@ export default class UserRowMember extends Component {
 
     constructor(props){
         super(props);
+
         this.state = {
             idMembre: 0,
             modalDisabled: "",
             actifUser: false,
-            labelIsActif: "Désactiver"
+            labelIsActif: "Désactiver",
+            modalEdite: "",
+            newPseudoPersonne: "",
+            changeMailPersonne: "",
+            pseudoDeBase: this.props.pseudoPersonne,
+            mailDeBase: this.props.mailPersonne
         }
         this.desactivePersonne = this.desactivePersonne.bind(this);
+        this.editPersonne = this.editPersonne.bind(this);
+
+        this.changePseudoPersonne = this.changePseudoPersonne.bind(this);
+        this.changeMailPersonne = this.changeMailPersonne.bind(this);
     }
 
     componentDidMount(){
         this.setState({
             idMembre: this.props.idPersonne,
-            modalDisabled: "disabledUserModel" + this.props.idPersonne
+            modalDisabled: "disabledUserModel" + this.props.idPersonne,
+            modalEdite: "enabledUserModel" + this.props.idPersonne
         });
         axios.get('http://localhost:8000/api/users/' + this.props.idPersonne)
         .then(res => {
@@ -27,6 +38,14 @@ export default class UserRowMember extends Component {
                 this.setState({labelIsActif: "Activer"})
             }
         })
+    }
+
+    changePseudoPersonne(e){
+        this.setState({newPseudoPersonne: e.target.value});
+    }
+
+    changeMailPersonne(e){
+        this.setState({newMailPersonne: e.target.value})
     }
 
     desactivePersonne(){
@@ -55,18 +74,42 @@ export default class UserRowMember extends Component {
         });
     }
 
+    editPersonne(){
+        Swal.fire({
+            icon: 'information',
+            title: "Modification en cours...",
+            allowOutsideClick: false,
+            showConfirmButton: true,
+        });
+
+        axios.patch('http://localhost:8000/api/users/' + this.state.idMembre, {
+            pseudo: this.state.newPseudoPersonne,
+            mail: this.state.newMailPersonne
+        }, { headers: {
+            "Content-type":"application/merge-patch+json"
+        }}).then(res => {
+            this.setState({pseudoDeBase: this.state.newPseudoPersonne,mailDeBase: this.state.newMailPersonne})
+        })
+
+        Swal.fire({
+            icon: 'success',
+            title: "Modification effectuée",
+            showConfirmButton: true,
+        });
+    }
+
     render(){
         return (
             <tr>
-                <td>{this.props.nomPersonne} {this.props.prenomPersonne}</td>
-                <td>{this.props.mailPersonne}</td>
+                <td>{this.state.pseudoDeBase}</td>
+                <td>{this.state.mailDeBase}</td>
                 <td>                                        
                     <div className="center">
                         <input type="checkbox" name />
                     </div>
                 </td>
                 <td>
-                    <a href="#editEmployeeModal" className="edit" data-toggle="modal">
+                    <a href={"#" + this.state.modalEdite} className="edit" data-toggle="modal">
                         <i className="material-icons" data-toggle="tooltip" title="Edit"></i>Editer
                     </a>
                     <a href={"#" + this.state.modalDisabled} className="edit" data-toggle="modal">
@@ -74,6 +117,32 @@ export default class UserRowMember extends Component {
                     </a>
                 </td>
 
+
+                {/* EDITER UNE PERSONNE */}
+                <div id={this.state.modalEdite} className="modal fade">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h4 className="modal-title">Mettre à jour les informations</h4>
+                                <button type="button" className="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+                            <div className="modal-body">
+                                <div className="form-group">
+                                    <label>Pseudo</label>
+                                    <input type="text" className="form-control" value={this.state.newPseudoPersonne} onChange={this.changePseudoPersonne} required />
+                                </div>
+                                <div className="form-group">
+                                    <label>Email</label>
+                                    <input type="email" className="form-control" value={this.state.newMailPersonne} onChange={this.changeMailPersonne} required />
+                                </div>
+                            </div>
+                            <div className="modal-footer">
+                                <input type="button" className="btn btn-default" data-dismiss="modal" defaultValue="Cancel"/>
+                                <input type="submit" className="btn btn-info" data-dismiss="modal" onClick={this.editPersonne} defaultValue="Save" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 {/* DESACTIVER UNE PERSONNE */}
                 <div id={this.state.modalDisabled} className="modal fade">

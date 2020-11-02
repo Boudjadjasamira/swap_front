@@ -123,7 +123,7 @@ export default class Membres extends Component {
                             </thead>
                             <tbody>
                                 {this.state.allMembers.map(e => (
-                                    <UserRowMember nomPersonne={e.nom} prenomPersonne={e.prenom} mailPersonne={e.mail} idPersonne={e.id}></UserRowMember>
+                                    <UserRowMember pseudoPersonne={e.pseudo} mailPersonne={e.mail} idPersonne={e.id}></UserRowMember>
                                 ))}
                             </tbody>
                         </table>
