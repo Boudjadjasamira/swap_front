@@ -70,12 +70,17 @@ export default class Publish extends Component {
     let latitude = "";
     let longitude = "";
     let ville = "";
+    let departement = "";
+    let regions = "";
 
     axios.get('https://api-adresse.data.gouv.fr/search/?q=' + this.state.codePostal)
     .then(res => {
       latitude = res.data.features[0].geometry.coordinates[1];
       longitude = res.data.features[0].geometry.coordinates[0];
       ville = res.data.features[0].properties.label;
+      departement = res.data.features[0].properties.context.split(',')[0].toString() + ' -' + res.data.features[0].properties.context.split(',')[1].toString();
+      regions = res.data.features[0].properties.context.split(',')[2].toString()
+
 
         //recuperation de la date
         const d = new Date();
@@ -121,6 +126,8 @@ export default class Publish extends Component {
           latitude:latitude.toString(),
           longitude:longitude.toString(),
           ville:ville.toString(),
+          departement: departement.toString(),
+          region: regions.toString(),
           idUser: localStorage.getItem('ID') * 1
         })
         .then(res => {
