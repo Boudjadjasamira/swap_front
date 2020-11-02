@@ -8,7 +8,6 @@ import L from 'leaflet';
 
 export default class MapSingleAn extends Component {
 
-
     render() {
         const image = new L.Icon({
             iconUrl: "assets/icone/marker.png",
