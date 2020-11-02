@@ -28,16 +28,12 @@ export default class CardAnnonce extends Component {
                 }
             }
         );
-
-        console.log(this.props.idUserEnvoi);
-
+        
         axios.get('http://localhost:8000/api/users')
         .then(res => {
             res.data['hydra:member'].map(e => {
                 if(e.id == this.props.idUserEnvoi){
                     this.setState({pseudo: e.pseudo})
-                }else{
-                    this.setState({pseudo: "Non renseigné"})
                 }
             })
         })
