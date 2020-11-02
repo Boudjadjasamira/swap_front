@@ -24,6 +24,8 @@ import Membres from'./view/Dashboard/Membres.js';
 import Categorie from'./view/Categorie/Categorie.js';
 import FiltrerAnnonces from './view/FiltrerAnnonces/FiltrerAnnonces.js';
 import ConditionsUtilisations from './view/Page-conditions-d-utilisations/ConditionsUtilisations.js';
+import MentionsLegales from './view/MentionsLegales/MentionsLegales.js';
+import PolitiqueConfidentialite from './view/PolitiqueConfidentialite/PolitiqueConfidentialite.js';
 
 
 export default function Routes() {
@@ -54,7 +56,8 @@ export default function Routes() {
             <Route path="/Categorie/:name" exact component={Categorie}/>
             <Route path="/Filtrer" exact component={FiltrerAnnonces}/>
             <Route path="/Page-conditions-d-utilisations" exact component={ConditionsUtilisations}/>
-            
+            <Route path="/Mentions-Legales" exact component={MentionsLegales}/>
+            <Route path="/Politique-Confidentialite" exact component={PolitiqueConfidentialite}/>
 
             {/* ROUTE SECURE */}
             <PrivateRoute path='/Account' component={Account} />

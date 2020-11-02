@@ -43,10 +43,10 @@ export default class Footer extends Component {
                   <Link className="nav-link" to={process.env.PUBLIC_URL + "/Page-conditions-d-utilisations"}>Conditions d'utilisations</Link>
                 </li>
                 <li>
-                  <Link className="nav-link" to={process.env.PUBLIC_URL + "/Privacypolicy"}>Politique de confidentialité</Link>
+                  <Link className="nav-link" to={process.env.PUBLIC_URL + "/Politique-Confidentialite"}>Politique de confidentialité</Link>
                 </li>
                 <li>
-                  <Link className="nav-link" to={process.env.PUBLIC_URL + "/Legalenotice"}>Mentions légales</Link>
+                  <Link className="nav-link" to={process.env.PUBLIC_URL + "/Mentions-Legales"}>Mentions légales</Link>
                 </li>
               </ul>
             </div>

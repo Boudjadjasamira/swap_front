@@ -9,7 +9,7 @@ import Footer from '../../view/Common/Footer';
 
 export default class ConditionsUtilisations extends Component {
   componentDidMount() {
-    document.title = "Erreur 404"
+    document.title = "Conditions d'Utilisations"
   }
 
   render() {
