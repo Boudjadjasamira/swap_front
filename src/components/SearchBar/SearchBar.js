@@ -1,6 +1,37 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class SearchBar extends Component {
+    
+    constructor(props){
+        super(props);
+        this.state = {
+            regions: "",
+            departements: "",
+            ville: "",
+            categorie: ""
+        }
+        this.changeRegions = this.changeRegions.bind(this);
+        this.changeDepartements = this.changeDepartements.bind(this);
+        this.changeVille = this.changeVille.bind(this);
+        this.changeCategorie = this.changeCategorie.bind(this);
+    }
+
+    changeCategorie(e){
+        this.setState({categorie: e.target.value});
+    }
+
+    changeVille(e){
+        this.setState({ville: e.target.value});
+    }
+
+    changeDepartements(e){
+        this.setState({departements: e.target.value});
+    }
+
+    changeRegions(e){
+        this.setState({regions: e.target.value});
+    }
 
     render() {
         return (
@@ -37,30 +68,30 @@ export default class SearchBar extends Component {
                                 <div className="col-lg-12">
                                     <div className="row">
                                         <div className="col-lg-2 col-md-3 col-sm-12 p-0">
-                                            <select className="form-control-index custom-select" name="Régions">
+                                            <select className="form-control-index custom-select" onChange={this.changeRegions} name="Régions">
                                                 <option selected disabled>Régions</option>
-                                                <option>Auvergne-Rhône-Alpes</option>
-                                                <option>Bourgogne-Franche-Comté</option>
-                                                <option>Bretagne</option>
-                                                <option>Centre-Val de Loire</option>
-                                                <option>Corse</option>
-                                                <option>Grand Est</option>
-                                                <option>Hauts-de-France</option>
-                                                <option>Île-de-France</option>
-                                                <option>Normandie</option>
-                                                <option>Nouvelle-Aquitaine</option>
-                                                <option>Occitanie</option>
-                                                <option>Pays de la Loire</option>
-                                                <option>Provence-Alpes-Côte d'Azur</option>
-                                                <option>Guadeloupe</option>
-                                                <option>Martinique</option>
-                                                <option>Guyane</option>
-                                                <option>La Réunion</option>
-                                                <option>Mayotte</option>
+                                                <option value="Auvergne-Rhône-Alpes">Auvergne-Rhône-Alpes</option>
+                                                <option value="Bourgogne-Franche-Comté">Bourgogne-Franche-Comté</option>
+                                                <option value="Bretagne">Bretagne</option>
+                                                <option value="Centre-Val de Loire">Centre-Val de Loire</option>
+                                                <option value="Corse">Corse</option>
+                                                <option value="Grand Est">Grand Est</option>
+                                                <option value="Hauts-de-France">Hauts-de-France</option>
+                                                <option value="Île-de-France">Île-de-France</option>
+                                                <option value="Normandie">Normandie</option>
+                                                <option value="Nouvelle-Aquitaine">Nouvelle-Aquitaine</option>
+                                                <option value="Occitanie">Occitanie</option>
+                                                <option value="Pays de la Loire">Pays de la Loire</option>
+                                                <option value="Provence-Alpes-Côte d'Azur">Provence-Alpes-Côte d'Azur</option>
+                                                <option value="Guadeloupe">Guadeloupe</option>
+                                                <option value="Martinique">Martinique</option>
+                                                <option value="Guyane">Guyane</option>
+                                                <option value="La Réunion">La Réunion</option>
+                                                <option value="Mayotte">Mayotte</option>
                                             </select>
                                         </div>
                                         <div className="col-lg-2 col-md-2 col-sm-12 p-0">
-                                            <select className="form-control-index custom-select" name="Départements">
+                                            <select className="form-control-index custom-select" onChange={this.changeDepartements} name="Départements">
                                                 <option selected disabled> Départements </option>
                                                 <option value="01">01 - Ain </option>
                                                 <option value="02">02 - Aisne </option>
@@ -171,25 +202,27 @@ export default class SearchBar extends Component {
                                                 type="text"
                                                 className="form-control-index search-slt-ann"
                                                 placeholder="Ville"
+                                                value={this.state.ville}
+                                                onChange={this.changeVille}
                                             />
                                         </div>
                                         <div className="col-lg-2 col-md-6 col-sm-12 p-0">
-                                            <select className="form-control-index custom-select" name="catégories" >
+                                            <select className="form-control-index custom-select" onChange={this.changeCategorie} name="catégories" >
                                                 <option selected disabled> Catégories </option>
-                                                <option>Bricolage</option>
-                                                <option>Cours</option>
-                                                <option>Aide à la personne</option>
-                                                <option>Maison</option>
-                                                <option>Mécanique</option>
-                                                <option>Beaute</option>
-                                                <option>Loisirs</option>
-                                                <option>Vacances</option>
+                                                <option value="1">Bricolage</option>
+                                                <option value="2">Cours</option>
+                                                <option value="3">Aide à la personne</option>
+                                                <option value='4'>Maison</option>
+                                                <option value='5'>Mécanique</option>
+                                                <option value='6'>Beaute</option>
+                                                <option value='7'>Loisirs</option>
+                                                <option value='9'>Vacances</option>
                                             </select>
                                         </div>
                                         <div className="col-lg-3 col-md-3 col-sm-12 p-0">
-                                            <button type="button" className="btn btn-danger wrn-btn">
+                                            <Link to={{pathname: process.env.PUBLIC_URL + "/Filtrer", departements: this.state.departements, regions: this.state.regions, categorie: this.state.categorie, ville: this.state.ville}}><button type="button" className="btn btn-danger wrn-btn">
                                                 Rechercher
-                                            </button>
+                                            </button></Link>
                                         </div>
                                     </div>
                                 </div>
