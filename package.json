@@ -19,6 +19,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "server": "^1.0.30",
+    "simple-react-lightbox": "^3.3.4-1",
     "sweetalert2": "^10.6.1"
   },
   "scripts": {

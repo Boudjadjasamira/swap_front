@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import $ from 'jquery';
+import { SRLWrapper } from 'simple-react-lightbox'
+
+
 
 export default class MessageRow extends Component {
+    
 
     constructor(props) {
         super(props);
@@ -19,6 +23,7 @@ export default class MessageRow extends Component {
         this.deleteContact = this.deleteContact.bind(this);
     }
       
+    
     componentDidMount(){
         axios.get(`http://localhost:8000/api/contacts/` + this.props.idContact)
         .then(res =>
@@ -32,6 +37,9 @@ export default class MessageRow extends Component {
               modalNameDelete: "deleteModel" + this.props.idContact
             })
         )
+
+       
+          
     }
 
     deleteContact(){
@@ -44,21 +52,42 @@ export default class MessageRow extends Component {
         let compteur = ($("#nombreMessagesContacts").text() * 1) - 1;
         $("#nombreMessagesContacts").text(compteur.toString());
     }
+
+
     
     render() {
+        const options = {
+            // options Lightbox
+            thumbnails: {
+              showThumbnails: false,
+              
+            },
+            buttons: {
+                backgroundColor: 'rgba(30,30,36,0.8)',
+                iconColor: 'rgba(255, 255, 255, 0.8)',
+                iconPadding: '5px',
+                showAutoplayButton: false,
+                showCloseButton: true,
+                showDownloadButton: true,
+                showFullscreenButton: true,
+                showNextButton: false,
+                showPrevButton: false,
+                size: '40px'
+              }
+        }
         return (
             <tr style={{display: this.state.supprimerLaLigne}}>
                 <td>{this.state.nom}</td>
                 <td>{this.state.prenom}</td>
                 <td>{this.state.categorie}</td>
                 <td>{this.state.message}</td>
-                <td><img className="image-contact" src={"http://localhost:8000/uploads/contacts/" + this.state.photo} alt="imageContact" /></td>
+                <td><SRLWrapper options={options}><img className="image-contact" src={"http://localhost:8000/uploads/contacts/" + this.state.photo} data-attribute="SRL" /></SRLWrapper></td>
                 <td>
                     <a href="#editEmployeeModal" className="edit" data-toggle="modal">
-                        <i className="material-icons" data-toggle="tooltip" title="Répondre"></i>create
+                        <i className="material-icons" data-toggle="tooltip" title="Répondre">create</i>
                     </a>
                     <a href={"#" + this.state.modalNameDelete} className="delete" data-toggle="modal">
-                        <i className="material-icons" data-toggle="tooltip" title="Supprimer"></i>delete
+                        <i className="material-icons" data-toggle="tooltip" title="Supprimer">delete</i>
                     </a>
                 </td>
                 

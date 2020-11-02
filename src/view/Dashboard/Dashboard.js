@@ -4,6 +4,7 @@ import '../../css/styles.css';
 import CardDashboard from '../../components/CardDashboard/CardDashboard';
 import MessageRow from '../../components/MessageRow/MessageRow';
 import axios from 'axios';
+import SimpleReactLightbox from 'simple-react-lightbox'
 
 export default class Dashboard extends Component {
 
@@ -49,7 +50,7 @@ export default class Dashboard extends Component {
                                 </thead>
                                 <tbody>
                                 {this.state.allContact.map(e => (
-                                    <MessageRow idContact={e.id}></MessageRow>
+                                   <SimpleReactLightbox><MessageRow idContact={e.id}></MessageRow></SimpleReactLightbox>
                                 ))}
                                 </tbody>
                             </table>
