@@ -28,6 +28,8 @@ export default class FiltrerAnnonces extends Component {
     let allAnnoncesTemps = "";
     let allAnnoncesTrier = [];
 
+    console.log(this.state);
+
     axios.get('http://localhost:8000/api/categories')
     .then(res => {this.setState({allCategories: res.data['hydra:member']})});
 
@@ -37,7 +39,6 @@ export default class FiltrerAnnonces extends Component {
 
         allAnnoncesTemps = res.data['hydra:member'];
 
-        console.log(this.state);
 
         //Regarde si j'ai une region
         if(this.state.isRegion != ""){
@@ -89,13 +90,7 @@ export default class FiltrerAnnonces extends Component {
 
         this.setState({allAnnonces: allAnnoncesTrier});
 
-        console.log(allAnnoncesTrier);
     });
-
-
-
-    
-
 
   }
 

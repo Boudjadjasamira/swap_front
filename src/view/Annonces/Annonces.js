@@ -11,6 +11,8 @@ import CardAnnonce from '../../components/CardAnnonce/CardAnnonce.js';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Category from '../../components/Category/Category';
 import ImgAnnonce from '../../components/ImgAnnonce/ImgAnnonce';
+import MapFrance from '../../components/MapFrance/MapFrance';
+
 
 export default class Annonces extends Component {
 
@@ -70,6 +72,8 @@ export default class Annonces extends Component {
           <Header></Header>
 
           <ImgAnnonce></ImgAnnonce>
+
+          <MapFrance></MapFrance>
 
           <Category></Category>
 
