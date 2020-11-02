@@ -51,7 +51,6 @@ export default function Routes() {
             <Route path="/Annonce/:id" exact component={SingleAnnonce} />
             <Route path="/Categorie/:name" exact component={Categorie}/>
 
-
             {/* ROUTE SECURE */}
             <PrivateRoute path='/Account' component={Account} />
             <PrivateRoute path='/Myprofil'component={Myprofil} />

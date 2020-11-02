@@ -61,7 +61,7 @@ export default class login extends Component {
           <div className="container-login100">
             <div className="wrap-login100">
               <div className="login100-pic js-tilt" data-tilt>
-                <img class="img-fluid" src="assets/img/img2.png" alt="IMG" />
+                <img className="img-fluid" src="assets/img/img2.png" alt="IMG" />
               </div>
               <div className="login100-form validate-form">
                 <img src="assets/img/logo.png" alt="logo" />
@@ -100,9 +100,9 @@ export default class login extends Component {
                 <br />
                 <div className="text-center p-t-12">
                   <span className="txt1">Forgot </span>
-                  <a className="txt2" href="#">
+                  <p className="txt2">
                     Pseudo / Password ?
-                  </a>
+                  </p>
                 </div>
                 <div className="text-center p-t-136">
                   <Link className="txt2" to={process.env.PUBLIC_URL + "/Register"}> Créer un compte</Link>
