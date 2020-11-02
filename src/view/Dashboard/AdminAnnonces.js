@@ -24,11 +24,7 @@ export default class AdminAnnonces extends Component {
     
     render() {
     return (
-        <div className="body" id="bodyHome"
-        style={{
-            backgroundColor: 'blue',
-
-          }}>
+        <div className="body" id="bodyHome" style={{backgroundColor: 'blue'}}>
             
             <CardDashboard></CardDashboard>
             <div className="container-fluid">

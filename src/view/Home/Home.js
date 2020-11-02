@@ -15,9 +15,7 @@ import axios from 'axios';
 //Inclu Jquery
 import $ from 'jquery';
 
-
 export default class Home extends Component {
-
 
   constructor(props) {
     super(props);
@@ -38,9 +36,9 @@ export default class Home extends Component {
      
     //recuperation de toutes les annonces
     axios.get(`http://localhost:8000/api/annonces`)
-      .then(res => {
+    .then(res => {
         this.setState({ allAnnonces: res.data['hydra:member'] });
-      })
+    })
 
       $(document).ready(function(){
         $("#searchBarOffresHome").click(function(){
