@@ -16,12 +16,14 @@ export default class Register extends Component {
             pseudo: "",
             mail: "",
             password: "",
-            redirection: false
+            redirection: false,
+            isWoman: false
         };
         this.addUser = this.addUser.bind(this);
         this.changePseudo = this.changePseudo.bind(this);
         this.changeMail = this.changeMail.bind(this);
         this.changePassword = this.changePassword.bind(this);
+        this.changeSexe = this.changeSexe.bind(this);
     }
 
     componentDidMount(){
@@ -30,6 +32,10 @@ export default class Register extends Component {
 
     changePseudo(e){
         this.setState({pseudo: e.target.value});
+    }
+
+    changeSexe(e){
+        this.setState({isWoman: Boolean(Number(e.target.value))});
     }
 
     changeMail(e){
@@ -49,21 +55,30 @@ export default class Register extends Component {
             title: "Ajout dans notre base de donnée",
             html: '<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>',
             showConfirmButton: false,
+            allowOutsideClick: false
         });
+
+        var photoRegisterBase = "avatar.png";
+        if(this.state.isWoman == 1){
+            photoRegisterBase = "avatar_man.png";
+        }
 
         //Ajout dans la base
         axios.post("http://localhost:8000/api/users",  {
             pseudo: this.state.pseudo,
             mail: this.state.mail,
             motDePasse: this.state.password,
-            dateInscription: laDate.toString()
+            dateInscription: laDate.toString(),
+            photo: photoRegisterBase.toString(),
+            sexe: this.state.isWoman
         })
         .then(res => {
             Swal.fire({
                 icon: 'success',
                 title: 'Votre compte est bien créé.',
                 showConfirmButton: false,
-                timer: 2500
+                timer: 2500,
+                allowOutsideClick: false
             });
                 
             localStorage.setItem('connected', "1")
@@ -106,6 +121,24 @@ export default class Register extends Component {
                                 <br />
                                 <div className="wrap-input100 validate-input" data-validate="Password is required">
                                     <input className="input100" type="password"  placeholder="Password" value={this.state.password} onChange={this.changePassword} />
+                                </div>
+                                <br />
+                                <div className="wrap-input100 validate-input">
+                                    <label>Sexe :</label>
+                                    <div className="container pb-3" onChange={this.changeSexe}>
+                                        <div className="form-check form-check-inline">
+                                            <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" defaultValue="option1" value="1"/>
+                                            <label className="form-check-label" htmlFor="inlineRadio1">
+                                                Homme
+                                            </label>
+                                        </div>
+                                        <div className="form-check form-check-inline">
+                                            <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" defaultValue="option2" value="0"/>
+                                            <label className="form-check-label" htmlFor="inlineRadio2">
+                                                Femme
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                                 <br />
                                 <div className="container-login100-form-btn">

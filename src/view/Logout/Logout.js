@@ -18,6 +18,7 @@ export default class login extends Component {
         if (this.state.connected == 1) {
             this.setState({ redirection: true });
             localStorage.setItem('connected', '0');
+            localStorage.setItem('ID', '0');
         }
     }
 
