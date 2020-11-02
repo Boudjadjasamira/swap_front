@@ -25,7 +25,7 @@ export default class Dashboard extends Component {
 
     render() {
         return (
-            <div className="body" id="bodyHome">
+            <div className="body">
                 <CardDashboard> </CardDashboard>
                 <div className="container-fluid">
                     <div className="table-responsive">
