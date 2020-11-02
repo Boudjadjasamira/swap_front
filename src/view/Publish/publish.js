@@ -95,6 +95,8 @@ export default class Publish extends Component {
 
     if(photoTemp[0] == null){
       photoTemp = ""
+    }else{
+      photoTemp = this.state.titrePhoto
     }
 
     //Ajout dans la base
