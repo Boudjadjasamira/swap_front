@@ -40,7 +40,7 @@ export default class Footer extends Component {
               <h3>Liens pratiques</h3>
               <ul className="list-unstyled quick-links">
                 <li>
-                  <Link className="nav-link" to={process.env.PUBLIC_URL + "/Termsofuse"}>Conditions d'utilisations</Link>
+                  <Link className="nav-link" to={process.env.PUBLIC_URL + "/Page-conditions-d-utilisations"}>Conditions d'utilisations</Link>
                 </li>
                 <li>
                   <Link className="nav-link" to={process.env.PUBLIC_URL + "/Privacypolicy"}>Politique de confidentialité</Link>
