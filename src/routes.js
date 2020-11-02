@@ -48,7 +48,7 @@ export default function Routes() {
             <Route path="/Register" exact component={Register} />
             <Route path="/Faq" exact component={Faq} />
             <Route path="/Contact" exact component={Contact} />
-            <Route path="/Annonce/:id" exact component={SingleAnnonce} />
+            <Route path="/Annonce-:id" exact component={SingleAnnonce} />
             <Route path="/Categorie/:name" exact component={Categorie}/>
 
             {/* ROUTE SECURE */}

@@ -21,7 +21,7 @@ export default class SingleAnnonce extends Component {
   }
 
   componentDidMount() {
-    const search = window.location.pathname.toString().split('/')[2];
+    const search = window.location.pathname.toString().split('-')[1];
     let idCategorieZero = 0;
     axios.get('http://localhost:8000/api/annonces/' + search)
     .then(( res => {
