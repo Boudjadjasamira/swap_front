@@ -22,6 +22,7 @@ import AdminAnnonces from './view/Dashboard/AdminAnnonces.js';
 import Avis from './view/Dashboard/Avis.js';
 import Membres from'./view/Dashboard/Membres.js';
 import Categorie from'./view/Categorie/Categorie.js';
+import FiltrerAnnonces from './view/FiltrerAnnonces/FiltrerAnnonces.js';
 
 
 export default function Routes() {
@@ -50,6 +51,7 @@ export default function Routes() {
             <Route path="/Contact" exact component={Contact} />
             <Route path="/Annonce-:id" exact component={SingleAnnonce} />
             <Route path="/Categorie/:name" exact component={Categorie}/>
+            <Route path="/Filtrer" exact component={FiltrerAnnonces}/>
 
             {/* ROUTE SECURE */}
             <PrivateRoute path='/Account' component={Account} />
