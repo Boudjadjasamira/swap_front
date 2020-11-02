@@ -13,8 +13,10 @@ export default class SingleAnnonce extends Component {
   constructor(props){
     super(props);
     this.state = {
-      position: [0, 0],
-      nomVille: ""
+      //position: [0, 0],
+      position: null,
+      nomVille: "",
+      laMap: ""
     }
   }
 
@@ -24,21 +26,8 @@ export default class SingleAnnonce extends Component {
     axios.get('http://localhost:8000/api/annonces/' + search)
     .then(( res => {
       if(res.data.latitude > 0){
-        let newPosition = [];
-        newPosition.push(res.data.latitude * 1);
-        newPosition.push(res.data.longitude * 1);
-  
-         this.setState({
-            position: newPosition,
-            nomVille: res.data.ville
-         });  
-      }else{
-        this.setState({
-          position: [0,0],
-          nomVille: ""
-       });
+        this.setState({laMap: <MapSingleAn positionEnvoi={[res.data.latitude * 1, res.data.longitude * 1]} villeEnvoi={res.data.ville}></MapSingleAn>})
       }
-      
     }));
   
   }
@@ -51,7 +40,7 @@ export default class SingleAnnonce extends Component {
 
         <SingleAn></SingleAn>
 
-        <MapSingleAn positionEnvoi={this.state.position} villeEnvoi={this.state.nomVille}></MapSingleAn>        
+        {this.state.laMap}
 
         {/* FOOTER */}
         <Footer></Footer>
