@@ -54,12 +54,9 @@ export default class login extends Component {
             html: '<p>Impossible de se connecter.</p>',
             showConfirmButton: true,
           });
-        }
-      
-      
+        }  
     })
   }
-
 
   render() {
     return (

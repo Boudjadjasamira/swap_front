@@ -70,7 +70,8 @@ export default class Register extends Component {
             motDePasse: this.state.password,
             dateInscription: laDate.toString(),
             photo: photoRegisterBase.toString(),
-            sexe: this.state.isWoman
+            sexe: this.state.isWoman,
+            actif: true
         })
         .then(res => {
             Swal.fire({
