@@ -16,7 +16,7 @@ export default class MapSingleAn extends Component {
         });
 
         return (
-            <div className="container w-50 py-5">
+            <div className="container w-50 py-3">
                 <div className="row">
                     <div className="col-12">
                         <MapContainer style={{height: "250px", border: "1px solid #d0d3d5" }}  center={this.props.positionEnvoi} zoom={12} scrollWheelZoom={false}>
