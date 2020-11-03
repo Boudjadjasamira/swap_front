@@ -125,8 +125,7 @@ export default class Register extends Component {
                                 </div>
                                 <br />
                                 <div className="wrap-input100 validate-input">
-                                    <label>Sexe :</label>
-                                    <div className="container pb-3" onChange={this.changeSexe}>
+                                    <div className="container ml-5" onChange={this.changeSexe}>
                                         <div className="form-check form-check-inline">
                                             <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" defaultValue="option1" value="1"/>
                                             <label className="form-check-label" htmlFor="inlineRadio1">

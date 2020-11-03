@@ -75,9 +75,8 @@ export default class Annonces extends Component {
 
           <MapFrance></MapFrance>
 
-          <Category></Category>
-
           <SearchBar></SearchBar>
+          
 
               {/* Module annonces */}
               <div className="container">

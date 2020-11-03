@@ -5,11 +5,10 @@ export default class ImgAnnonce extends Component {
     render() {
         return (
             <div> 
+                < br />
                 <center>
-                    <img class="img-fluid flex-wrap" src="assets/img/img4.png" alt="logo" width="60%" />
+                    <img class="img-fluid " src="assets/img/img4.png" alt="logo" width="60%" />
                 </center>
-                < br />
-                < br />
           </div>
           )
     }

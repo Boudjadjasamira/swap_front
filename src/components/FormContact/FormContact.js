@@ -128,9 +128,9 @@ export default class FormContact extends Component {
                                     className="form-control"
                                     id="exampleInputEmail1"
                                     aria-describedby="emailHelp"
-                                    placeholder="Entrez votre Nom*"
                                     onChange={this.changeNom}
                                     value={this.state.nom}
+                                    required="required"
                                 />
                             </div>
                             <div className="form-group">
@@ -140,13 +140,13 @@ export default class FormContact extends Component {
                                     className="form-control"
                                     id="exampleInputEmail1"
                                     aria-describedby="emailHelp"
-                                    placeholder="Entrez votre prénom*"
                                     onChange={this.changePrenom}
                                     value={this.state.prenom}
+                                    required="required"
                                 />
                             </div>
                             <label htmlFor="exampleInputEmail1">Choisissez une catégorie.</label>
-                            <select onChange={this.changeCategorie} className="form-control custom-select">
+                            <select onChange={this.changeCategorie} className="form-control custom-select" required="required">
                                 <option selected disabled> Catégories </option>
                                 <option>Demande d'informations</option>
                                 <option>Litige</option>
@@ -162,9 +162,12 @@ export default class FormContact extends Component {
                                     defaultValue={""}
                                     onChange={this.changeMessage}
                                     value={this.state.message}
+                                    required="required"
                                 />
                             </div>
+                            <label htmlFor="exampleFormControlTextarea1">Ajouter une image ( *Format png-jpg)</label>
                             <div className="custom-file">
+                                
                                 <input
                                     type="file"
                                     className="custom-file-input"
@@ -173,7 +176,7 @@ export default class FormContact extends Component {
                                     onChange={this.changePicture}
                                 />
                                 <label className="custom-file-label" htmlFor="customFileLang">
-                                    {this.state.titrePhoto}
+                                <span class="badge badge-pill badge-dark text-white">{this.state.titrePhoto}</span>
                                 </label>
                             </div>
                         </form>

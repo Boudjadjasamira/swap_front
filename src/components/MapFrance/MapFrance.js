@@ -25,7 +25,7 @@ export default class MapFrance extends Component {
 
     render() {
         return (
-            <div className="container py-5 text-center">
+            <div className="container py-1 text-center">
                 {this.state.redirection ? 
                     <Redirect to={{pathname: process.env.PUBLIC_URL + "/Filtrer", departements: this.state.isDepartements}}></Redirect>
                 :
