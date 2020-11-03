@@ -25,7 +25,8 @@ export default class Publish extends Component {
       selectedOffreDemande: 0,
       allCategorie: [],
       images: [],
-      titrePhoto: "Ajouter une photo"
+      /* titrePhoto: "Ajouter une photo" */
+      
     }
 
     this.addAnnonces = this.addAnnonces.bind(this);
@@ -268,9 +269,10 @@ export default class Publish extends Component {
                           id="customFileLang"
                           lang="fr"
                           onChange={this.changeImage}
+                          
                         />
                         <label className="custom-file-label" htmlFor="customFileLang">
-                          {this.state.titrePhoto}
+                        <span class="badge badge-pill badge-dark text-white">{this.state.titrePhoto}</span>
                         </label>
                       </div>
                     </div>

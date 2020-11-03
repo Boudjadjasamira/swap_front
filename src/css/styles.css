@@ -960,7 +960,7 @@ section .section-title {
 /*---------------------------------------Contact------------------------------------------------------*/
 
 .custom-file-label::after {
-  content: "Selectionner";
+  content: "Choisir une image";
 }
 
 
