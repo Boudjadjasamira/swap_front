@@ -406,7 +406,7 @@ iframe {
 .search-sec-ann {
   position: relative;
   margin-left: 300px;
-  background: rgba(101, 101, 102, 0.123);
+  background: rgba(0, 0, 0, 0.137);
   width: 70%;
   border-radius: 75px;
   padding: 30px 30px 30px 125px;
@@ -1528,3 +1528,9 @@ input:checked[type="checkbox"]:after {
   border-radius: 30%;
 }
 
+/*--------Resize img SingleAN---------*/
+.d-block{  
+  background-size: cover;
+  width: 300px;
+  height: 600px;
+}

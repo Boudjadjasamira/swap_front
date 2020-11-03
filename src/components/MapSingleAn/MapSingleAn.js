@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../css/styles.css';
-
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import L from 'leaflet';
@@ -20,7 +19,7 @@ export default class MapSingleAn extends Component {
             <div className="container w-50 py-5">
                 <div className="row">
                     <div className="col-12">
-                        <MapContainer style={{height: "250px"}} center={this.props.positionEnvoi} zoom={12} scrollWheelZoom={false}>
+                        <MapContainer style={{height: "250px", border: "1px solid #d0d3d5" }}  center={this.props.positionEnvoi} zoom={12} scrollWheelZoom={false}>
                             <TileLayer
                                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
