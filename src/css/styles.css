@@ -1552,6 +1552,10 @@ input:checked[type="checkbox"]:after {
     padding-top: 140px;
     margin-left: -40px;
 }
+.modal-image{
+margin-left: 80px;
+margin-top: -5px;                   
+}
 
 .modal-box2 .show-modal{
   color:#222;
@@ -1669,7 +1673,7 @@ input:checked[type="checkbox"]:after {
   position:relative;
   z-index:1;
   transition:all .3s;
-  margin-top: 180px;  
+  margin-top: 134px;  
   padding-left: 47px;
   padding-right: 49px;
   margin-left: 125px;
@@ -1680,8 +1684,123 @@ input:checked[type="checkbox"]:after {
   background-color:#e9dadac2;
 }
 
-@media only screen and (max-width:768px){.modal-dialog{width:400px!important}
+@media only screen and (max-width:768px){ 
+  .modal-body-swap{
+    width:80%!important;
+    background-image:url("/assets/img/bgModal3.png"); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* height: 801.7px;
+    width: 810px; */
+    height: 519px;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0) !important;
+    padding-top: 40px;
+    margin-left: 60px;
+  }
+  .modal-image{
+    margin-left: 50px;
+    margin-top: 20px; 
+    width: 150px;                 
+    }
+    .modal-box2 .modal-dialog .modal-content .modal-body .description {
+      color: #999;
+      text-align: center;
+      margin: 0 0 20px;
+      font-size: 12px;
+  }
+  .custom-select {
+    width: 160px; 
+    margin-left: -12px;
+  }
+
+  .modal-box2 .modal-dialog .modal-content .modal-body .subscribe{
+    color: rgb(0, 0, 0);
+    background-color:#ffffffb7;
+    /* :#ffffffb7 */
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 9px;
+    padding-right: 9px;
+    padding-left: 9px;
+    margin: 0 auto;
+    margin-top: 0px;
+    margin-left: auto;
+    border: 0 solid #222;
+    border-radius: 50px;
+    overflow: hidden;
+    display: block;
+    position: relative;
+    z-index: 1;
+    transition: all .3s;
+    margin-top: 95px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 63px;
+    rotate: 0.003turn;    
+  }
+
 }
 
-@media only screen and (max-width:576px){.modal-dialog{width:auto!important}
+@media only screen and (max-width:576px){
+  .modal-body-swap{
+    width:80%!important;
+    background-image:url("/assets/img/bgModal3.png"); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* height: 801.7px;
+    width: 810px; */
+    height: 519px;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0) !important;
+    padding-top: 40px;
+    margin-left: 25px;
+  }
+  .modal-image{
+    margin-left: 50px;
+    margin-top: 20px; 
+    width: 150px;                 
+    }
+    .modal-box2 .modal-dialog .modal-content .modal-body .description {
+      color: #999;
+      text-align: center;
+      margin: 0 0 20px;
+      font-size: 12px;
+  }
+  .custom-select {
+    width: 160px; 
+    margin-left: 20px;
+  }
+
+  .modal-box2 .modal-dialog .modal-content .modal-body .subscribe{
+    color: rgb(0, 0, 0);
+    background-color:#ffffffb7;
+    /* :#ffffffb7 */
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 9px;
+    padding-right: 9px;
+    padding-left: 9px;
+    margin: 0 auto;
+    margin-top: 0px;
+    margin-left: auto;
+    border: 0 solid #222;
+    border-radius: 50px;
+    overflow: hidden;
+    display: block;
+    position: relative;
+    z-index: 1;
+    transition: all .3s;
+    margin-top: 95px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 63px;
+    rotate: 0.003turn;    
+  }
+
+
 }

@@ -130,11 +130,10 @@ export default class SingleAnnonce extends Component {
                         }}>
                           <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                             <div className="modal-body">
-                                <img src={process.env.PUBLIC_URL + 'assets/img/logo.png'} className="img-fluid " alt="Logo" width="80%" style={{paddingLeft:'125px',                       
-                        }} />
+                                <img src={process.env.PUBLIC_URL + 'assets/img/logo.png'} className="modal-image" alt="Logo"/>
                               <p className="description">Selectionnez votre service! <br /> et envoyer votre Swap</p>
                                 <div className="col-sm-8 mx-auto ">
-                                            <select className="form-control-index custom-select mx-auto" onChange={this.annonce} name="Annonce" >
+                                            <select className="form-control-index custom-select" onChange={this.annonce} name="Annonce" >
                                                 <option selected disabled> Mes Services</option>
                                                 {this.state.allAnnonces.map(e => (
                                                 <option value="1">{e.titre}</option>   
