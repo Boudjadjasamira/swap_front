@@ -10,7 +10,7 @@ export default class MapSingleAn extends Component {
     render() {
         const image = new L.Icon({
             iconUrl: "assets/icone/marker.png",
-            iconSize:     [32, 32], // size of the icon
+            iconSize:     [45, 45], // size of the icon
             iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
             popupAnchor:  [-3, -76]// point from which the popup should open relative to the iconAnchor
         });

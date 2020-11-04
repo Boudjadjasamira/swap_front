@@ -33,7 +33,7 @@ export default class SingleAnnonce extends Component {
   
   render() {
     return (
-      <div>
+      <div className="body" id="bodyHome">
         {/* HEADER */}
         <Header></Header>
 
