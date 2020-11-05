@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
-//Inclu les CSS
+//Inclus les CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../css/styles.css';
-//Inclu les fichiers communs
+//Inclus les fichiers communs
 import Header from '../Common/Header';
 import Footer from '../Common/Footer';
-//Inclut les Composants
+//Inclust les Composants
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Search from '../../components/Search/Search';
 import CardAnnonce from '../../components/CardAnnonce/CardAnnonce';
 import ImgHome from '../../components/ImgHome/ImgHome';
-//Inclu Axios
+//Inclus Axios
 import axios from 'axios';
-//Inclu Jquery
+//Inclus Jquery
 import $ from 'jquery';
 
 export default class Home extends Component {
-
+//On initialise l’état local en affectant un objet à this.state.
   constructor(props) {
     super(props);
     this.state = {
@@ -28,7 +28,7 @@ export default class Home extends Component {
 
   componentDidMount() {
     document.title = "Home"
-
+    //Requete pour récuperer toutes les catégories
     axios.get(`http://localhost:8000/api/categories`)
     .then(res => {
       this.setState({ allCategories: res.data['hydra:member'] });
@@ -40,6 +40,8 @@ export default class Home extends Component {
         this.setState({ allAnnonces: res.data['hydra:member'] });
     })
 
+
+    //Fonction pour afficher uniquement les offres sur la page Home
       $(document).ready(function(){
         $("#searchBarOffresHome").click(function(){
            if($("#searchBarOffresHome").is(':checked')){
@@ -51,7 +53,7 @@ export default class Home extends Component {
             });
            }
         })
-
+    //Fonction pour afficher uniquement les demandes sur la page Home
         $("#searchBarDemandesHome").click(function(){
          if($("#searchBarDemandesHome").is(':checked')){
             $(".search-result-item").each(function( index ) {
@@ -62,7 +64,7 @@ export default class Home extends Component {
             });
          }
         })
-
+    //Fonction pour afficher toutes les annonces sur la page Home
         $("#searchBarAllHome").click(function(){
           if($("#searchBarAllHome").is(':checked')){
            $(".search-result-item").each(function( index ) {
@@ -91,6 +93,7 @@ export default class Home extends Component {
 
              {/* Module annonces */}
              <div className="container resulted">
+               {/* On utilise la methode map() pour prendre un tableau et le transformer en une liste d'element */}
                 {this.state.allAnnonces.map(e => (
                   <div className="row">
                     <div className="col-12">

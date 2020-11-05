@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-//Inclu les fichiers communs
+//Inclus les fichiers communs
 import Header from '../../view/Common/Header';
 import Footer from '../..//view/Common/Footer';
-
+//Inclus le(s) composant
 import ProfilInfoGauche from '../../components/ProfilInfoGauche/ProfilInfoGauche';
-
+//Inclus les modules
 import Swal from 'sweetalert2';
 import axios from 'axios';
 
@@ -44,7 +44,7 @@ export default class Account extends Component {
   componentDidMount(){
 
     document.title = "Profil - Informations"
-    //Recuperation des infos
+    //Requete pour recuperer les infos utilisateurs/ID
     axios.get(`http://localhost:8000/api/users/` + localStorage.getItem('ID'))
     .then(res =>
         this.setState({
@@ -58,7 +58,8 @@ export default class Account extends Component {
         })
     )
   }
-
+  
+//On crée des méthodes pour changer chaques champs
   changePseudo(event){
     this.setState({
       pseudo:event.target.value
@@ -114,7 +115,7 @@ export default class Account extends Component {
   }
 
   addModification() {
-
+//Requete pour mettre à jour les infos utilisateurs
     axios.patch("http://localhost:8000/api/users/" + localStorage.getItem('ID'), {
       pseudo: this.state.pseudo.toString(),
       sexe: Boolean(Number(this.state.selectedSexe)),
@@ -139,14 +140,14 @@ export default class Account extends Component {
         timer: 2500
       });
   
-      //reset les champs
-      this.setState({
+      //On reset les champs
+      /* this.setState({
         pseudo: "",
         selectedSexe: "",
         mail: "",
         codePostal:"",
         motDePasse:""
-      });
+      }); */
     })
   }
 

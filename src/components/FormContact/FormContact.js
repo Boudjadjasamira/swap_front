@@ -130,7 +130,6 @@ export default class FormContact extends Component {
                                     aria-describedby="emailHelp"
                                     onChange={this.changeNom}
                                     value={this.state.nom}
-                                    required="required"
                                 />
                             </div>
                             <div className="form-group">
@@ -142,7 +141,6 @@ export default class FormContact extends Component {
                                     aria-describedby="emailHelp"
                                     onChange={this.changePrenom}
                                     value={this.state.prenom}
-                                    required="required"
                                 />
                             </div>
                             <label htmlFor="exampleInputEmail1">Choisissez une catégorie.</label>
@@ -162,7 +160,6 @@ export default class FormContact extends Component {
                                     defaultValue={""}
                                     onChange={this.changeMessage}
                                     value={this.state.message}
-                                    required="required"
                                 />
                             </div>
                             <label htmlFor="exampleFormControlTextarea1">Ajouter une image ( *Format png-jpg)</label>

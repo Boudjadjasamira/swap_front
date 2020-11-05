@@ -76,7 +76,7 @@ export default class Services extends Component {
                                     <div className="row justify-content-start">
                                         {this.state.allAnnonces.map(e => (
                                             <div className="col-12">
-                                                <CardAnnonce lesCategories={this.state.allCategories} idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} codePostalEnvoi={e.codePostal} categorieEnvoi={e.idCategorie}villeEnvoi={e.ville}></CardAnnonce>
+                                                <CardAnnonce lesCategories={this.state.allCategories} photoAnnonce={e.photo} idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} codePostalEnvoi={e.codePostal} categorieEnvoi={e.idCategorie}villeEnvoi={e.ville}></CardAnnonce>
                                             </div>
                                         ))}
                                     </div>  
