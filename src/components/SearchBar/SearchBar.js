@@ -59,6 +59,17 @@ export default class SearchBar extends Component {
                             Demandes
                         </label>
                     </div>
+                    <div className="form-check form-check-inline">
+                        <input
+                            className="form-check-input"
+                            type="radio"
+                            name="inlineRadioOptions"
+                            id="searchBarAllHome"
+                        />
+                        <label className="form-check-label" htmlFor="inlineRadio2">
+                            Tout
+                        </label>
+                    </div>
                 </div>
                 <br />
                 <section className="search-sec-ann ">

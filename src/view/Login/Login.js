@@ -45,7 +45,14 @@ export default class login extends Component {
           }else{
             localStorage.setItem('connected', "1");
             localStorage.setItem('ID', res.data.user);
-            this.setState({redirection: true})
+            this.setState({redirection: true});
+            Swal.fire({
+              icon: 'success',
+              title: 'Vous etes connecté !',
+              showConfirmButton: false,
+              timer: 2500,
+              allowOutsideClick: false
+          });
           }
         }else{
           Swal.fire({

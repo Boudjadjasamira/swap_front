@@ -89,7 +89,7 @@ export default class FormContact extends Component {
 
             Swal.fire({
                 icon: 'success',
-                title: 'Votre message est envoyé !',
+                title: 'Message envoyé !',
                 showConfirmButton: false,
                 timer: 2500
             })

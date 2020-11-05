@@ -62,6 +62,14 @@ export default class Home extends Component {
             });
          }
         })
+
+        $("#searchBarAllHome").click(function(){
+          if($("#searchBarAllHome").is(':checked')){
+           $(".search-result-item").each(function( index ) {
+             $(this).show();
+           });
+          }
+       })
      })
   } 
 

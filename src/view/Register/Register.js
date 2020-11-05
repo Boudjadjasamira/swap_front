@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../css/login.css';
-
 import Swal from 'sweetalert2';
-
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 
@@ -76,7 +74,7 @@ export default class Register extends Component {
         .then(res => {
             Swal.fire({
                 icon: 'success',
-                title: 'Votre compte est bien créé.',
+                title: 'Votre compte est bien créé!',
                 showConfirmButton: false,
                 timer: 2500,
                 allowOutsideClick: false
