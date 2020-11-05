@@ -39,6 +39,7 @@ export default class Annonces extends Component {
         this.setState({ allAnnonces: res.data['hydra:member'] });
       })
 
+      //Fonction pour afficher uniquement les offres sur la page Home
       $(document).ready(function(){
         $("#searchBarOffresHome").click(function(){
            if($("#searchBarOffresHome").is(':checked')){
@@ -50,7 +51,7 @@ export default class Annonces extends Component {
             });
            }
         })
-
+    //Fonction pour afficher uniquement les demandes sur la page Home
         $("#searchBarDemandesHome").click(function(){
          if($("#searchBarDemandesHome").is(':checked')){
             $(".search-result-item").each(function( index ) {
@@ -61,7 +62,17 @@ export default class Annonces extends Component {
             });
          }
         })
+    //Fonction pour afficher toutes les annonces sur la page Home
+        $("#searchBarAllHome").click(function(){
+          if($("#searchBarAllHome").is(':checked')){
+           $(".search-result-item").each(function( index ) {
+             $(this).show();
+           });
+          }
+       })
      })
+        
+
   }
 
   render() {
