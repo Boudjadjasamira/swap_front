@@ -26,6 +26,7 @@ import FiltrerAnnonces from './view/FiltrerAnnonces/FiltrerAnnonces.js';
 import ConditionsUtilisations from './view/Page-conditions-d-utilisations/ConditionsUtilisations.js';
 import MentionsLegales from './view/MentionsLegales/MentionsLegales.js';
 import PolitiqueConfidentialite from './view/PolitiqueConfidentialite/PolitiqueConfidentialite.js';
+import Messagerie from './view/Messagerie/Messagerie';
 
 
 export default function Routes() {
@@ -68,6 +69,7 @@ export default function Routes() {
             <PrivateRoute path="/Trophy" component={Trophy} />
             <PrivateRoute path="/Review" component={Review} />
             <PrivateRoute path="/Reward" component={Reward} />
+            <PrivateRoute path="/Messagerie" component={Messagerie} />
 
             {/* ROUTE ADMIN SECURE */}
             <PrivateRoute path="/Dashboard" component={Dashboard} />
