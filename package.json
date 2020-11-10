@@ -9,7 +9,6 @@
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
     "build": "^0.1.4",
-    "firebase": "^7.24.0",
     "hamburger-react": "^2.2.0",
     "i": "^0.3.6",
     "jquery": "^3.5.1",

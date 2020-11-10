@@ -54,7 +54,7 @@ export default class FiltrerAnnonces extends Component {
                 }
             });
         }
-
+        /* eslint eqeqeq: 0 */
         //Regarde si j'ai un departements
         if(this.state.isDepartements != ""){
             allAnnoncesTemps.map(e => {
@@ -62,6 +62,7 @@ export default class FiltrerAnnonces extends Component {
                     if(e.departement.split('-')[0].toString().replace(/\s/g, '') == this.state.isDepartements){
                         allAnnoncesTrier.push(e);
                     }
+                    return true
                 }
             });
         }
@@ -73,6 +74,7 @@ export default class FiltrerAnnonces extends Component {
                     if(e.idCategorie == this.state.isCategorie){
                         allAnnoncesTrier.push(e);
                     }
+                    return true
                 }
             });
         }
@@ -84,6 +86,7 @@ export default class FiltrerAnnonces extends Component {
                     if(e.ville == this.state.isVille){
                         allAnnoncesTrier.push(e);
                     }
+                    return true
                 }
             });
         }

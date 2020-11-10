@@ -81,7 +81,7 @@ export default class MessageRow extends Component {
                 <td>{this.state.prenom}</td>
                 <td>{this.state.categorie}</td>
                 <td>{this.state.message}</td>
-                <td><SRLWrapper options={options}><img className="image-contact" src={"http://localhost:8000/uploads/contacts/" + this.state.photo} data-attribute="SRL" /></SRLWrapper></td>
+                <td><SRLWrapper options={options}><img className="image-contact" src={"http://localhost:8000/uploads/contacts/" + this.state.photo} data-attribute="SRL" alt="Piece-jointe" /></SRLWrapper></td>
                 <td>
                     <a href="#editEmployeeModal" className="edit" data-toggle="modal">
                         <i className="material-icons" data-toggle="tooltip" title="Répondre">create</i>

@@ -39,7 +39,8 @@ export default class Services extends Component {
         res.data['hydra:member'].map(e => {
             if(e.idUser == localStorage.getItem('ID')){
                 tabTempAnnoncesByUserID.push(e)
-            }
+            } return true
+            /* eslint eqeqeq: 0 */
         })
         this.setState({ allAnnonces: tabTempAnnoncesByUserID });
         console.log(this.state.allAnnonces);

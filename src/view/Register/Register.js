@@ -60,7 +60,7 @@ export default class Register extends Component {
         if(this.state.isWoman == 1){
             photoRegisterBase = "avatar_man.png";
         }
-
+         /* eslint eqeqeq: 0 */  
         //Ajout dans la base
         axios.post("http://localhost:8000/api/users",  {
             pseudo: this.state.pseudo,

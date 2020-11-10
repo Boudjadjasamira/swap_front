@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 
 
 export default class login extends Component {
-
+/* eslint eqeqeq: 0 */
     constructor(props) {
         super(props);
         this.state = {

@@ -62,6 +62,7 @@ export default class Membres extends Component {
         if(this.state.sexePersonne == 1){
             photoRegisterBase = "avatar_man.png";
         }
+         /* eslint eqeqeq: 0 */  
 
         //Ajout dans la base
         axios.post("http://localhost:8000/api/users",  {

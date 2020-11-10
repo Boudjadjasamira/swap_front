@@ -2002,16 +2002,16 @@ padding-left: 20px;
 }
 
 @media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) {
-@media {
-  .contacts-outter-wrapper {
-    direction: ltr;
-  }
+  
+    .contacts-outter-wrapper {
+      direction: ltr;
+    }
 
-  .contacts-outter{
-    direction: ltr;
-    padding-left: 0;
-  }
-}
+    .contacts-outter{
+      direction: ltr;
+      padding-left: 0;
+    }
+  
 }
 
 .contacts {

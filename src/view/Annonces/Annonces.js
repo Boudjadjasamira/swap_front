@@ -5,11 +5,9 @@ import Header from '../Common/Header';
 import Footer from '../Common/Footer';
 import axios from 'axios';
 import $ from 'jquery';
-
 //Inclu les components
 import CardAnnonce from '../../components/CardAnnonce/CardAnnonce.js';
 import SearchBar from '../../components/SearchBar/SearchBar';
-import Category from '../../components/Category/Category';
 import ImgAnnonce from '../../components/ImgAnnonce/ImgAnnonce';
 import MapFrance from '../../components/MapFrance/MapFrance';
 
@@ -38,7 +36,7 @@ export default class Annonces extends Component {
       .then(res => {
         this.setState({ allAnnonces: res.data['hydra:member'] });
       })
-
+      /* eslint eqeqeq: 0 */  
       //Fonction pour afficher uniquement les offres sur la page Home
       $(document).ready(function(){
         $("#searchBarOffresHome").click(function(){

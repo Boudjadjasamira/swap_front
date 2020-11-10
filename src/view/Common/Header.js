@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../css/styles.css';
 
 export default class Header extends Component {
-
+/* eslint eqeqeq: 0 */
   constructor(props) {
     super(props);
     this.state = {

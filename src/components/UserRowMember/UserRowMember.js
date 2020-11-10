@@ -30,7 +30,8 @@ export default class UserRowMember extends Component {
             idMembre: this.props.idPersonne,
             modalDisabled: "disabledUserModel" + this.props.idPersonne,
             modalEdite: "enabledUserModel" + this.props.idPersonne
-        });
+        }); 
+        /* eslint eqeqeq: 0 */
         axios.get('http://localhost:8000/api/users/' + this.props.idPersonne)
         .then(res => {
             this.setState({actifUser: res.data.actif})

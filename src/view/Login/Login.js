@@ -36,6 +36,7 @@ export default class login extends Component {
     .then(res => {
         if(res.data.user > 0){
           if(res.data.actif == 0){
+            /* eslint eqeqeq: 0 */
             Swal.fire({
               icon: 'error',
               title: "Connexion",
@@ -58,7 +59,7 @@ export default class login extends Component {
           Swal.fire({
             icon: 'error',
             title: "Connexion",
-            html: '<p>Impossible de se connecter.</p>',
+            html: '<p>Impossible de se connecter, vérifiez votre identifiant et/ou mot de passe !</p>',
             showConfirmButton: true,
           });
         }  
@@ -90,7 +91,7 @@ export default class login extends Component {
                     className="input100"
                     type="text"
                     name="pass"
-                    placeholder="Pseudo"
+                    placeholder="Identifiant"
                     value={this.state.pseudo}
                     onChange={this.changePseudo}
                   />
@@ -104,7 +105,7 @@ export default class login extends Component {
                     className="input100"
                     type="password"
                     name="pass"
-                    placeholder="Password"
+                    placeholder="Mot de passe"
                     value={this.state.password}
                     onChange={this.changePassword}
                   />
@@ -113,10 +114,9 @@ export default class login extends Component {
                   <button className="login100-form-btn" onClick={this.connect}>Se connecter</button>
                 </div>
                 <br />
-                <div className="text-center p-t-12">
-                  <span className="txt1">Forgot </span>
+                <div className="text-center p-t-12">                  
                   <p className="txt2">
-                    Pseudo / Password ?
+                   Identifiant / Mot de passe oublié ?
                   </p>
                 </div>
                 <div className="text-center p-t-136">

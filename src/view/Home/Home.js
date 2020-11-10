@@ -42,6 +42,7 @@ export default class Home extends Component {
 
 
     //Fonction pour afficher uniquement les offres sur la page Home
+     /* eslint eqeqeq: 0 */  
       $(document).ready(function(){
         $("#searchBarOffresHome").click(function(){
            if($("#searchBarOffresHome").is(':checked')){

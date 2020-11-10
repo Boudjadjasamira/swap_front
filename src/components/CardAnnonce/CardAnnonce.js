@@ -22,6 +22,7 @@ export default class CardAnnonce extends Component {
     }
 
     componentDidMount(){
+        /* eslint eqeqeq: 0 */
         this.props.lesCategories.forEach(
             element => {
                 if(element.id == this.props.categorieEnvoi){
@@ -36,6 +37,7 @@ export default class CardAnnonce extends Component {
                 if(e.id == this.props.idUserEnvoi){
                     this.setState({pseudo: e.pseudo})
                 }
+                return true
             })
         })
     }
@@ -55,13 +57,13 @@ export default class CardAnnonce extends Component {
         return (
             <div > 
                 <section data-type={this.props.typeAnnonce} className={"search-result-item border " + this.state.effectRemove}>
-                        <a className="image-link">
+                      
                             <img
-                            className="image-annonce"
+                            className="image-annonce image-link"
                             src={"http://localhost:8000/uploads/annonces/" + this.props.photoAnnonce}
                             alt="imageAnnonce"
                             />
-                        </a>
+                        
                         <div className="search-result-item-body ">
                             <div className="row">
                             <div className="col-sm-9">
