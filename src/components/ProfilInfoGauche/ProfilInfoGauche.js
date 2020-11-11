@@ -8,7 +8,8 @@ export default class ProfilInfoGauche extends Component {
         super(props);
         this.state = {
             pseudo: "",
-            titrePhoto: ""
+            titrePhoto: "",
+            nombreDeTchatEnCours: 0
         };
         this.changePicture = this.changePicture.bind(this);
     }
@@ -22,6 +23,20 @@ export default class ProfilInfoGauche extends Component {
               titrePhoto: res.data.photo
             })
         )
+
+        let compteurDeTchat = 0;
+
+        axios.get('http://localhost:8000/api/salons')
+        .then(res => {
+          res.data['hydra:member'].map(e => {
+            if((e.idUser1 == localStorage.getItem('ID') || (e.idUser2 == localStorage.getItem('ID')))){
+              compteurDeTchat++;
+            }
+          })
+          this.setState({nombreDeTchatEnCours: compteurDeTchat});
+        })
+
+
     }
 
     changePicture(e){
@@ -164,7 +179,7 @@ export default class ProfilInfoGauche extends Component {
                         </svg>{" "}
                 &nbsp;
                 <span>
-                          <Link to={process.env.PUBLIC_URL + "/Messagerie"}> Messagerie <span className="badge badge-pill badge-danger">6</span></Link>
+                          <Link to={process.env.PUBLIC_URL + "/Messagerie"}> Messagerie <span className="badge badge-pill badge-danger">{this.state.nombreDeTchatEnCours}</span></Link>
                         </span>
                         <br />
                         <svg
