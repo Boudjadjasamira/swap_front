@@ -185,7 +185,7 @@ export default class Publish extends Component {
         <div>
           {/* ./Infos compte */}
           <div className="container">
-            <h1>Informations Personnelles</h1>
+            <h1>Publier une annonce</h1>
             <hr />
             <div className="row">
               <div className="col-md-3">

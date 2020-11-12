@@ -20,6 +20,8 @@
     "react-leaflet": "^3.0.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
+    "react-simple-typewriter": "^1.0.13",
+    "react-typing-animation": "^1.6.2",
     "server": "^1.0.30",
     "simple-react-lightbox": "^3.3.4-1",
     "sweetalert2": "^10.6.1"

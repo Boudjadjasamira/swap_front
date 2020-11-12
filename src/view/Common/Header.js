@@ -49,7 +49,7 @@ export default class Header extends Component {
                 &nbsp;
                 <Link className="btn btn-outline-dark my-2 my-sm-0" to={process.env.PUBLIC_URL + "/Publish"}>
                 <img src={process.env.PUBLIC_URL + 'assets/icone/edit.png'} alt="logo" width="15cm" height="15cm" />
-                <span>&nbsp;Publier un article</span>
+                <span>&nbsp;Publier une annonce</span>
               </Link>
                 &nbsp;
                 <Link className="btn btn-outline-dark my-2 my-sm-0" to={process.env.PUBLIC_URL + "/Logout"}>
