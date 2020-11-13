@@ -3,8 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../css/login.css';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 
+import './Register.css';
 
 export default class Register extends Component {
 
@@ -15,13 +17,20 @@ export default class Register extends Component {
             mail: "",
             password: "",
             redirection: false,
-            isWoman: false
+            isWoman: false,
+            nom: "",
+            prenom: "",
+            confirmPassword: ""
         };
         this.addUser = this.addUser.bind(this);
         this.changePseudo = this.changePseudo.bind(this);
         this.changeMail = this.changeMail.bind(this);
         this.changePassword = this.changePassword.bind(this);
         this.changeSexe = this.changeSexe.bind(this);
+        this.changeNom = this.changeNom.bind(this);
+        this.changePrenom = this.changePrenom.bind(this);
+        this.changeConfirmPassword = this.changeConfirmPassword.bind(this);
+
     }
 
     componentDidMount(){
@@ -43,54 +52,80 @@ export default class Register extends Component {
     changePassword(e){
         this.setState({password: e.target.value});
     }
+    changeConfirmPassword(e){
+        this.setState({confirmPassword: e.target.value});
+    }
+    changeNom(e){
+        this.setState({nom: e.target.value});
+    }
+    changePrenom(e){
+        this.setState({prenom: e.target.value});
+    }
 
     addUser(){
 
-        const d = new Date();
-        const laDate = ('0' + d.getDate()).slice(-2) + '/' + ('0' + (d.getMonth() + 1)).slice(-2) + '/' + d.getFullYear();
-
-        Swal.fire({
-            title: "Ajout dans notre base de donnée",
-            html: '<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>',
-            showConfirmButton: false,
-            allowOutsideClick: false
-        });
-
-        var photoRegisterBase = "avatar.png";
-        if(this.state.isWoman == 1){
-            photoRegisterBase = "avatar_man.png";
-        }
-         /* eslint eqeqeq: 0 */  
-        //Ajout dans la base
-        axios.post("http://localhost:8000/api/users",  {
-            pseudo: this.state.pseudo,
-            mail: this.state.mail,
-            motDePasse: this.state.password,
-            dateInscription: laDate.toString(),
-            photo: photoRegisterBase.toString(),
-            sexe: this.state.isWoman,
-            actif: true
-        })
-        .then(res => {
+        //verification du mot de passe$
+        if(this.state.password == this.state.confirmPassword){
+            const d = new Date();
+            const laDate = ('0' + d.getDate()).slice(-2) + '/' + ('0' + (d.getMonth() + 1)).slice(-2) + '/' + d.getFullYear();
+    
             Swal.fire({
-                icon: 'success',
-                title: 'Votre compte est bien créé!',
+                title: "Création de votre compte en cours...",
+                html: '<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>',
+                showConfirmButton: false,
+                allowOutsideClick: false
+            });
+    
+            var photoRegisterBase = "avatar.png";
+            if(this.state.isWoman == 1){
+                photoRegisterBase = "avatar_man.png";
+            }
+             /* eslint eqeqeq: 0 */  
+            //Ajout dans la base
+            axios.post("http://localhost:8000/api/users",  {
+                pseudo: this.state.pseudo,
+                nom: this.state.nom,
+                prenom: this.state.prenom,
+                mail: this.state.mail,
+                motDePasse: this.state.password,
+                dateInscription: laDate.toString(),
+                photo: photoRegisterBase.toString(),
+                sexe: this.state.isWoman,
+                actif: true
+            })
+            .then(res => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Votre compte est bien créé!',
+                    showConfirmButton: false,
+                    timer: 2500,
+                    allowOutsideClick: false
+                });
+                    
+                localStorage.setItem('connected', "1")
+                localStorage.setItem('ID', res.data.id)
+                this.setState({redirection: true})
+            
+                //reset les champs
+                this.setState({
+                    pseudo: "",
+                    nom: "",
+                    prenom: "",
+                    mail: "",
+                    password: ""
+                });
+            })
+        }else{
+            Swal.fire({
+                icon: 'info',
+                title: 'Les mots de passe que vous avez entrés ne sont pas identiques.',
                 showConfirmButton: false,
                 timer: 2500,
                 allowOutsideClick: false
             });
-                
-            localStorage.setItem('connected', "1")
-            localStorage.setItem('ID', res.data.id)
-            this.setState({redirection: true})
+        }
+
         
-            //reset les champs
-            this.setState({
-                pseudo: "",
-                mail: "",
-                password: ""
-            });
-        })
     }
 
 
@@ -107,11 +142,19 @@ export default class Register extends Component {
                                 <img class="img-fluid" src="assets/img/img2.png" alt="IMG" />
                             </div>
                             <div className="login100-form validate-form">
-                                <img class="img-fluid" src="assets/img/logo.png" alt="logo" />
+                                <Link className="cursorPointer" to={process.env.PUBLIC_URL + "/"}><img className="img-fluid cursorPointer" src="assets/img/logo.png" alt="logo" /></Link>
                                 <br />
                                 <br />
                                 <div className="wrap-input100 validate-input" data-validate="Pseudo is required">
                                     <input className="input100" type="text" placeholder="Pseudo" value={this.state.pseudo} onChange={this.changePseudo}/>
+                                </div>
+                                <br />
+                                <div className="wrap-input100 validate-input" data-validate="FirstName is required">
+                                    <input className="input100" type="text" placeholder="Nom" value={this.state.changeNom} onChange={this.changeNom}/>
+                                </div>
+                                <br />
+                                <div className="wrap-input100 validate-input" data-validate="Name is required">
+                                    <input className="input100" type="text" placeholder="Prenom" value={this.state.changePrenom} onChange={this.changePrenom}/>
                                 </div>
                                 <br />
                                 <div className="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
@@ -119,7 +162,11 @@ export default class Register extends Component {
                                 </div>
                                 <br />
                                 <div className="wrap-input100 validate-input" data-validate="Password is required">
-                                    <input className="input100" type="password"  placeholder="Password" value={this.state.password} onChange={this.changePassword} />
+                                    <input className="input100" type="password"  placeholder="Mot de passe" value={this.state.password} onChange={this.changePassword} />
+                                </div>
+                                <br />
+                                <div className="wrap-input100 validate-input" data-validate="Password is required">
+                                    <input className="input100" type="password"  placeholder="Confirmation mot de passe" value={this.state.confirmPassword} onChange={this.changeConfirmPassword} />
                                 </div>
                                 <br />
                                 <div className="wrap-input100 validate-input">
