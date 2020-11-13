@@ -115,9 +115,7 @@ export default class login extends Component {
                 </div>
                 <br />
                 <div className="text-center p-t-12">                  
-                  <p className="txt2">
-                   Identifiant / Mot de passe oublié ?
-                  </p>
+                <Link className="txt2" to={process.env.PUBLIC_URL + "/ForgotPassword"}> Identifiant / Mot de passe oublié ? </Link>                
                 </div>
                 <div className="text-center p-t-136">
                   <Link className="txt2" to={process.env.PUBLIC_URL + "/Register"}> Créer un compte</Link>

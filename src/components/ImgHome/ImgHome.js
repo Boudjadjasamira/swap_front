@@ -13,7 +13,7 @@ export default class ImgHome extends Component {
                             <span style={{ color: 'Black', fontWeight: 'bold' }}>
                                 {/* Style will be inherited from the parent element */}
                                 <Typewriter 
-                                    // loop
+                                    //loop
                                     cursor
                                     cursorStyle='_'
                                     typeSpeed={90}
