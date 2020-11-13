@@ -52,7 +52,7 @@ export default class SectionContentTchat extends Component {
                         </div>
                                        
                         <div className="chat-footer">
-                            <textarea className="send-message-text" defaultValue={""} placeholder="hola" />
+                            <textarea className="send-message-text" defaultValue={""} placeholder="Répondre..." />
                             <label className="upload-file">
                                 <input type="file" required />
                                 <i className="fa fa-paperclip" />

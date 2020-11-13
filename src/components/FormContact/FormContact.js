@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import Tilt from 'react-parallax-tilt';
 
 
 export default class FormContact extends Component {
@@ -109,7 +110,7 @@ export default class FormContact extends Component {
             <div className="container">
                 <div className="d-flex col flex-wrap ">
                     <div className="align-self-center">
-                        <img className="img-fluid " src={process.env.PUBLIC_URL + 'assets/img/contact.png'} alt="Contact_img" width="90%" />
+                        <Tilt><img className="img-fluid " src={process.env.PUBLIC_URL + 'assets/img/contact.png'} alt="Contact_img" width="90%" /></Tilt>
                         <br />
                         <br />
                         <br />

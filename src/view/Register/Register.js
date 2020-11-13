@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
+import Tilt from 'react-parallax-tilt';
 
 import './Register.css';
 
@@ -137,14 +138,13 @@ export default class Register extends Component {
                     :
                     <div className="limiter">
                     <div className="container-login100">
-                        <div className="wrap-login100">
-                            <div className="login100-pic js-tilt">
-                                <img class="img-fluid" src="assets/img/img2.png" alt="IMG" />
+                        <div className="wrap-login100 ">
+                            <div className="login100-pic">
+                                <img class="img-fluid " src="assets/img/img2.png" alt="IMG" />
                             </div>
                             <div className="login100-form validate-form">
-                                <Link className="cursorPointer" to={process.env.PUBLIC_URL + "/"}><img className="img-fluid cursorPointer" src="assets/img/logo.png" alt="logo" /></Link>
-                                <br />
-                                <br />
+                                <Tilt><Link className="cursorPointer" to={process.env.PUBLIC_URL + "/"}><img className="img-fluid cursorPointer" src="assets/img/logo.png" alt="logo" /></Link></Tilt>
+
                                 <div className="wrap-input100 validate-input" data-validate="Pseudo is required">
                                     <input className="input100" type="text" placeholder="Pseudo" value={this.state.pseudo} onChange={this.changePseudo}/>
                                 </div>

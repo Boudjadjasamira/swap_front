@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import Tilt from 'react-parallax-tilt';
 
 export default class login extends Component {
 
@@ -76,12 +77,11 @@ export default class login extends Component {
         <div className="limiter">
           <div className="container-login100">
             <div className="wrap-login100">
-              <div className="login100-pic js-tilt" data-tilt>
-                <img className="img-fluid" src="assets/img/img2.png" alt="IMG" />
+              <div className="login100-pic" >
+                <img className="img-fluid" src="assets/img/img2.png" alt="IMG"  style={{ paddingTop: '20px' }}/>
               </div>
               <div className="login100-form validate-form">
-                <img src="assets/img/logo.png" alt="logo" />
-                <br />
+                <Tilt><img src="assets/img/logo.png" alt="logo" /></Tilt>
                 <br />
                 <div
                   className="wrap-input100 validate-input"

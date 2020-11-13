@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Typewriter from 'react-simple-typewriter'
+import Typewriter from 'react-simple-typewriter';
+import Tilt from 'react-parallax-tilt';
 
 export default class ImgHome extends Component {
 
@@ -24,13 +25,16 @@ export default class ImgHome extends Component {
                             </span>
                         </h1>  
                         <p style={{ color: '#B1AAAA', fontSize: '18px' , paddingLeft:"200px", paddingTop: '10px'}} >
-                            Swap est une plate-forme de mise en relation entre particulier qui vise à favoriser l'échange de service.
+                        Mettez à profits vos compétences pour les autres ! 
+                        Grace à la messagerie, trouver un service dont vous avez besoin discuter en toute simplicité, convenez d'un rendez-vous et hop ont swap ! 
                         </p>            
                     </div>
                     <div class="col">
-                        <img class="img-fluid flex-wrap" src={process.env.PUBLIC_URL + 'assets/img/img5.png'} alt="logo" width="80%"/>       
+                       <Tilt><img class="img-fluid flex-wrap" src={process.env.PUBLIC_URL + 'assets/img/img5.png'} alt="logo" width="90%"/></Tilt>
                     </div>
                 </div>
+                <br />
+                <br />
                 <br />
             </div>
           )

@@ -131,8 +131,8 @@ textarea {
 }
 
 textarea:focus,
-#input:focus {
-  border-color: #b7bcc2 !important;
+#inputSearchHome:focus {
+  border-color: #aaaaaa!important;
 }
 
 input:focus::-webkit-input-placeholder {
@@ -736,7 +736,9 @@ section .section-title {
   border-radius: 0.25rem;
   border: #0000001e 1px solid;
   border-radius: 35px;
+  
 }
+
 
 /*---------------parrainage css-----------*/
 
@@ -2680,4 +2682,5 @@ bottom: 14px;
 /* container taille */
 .container, .container-lg, .container-md, .container-sm, .container-xl {
     max-width: 1240px;
+    
 }

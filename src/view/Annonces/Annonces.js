@@ -80,9 +80,21 @@ export default class Annonces extends Component {
       <div className="body" id="bodyHome">
           <Header></Header>
 
-          <ImgAnnonce></ImgAnnonce>
-
-          <MapFrance></MapFrance>
+          <br />
+          <div className="container">     
+                <div className="row">
+                    <div className="col">           
+                    <MapFrance></MapFrance> 
+                    </div>
+                    <div className="col">                       
+                    <ImgAnnonce></ImgAnnonce>
+                    </div>
+                </div>
+                <br />
+            </div>
+            <br />
+            <br />
+ 
 
           <SearchBar></SearchBar>
           

@@ -74,7 +74,6 @@ export default class SectionReceptionRow extends Component {
                     <div className="contacts-add">
                         <span className="message-time">{this.state.dateHeureLastMessage}</span>
                         <i className="fa fa-trash-o" />
-                        <i className="fa fa-paperclip" />
                     </div>
                 </li>
           </div>

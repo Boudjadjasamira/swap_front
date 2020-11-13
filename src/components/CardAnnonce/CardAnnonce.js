@@ -82,7 +82,7 @@ export default class CardAnnonce extends Component {
                                 {this.state.categorieLabel}
                                 </span>
                                 <p className="value3 mt-sm">Posté par {this.state.pseudo}</p>
-                                <p className="fs-mini text-muted">Le {this.props.dateEnvoi}</p>
+                                <p className="value3 mt-sm">Le {this.props.dateEnvoi}</p>
                                 <p className="value3 mt-sm">Code Postal : {this.props.codePostalEnvoi}</p>
                                 <p className="value3 mt-sm">Ville : {this.props.villeEnvoi}</p>
                                 {/* <button className="btn btn-outline-dark  btn-sm" onClick={this.deleteAnnonce}><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
