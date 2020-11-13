@@ -269,7 +269,7 @@ iframe {
   color: #fff;
   margin-left: -10px;
   width: 60%;
-  height: 60px;
+  height: 50px;
   border-radius: 55px;
   background: #000000;
   display: -webkit-box;
@@ -289,4 +289,71 @@ iframe {
 
 .login100-form-btn:hover {
   background: #333333;
+}
+
+/* forgotPassword Css */
+
+.form-control {
+  padding: 0 18px 3px;
+  border: 1px solid #dbe2e8;
+  border-radius: 22px;
+  background-color: #fff;
+  color: #606975;
+  font-family: "Maven Pro",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.form-group label {
+  margin-bottom: 8px;
+  padding-left: 18px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+
+.form-text {
+  padding-left: 18px;
+}
+.text-muted {
+  color: #9da9b9 !important;
+}
+
+
+.login100-form-btn2 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #fff;
+  margin-left: -10px;
+  height: 50px;
+  border-radius: 55px;
+  background: #000000;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+ 
+  align-items: center;
+  padding: 0 25px;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.container-login100-form-btn2 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 20px;
 }
