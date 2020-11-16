@@ -108,7 +108,7 @@ export default class FiltrerAnnonces extends Component {
 
   render() {
     return (
-        <div className="body" id="bodyHome">
+        <div className="body" id="bodyTransparent">
             <Header></Header>
 
 
