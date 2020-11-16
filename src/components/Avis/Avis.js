@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 
 export default class Avis extends Component {
- 
+  
+        
     render() {
    
         return (
@@ -22,7 +23,7 @@ export default class Avis extends Component {
                                         <div className="col-12">
                                             <div className="media border p-3 flex-column flex-md-row">
                                                 <div className="media-body align-self-center">
-                                                    <h5>Avis posté le 00/00/0000 </h5>
+                                                    <h5>Avis posté le  </h5>
                                                     <div className="container">
                                                         <div className="row">
                                                             <div className="rating">

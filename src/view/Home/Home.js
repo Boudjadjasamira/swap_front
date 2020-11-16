@@ -15,6 +15,9 @@ import axios from 'axios';
 //Inclus Jquery
 import $ from 'jquery';
 
+import '../../css/loading.css';
+
+
 export default class Home extends Component {
 //On initialise l’état local en affectant un objet à this.state.
   constructor(props) {
@@ -22,7 +25,8 @@ export default class Home extends Component {
     this.state = {
       allAnnonces: [],
       allCategories: [],
-      confirm: true
+      confirm: true,
+      showLoading: true
     }
   }
 
@@ -37,7 +41,7 @@ export default class Home extends Component {
     //recuperation de toutes les annonces
     axios.get(`http://localhost:8000/api/annonces`)
     .then(res => {
-        this.setState({ allAnnonces: res.data['hydra:member'] });
+        this.setState({ allAnnonces: res.data['hydra:member'], showLoading: false });
     })
 
 
@@ -92,17 +96,30 @@ export default class Home extends Component {
         <Search></Search>
 
 
-             {/* Module annonces */}
+        {this.state.showLoading ? 
+                <div className="text-center">
+                  <div class="loadingio-spinner-spin-gkmwr87oy9"><div class="ldio-qorx55o730n"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>
+                </div>
+            :
+                <div>
+                   {/* Module annonces */}
              <div className="container resulted">
                {/* On utilise la methode map() pour prendre un tableau et le transformer en une liste d'element */}
-                {this.state.allAnnonces.map(e => (
+                {this.state.allAnnonces ? 
+                this.state.allAnnonces.map(e => (
                   <div className="row">
                     <div className="col-12">
                       <CardAnnonce idUserEnvoi={e.idUser} lesCategories={this.state.allCategories} typeAnnonce={e.type} photoAnnonce={e.photo} idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} codePostalEnvoi={e.codePostal} categorieEnvoi={e.idCategorie} villeEnvoi={e.ville}></CardAnnonce>
                     </div>
                   </div>
-                ))}
+                )):
+                  <p>Pas d'annonces.</p>
+                }
               </div>
+                </div>
+        }
+
+            
 
         <Footer></Footer>
       </div>

@@ -7,6 +7,10 @@ import axios from 'axios';
 
 //Inclu les components
 import CardAnnonce from '../../components/CardAnnonce/CardAnnonce.js';
+import SearchBar from '../../components/SearchBar/SearchBar';
+
+import '../../css/loading.css';
+
 
 export default class FiltrerAnnonces extends Component {
 
@@ -19,6 +23,8 @@ export default class FiltrerAnnonces extends Component {
        isCategorie: this.props.location.categorie * 1,
        allAnnonces: [],
        allCategories: [],
+       showAnnonces: true,
+       showLoading: true,
        showCardAnnonces: ""
     }
   }
@@ -28,7 +34,7 @@ export default class FiltrerAnnonces extends Component {
     let allAnnoncesTemps = "";
     let allAnnoncesTrier = [];
 
-    console.log(this.state);
+    //console.log(this.state);
 
     axios.get('http://localhost:8000/api/categories')
     .then(res => {this.setState({allCategories: res.data['hydra:member']})});
@@ -91,8 +97,11 @@ export default class FiltrerAnnonces extends Component {
             });
         }
 
-        this.setState({allAnnonces: allAnnoncesTrier});
+        this.setState({allAnnonces: allAnnoncesTrier, showLoading: false});
 
+        if(this.state.allAnnonces.length == 0){
+            this.setState({showAnnonces: false});
+        }
     });
 
   }
@@ -103,16 +112,30 @@ export default class FiltrerAnnonces extends Component {
             <Header></Header>
 
 
-            {/* Module annonces */}
-            <div className="container">
-                {this.state.allAnnonces.map(e => (
-                  <div className="row">
-                    <div className="col-12">
-                      <CardAnnonce lesCategories={this.state.allCategories} typeAnnonce={e.type} photoAnnonce={e.photo} idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} codePostalEnvoi={e.codePostal} categorieEnvoi={e.idCategorie}></CardAnnonce>
+            {this.state.showLoading ? 
+                <div className="text-center">
+                    <div class="loadingio-spinner-spin-gkmwr87oy9"><div class="ldio-qorx55o730n"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>
+                </div>
+            :
+                <div>
+                    {/* Module annonces */}
+                    <div className="container">
+                        {
+                            this.state.showAnnonces ? 
+                            this.state.allAnnonces.map(e => (
+                            <div className="row">
+                                <div className="col-12">
+                                <CardAnnonce idUserEnvoi={e.idUser} villeEnvoi={e.ville} lesCategories={this.state.allCategories} typeAnnonce={e.type} photoAnnonce={e.photo} idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} codePostalEnvoi={e.codePostal} categorieEnvoi={e.idCategorie}></CardAnnonce>
+                                </div>
+                            </div>
+                            ))
+                            :
+                            <p className="text-center">Pas de résultat.</p>
+                        }
                     </div>
-                  </div>
-                ))}
-            </div>
+                </div>
+            }
+            
 
               
             <Footer></Footer>
