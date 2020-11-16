@@ -7,6 +7,8 @@ import { Redirect } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import Tilt from 'react-parallax-tilt';
 
+import '../../css/loading.css';
+
 export default class login extends Component {
 
   constructor(props){
@@ -30,6 +32,14 @@ export default class login extends Component {
   }
 
   connect(){
+
+    Swal.fire({
+      title: "Connexion en cours...",
+      html: '<div class="loadingio-spinner-spin-gkmwr87oy9"><div class="ldio-qorx55o730n"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>',
+      showConfirmButton: false,
+      allowOutsideClick: false
+    });
+
     axios.post('http://localhost:8000/api/login', {
       pseudo: this.state.pseudo,
       motDePasse: this.state.password
@@ -50,7 +60,7 @@ export default class login extends Component {
             this.setState({redirection: true});
             Swal.fire({
               icon: 'success',
-              title: 'Vous etes connecté !',
+              title: 'Vous êtes connecté(e) !',
               showConfirmButton: false,
               timer: 2500,
               allowOutsideClick: false
@@ -111,7 +121,7 @@ export default class login extends Component {
                   />
                 </div>
                 <div className="container-login100-form-btn">
-                  <button className="login100-form-btn" onClick={this.connect}>Se connecter</button>
+                  <button className="login100-form-btn onConnect" onClick={this.connect}>Se connecter</button>
                 </div>
                 <br />
                 <div className="text-center p-t-12">                  

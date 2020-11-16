@@ -20,6 +20,10 @@ export default class MapFrance extends Component {
             $('path').click(function(){
                 _this.setState({isDepartements: $(this).data('num').toString(), redirection: true});
             });
+            
+            $("path").hover(function(){
+                $("#showDepartment").text("Département : " + $(this).data('num'));
+            })
         })
     }
 
@@ -30,7 +34,7 @@ export default class MapFrance extends Component {
                     <Redirect to={{pathname: process.env.PUBLIC_URL + "/Filtrer", departements: this.state.isDepartements}}></Redirect>
                 :
                 <svg id="map" width="492px" height="543px" viewBox="0 0 492 543" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                        <title>Slice 1</title>
+                        <title id="showDepartment"></title>
                         <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                             <g id="france" transform="translate(0.000000, 1.000000)">
                                 <g id="complete_map">

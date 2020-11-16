@@ -11,6 +11,8 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import ImgAnnonce from '../../components/ImgAnnonce/ImgAnnonce';
 import MapFrance from '../../components/MapFrance/MapFrance';
 
+import '../../css/loading.css';
+
 
 export default class Annonces extends Component {
 
@@ -19,7 +21,8 @@ export default class Annonces extends Component {
     this.state = {
       allAnnonces: [],
       confirm: true,
-      allCategories: []
+      allCategories: [],
+      showLoading: true
     }
   }
 
@@ -34,7 +37,7 @@ export default class Annonces extends Component {
     //recuperation de toutes les annonces
     axios.get(`http://localhost:8000/api/annonces`)
       .then(res => {
-        this.setState({ allAnnonces: res.data['hydra:member'] });
+        this.setState({ allAnnonces: res.data['hydra:member'], showLoading: false });
       })
       /* eslint eqeqeq: 0 */  
       //Fonction pour afficher uniquement les offres sur la page Home
@@ -98,17 +101,31 @@ export default class Annonces extends Component {
 
           <SearchBar></SearchBar>
           
+          {this.state.showLoading ? 
+                <div className="text-center">
+                  <div class="loadingio-spinner-spin-gkmwr87oy9"><div class="ldio-qorx55o730n"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>
+                </div>
+            :
+                <div>
+                  {/* Module annonces */}
+                  <div className="container">
+                  {
+                    this.state.allAnnonces ? 
+                    this.state.allAnnonces.map(e => (
+                      <div className="row">
+                        <div className="col-12">
+                          <CardAnnonce idUserEnvoi={e.idUser} lesCategories={this.state.allCategories} typeAnnonce={e.type} photoAnnonce={e.photo} idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} codePostalEnvoi={e.codePostal} categorieEnvoi={e.idCategorie} villeEnvoi={e.ville}></CardAnnonce>
+                        </div>
+                      </div>
+                    ))
+                    :
+                    <p>Pas d'annonces.</p>
+                    }
+                </div>
+                </div>
+            }  
 
-              {/* Module annonces */}
-              <div className="container">
-                {this.state.allAnnonces.map(e => (
-                  <div className="row">
-                    <div className="col-12">
-                      <CardAnnonce idUserEnvoi={e.idUser} lesCategories={this.state.allCategories} typeAnnonce={e.type} photoAnnonce={e.photo} idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} codePostalEnvoi={e.codePostal} categorieEnvoi={e.idCategorie} villeEnvoi={e.ville}></CardAnnonce>
-                    </div>
-                  </div>
-                ))}
-              </div>
+             
               
           <Footer></Footer>
       </div>
