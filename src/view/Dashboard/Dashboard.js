@@ -6,12 +6,15 @@ import MessageRow from '../../components/MessageRow/MessageRow';
 import axios from 'axios';
 import SimpleReactLightbox from 'simple-react-lightbox'
 
+import '../../css/loading.css';
+
 export default class Dashboard extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
           allContact: [],
+          showLoading: true
         }
     }
       
@@ -19,7 +22,7 @@ export default class Dashboard extends Component {
         document.title = "Dashboard";
         axios.get(`http://localhost:8000/api/contacts`)
         .then(res => {
-            this.setState({ allContact: res.data['hydra:member'] });
+            this.setState({ allContact: res.data['hydra:member'], showLoading: false });
         })
     } 
 
@@ -37,6 +40,11 @@ export default class Dashboard extends Component {
                                     </div>
                                 </div>
                             </div>
+                            {this.state.showLoading ? 
+                                <div className="text-center">
+                  <             div class="loadingio-spinner-spin-gkmwr87oy9"><div class="ldio-qorx55o730n"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>
+                                </div>
+                            :
                             <table className="table table-striped table-hover">
                                 <thead>
                                     <tr>
@@ -54,6 +62,7 @@ export default class Dashboard extends Component {
                                 ))}
                                 </tbody>
                             </table>
+                            }
                         </div>
                     </div>
                 </div>     

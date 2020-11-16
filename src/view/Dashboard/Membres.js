@@ -6,6 +6,8 @@ import UserRowMember from '../../components/UserRowMember/UserRowMember';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
+import '../../css/spinnerCss/yellow.css';
+
 
 export default class Membres extends Component {
 
@@ -15,7 +17,8 @@ export default class Membres extends Component {
             allMembers : [],
             pseudoPersonne: "",
             mailPersonne: "",
-            passwordProvisoire: ""
+            passwordProvisoire: "",
+            showLoading: true
         }
         this.changePseudoPersonne = this.changePseudoPersonne.bind(this);        
         this.changeMailPersonne = this.changeMailPersonne.bind(this);
@@ -27,7 +30,7 @@ export default class Membres extends Component {
     componentDidMount(){
         axios.get('http://localhost:8000/api/users')
         .then( res => {
-            this.setState({allMembers: res.data['hydra:member']});
+            this.setState({allMembers: res.data['hydra:member'], showLoading: false});
         });
     }
 
@@ -112,7 +115,14 @@ export default class Membres extends Component {
                                 </div>
                             </div>
                         </div>
-
+                       
+                        {this.state.showLoading ? 
+                                <div className="text-center">
+                                    <div class="loadingio-spinner-spin-72vopomcjiw"><div class="ldio-1j0dsquuvl3">
+                                    <div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div>
+                                    </div></div>
+                                </div>
+                            :
                         <table className="table table-striped table-hover">
                             <thead>
                                 <tr>
@@ -121,13 +131,17 @@ export default class Membres extends Component {
                                     <th>Certifié</th>
                                     <th>Options</th>
                                 </tr>
-                            </thead>
+                            </thead> 
+                            
                             <tbody>
                                 {this.state.allMembers.map(e => (
                                     <UserRowMember pseudoPersonne={e.pseudo} mailPersonne={e.mail} idPersonne={e.id}></UserRowMember>
                                 ))}
                             </tbody>
+                            
+                            
                         </table>
+                        }
                     </div>
                 </div>
             </div>   
