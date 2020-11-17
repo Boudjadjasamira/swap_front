@@ -109,6 +109,8 @@ export default class ProfilInfoGauche extends Component {
                       <h4>@{this.state.pseudo}</h4>
                       <Link to={process.env.PUBLIC_URL + "/Myprofil"}> Voir mon profil</Link>
                       <br />
+                      <h2 className="badge badge-pill badge-dark">750 pts</h2>
+                      <br />
                       <br />
                       <div className="menu">
                         <svg

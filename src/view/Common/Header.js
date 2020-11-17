@@ -37,6 +37,7 @@ export default class Header extends Component {
           <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
             <Link className="nav-link" to={process.env.PUBLIC_URL + "/"}>HOME<span className="sr-only">(current)</span></Link>
             <Link className="nav-link" to={process.env.PUBLIC_URL + "/Annonces"}>ANNONCES</Link>
+            <Link className="nav-link" to={process.env.PUBLIC_URL + "/Member"}>MEMBRES</Link>
             <Link className="nav-link" to={process.env.PUBLIC_URL + "/Faq"}>FAQ</Link>
             <Link className="nav-link" to={process.env.PUBLIC_URL + "/Contact"}>CONTACT</Link>
           </ul>

@@ -27,7 +27,9 @@ import ConditionsUtilisations from './view/Page-conditions-d-utilisations/Condit
 import MentionsLegales from './view/MentionsLegales/MentionsLegales.js';
 import PolitiqueConfidentialite from './view/PolitiqueConfidentialite/PolitiqueConfidentialite.js';
 import Messagerie from './view/Messagerie/Messagerie';
-import ForgotPassword from './view/ForgotPassword/ForgotPassword'
+import ForgotPassword from './view/ForgotPassword/ForgotPassword';
+import Member from './view/Member/Member.js';
+
 
 
 export default function Routes() {
@@ -61,6 +63,7 @@ export default function Routes() {
             <Route path="/Mentions-Legales" exact component={MentionsLegales}/>
             <Route path="/Politique-Confidentialite" exact component={PolitiqueConfidentialite}/>
             <Route path="/ForgotPassword" exact component={ForgotPassword}/>
+            <Route path="/Member" exact component={Member}/>
 
             {/* ROUTE SECURE */}
             <PrivateRoute path='/Account' component={Account} />
