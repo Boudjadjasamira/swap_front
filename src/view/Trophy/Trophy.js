@@ -48,15 +48,15 @@ export default class Trophy extends Component {
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__pulse"
                                                                 />
-                                                                <div className="d-block text-truncate mb-1">
+                                                                <div className="d-block2 text-truncate mb-1">
                                                                     <br />
                                                                     <h6 className="trophy title">Who i am ?</h6>
                                                                 </div>
-                                                                <div className="trophy d-block">
+                                                                <div className="trophyd-block2">
                                                                     <span>Remplir à 100% son profil</span>
                                                                     <br />
                                                                 </div>
-                                                                <div className="percent d-block">
+                                                                <div className="percentd-block2">
                                                                     <div className="bar">
                                                                         {" "}
                                                                         <span className="volume" style={{ width: "68%" }}>
@@ -76,15 +76,15 @@ export default class Trophy extends Component {
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__pulse"
                                                                 />
-                                                                <div className="d-block text-truncate mb-1">
+                                                                <div className="d-block2 text-truncate mb-1">
                                                                     <br />
                                                                     <h6 className="trophy title">Super User</h6>
                                                                 </div>
-                                                                <div className="trophy d-block">
+                                                                <div className="trophyd-block2">
                                                                     <span>Obtenir l'indice de confiance</span>
                                                                     <br />
                                                                 </div>
-                                                                <div className="percent d-block">
+                                                                <div className="percentd-block2">
                                                                     <div className="bar">
                                                                         {" "}
                                                                         <span className="volume" style={{ width: "72%" }}>
@@ -104,15 +104,15 @@ export default class Trophy extends Component {
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__pulse"
                                                                 />
-                                                                <div className="d-block text-truncate mb-1">
+                                                                <div className="d-block2 text-truncate mb-1">
                                                                     <br />
                                                                     <h6 className="trophy title">Top services</h6>
                                                                 </div>
-                                                                <div className="trophy d-block">
+                                                                <div className="trophyd-block2">
                                                                     <span>Publier 10 annonces</span>
                                                                     <br />
                                                                 </div>
-                                                                <div className="percent d-block">
+                                                                <div className="percentd-block2">
                                                                     <div className="bar">
                                                                         {" "}
                                                                         <span className="volume" style={{ width: "42%" }}>
@@ -132,15 +132,15 @@ export default class Trophy extends Component {
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__pulse"
                                                                 />
-                                                                <div className="d-block text-truncate mb-1">
+                                                                <div className="d-block2 text-truncate mb-1">
                                                                     <br />
                                                                     <h6 className="trophy title">Godfather</h6>
                                                                 </div>
-                                                                <div className="trophy d-block">
+                                                                <div className="trophyd-block2">
                                                                     <span>Parrainer 3 Personnes</span>
                                                                     <br />
                                                                 </div>
-                                                                <div className="percent d-block">
+                                                                <div className="percentd-block2">
                                                                     <div className="bar">
                                                                         {" "}
                                                                         <span className="volume" style={{ width: "42%" }}>
@@ -160,15 +160,15 @@ export default class Trophy extends Component {
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__pulse"
                                                                 />
-                                                                <div className="d-block text-truncate mb-1">
+                                                                <div className="d-block2 text-truncate mb-1">
                                                                     <br />
                                                                     <h6 className="trophy title">Give me Gift !</h6>
                                                                 </div>
-                                                                <div className="trophy d-block">
+                                                                <div className="trophyd-block2">
                                                                     <span>Echanger vos points</span>
                                                                     <br />
                                                                 </div>
-                                                                <div className="percent d-block">
+                                                                <div className="percentd-block2">
                                                                     <div className="bar">
                                                                         {" "}
                                                                         <span className="volume" style={{ width: "42%" }}>
@@ -188,15 +188,15 @@ export default class Trophy extends Component {
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__pulse"
                                                                 />
-                                                                <div className="d-block text-truncate mb-1">
+                                                                <div className="d-block2 text-truncate mb-1">
                                                                     <br />
                                                                     <h6 className="trophy title">Swapper</h6>
                                                                 </div>
-                                                                <div className="trophy d-block">
+                                                                <div className="trophyd-block2">
                                                                     <span>échanger 10 services</span>
                                                                     <br />
                                                                 </div>
-                                                                <div className="percent d-block">
+                                                                <div className="percentd-block2">
                                                                     <div className="bar">
                                                                         {" "}
                                                                         <span className="volume" style={{ width: "42%" }}>
@@ -216,15 +216,15 @@ export default class Trophy extends Component {
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__pulse"
                                                                 />
-                                                                <div className="d-block text-truncate mb-1">
+                                                                <div className="d-block2 text-truncate mb-1">
                                                                     <br />
                                                                     <h6 className="trophy title">Premier contact</h6>
                                                                 </div>
-                                                                <div className="trophy d-block">
+                                                                <div className="trophyd-block2">
                                                                     <span>Envoyer 5 messages</span>
                                                                     <br />
                                                                 </div>
-                                                                <div className="percent d-block">
+                                                                <div className="percentd-block2">
                                                                     <div className="bar">
                                                                         {" "}
                                                                         <span className="volume" style={{ width: "34%" }}>
@@ -244,16 +244,16 @@ export default class Trophy extends Component {
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__pulse"
                                                                 />
-                                                                <div className="d-block text-truncate mb-1">
+                                                                <div className="d-block2 text-truncate mb-1">
                                                                     <br />
                                                                     <h6 className="trophy title">Best rewiever</h6>
                                                                 </div>
-                                                                <div className="trophy d-block">
+                                                                <div className="trophyd-block2">
                                                                     <span>Poster 10 avis</span>
                                                                     <br />
                                                                     <br />
                                                                 </div>
-                                                                <div className="percent d-block">
+                                                                <div className="percentd-block2">
                                                                     <div className="bar">
                                                                         {" "}
                                                                         <span className="volume" style={{ width: "58%" }}>

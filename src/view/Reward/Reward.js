@@ -48,16 +48,16 @@ export default class Reward extends Component {
                                                                 </div>
                                                             </div>
                                                             <div className="col-10 col-lg-9 col-xl-10">
-                                                                <div className="d-block text-truncate mb-1">
+                                                                <div className="d-block2 text-truncate mb-1">
                                                                     <br />
                                                                     <h5>Dans le mille !</h5>
                                                                 </div>
-                                                                <div className="trophy d-block">
+                                                                <div className="trophy d-block2">
                                                                     <span>Echange 1000 Points et tu en gagnes 500.</span>
                                                                     <br />
                                                                     <br />
                                                                 </div>
-                                                                <div className="percent d-block">
+                                                                <div className="percent d-block2">
                                                                     <div className="bar">
                                                                         {" "}
                                                                         <span className="volume" style={{ width: "42%" }}>
@@ -79,17 +79,17 @@ export default class Reward extends Component {
                                                                 </div>
                                                             </div>
                                                             <div className="col-10 col-lg-9 col-xl-10">
-                                                                <div className="d-block text-truncate mb-1">
+                                                                <div className="d-block2 text-truncate mb-1">
                                                                     <br />
                                                                     <h5>A votre Service !</h5>
                                                                 </div>
-                                                                <div className="trophy d-block">
+                                                                <div className="trophy d-block2">
                                                                     <span>Accompli 20 services et gagne 2000 Points</span>
                                                                     <br />
                                                                     <br />
 
                                                                 </div>
-                                                                <div className="percent d-block">
+                                                                <div className="percent d-block2">
                                                                     <div className="bar">
                                                                         {" "}
                                                                         <span className="volume" style={{ width: "29%" }}>
@@ -111,16 +111,16 @@ export default class Reward extends Component {
                                                                 </div>
                                                             </div>
                                                             <div className="col-10 col-lg-9 col-xl-10">
-                                                                <div className="d-block text-truncate mb-1">
+                                                                <div className="d-block2 text-truncate mb-1">
                                                                     <br />
                                                                     <h5>Deux avis valent mieux qu’un !</h5>
                                                                 </div>
-                                                                <div className="trophy d-block">
+                                                                <div className="trophy d-block2">
                                                                     <span>Dépose 30 avis et gagne 3000 Points</span>
                                                                     <br />
                                                                     <br />
                                                                 </div>
-                                                                <div className="percent d-block">
+                                                                <div className="percent d-block2">
                                                                     <div className="bar">
                                                                         {" "}
                                                                         <span className="volume" style={{ width: "65%" }}>
@@ -142,16 +142,16 @@ export default class Reward extends Component {
                                                                 </div>
                                                             </div>
                                                             <div className="col-10 col-lg-9 col-xl-10">
-                                                                <div className="d-block text-truncate mb-1">
+                                                                <div className="d-block2 text-truncate mb-1">
                                                                     <br />
                                                                     <h5>Mystere !</h5>
                                                                 </div>
-                                                                <div className="trophy d-block">
+                                                                <div className="trophy d-block2">
                                                                     <span>La recompense ultime, chuut c'est une surprise.</span>
                                                                     <br />
                                                                     <br />
                                                                 </div>
-                                                                <div className="percent d-block">
+                                                                <div className="percent d-block2">
                                                                     <div className="bar">
                                                                         {" "}
                                                                         <span className="volume" style={{ width: "89%" }}>

@@ -1544,8 +1544,14 @@ input:checked[type="checkbox"]:after {
 /*--------Resize img SingleAN---------*/
 .d-block{  
   background-size: cover;
-  width: 300px;
-  height: 600px;
+   width: 300px;
+  height: 600px; 
+}
+
+.d-block2{
+  background-size: cover;
+  /* width: 300px; */
+  /* height: 600px; */
 }
 
 /*--------Modal SingleAN---------*/

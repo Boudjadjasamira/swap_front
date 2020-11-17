@@ -14,9 +14,10 @@ export default class Avis extends Component {
                     <div class="row">
                         <div class="col-md-12">
                         <ul class="nav nav-pills" >
-                            <li class="nav-item"> <a href="" class="active nav-link" data-toggle="pill" data-target="#tabone">Vos avis</a> </li>
-                            <li class="nav-item"> <a class="nav-link" href="" data-toggle="pill" data-target="#tabtwo">Leur avis</a> </li>
+                            <li class="nav-item"> <a href="" class="active btn btn-outline-dark nav-link" data-toggle="pill" data-target="#tabone">Vos avis</a> </li>&ensp;
+                            <li class="nav-item"> <a class="btn btn-outline-dark nav-link" href="" data-toggle="pill" data-target="#tabtwo">Leurs avis</a> </li>
                         </ul>
+                        <br />
                         <div class="tab-content mt-2">
                             <div class="tab-pane fade show active" id="tabone" role="tabpanel">
                             <div className="row justify-content-start">
