@@ -6,7 +6,7 @@ export default class MemberGrid extends Component {
   constructor(props) {
     super(props);
     this.state = {  
-        pseudo: "",       
+        changePseudo: "",       
         photo: ""
       
         
@@ -16,7 +16,7 @@ export default class MemberGrid extends Component {
 componentDidMount(){   
 
   //Recuperation des infos users
-  axios.get(`http://localhost:8000/api/users/`)
+  axios.get(`http://localhost:8000/api/users/` + localStorage.getItem('ID'))
   .then(res =>
       this.setState({
         pseudo: res.data.pseudo,
@@ -30,13 +30,13 @@ componentDidMount(){
         return (
             <div className="content ">
               <div className="container">                
-                <div className="text-center card-box border ">
+                <div className="text-center card-box2 border ">
                   <div className="member-card pt-2 pb-2  p-5 text-center">
                     <div className="thumb-lg member-thumb mx-auto">
-                      <img src={"http://localhost:8000/uploads/avatars/" + this.props.photo} alt="Avatar" className="rounded-circle img-thumbnail"/>
+                      <img src={"http://localhost:8000/uploads/avatars/" + this.state.changePhoto} alt="Avatar" className="rounded-circle img-thumbnail"/>
                     </div>
                     <div>
-                      <p className="text-muted">@{this.props.pseudo}</p>
+                      <p className="text-muted">@{this.props.changePseudo}</p>
                     </div>
                     <div className="team-social-icon p-2">
                       <ul className="blog-details-icons list-inline mb-0">

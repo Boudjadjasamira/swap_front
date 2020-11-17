@@ -13,8 +13,8 @@ export default class Member extends Component {
         super(props);
         this.state = {
             allUsers: [],
-            pseudo:"",
-            photo : ""
+            changePseudo:"",
+            changePhoto : ""
 
         }
       }
@@ -43,7 +43,7 @@ export default class Member extends Component {
                         this.state.allUsers? 
                         this.state.allUsers.map(e => (                            
                     <div class="d-inline-flex p-12 bd-highlight">
-                        <MemberGrid>{e.pseudo} {e.photo} </MemberGrid> 
+                        <MemberGrid>changePseudo={e.pseudo} changePhoto={e.photo} </MemberGrid> 
                     </div>                    
                         ))
                         :
