@@ -29,6 +29,7 @@ import PolitiqueConfidentialite from './view/PolitiqueConfidentialite/PolitiqueC
 import Messagerie from './view/Messagerie/Messagerie';
 import ForgotPassword from './view/ForgotPassword/ForgotPassword';
 import Member from './view/Member/Member.js';
+import Profil from './view/Member/Profil.js';
 
 
 
@@ -64,6 +65,7 @@ export default function Routes() {
             <Route path="/Politique-Confidentialite" exact component={PolitiqueConfidentialite}/>
             <Route path="/ForgotPassword" exact component={ForgotPassword}/>
             <Route path="/Member" exact component={Member}/>
+            <Route path="/Profil-:id" exact component={Profil}/>
 
             {/* ROUTE SECURE */}
             <PrivateRoute path='/Account' component={Account} />

@@ -1,42 +1,19 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 export default class MemberGrid extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {  
-        changePseudo: "",       
-        photo: ""
-      
-        
-    }
-}
 
-componentDidMount(){   
-
-  //Recuperation des infos users
-  axios.get(`http://localhost:8000/api/users/` + localStorage.getItem('ID'))
-  .then(res =>
-      this.setState({
-        pseudo: res.data.pseudo,
-        photo: res.data.photo
-      })
-  )
-  
-}
-
-    render() {
+  render() {
         return (
             <div className="content ">
               <div className="container">                
                 <div className="text-center card-box2 border ">
                   <div className="member-card pt-2 pb-2  p-5 text-center">
                     <div className="thumb-lg member-thumb mx-auto">
-                      <img src={"http://localhost:8000/uploads/avatars/" + this.state.changePhoto} alt="Avatar" className="rounded-circle img-thumbnail"/>
+                      <img src={"http://localhost:8000/uploads/avatars/" + this.props.photoMembre} alt={this.props.photoMembre} className="rounded-circle img-thumbnail"/>
                     </div>
                     <div>
-                      <p className="text-muted">@{this.props.changePseudo}</p>
+                      <p className="text-muted">@{this.props.pseudoMembre}</p>
                     </div>
                     <div className="team-social-icon p-2">
                       <ul className="blog-details-icons list-inline mb-0">
@@ -57,7 +34,7 @@ componentDidMount(){
                     <br />
                     <hr />
                     <div className="text-center mt-2 mb-0">
-                        <Link className="btn btn-custom btn-sm" to={process.env.PUBLIC_URL + "/Myprofil"}> Profil</Link>
+                        <Link className="btn btn-custom btn-sm" to={process.env.PUBLIC_URL + "/Profil-" + this.props.idMembre}> Profil</Link>
                     </div>     
                   </div>
                 </div>

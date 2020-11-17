@@ -6,6 +6,7 @@ import Footer from '../..//view/Common/Footer';
 import MemberGrid from '../../components/MemberGrid/MemberGrid';
 import './Member.css';
 import axios from 'axios';
+import '../../css/loading.css';
 
 
 export default class Member extends Component {
@@ -13,22 +14,21 @@ export default class Member extends Component {
         super(props);
         this.state = {
             allUsers: [],
-            changePseudo:"",
-            changePhoto : ""
-
+            showUsers: false
         }
-      }
+    }
     
 
     componentDidMount(){
         document.title = "Profil - Membres";
-
-         
-  axios.get(`http://localhost:8000/api/users`)
-  .then(res => {
-    this.setState({ allUsers: res.data['hydra:member']});
-  })
-
+        
+        axios.get(`http://localhost:8000/api/users`)
+        .then(res => {
+            this.setState({ allUsers: res.data['hydra:member']});
+            if(res.data['hydra:member'].length > 0){
+                this.setState({ showUsers: true });
+            }
+        })
 
     }
 
@@ -40,14 +40,16 @@ export default class Member extends Component {
                 <br />
                 <div className="container">        
                 {
-                        this.state.allUsers? 
+                    this.state.showUsers ? 
                         this.state.allUsers.map(e => (                            
-                    <div class="d-inline-flex p-12 bd-highlight">
-                        <MemberGrid>changePseudo={e.pseudo} changePhoto={e.photo} </MemberGrid> 
-                    </div>                    
+                            <div class="d-inline-flex p-12 bd-highlight">
+                                <MemberGrid idMembre={e.id} pseudoMembre={e.pseudo} photoMembre={e.photo}></MemberGrid> 
+                            </div>                    
                         ))
                         :
-                        <p>Aucun Membres</p>
+                        <div className="text-center">
+                            <div class="loadingio-spinner-spin-gkmwr87oy9"><div class="ldio-qorx55o730n"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>
+                        </div>
                 }
                 </div>
                 <Footer></Footer>               
