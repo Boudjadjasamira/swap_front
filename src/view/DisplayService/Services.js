@@ -10,6 +10,7 @@ import CardAnnonce from '../../components/CardAnnonce/CardAnnonce';
 import axios from 'axios';
 
 import ProfilInfoGauche from '../../components/ProfilInfoGauche/ProfilInfoGauche';
+import CardDisplayService from '../../components/cardDisplayService/CardDisplayService';
 
 
 export default class Services extends Component {
@@ -77,7 +78,7 @@ export default class Services extends Component {
                                     <div className="row justify-content-start">
                                         {this.state.allAnnonces.map(e => (
                                             <div className="col-12">
-                                                <CardAnnonce lesCategories={this.state.allCategories} photoAnnonce={e.photo} idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} codePostalEnvoi={e.codePostal} categorieEnvoi={e.idCategorie}villeEnvoi={e.ville}></CardAnnonce>
+                                                <CardDisplayService idUserEnvoi={e.idUser} lesCategories={this.state.allCategories} photoAnnonce={e.photo} idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} codePostalEnvoi={e.codePostal} categorieEnvoi={e.idCategorie}villeEnvoi={e.ville}></CardDisplayService>
                                             </div>
                                         ))}
                                     </div>  

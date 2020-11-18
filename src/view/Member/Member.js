@@ -7,6 +7,8 @@ import MemberGrid from '../../components/MemberGrid/MemberGrid';
 import './Member.css';
 import axios from 'axios';
 import '../../css/loading.css';
+import SearchMember from '../../components/SearchMember/SearchMember';
+
 
 
 export default class Member extends Component {
@@ -30,19 +32,28 @@ export default class Member extends Component {
             }
         })
 
+
     }
 
     render() {
         return (
-            <div className="body" id="bodyTransparent">  
+            <div className="body" id="bodyHome">  
                 <Header></Header>
                 <br />
                 <br />
-                <div className="container">        
+               
+                <div className="container">   
+                <center>
+                    <h1>MEMBRES</h1>
+                </center>
+                <br />
+                <hr />
+                <br /> 
+                <SearchMember></SearchMember>
                 {
                     this.state.showUsers ? 
                         this.state.allUsers.map(e => (                            
-                            <div class="d-inline-flex p-12 bd-highlight">
+                            <div class="d-inline-flex p-12 bd-highlight ">
                                 <MemberGrid idMembre={e.id} pseudoMembre={e.pseudo} photoMembre={e.photo}></MemberGrid> 
                             </div>                    
                         ))
