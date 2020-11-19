@@ -16,7 +16,8 @@ export default class Account extends Component {
     super(props);
     this.state = {
       pseudo: "",
-      selectedSexe: 0,
+      // TODO sexe par defaaut homme
+      selectedSexe: 0, 
       nom: "",
       prenom: "",
       mail: "",
