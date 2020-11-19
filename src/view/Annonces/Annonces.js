@@ -111,16 +111,16 @@ export default class Annonces extends Component {
                   <div className="container">
                   {
                     this.state.allAnnonces ? 
-                    this.state.allAnnonces.map(e => (
-                      <div className="row">
-                        <div className="col-12">
-                          <CardAnnonce idUserEnvoi={e.idUser} lesCategories={this.state.allCategories} typeAnnonce={e.type} photoAnnonce={e.photo} idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} codePostalEnvoi={e.codePostal} categorieEnvoi={e.idCategorie} villeEnvoi={e.ville}></CardAnnonce>
+                      this.state.allAnnonces.map(e => (
+                        <div className="row">
+                          <div className="col-12">
+                            <CardAnnonce idUserEnvoi={e.idUser} lesCategories={this.state.allCategories} typeAnnonce={e.type} photoAnnonce={e.photo} idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} codePostalEnvoi={e.codePostal} categorieEnvoi={e.idCategorie} villeEnvoi={e.ville}></CardAnnonce>
+                          </div>
                         </div>
-                      </div>
-                    ))
+                      ))
                     :
                     <p>Pas d'annonces.</p>
-                    }
+                  }
                 </div>
                 </div>
             }  

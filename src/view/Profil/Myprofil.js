@@ -6,8 +6,6 @@ import Header from '../../view/Common/Header';
 import Footer from '../../view/Common/Footer';
 import CardProfil from '../../components/CardProfil/CardProfil';
 
-
-
 import axios from 'axios';
 
 export default class Myprofil extends Component {
@@ -18,7 +16,9 @@ export default class Myprofil extends Component {
       pseudo: "",
       description: "",
       dateInscription: "",
-      photo: ""
+      photo: "",
+      imgLoaded: true,
+      allAnnonces: []
     };
   }
 
@@ -36,10 +36,16 @@ export default class Myprofil extends Component {
 
     //recuperation de toutes les annonces
     axios.get(`http://localhost:8000/api/annonces`)
-      .then(res => {
-        this.setState({ allAnnonces: res.data['hydra:member'], showLoading: false });
-      })
-
+    .then(res => {
+        var tabTempAnnoncesByUserID = [];
+        res.data['hydra:member'].map(e => {
+            if(e.idUser == localStorage.getItem('ID')){
+                tabTempAnnoncesByUserID.push(e)
+            } return true
+            /* eslint eqeqeq: 0 */
+        })
+        this.setState({ allAnnonces: tabTempAnnoncesByUserID });
+    })
     
   }
 
@@ -59,7 +65,14 @@ export default class Myprofil extends Component {
                 <span className="notify-badge-profil">
                   <img src="assets/icone/validate.png" alt="#" style={{ width: 60 }} />
                 </span>
-                <img className="image-avatar" src={"http://localhost:8000/uploads/avatars/" + this.state.photo} alt={this.state.photo} />
+                
+                {this.state.imgLoaded ? 
+                    <div class="loadingio-spinner-spin-gkmwr87oy9"><div class="ldio-qorx55o730n"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>
+                  :
+                    <img className="image-avatar" src={"http://localhost:8000/uploads/avatars/" + this.state.photo} width="240px" />
+                }
+                <img style={{display: "none"}} onLoad={() => this.setState({imgLoaded: false})} className="image-avatar" src={"http://localhost:8000/uploads/avatars/" + this.state.photo} alt={this.state.photo} />
+
                 <br />
                 <br />
                 <h2>@{this.state.pseudo}</h2>
@@ -99,7 +112,7 @@ export default class Myprofil extends Component {
                 this.state.allAnnonces.map(e => (
                   <div className="row">
                     <div className="col-12">
-                      <CardProfil idUserEnvoi={e.idUser} lesCategories={this.state.allCategories} typeAnnonce={e.type} photoAnnonce={e.photo} idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} codePostalEnvoi={e.codePostal} categorieEnvoi={e.idCategorie} villeEnvoi={e.ville}></CardProfil>
+                      <CardProfil photoAnnonce={e.photo} idAnnonce={e.id} titreEnvoi={e.titre} descriptionEnvoi={e.description} dateEnvoi={e.date} categorieEnvoi={e.idCategorie} villeEnvoi={e.ville}></CardProfil>
                     </div>
                   </div>
                 )):

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+import '../../css/loading.css';
+
 export default class ProfilInfoGauche extends Component {
 
     constructor(props){
@@ -9,7 +11,8 @@ export default class ProfilInfoGauche extends Component {
         this.state = {
             pseudo: "",
             titrePhoto: "",
-            nombreDeTchatEnCours: 0
+            nombreDeTchatEnCours: 0,
+            imgLoaded: true
         };
         this.changePicture = this.changePicture.bind(this);
     }
@@ -103,7 +106,14 @@ export default class ProfilInfoGauche extends Component {
                           <input id="file-input" onChange={this.changePicture} type="file" />
                         </div>
                       </span>
-                      <img className="image-avatar" src={"http://localhost:8000/uploads/avatars/" + this.state.titrePhoto} alt={this.state.titrePhoto} width="240px" />
+                      {this.state.imgLoaded ? 
+                          <div class="loadingio-spinner-spin-gkmwr87oy9"><div class="ldio-qorx55o730n"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>
+                        :
+                        <img className="image-avatar" src={"http://localhost:8000/uploads/avatars/" + this.state.titrePhoto} width="240px" />
+                      }
+
+                      <img style={{display:"none"}} onLoad={() => this.setState({imgLoaded: false})} src={"http://localhost:8000/uploads/avatars/" + this.state.titrePhoto} width="240px" />
+                      
                       <br />
                       <br />
                       <h4>@{this.state.pseudo}</h4>
