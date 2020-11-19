@@ -16,7 +16,9 @@ export default class Myprofil extends Component {
       pseudo: "",
       description: "",
       dateInscription: "",
-      photo: ""
+      photo: "",
+      allAnnonces: [],
+      imgLoaded: true
     };
   }
 
@@ -32,11 +34,19 @@ export default class Myprofil extends Component {
           photo: res.data.photo
         })
     )
+
     //recuperation de toutes les annonces
     axios.get(`http://localhost:8000/api/annonces`)
-      .then(res => {
-        this.setState({ allAnnonces: res.data['hydra:member'], showLoading: false });
-      })
+    .then(res => {
+        var tabTempAnnoncesByUserID = [];
+        res.data['hydra:member'].map(e => {
+            if(e.idUser == search.toString()){
+                tabTempAnnoncesByUserID.push(e)
+            } return true
+            /* eslint eqeqeq: 0 */
+        })
+        this.setState({ allAnnonces: tabTempAnnoncesByUserID });
+    })
   }
 
   render() {
@@ -55,7 +65,12 @@ export default class Myprofil extends Component {
                 <span className="notify-badge-profil">
                   <img src="assets/icone/validate.png" alt="#" style={{ width: 60 }} />
                 </span>
-                <img className="image-avatar" src={"http://localhost:8000/uploads/avatars/" + this.state.photo} alt={this.state.photo} />
+                {this.state.imgLoaded ? 
+                    <div class="loadingio-spinner-spin-gkmwr87oy9"><div class="ldio-qorx55o730n"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>
+                  :
+                    <img className="image-avatar" src={"http://localhost:8000/uploads/avatars/" + this.state.photo} width="240px" />
+                }
+                <img style={{display: "none"}} onLoad={() => this.setState({imgLoaded: false})} className="image-avatar" src={"http://localhost:8000/uploads/avatars/" + this.state.photo} alt={this.state.photo} />
                 <br />
                 <br />
                 <h5>@{this.state.pseudo}</h5>
@@ -88,7 +103,7 @@ export default class Myprofil extends Component {
               <br />
               <br />
               {/* Section annonces */}
-              <h5>MES ANNONCES</h5>
+              <h5>ANNONCES</h5>
               <hr />
               <br />
               {this.state.allAnnonces ? 

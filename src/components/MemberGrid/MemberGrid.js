@@ -12,9 +12,9 @@ export default class MemberGrid extends Component {
 
   render() {
         return (
-            <div className="content ">
+            <div className="content">
               <div className="container resulted">                
-                <div className="text-center card-box2 border ">
+                <div className="text-center card-box2 border">
                   <div className="member-card pt-2 pb-2  p-5 text-center">
                     <div className="thumb-lg member-thumb mx-auto">
                       <img src={"http://localhost:8000/uploads/avatars/" + this.props.photoMembre} alt={this.props.photoMembre} className="rounded-circle img-thumbnail"/>
