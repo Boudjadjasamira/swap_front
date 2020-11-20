@@ -2701,3 +2701,13 @@ bottom: 14px;
     max-width: 1240px;
     
 }
+
+/* avatar page membres */
+.img-thumbnail {
+  padding: .25rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: .25rem;
+  height: 100% !important;
+  width:100% !important;
+}
