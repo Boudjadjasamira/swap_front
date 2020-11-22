@@ -124,6 +124,13 @@ export default class SingleAnnonce extends Component {
   openModelContacter(){
 
 
+    Swal.fire({
+      title: "Envoie en cours...",
+      html: '<div class="loadingio-spinner-spin-gkmwr87oy9"><div class="ldio-qorx55o730n"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>',
+      showConfirmButton: false,
+      allowOutsideClick: false
+    });
+
     let verifSalon = false;
     let idSalonRecup = 0;
 

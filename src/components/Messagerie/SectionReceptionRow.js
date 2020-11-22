@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-
+import $ from 'jquery';
 import axios from 'axios';
+
 
 export default class SectionReceptionRow extends Component {
 
@@ -53,16 +54,38 @@ export default class SectionReceptionRow extends Component {
                     lastMessage: lastMessageTemp,
                     dateHeureLastMessage: lastDateTimeTemp,
                     compteurMessage: compteurMessageTemp
-                })
-            } )
+                });
+
+                let yearAnnonce = this.state.dateHeureLastMessage.split('-')[0];
+                let mois = this.state.dateHeureLastMessage.split('-')[1];
+                let jours = this.state.dateHeureLastMessage.split('-')[2].split('T')[0];
+                
+                this.setState({dateHeureLastMessage: jours+"/"+mois+"/"+yearAnnonce});
+                
+            })
 
         })
+
+        $("li").click(function(){
+            let myThis = $(this).data('target');
+            
+            $('li').each(function(){
+                if(myThis == $(this).data('target')){
+                    $(this).addClass('active');
+                    $(myThis).addClass('active');
+                }else{
+                    $(this).removeClass('active');
+                    $($(this).data('target')).removeClass('active');
+                }
+            })
+            
+        });
     }
 
     render() {
         return (
             <div> 
-                <li data-toggle="tab" data-target={"#inbox-message-" + this.props.idRow}>
+                <li data-target={"#inbox-message-" + this.props.idRow}>
                     <div className="message-count"> 
                          {this.state.compteurMessage}
                     </div>
@@ -73,7 +96,6 @@ export default class SectionReceptionRow extends Component {
                     </div>
                     <div className="contacts-add">
                         <span className="message-time">{this.state.dateHeureLastMessage}</span>
-                        <i className="fa fa-trash-o" />
                     </div>
                 </li>
           </div>
