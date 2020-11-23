@@ -54,7 +54,7 @@ export default class Member extends Component {
                     this.state.showUsers ? 
                         this.state.allUsers.map(e => (                            
                             <div class="d-inline-flex p-12 bd-highlight">
-                                <MemberGrid idMembre={e.id} pseudoMembre={e.pseudo} photoMembre={e.photo}></MemberGrid> 
+                                <MemberGrid idMembre={e.id} pseudoMembre={e.pseudo} photoMembre={e.photo} CPMembre={e.codePostal}></MemberGrid> 
                             </div>                    
                         ))
                         :

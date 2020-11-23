@@ -14,6 +14,7 @@ export default class MemberGrid extends Component {
                     </div>
                     <div>
                       <p className="text-muted">@{this.props.pseudoMembre}</p>
+                      <p className="text-muted"><i className="mdi mdi-map-marker" />{this.props.CPMembre}</p>
                     </div>
                     <div className="team-social-icon p-2">
                       <ul className="blog-details-icons list-inline mb-0">
