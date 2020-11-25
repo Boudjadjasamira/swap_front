@@ -83,7 +83,6 @@ export default class login extends Component {
     if(e.key === 'Enter'){
       this.connect()
     }
-    
   }
 
   render() {

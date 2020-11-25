@@ -2,16 +2,95 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../css/login.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default class ForgotPassword extends Component {
- 
 
-  componentDidMount(){
-    document.title = "Mot de passe oublié "
+  constructor(props){
+    super(props);
+
+    this.state = {
+      mailForgot: ""
+    };
+
+    this.changeMailForgot = this.changeMailForgot.bind(this);
+    this.sendMail = this.sendMail.bind(this);
   }
-    
+ 
+  componentDidMount(){
+    document.title = "Mot de passe oublié"
+  }
+   
+  changeMailForgot(e){
+    this.setState({mailForgot: e.target.value});
+  }
 
-render() {
+  sendMail(e){
+    Swal.fire({
+      title: "Envoie en cours...",
+      html: '<div class="loadingio-spinner-spin-gkmwr87oy9"><div class="ldio-qorx55o730n"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>',
+      showConfirmButton: false,
+      allowOutsideClick: false
+    });
+
+    var rand = function() {
+      return Math.random().toString(36).substr(2); // remove `0.`
+    };
+  
+    var token = function() {
+        return rand() + rand(); // to make it longer
+    };
+
+    let verifMail = false;
+    let idRecupByMail = 0;
+    let tokenToSend = token().toString();
+
+    axios.get('http://localhost:8000/api/users')
+    .then(res => {
+      res.data['hydra:member'].map(e => {
+        if(e.mail.toString() == this.state.mailForgot.toString()){
+          verifMail = true;
+          idRecupByMail = e.id
+        }
+      });
+
+      if(verifMail == true){
+        axios.post('http://localhost:8000/mail/sender', {
+            mailForgot: this.state.mailForgot,
+            keyToken: tokenToSend
+          }).then(res => {
+
+            axios.patch('http://localhost:8000/api/users/' + idRecupByMail, {
+              tokenGenPasswordRecovery: tokenToSend
+            },{
+              headers: {
+                    'Content-Type': 'application/merge-patch+json'
+              }}).then(res2 => {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Mail envoyé !',
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+              })
+
+        })
+      }else{
+        Swal.fire({
+          icon: 'error',
+          title: "Connexion",
+          html: '<p>Votre mail n\'est pas dans la base.</p>',
+          showConfirmButton: true,
+        })
+      }
+    })
+
+  
+    e.preventDefault();
+  }
+
+  render() {
     return (
 
       <div class="body" >            
@@ -27,11 +106,12 @@ render() {
                 <div className="card-body">
                   <div className="form-group">
                     <label htmlFor="email-for-pass">Entrez votre adresse Email</label>
-                    <input className="form-control" type="text" id="email-for-pass" required /><small className="form-text text-muted">Saisissez l'adresse e-mail que vous avez utilisée lors de votre inscription à SWAP. Ensuite, nous vous enverrons un code temporaire par e-mail. Utilisez le code pour changer votre mot de passe.</small>
+                    <input className="form-control" onChange={this.changeMailForgot} value={this.state.mailForgot} type="mail" id="email-for-pass" required /><small className="form-text text-muted">Saisissez l'adresse e-mail que vous avez utilisée lors de votre inscription à SWAP. Ensuite, nous vous enverrons un code temporaire par e-mail. Utilisez le code pour changer votre mot de passe.</small>
                   </div>
                 </div>
                 <div className="card-footer ">
-                  <button className="login100-form-btn2" type="submit">Reinitialiser</button>&emsp;
+                  <button className="login100-form-btn2" onClick={this.sendMail} type="submit">Reinitialiser</button>&emsp;
+                  &nbsp;
                   <Link to={process.env.PUBLIC_URL + "/"}><button class="login100-form-btn2" type="submit">Retour a l'accueil</button> </Link>
                 </div>
               </form>

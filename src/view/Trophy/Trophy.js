@@ -7,7 +7,6 @@ import Footer from '../..//view/Common/Footer';
 import ProfilInfoGauche from '../../components/ProfilInfoGauche/ProfilInfoGauche';
 import axios from 'axios';
 
-
 export default class Trophy extends Component {
 
     constructor(props){

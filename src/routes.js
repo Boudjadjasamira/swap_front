@@ -30,7 +30,7 @@ import Messagerie from './view/Messagerie/Messagerie';
 import ForgotPassword from './view/ForgotPassword/ForgotPassword';
 import Member from './view/Member/Member.js';
 import Profil from './view/Member/Profil.js';
-
+import RecoveryPassword from './view/RecoveryPassword/RecoveryPassword';
 
 
 export default function Routes() {
@@ -64,6 +64,7 @@ export default function Routes() {
             <Route path="/Mentions-Legales" exact component={MentionsLegales}/>
             <Route path="/Politique-Confidentialite" exact component={PolitiqueConfidentialite}/>
             <Route path="/ForgotPassword" exact component={ForgotPassword}/>
+            <Route path="/Recovery-:token" exact component={RecoveryPassword}/>
             <Route path="/Member" exact component={Member}/>
             <Route path="/Profil-:id" exact component={Profil}/>
 
