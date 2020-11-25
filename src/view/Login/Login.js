@@ -20,6 +20,7 @@ export default class login extends Component {
     };
     this.changePseudo = this.changePseudo.bind(this);
     this.changePassword = this.changePassword.bind(this);
+    this.sendLogin = this.sendLogin.bind(this);
     this.connect = this.connect.bind(this);
   }
 
@@ -31,8 +32,9 @@ export default class login extends Component {
     this.setState({pseudo: e.target.value});
   }
 
-  connect(){
 
+
+  connect(){
     Swal.fire({
       title: "Connexion en cours...",
       html: '<div class="loadingio-spinner-spin-gkmwr87oy9"><div class="ldio-qorx55o730n"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>',
@@ -77,6 +79,13 @@ export default class login extends Component {
     })
   }
 
+  sendLogin(e){
+    if(e.key === 'Enter'){
+      this.connect()
+    }
+    
+  }
+
   render() {
     return (
       <div>
@@ -118,6 +127,7 @@ export default class login extends Component {
                     placeholder="Mot de passe"
                     value={this.state.password}
                     onChange={this.changePassword}
+                    onKeyDown={this.sendLogin}
                   />
                 </div>
                 <div className="container-login100-form-btn">
