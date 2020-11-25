@@ -26,11 +26,21 @@ export default class SingleAnnonce extends Component {
       allAnnonces: [],
       isMyAnnonce: false,
       contactMessage: "",
-      idAnnonce: 0
+      idAnnonce: 0,
+      serviceSelected: "",
+      isVisibleSwap: true,
+      isAvisVisible: false,
+      myAvis: "",
+      myNote: 0,
+      idSwap: 0
     }
     this.openModalConfirm = this.openModalConfirm.bind(this);
     this.openModelContacter = this.openModelContacter.bind(this);
     this.changeContactMessage = this.changeContactMessage.bind(this);
+    this.changeServicesSelect = this.changeServicesSelect.bind(this);
+    this.changeMyAvis = this.changeMyAvis.bind(this);
+    this.openModalAvisSend = this.openModalAvisSend.bind(this);
+    this.changeMyNote = this.changeMyNote.bind(this);
   }
 
   componentDidMount() {
@@ -100,25 +110,115 @@ export default class SingleAnnonce extends Component {
         this.setState({allAnnonces: tabTempAnnonce});
     });
 
+    let verifSalon = true;
+    let idSalonRecup = 0;
+        //Verification pour savoir la conversation existe
+        axios.get('http://localhost:8000/api/salons')
+        .then( res => {
+          res.data['hydra:member'].map(e => {
+            if((e.idUser1 == this.state.idUser) && (e.idUser2 == localStorage.getItem('ID')) && (e.idAnnonce == this.state.idAnnonce)){
+              verifSalon = true;
+              idSalonRecup = e.id;
+            }
+            if((e.idUser1 == localStorage.getItem('ID')) && (e.idUser2 == this.state.idUser) && (e.idAnnonce == this.state.idAnnonce)){
+              verifSalon = true;
+              idSalonRecup = e.id;
+            }
+          })
+    
+          if(verifSalon == true){
+            this.setState({isVisibleSwap: false});
+          }
+
+
+
+          axios.get('http://localhost:8000/api/swaps')
+          .then(res => {
+            res.data['hydra:member'].map(k => {
+              if(k.idSalon == idSalonRecup && k.isClotured == true && k.isAccepted == true){
+                this.setState({isAvisVisible: true});
+              }
+              if(k.idSalon == idSalonRecup){
+                this.setState({idSwap: k.id})
+              }
+            })
+          })
+
+        });
  
+
 
   }
 
+  changeServicesSelect(e){
+    this.setState({serviceSelected: e.target.value});
+  }
+
+  changeMyNote(e){
+    this.setState({myNote: e.target.value});
+  }
+
+  changeMyAvis(e){
+    this.setState({myAvis: e.target.value});
+  }
+
   openModalConfirm(){
+
+    let verifSalon = false;
+    let idSalonRecup = 0;
+
     Swal.fire({
-      title: 'Swap Envoyé !',
-      width: 200,
-      paddingRight: '',
-      background: 'white',
-      timer: 2200,
+      title: "Envoie en cours...",
+      html: '<div class="loadingio-spinner-spin-gkmwr87oy9"><div class="ldio-qorx55o730n"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>',
       showConfirmButton: false,
-      backdrop: `
-        rgba(0,0,123,0.4)
-        url("https://i.gifer.com/ZIb4.gif")
-        center center
-        no-repeat
-      `
-    })
+      allowOutsideClick: false
+    });
+
+    //Verification pour savoir la conversation existe
+    axios.get('http://localhost:8000/api/salons')
+    .then( res => {
+      res.data['hydra:member'].map(e => {
+        if((e.idUser1 == this.state.idUser) && (e.idUser2 == localStorage.getItem('ID')) && (e.idAnnonce == this.state.idAnnonce)){
+          verifSalon = true;
+          idSalonRecup = e.id;
+        }
+        if((e.idUser1 == localStorage.getItem('ID')) && (e.idUser2 == this.state.idUser) && (e.idAnnonce == this.state.idAnnonce)){
+          verifSalon = true;
+          idSalonRecup = e.id;
+        }
+      })
+
+      console.log(verifSalon);
+      console.log(idSalonRecup);
+
+      axios.post('http://localhost:8000/api/swaps', {
+        idUser: localStorage.getItem('ID')*1,
+        idSalon: idSalonRecup*1,
+        idService: this.state.serviceSelected*1,
+        isAccepted: false,
+        isClotured: false
+      }).then(res => {
+        Swal.fire({
+          title: 'Swap Envoyé !',
+          width: 200,
+          paddingRight: '',
+          background: 'white',
+          timer: 2200,
+          showConfirmButton: false,
+          backdrop: `
+            rgba(0,0,123,0.4)
+            url("https://i.gifer.com/ZIb4.gif")
+            center center
+            no-repeat
+          `
+        });
+      })
+    });
+          
+
+
+
+    
   }
 
   openModelContacter(){
@@ -229,6 +329,59 @@ export default class SingleAnnonce extends Component {
       })
   }
 
+  openModalAvisSend(){
+    function getDateTime() {
+      var now     = new Date(); 
+      var year    = now.getFullYear();
+      var month   = now.getMonth()+1; 
+      var day     = now.getDate();
+      var hour    = now.getHours();
+      var minute  = now.getMinutes();
+      var second  = now.getSeconds(); 
+      if(month.toString().length == 1) {
+           month = '0'+month;
+      }
+      if(day.toString().length == 1) {
+           day = '0'+day;
+      }   
+      if(hour.toString().length == 1) {
+           hour = '0'+hour;
+      }
+      if(minute.toString().length == 1) {
+           minute = '0'+minute;
+      }
+      if(second.toString().length == 1) {
+           second = '0'+second;
+      }   
+      var dateTime = year+'/'+month+'/'+day+' '+hour+':'+minute+':'+second;   
+       return dateTime;
+    }
+
+    axios.post('http://localhost:8000/api/avis', {
+      idUser: localStorage.getItem('ID')*1,
+      avis: this.state.myAvis,
+      dateAvis: getDateTime(),
+      note: this.state.myNote*1,
+      idSwap: this.state.idSwap*1
+    }).then(res => {
+      Swal.fire({
+        title: 'Avis Envoyé !',
+        width: 200,
+        paddingRight: '',
+        background: 'white',
+        timer: 2200,
+        showConfirmButton: false,
+        backdrop: `
+          rgba(0,0,123,0.4)
+          url("https://i.gifer.com/ZIb4.gif")
+          center center
+          no-repeat
+        `
+        })
+    })
+
+  }
+
   changeContactMessage(e){
     this.setState({contactMessage: e.target.value});
   }
@@ -258,7 +411,7 @@ export default class SingleAnnonce extends Component {
               </div>
               {/*/.Carousel Wrapper*/}
               <br />
-              <h5 className="p-1 ">{this.state.titre}</h5>
+              <h5 className="p-1">{this.state.titre}</h5>
               <hr />
               <p>Catégorie - {this.state.categorie}</p>
               <p>Code postal : {this.state.codePostal}</p>
@@ -279,12 +432,25 @@ export default class SingleAnnonce extends Component {
                       &nbsp; Contacter            
                   </button>
                   &nbsp;
+                  {this.state.isVisibleSwap ? null :
                   <button type="button" className="btn btn-outline-dark my-2 my-sm-0" data-toggle="modal" data-target="#myModal2">
                     <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-hand-thumbs-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                       <path fillRule="evenodd" d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16v-1c.563 0 .901-.272 1.066-.56a.865.865 0 0 0 .121-.416c0-.12-.035-.165-.04-.17l-.354-.354.353-.354c.202-.201.407-.511.505-.804.104-.312.043-.441-.005-.488l-.353-.354.353-.354c.043-.042.105-.14.154-.315.048-.167.075-.37.075-.581 0-.211-.027-.414-.075-.581-.05-.174-.111-.273-.154-.315L12.793 9l.353-.354c.353-.352.373-.713.267-1.02-.122-.35-.396-.593-.571-.652-.653-.217-1.447-.224-2.11-.164a8.907 8.907 0 0 0-1.094.171l-.014.003-.003.001a.5.5 0 0 1-.595-.643 8.34 8.34 0 0 0 .145-4.726c-.03-.111-.128-.215-.288-.255l-.262-.065c-.306-.077-.642.156-.667.518-.075 1.082-.239 2.15-.482 2.85-.174.502-.603 1.268-1.238 1.977-.637.712-1.519 1.41-2.614 1.708-.394.108-.62.396-.62.65v4.002c0 .26.22.515.553.55 1.293.137 1.936.53 2.491.868l.04.025c.27.164.495.296.776.393.277.095.63.163 1.14.163h3.5v1H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z" />
                     </svg>
                       &nbsp; Swap            
                   </button>
+                  }
+                  &nbsp;
+                  {this.state.isAvisVisible ? 
+                    <button type="button" className="btn btn-outline-dark my-2 my-sm-0" data-toggle="modal" data-target="#myModal3">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-hand-thumbs-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fillRule="evenodd" d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16v-1c.563 0 .901-.272 1.066-.56a.865.865 0 0 0 .121-.416c0-.12-.035-.165-.04-.17l-.354-.354.353-.354c.202-.201.407-.511.505-.804.104-.312.043-.441-.005-.488l-.353-.354.353-.354c.043-.042.105-.14.154-.315.048-.167.075-.37.075-.581 0-.211-.027-.414-.075-.581-.05-.174-.111-.273-.154-.315L12.793 9l.353-.354c.353-.352.373-.713.267-1.02-.122-.35-.396-.593-.571-.652-.653-.217-1.447-.224-2.11-.164a8.907 8.907 0 0 0-1.094.171l-.014.003-.003.001a.5.5 0 0 1-.595-.643 8.34 8.34 0 0 0 .145-4.726c-.03-.111-.128-.215-.288-.255l-.262-.065c-.306-.077-.642.156-.667.518-.075 1.082-.239 2.15-.482 2.85-.174.502-.603 1.268-1.238 1.977-.637.712-1.519 1.41-2.614 1.708-.394.108-.62.396-.62.65v4.002c0 .26.22.515.553.55 1.293.137 1.936.53 2.491.868l.04.025c.27.164.495.296.776.393.277.095.63.163 1.14.163h3.5v1H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z" />
+                    </svg>
+                      &nbsp; Laisser un avis            
+                    </button>
+                  : 
+                    null  
+                  }
                 </div>
               }
               
@@ -293,7 +459,7 @@ export default class SingleAnnonce extends Component {
           
           {/* Modal Swap */}
           <div className="modal-box2 mx-auto" >
-            <div className="modal fade " id="myModal2" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div className="modal fade" id="myModal2" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
               <div className="modal-dialog" role="document">
                 <div className="modal-content modal-body-swap" style={{ backgroundPosition: 'center',backgroundSize: 'cover',backgroundRepeat: 'no-repeat',paddingLeft:'30px'}}>
                   <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
@@ -301,10 +467,10 @@ export default class SingleAnnonce extends Component {
                       <img src={process.env.PUBLIC_URL + 'assets/img/logo.png'} className="modal-image" alt="Logo"/>
                       <p className="description">Selectionnez votre service! <br /> et envoyer votre Swap</p>
                       <div className="col-sm-8 mx-auto ">
-                        <select className="form-control-index custom-select" onChange={this.annonce} name="Annonce" >
-                          <option selected disabled> Mes Services</option>
+                        <select className="form-control-index custom-select" value={this.state.serviceSelected} onChange={this.changeServicesSelect} name="Annonce">
+                          <option>Mes Services</option>
                             {this.state.allAnnonces.map(e => (
-                              <option value="1">{e.titre}</option>   
+                              <option value={e.id}>{e.titre}</option>   
                             ))}                                           
                         </select>
                       </div>
@@ -341,10 +507,41 @@ export default class SingleAnnonce extends Component {
                   </div>
                 </div>
               </div>
-              </div>
             </div>
           </div>
-        
+
+            <div className="modal-box2 mx-auto" >
+            <div className="modal fade " id="myModal3" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div className="modal-dialog" role="document">
+                <div className="modal-content modal-body-swap" style={{ backgroundPosition: 'center',backgroundSize: 'cover',backgroundRepeat: 'no-repeat',paddingLeft:'30px'}}>
+                  <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                  <div className="modal-body">
+                    <img src={process.env.PUBLIC_URL + 'assets/img/logo.png'} className="modal-image" alt="Logo"/>
+                    <p className="description">Laisser un avis !</p>
+                    <div className="col-sm-8 mx-auto ">
+                      <textarea className="form-control" rows="2" value={this.state.myAvis} onChange={this.changeMyAvis}></textarea>
+                      <br/>
+                      <select className="form-control" value={this.state.myNote} onChange={this.changeMyNote}>
+                            <option value="1">Mauvais</option>
+                            <option value="2">Pas top</option>
+                            <option value="3">Ouai</option>
+                            <option value="4">Bien</option>
+                            <option value="5">Super</option>
+                      </select>
+                    </div>
+                    <button className="subscribe" onClick={this.openModalAvisSend}> 
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-hand-thumbs-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fillRule="evenodd" d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16v-1c.563 0 .901-.272 1.066-.56a.865.865 0 0 0 .121-.416c0-.12-.035-.165-.04-.17l-.354-.354.353-.354c.202-.201.407-.511.505-.804.104-.312.043-.441-.005-.488l-.353-.354.353-.354c.043-.042.105-.14.154-.315.048-.167.075-.37.075-.581 0-.211-.027-.414-.075-.581-.05-.174-.111-.273-.154-.315L12.793 9l.353-.354c.353-.352.373-.713.267-1.02-.122-.35-.396-.593-.571-.652-.653-.217-1.447-.224-2.11-.164a8.907 8.907 0 0 0-1.094.171l-.014.003-.003.001a.5.5 0 0 1-.595-.643 8.34 8.34 0 0 0 .145-4.726c-.03-.111-.128-.215-.288-.255l-.262-.065c-.306-.077-.642.156-.667.518-.075 1.082-.239 2.15-.482 2.85-.174.502-.603 1.268-1.238 1.977-.637.712-1.519 1.41-2.614 1.708-.394.108-.62.396-.62.65v4.002c0 .26.22.515.553.55 1.293.137 1.936.53 2.491.868l.04.025c.27.164.495.296.776.393.277.095.63.163 1.14.163h3.5v1H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z" />
+                      </svg>
+                      &nbsp;Swap 
+                    </button>
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div>
+
+        </div>
     );
   }
 }
