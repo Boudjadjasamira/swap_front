@@ -5,13 +5,116 @@ import Header from '../../view/Common/Header';
 import Footer from '../..//view/Common/Footer';
 
 import ProfilInfoGauche from '../../components/ProfilInfoGauche/ProfilInfoGauche';
-
+import axios from 'axios';
 
 
 export default class Trophy extends Component {
 
+    constructor(props){
+        super(props);
+        this.state = {
+            firstTrophy: "http://placehold.jp/150x150.png",
+            secondTrophy: "http://placehold.jp/150x150.png",
+            thirdTrophy: "http://placehold.jp/150x150.png",
+            quadTrophy: "http://placehold.jp/150x150.png",
+            fiveTrophy: "http://placehold.jp/150x150.png",
+            sixTrophy: "http://placehold.jp/150x150.png"
+        }
+    }
+
+
     componentDidMount(){
         document.title = "Profil - Trophées";
+
+        let compteurSwap1 = 0;
+        let compteurAnnonces1 = 0;
+        let compteurSwap2 = 0;
+        let compteurMessages = 0;
+        let compteurAvis = 0;
+
+        // TROPHE 1 
+        axios.get('http://localhost:8000/api/users/' + localStorage.getItem('ID'))
+        .then(res => {
+            if(res.data.nom.toString().length > 0 && res.data.prenom.toString().length > 0 && res.data.codePostal.toString().length > 0 && res.data.mail.toString().length > 0 && res.data.photo.toString().length > 0){
+                this.setState({firstTrophy: process.env.PUBLIC_URL + "assets/trophy/user.png"})
+            }else{
+                this.setState({firstTrophy: "http://placehold.jp/150x150.png"})
+            }
+        });
+
+        // TROPHE 2
+        axios.get('http://localhost:8000/api/swaps')
+        .then(res => {
+            res.data['hydra:member'].map(e => {
+                if(e.idUser == localStorage.getItem('ID')){
+                    compteurSwap1++
+                }
+            })
+
+            if(compteurSwap1 >= 5){
+                this.setState({secondTrophy: process.env.PUBLIC_URL + "assets/icone/validate.png"});
+            }else{
+                this.setState({secondTrophy: "http://placehold.jp/150x150.png"})
+            }
+
+            // TROPHE 4
+            if(compteurSwap2 >= 10){
+                this.setState({quadTrophy: process.env.PUBLIC_URL + "assets/trophy/swap.png"})
+            }else{
+                this.setState({quadTrophy: "http://placehold.jp/150x150.png"})
+            }
+        });
+
+        // TROPHE 3
+        axios.get('http://localhost:8000/api/annonces')
+        .then(res => {
+            res.data['hydra:member'].map(e => {
+                if(e.idUser == localStorage.getItem('ID')){
+                    compteurAnnonces1++
+                }
+            })
+
+            if(compteurAnnonces1 == 10){
+                this.setState({thirdTrophy: process.env.PUBLIC_URL + "assets/trophy/annonce.png"});
+            }else{
+                this.setState({thirdTrophy: "http://placehold.jp/150x150.png"})
+            }
+        });
+
+
+        // TROPHE 5
+        axios.get('http://localhost:8000/api/messageries')
+        .then(res => {
+            res.data['hydra:member'].map(e => {
+                if(e.idUser == localStorage.getItem('ID')){
+                    compteurMessages++
+                }
+            })
+
+            if(compteurMessages >= 5){
+                this.setState({fiveTrophy: process.env.PUBLIC_URL + "assets/trophy/email.png"});
+            }else{
+                this.setState({fiveTrophy: "http://placehold.jp/150x150.png"})
+            }
+        });
+
+        axios.get('http://localhost:8000/api/avis')
+        .then(res => {
+            res.data['hydra:member'].map(e => {
+                if(e.idUser == localStorage.getItem('ID')){
+                    compteurAvis++
+                }
+            })
+
+            if(compteurAvis >= 10){
+                this.setState({sixTrophy: process.env.PUBLIC_URL + "assets/trophy/review.png"});
+            }else{
+                this.setState({sixTrophy: "http://placehold.jp/150x150.png"})
+            }
+        });
+
+ 
+        
     }
 
     render() {
@@ -40,10 +143,10 @@ export default class Trophy extends Component {
                                                 <div className="container ">
                                                     <div className="row text-center">
                                                         {/* Team item */}
-                                                        <div className="col-xl-3 col-sm-6 mb-5">
+                                                        <div className="col-xl-4 col-sm-6 mb-5">
                                                             <div className="bg-white rounded  py-4 px-4   ">
                                                                 <img
-                                                                    src={process.env.PUBLIC_URL + 'assets/trophy/user.png'}
+                                                                    src={this.state.firstTrophy}
                                                                     alt="trophée"
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__pulse"
@@ -56,22 +159,14 @@ export default class Trophy extends Component {
                                                                     <span>Remplir à 100% son profil</span>
                                                                     <br />
                                                                 </div>
-                                                                <div className="percentd-block2">
-                                                                    <div className="bar">
-                                                                        {" "}
-                                                                        <span className="volume" style={{ width: "68%" }}>
-                                                                            68%
-                            </span>{" "}
-                                                                    </div>
-                                                                </div>
                                                             </div>
                                                         </div>
                                                         {/* End */}
                                                         {/* Team item */}
-                                                        <div className="col-xl-3 col-sm-6 mb-5">
+                                                        <div className="col-xl-4 col-sm-6 mb-5">
                                                             <div className="bg-white rounded  py-4 px-4  ">
                                                                 <img
-                                                                    src={process.env.PUBLIC_URL + 'assets/icone/validate.png'}
+                                                                    src={this.state.secondTrophy}
                                                                     alt=" trophée"
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__pulse"
@@ -81,25 +176,17 @@ export default class Trophy extends Component {
                                                                     <h6 className="trophy title">Super User</h6>
                                                                 </div>
                                                                 <div className="trophyd-block2">
-                                                                    <span>Obtenir l'indice de confiance</span>
+                                                                    <span>Plus de 5 swaps</span>
                                                                     <br />
-                                                                </div>
-                                                                <div className="percentd-block2">
-                                                                    <div className="bar">
-                                                                        {" "}
-                                                                        <span className="volume" style={{ width: "72%" }}>
-                                                                            72%
-                            </span>{" "}
-                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         {/* End */}
                                                         {/* Team item */}
-                                                        <div className="col-xl-3 col-sm-6 mb-5">
+                                                        <div className="col-xl-4 col-sm-6 mb-5">
                                                             <div className="bg-white rounded   py-4 px-4  ">
                                                                 <img
-                                                                    src={process.env.PUBLIC_URL + 'assets/trophy/annonce.png'}
+                                                                    src={this.state.thirdTrophy}
                                                                     alt=" trophée"
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__pulse"
@@ -112,78 +199,14 @@ export default class Trophy extends Component {
                                                                     <span>Publier 10 annonces</span>
                                                                     <br />
                                                                 </div>
-                                                                <div className="percentd-block2">
-                                                                    <div className="bar">
-                                                                        {" "}
-                                                                        <span className="volume" style={{ width: "42%" }}>
-                                                                            42%
-                            </span>{" "}
-                                                                    </div>
-                                                                </div>
                                                             </div>
                                                         </div>
                                                         {/* End */}
                                                         {/* Team item */}
-                                                        <div className="col-xl-3 col-sm-6 mb-5">
-                                                            <div className="bg-white rounded   py-4 px-4  ">
-                                                                <img
-                                                                    src={process.env.PUBLIC_URL + 'assets/trophy/business.png'}
-                                                                    alt=" trophée"
-                                                                    width={100}
-                                                                    className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__pulse"
-                                                                />
-                                                                <div className="d-block2 text-truncate mb-1">
-                                                                    <br />
-                                                                    <h6 className="trophy title">Godfather</h6>
-                                                                </div>
-                                                                <div className="trophyd-block2">
-                                                                    <span>Parrainer 3 Personnes</span>
-                                                                    <br />
-                                                                </div>
-                                                                <div className="percentd-block2">
-                                                                    <div className="bar">
-                                                                        {" "}
-                                                                        <span className="volume" style={{ width: "42%" }}>
-                                                                            42%
-                            </span>{" "}
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        {/* End */}
-                                                        {/* Team item */}
-                                                        <div className="col-xl-3 col-sm-6 mb-5">
+                                                        <div className="col-xl-4 col-sm-6 mb-5">
                                                             <div className="bg-white rounded   py-4 px-4 ">
                                                                 <img
-                                                                    src={process.env.PUBLIC_URL + 'assets/trophy/gift.png'}
-                                                                    alt=" trophée"
-                                                                    width={100}
-                                                                    className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__pulse"
-                                                                />
-                                                                <div className="d-block2 text-truncate mb-1">
-                                                                    <br />
-                                                                    <h6 className="trophy title">Give me Gift !</h6>
-                                                                </div>
-                                                                <div className="trophyd-block2">
-                                                                    <span>Echanger vos points</span>
-                                                                    <br />
-                                                                </div>
-                                                                <div className="percentd-block2">
-                                                                    <div className="bar">
-                                                                        {" "}
-                                                                        <span className="volume" style={{ width: "42%" }}>
-                                                                            42%
-                            </span>{" "}
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        {/* End */}
-                                                        {/* Team item */}
-                                                        <div className="col-xl-3 col-sm-6 mb-5">
-                                                            <div className="bg-white rounded   py-4 px-4 ">
-                                                                <img
-                                                                    src={process.env.PUBLIC_URL + 'assets/trophy/swap.png'}
+                                                                    src={this.state.quadTrophy}
                                                                     alt=" trophée"
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__pulse"
@@ -193,25 +216,17 @@ export default class Trophy extends Component {
                                                                     <h6 className="trophy title">Swapper</h6>
                                                                 </div>
                                                                 <div className="trophyd-block2">
-                                                                    <span>échanger 10 services</span>
+                                                                    <span>Plus de 10 swaps</span>
                                                                     <br />
-                                                                </div>
-                                                                <div className="percentd-block2">
-                                                                    <div className="bar">
-                                                                        {" "}
-                                                                        <span className="volume" style={{ width: "42%" }}>
-                                                                            42%
-                            </span>{" "}
-                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         {/* End */}
                                                         {/* Team item */}
-                                                        <div className="col-xl-3 col-sm-6 mb-5">
+                                                        <div className="col-xl-4 col-sm-6 mb-5">
                                                             <div className="bg-white rounded   py-4 px-4  ">
                                                                 <img
-                                                                    src={process.env.PUBLIC_URL + 'assets/trophy/email.png'}
+                                                                    src={this.state.fiveTrophy}
                                                                     alt=" trophée"
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__pulse"
@@ -224,22 +239,14 @@ export default class Trophy extends Component {
                                                                     <span>Envoyer 5 messages</span>
                                                                     <br />
                                                                 </div>
-                                                                <div className="percentd-block2">
-                                                                    <div className="bar">
-                                                                        {" "}
-                                                                        <span className="volume" style={{ width: "34%" }}>
-                                                                            34%
-                            </span>{" "}
-                                                                    </div>
-                                                                </div>
                                                             </div>
                                                         </div>
                                                         {/* End */}
                                                         {/* Team item */}
-                                                        <div className="col-xl-3 col-sm-6 mb-5">
+                                                        <div className="col-xl-4 col-sm-6 mb-5">
                                                             <div className="bg-white rounded   py-4 px-4  ">
                                                                 <img
-                                                                    src={process.env.PUBLIC_URL + 'assets/trophy/review.png'}
+                                                                    src={this.state.sixTrophy}
                                                                     alt="trophée"
                                                                     width={100}
                                                                     className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__pulse"
@@ -252,14 +259,6 @@ export default class Trophy extends Component {
                                                                     <span>Poster 10 avis</span>
                                                                     <br />
                                                                     <br />
-                                                                </div>
-                                                                <div className="percentd-block2">
-                                                                    <div className="bar">
-                                                                        {" "}
-                                                                        <span className="volume" style={{ width: "58%" }}>
-                                                                            58%
-                            </span>{" "}
-                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
