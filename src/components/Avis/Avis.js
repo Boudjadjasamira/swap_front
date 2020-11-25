@@ -106,7 +106,7 @@ export default class Avis extends Component {
                                         <div className="col-12">
                                             <div className="media border p-3 flex-column flex-md-row">
                                                 <div className="media-body align-self-center">
-                                                    <h5>Avis posté le {e.dateAvis}</h5>
+                                                    <h5>Avis posté le {e.dateAvis.split(' ')[0].split('/')[2] + "/" + e.dateAvis.split(' ')[0].split('/')[1] + "/" + e.dateAvis.split(' ')[0].split('/')[0]}</h5>
                                                     <div className="container">
                                                         <div className="row">
                                                             <ul className="employers-icons list-inline mb-1">
@@ -132,7 +132,7 @@ export default class Avis extends Component {
                                         <div className="col-12">
                                             <div className="media border p-3 flex-column flex-md-row">
                                                 <div className="media-body align-self-center">
-                                                    <h5>Avis posté le {e.dateAvis} de {this.state.nomLeursAvis} {this.state.prenomLeursAvis}</h5>
+                                                    <h5>Avis posté le {e.dateAvis.split(' ')[0].split('/')[2] + "/" + e.dateAvis.split(' ')[0].split('/')[1] + "/" + e.dateAvis.split(' ')[0].split('/')[0]} de {this.state.nomLeursAvis} {this.state.prenomLeursAvis}</h5>
                                                     <div className="container">
                                                         <div className="row">
                                                             <ul className="employers-icons list-inline mb-1">
