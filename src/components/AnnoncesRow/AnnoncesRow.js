@@ -143,7 +143,6 @@ export default class AnnoncesRow extends Component {
                         </div>
                     </div>
                 </div>
-
             </tr>
         )
     }    

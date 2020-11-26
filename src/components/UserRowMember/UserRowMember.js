@@ -138,8 +138,8 @@ export default class UserRowMember extends Component {
                                 </div>
                             </div>
                             <div className="modal-footer">
-                                <input type="button" className="btn btn-default" data-dismiss="modal" defaultValue="Cancel"/>
-                                <input type="submit" className="btn btn-info" data-dismiss="modal" onClick={this.editPersonne} defaultValue="Save" />
+                                <input type="button" className="btn btn-default" data-dismiss="modal" defaultValue="Annuler"/>
+                                <input type="submit" className="btn btn-info" data-dismiss="modal" onClick={this.editPersonne} defaultValue="Sauvegarder" />
                             </div>
                         </div>
                     </div>

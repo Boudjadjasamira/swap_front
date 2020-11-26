@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import $ from 'jquery';
 //Inclus les fichiers communs
 import Header from '../../view/Common/Header';
 import Footer from '../../view/Common/Footer';
@@ -36,6 +37,16 @@ export default class Messagerie extends Component {
         })
         this.setState({allConversations: salonsTemp});
     });
+
+    //rechercher un membre dans la messagerie 
+    $("#inputSearchMessage").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+
+        $(".contacts-outter > .content").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    
   } 
 
   render() {
@@ -63,9 +74,9 @@ export default class Messagerie extends Component {
                                         </div>
                                     
                                         <div className="tab-content">
-                                            <div id="inbox" className="contacts-outter-wrapper tab-pane active">
+                                            <div className="contacts-outter-wrapper tab-pane active">
                                                 <form className="panel-search-form info form-group has-feedback no-margin-bottom">
-                                                    <input type="text" className="form-control" name="search" placeholder="Recherche"/>
+                                                    <input id="inputSearchMessage"  type="text" className="form-control" name="search" placeholder="Recherche"/>
                                                 </form>
                                                 <div className="contacts-outter">
                                                     {/* Section Reception message */}

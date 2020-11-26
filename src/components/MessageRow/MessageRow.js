@@ -83,43 +83,11 @@ export default class MessageRow extends Component {
                 <td>{this.state.message}</td>
                 <td><SRLWrapper options={options}><img className="image-contact" src={"http://localhost:8000/uploads/contacts/" + this.state.photo} data-attribute="SRL" alt="Piece-jointe" /></SRLWrapper></td>
                 <td>
-                    <a href="#editEmployeeModal" className="edit" data-toggle="modal">
-                        <i className="material-icons" data-toggle="tooltip" title="Répondre">create</i>
-                    </a>
                     <a href={"#" + this.state.modalNameDelete} className="delete" data-toggle="modal">
                         <i className="material-icons" data-toggle="tooltip" title="Supprimer">delete</i>
                     </a>
                 </td>
                 
-                {/* MODAL EDIT */}
-                <div id="editEmployeeModal" className="modal fade">
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h4 className="modal-title">Envoyer message</h4>
-                                <button type="button" className="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            </div>
-                            <div className="modal-body">
-                                <div className="form-group">
-                                    <label>Pseudo</label>
-                                    <input type="text" className="form-control" required />
-                                </div>
-                                <div className="form-group">
-                                    <label>Email</label>
-                                    <input type="email" className="form-control" required />
-                                </div>
-                                <div className="form-group">
-                                    <label>Message</label>
-                                    <textarea className="form-control" required defaultValue={""} />
-                                </div>
-                            </div>
-                            <div className="modal-footer">
-                                <input type="button" className="btn btn-default" data-dismiss="modal" defaultValue="Cancel"/>
-                                <input type="submit" className="btn btn-info" defaultValue="Envoyer" />
-                            </div>           
-                        </div>
-                    </div>
-                </div>
 
                 {/* MODAL DELETE */}
                 <div id={this.state.modalNameDelete} className="modal fade">
