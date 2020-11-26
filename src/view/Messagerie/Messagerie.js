@@ -42,7 +42,7 @@ export default class Messagerie extends Component {
     $("#inputSearchMessage").on("keyup", function() {
         var value = $(this).val().toLowerCase();
 
-        $(".contacts-outter > .content").filter(function() {
+        $(".contacts > div").filter(function() {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
       });
@@ -76,7 +76,7 @@ export default class Messagerie extends Component {
                                         <div className="tab-content">
                                             <div className="contacts-outter-wrapper tab-pane active">
                                                 <form className="panel-search-form info form-group has-feedback no-margin-bottom">
-                                                    <input id="inputSearchMessage"  type="text" className="form-control" name="search" placeholder="Recherche"/>
+                                                    <input id="inputSearchMessage" type="text" className="form-control" name="search" placeholder="Recherche"/>
                                                 </form>
                                                 <div className="contacts-outter">
                                                     {/* Section Reception message */}
