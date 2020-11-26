@@ -237,18 +237,6 @@ export default class Account extends Component {
                       <input
                         className="form-control"
                         type="text"
-                        placeholder="Code parrainage (Optionnel)"
-                        pattern="[A-Za-z]{2}+-[0-30][1-12]{4}+-[0-100]{2,3}"
-                        value={this.state.codeParrain}
-                        onChange={this.changeCodeParrain}
-                      />
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <div className="col-lg-12">
-                      <input
-                        className="form-control"
-                        type="text"
                         placeholder="Code Postal"
                         value={this.state.codePostal}
                         onChange={this.changeCodePostal}

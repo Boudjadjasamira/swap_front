@@ -6,7 +6,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import Tilt from 'react-parallax-tilt';
-
+import ReactPasswordStrength from 'react-password-strength';
 import './Register.css';
 
 export default class Register extends Component {
@@ -51,19 +51,24 @@ export default class Register extends Component {
     }
 
     changePassword(e){
-        this.setState({password: e.target.value});
+        this.setState({password: e.password.toString()})
     }
+
     changeConfirmPassword(e){
-        this.setState({confirmPassword: e.target.value});
+        this.setState({confirmPassword: e.password.toString()})
     }
+
     changeNom(e){
         this.setState({nom: e.target.value});
     }
+
     changePrenom(e){
         this.setState({prenom: e.target.value});
     }
 
     addUser(){
+
+        
 
         //verification du mot de passe$
         if(this.state.password == this.state.confirmPassword){
@@ -162,11 +167,13 @@ export default class Register extends Component {
                                 </div>
                                 <br />
                                 <div className="wrap-input100 validate-input" data-validate="Password is required">
-                                    <input className="input100" type="password"  placeholder="Mot de passe" value={this.state.password} onChange={this.changePassword} />
+                                <ReactPasswordStrength changeCallback={this.changePassword} style={{border: "none"}} minLength={5} minScore={2} tooShortWord={"Faible"} scoreWords={['Faible', 'Presque sur', 'Sur', 'Fort', 'Très fort']} inputProps={{ placeholder:"             Mot de passe", autoComplete: "off", className: "input100" }}>
+                                </ReactPasswordStrength>
                                 </div>
                                 <br />
                                 <div className="wrap-input100 validate-input" data-validate="Password is required">
-                                    <input className="input100" type="password"  placeholder="Confirmation mot de passe" value={this.state.confirmPassword} onChange={this.changeConfirmPassword} />
+                                <ReactPasswordStrength changeCallback={this.changeConfirmPassword} style={{border: "none"}} minLength={5} minScore={2} tooShortWord={"Faible"} scoreWords={['Faible', 'Presque sur', 'Sur', 'Fort', 'Très fort']} inputProps={{ placeholder:"             Confirmation de mot de passe", autoComplete: "off", className: "input100" }}>
+                                </ReactPasswordStrength>
                                 </div>
                                 <br />
                                 <div className="wrap-input100 validate-input">
