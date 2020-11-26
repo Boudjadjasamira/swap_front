@@ -62,7 +62,7 @@ export default class Avis extends Component {
                             
                             <tbody>
                                 {this.state.allAvis.map(e => (
-                                    <AvisRow idAvis={e.id}  idUserEnvoi={e.idUser} avis={e.avis} dateAvis={e.dateAvis} note={e.note}></AvisRow>
+                                    <AvisRow idAvis={e.id} idUserEnvoi={e.idUser} avis={e.avis} dateAvis={e.dateAvis} note={e.note}></AvisRow>
                                 ))}
                             </tbody>
                             

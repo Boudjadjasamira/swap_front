@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import $ from 'jquery';
 
-
-
 export default class AvisRow extends Component {
-    
 
     constructor(props) {
         super(props);
@@ -15,31 +12,39 @@ export default class AvisRow extends Component {
             avis: "",
             dateAvis: "",
             note: true,
-            idAvis:0, 
+            idAvis: this.props.idAvis, 
             modalSupprimer:"",
             modalEditer:"", 
             supprimerLaLigne: "display:block",
             nouvelleAvis:"", 
+            note: []
         }
         this.deleteAvis = this.deleteAvis.bind(this);
-        this.EditAvis = this.editAvis.bind(this);
+        this.editAvis = this.editAvis.bind(this);
         this.updateAvis = this.updateAvis.bind(this);
     }
       
     
     componentDidMount(){
-        axios.get(`http://localhost:8000/api/Avis/`+ this.props.idAvis)
-        .then(res =>
-            this.setState({
-              idUserEnvoi: res.data.pseudo,
-              avis: res.data.avis,
-              dateAvis: res.data.dateAvis,
-              note: res.data.note,
-              modalSupprimer: "deleteModal" + this.props.idAvis,
-              modalEditer: "editerModal" + this.props.idAvis,
-              idAvis:res.data.id
-            })
-            
+        let tabNote = [];
+        
+        for(let i = 0;i < this.props.note;i++){
+            tabNote.push(i)
+        }
+
+        this.setState({note: tabNote});
+
+        axios.get(`http://localhost:8000/api/avis/`+ this.props.idAvis)
+        .then(res => {
+                this.setState({
+                    idUserEnvoi: res.data.pseudo,
+                    avis: res.data.avis,
+                    dateAvis: res.data.dateAvis,
+                    modalSupprimer: "deleteModal" + this.props.idAvis,
+                    modalEditer: "editerModal" + this.props.idAvis,
+                    idAvis:res.data.id
+                })
+            }
         )
 
         axios.get('http://localhost:8000/api/users')
@@ -52,7 +57,6 @@ export default class AvisRow extends Component {
             })
         })
        
-          
     }
 
     deleteAvis(){
@@ -71,15 +75,18 @@ export default class AvisRow extends Component {
     }
 
     editAvis(){
-        axios.patch('http://localhost:8000/api/avis/' + this.props.idAvis, {
+        axios.patch('http://localhost:8000/api/avis/' + this.state.idAvis, {
             avis: this.state.nouvelleAvis
         },{
             headers: {
                 'Content-Type': 'application/merge-patch+json'
             }
         }
-        ).then(res => console.log(res));
-        this.setState({avis: this.state.nouvelleAvis})
+        ).then(res => {
+            this.setState({avis: this.state.nouvelleAvis})
+            console.log(res)
+        });
+        
     }
 
 
@@ -90,8 +97,14 @@ export default class AvisRow extends Component {
             <tr style={{display: this.state.supprimerLaLigne}}>
                 <td>{this.state.pseudo}</td>
                 <td>{this.props.dateAvis}</td>
-                <td>{this.props.note}</td>
-                <td>{this.props.avis}</td>
+                <td>
+                    <ul className="employers-icons list-inline mb-1">
+                        {this.state.note.map(k => (
+                            <li className="list-inline-item"><a href="#" className="text-warning"><i className="mdi mdi-star f-19"></i></a></li>
+                        ))}
+                    </ul>
+                </td>
+                <td>{this.state.avis}</td>
                 <td>
                     <a href={"#" + this.state.modalEditer} className="edit" data-toggle="modal">
                         <i className="material-icons" data-toggle="tooltip" title="Editer">create</i>
@@ -117,7 +130,7 @@ export default class AvisRow extends Component {
                             </div>
                             <div className="modal-footer">
                                 <input type="button" className="btn btn-default" data-dismiss="modal" defaultValue="Annuler"/>
-                                <input type="submit" className="btn btn-info" onClick={this.editAvis} defaultValue="Sauvegarder" />
+                                <input type="submit" className="btn btn-info" data-dismiss="modal" onClick={this.editAvis} defaultValue="Sauvegarder" />
                             </div>           
                         </div>
                     </div>
@@ -136,7 +149,7 @@ export default class AvisRow extends Component {
                             </div>
                             <div className="modal-footer">
                                 <input type="button" className="btn btn-default" data-dismiss="modal"  defaultValue="Annuler"/>
-                                <button className="btn btn-warning" data-dismiss="modal" onClick={this.deleteAvis}>Supprimer</button>
+                                <button className="btn btn-warning" data-dismiss="modal" data-dismiss="modal" onClick={this.deleteAvis}>Supprimer</button>
                             </div>
                         </div>
                     </div>
