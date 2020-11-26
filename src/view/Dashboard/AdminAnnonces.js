@@ -26,8 +26,7 @@ export default class AdminAnnonces extends Component {
     
     render() {
     return (
-        <div className="body" id="bodyHome" >
-            
+        <div>            
             <CardDashboard></CardDashboard>
             <div className="container-fluid">
                 <div className="table-responsive">
@@ -57,7 +56,7 @@ export default class AdminAnnonces extends Component {
                             </thead>
                             <tbody>
                                 {this.state.allAnnonces.map(e => (
-                                    <AnnoncesRow idAnnonces={e.id}></AnnoncesRow>
+                                    <AnnoncesRow idAnnonces={e.id} idUserEnvoi={e.idUser}></AnnoncesRow>
                                 ))}
                                 
                             </tbody>

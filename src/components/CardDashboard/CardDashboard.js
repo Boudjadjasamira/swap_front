@@ -9,7 +9,8 @@ export default class CardDashboard extends Component {
         this.state = {
           nombreMessagesContact: 0,
           nombreAnnonces: 0,
-          nombreUtilisateurs: 0
+          nombreUtilisateurs: 0,
+          nombreAvis: 0
         }
     }
       
@@ -28,7 +29,11 @@ export default class CardDashboard extends Component {
         axios.get(`http://localhost:8000/api/users`)
         .then(res => {
             this.setState({ nombreUtilisateurs: res.data['hydra:member'].length.toString() });
-        })        
+        })  
+        axios.get(`http://localhost:8000/api/avis`)
+        .then(res => {
+            this.setState({ nombreAvis: res.data['hydra:member'].length.toString() });
+        })         
     } 
 
     render() {
@@ -67,7 +72,7 @@ export default class CardDashboard extends Component {
                     <div className="col-lg-3 col-sm-6">
                         <div className="card-box bg-orange">
                             <div className="inner">
-                                <h3>650 </h3>
+                                <h3>{this.state.nombreAvis} </h3>
                                 <p> AVIS </p>
                             </div>
                             <div className="icon">

@@ -106,7 +106,7 @@ export default class ForgotPassword extends Component {
                 <div className="card-body">
                   <div className="form-group">
                     <label htmlFor="email-for-pass">Entrez votre adresse Email</label>
-                    <input className="form-control" onChange={this.changeMailForgot} value={this.state.mailForgot} type="mail" id="email-for-pass" required /><small className="form-text text-muted">Saisissez l'adresse e-mail que vous avez utilisée lors de votre inscription à SWAP. Ensuite, nous vous enverrons un code temporaire par e-mail. Utilisez le code pour changer votre mot de passe.</small>
+                    <input className="form-control" onChange={this.changeMailForgot} value={this.state.mailForgot} type="mail" id="email-for-pass" required /><small className="form-text text-muted">Saisissez l'adresse e-mail que vous avez utilisée lors de votre inscription à SWAP. Ensuite. Utilisez le lien reçu pour réinitialiser votre mot de passe.</small>
                   </div>
                 </div>
                 <div className="card-footer ">

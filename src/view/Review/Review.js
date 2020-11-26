@@ -25,7 +25,7 @@ export default class Review extends Component {
                 <div>
                     {/* ./Infos compte */}
                     <div className="container">
-                        <h1>Informations Personnelles</h1>
+                        <h1>Mes avis</h1>
                         <hr />
                         <div className="row">
                             <div className="col-md-3">

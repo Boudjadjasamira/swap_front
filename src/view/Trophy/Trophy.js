@@ -12,12 +12,12 @@ export default class Trophy extends Component {
     constructor(props){
         super(props);
         this.state = {
-            firstTrophy: "http://placehold.jp/150x150.png",
-            secondTrophy: "http://placehold.jp/150x150.png",
-            thirdTrophy: "http://placehold.jp/150x150.png",
-            quadTrophy: "http://placehold.jp/150x150.png",
-            fiveTrophy: "http://placehold.jp/150x150.png",
-            sixTrophy: "http://placehold.jp/150x150.png"
+            firstTrophy: "assets/trophy/trophy.png",
+            secondTrophy: "assets/trophy/trophy.png",
+            thirdTrophy: "assets/trophy/trophy.png",
+            quadTrophy: "assets/trophy/trophy.png",
+            fiveTrophy: "assets/trophy/trophy.png",
+            sixTrophy: "assets/trophy/trophy.png"
         }
     }
 
@@ -37,7 +37,7 @@ export default class Trophy extends Component {
             if(res.data.nom.toString().length > 0 && res.data.prenom.toString().length > 0 && res.data.codePostal.toString().length > 0 && res.data.mail.toString().length > 0 && res.data.photo.toString().length > 0){
                 this.setState({firstTrophy: process.env.PUBLIC_URL + "assets/trophy/user.png"})
             }else{
-                this.setState({firstTrophy: "http://placehold.jp/150x150.png"})
+                this.setState({firstTrophy: "assets/trophy/trophy.png"})
             }
         });
 
@@ -53,14 +53,14 @@ export default class Trophy extends Component {
             if(compteurSwap1 >= 5){
                 this.setState({secondTrophy: process.env.PUBLIC_URL + "assets/icone/validate.png"});
             }else{
-                this.setState({secondTrophy: "http://placehold.jp/150x150.png"})
+                this.setState({secondTrophy: "assets/trophy/trophy.png"})
             }
 
             // TROPHE 4
             if(compteurSwap2 >= 10){
                 this.setState({quadTrophy: process.env.PUBLIC_URL + "assets/trophy/swap.png"})
             }else{
-                this.setState({quadTrophy: "http://placehold.jp/150x150.png"})
+                this.setState({quadTrophy: "assets/trophy/trophy.png"})
             }
         });
 
@@ -76,7 +76,7 @@ export default class Trophy extends Component {
             if(compteurAnnonces1 == 10){
                 this.setState({thirdTrophy: process.env.PUBLIC_URL + "assets/trophy/annonce.png"});
             }else{
-                this.setState({thirdTrophy: "http://placehold.jp/150x150.png"})
+                this.setState({thirdTrophy: "assets/trophy/trophy.png"})
             }
         });
 
@@ -93,7 +93,7 @@ export default class Trophy extends Component {
             if(compteurMessages >= 5){
                 this.setState({fiveTrophy: process.env.PUBLIC_URL + "assets/trophy/email.png"});
             }else{
-                this.setState({fiveTrophy: "http://placehold.jp/150x150.png"})
+                this.setState({fiveTrophy: "assets/trophy/trophy.png"})
             }
         });
 
@@ -108,7 +108,7 @@ export default class Trophy extends Component {
             if(compteurAvis >= 10){
                 this.setState({sixTrophy: process.env.PUBLIC_URL + "assets/trophy/review.png"});
             }else{
-                this.setState({sixTrophy: "http://placehold.jp/150x150.png"})
+                this.setState({sixTrophy: "assets/trophy/trophy.png"})
             }
         });
 
@@ -147,8 +147,8 @@ export default class Trophy extends Component {
                                                                 <img
                                                                     src={this.state.firstTrophy}
                                                                     alt="trophée"
-                                                                    width={100}
-                                                                    className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__pulse"
+                                                                    width={80}
+                                                                    className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__flipInY"
                                                                 />
                                                                 <div className="d-block2 text-truncate mb-1">
                                                                     <br />
@@ -163,19 +163,19 @@ export default class Trophy extends Component {
                                                         {/* End */}
                                                         {/* Team item */}
                                                         <div className="col-xl-4 col-sm-6 mb-5">
-                                                            <div className="bg-white rounded  py-4 px-4  ">
+                                                            <div className="bg-white rounded  py-4 px-4 ">
                                                                 <img
                                                                     src={this.state.secondTrophy}
                                                                     alt=" trophée"
                                                                     width={100}
-                                                                    className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__pulse"
+                                                                    className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__flipInY"
                                                                 />
                                                                 <div className="d-block2 text-truncate mb-1">
                                                                     <br />
                                                                     <h6 className="trophy title">Super User</h6>
                                                                 </div>
                                                                 <div className="trophyd-block2">
-                                                                    <span>Plus de 5 swaps</span>
+                                                                    <span>Effectuer plus de 5 swaps</span>
                                                                     <br />
                                                                 </div>
                                                             </div>
@@ -183,12 +183,12 @@ export default class Trophy extends Component {
                                                         {/* End */}
                                                         {/* Team item */}
                                                         <div className="col-xl-4 col-sm-6 mb-5">
-                                                            <div className="bg-white rounded   py-4 px-4  ">
+                                                            <div className="bg-white rounded py-4 px-4  ">
                                                                 <img
                                                                     src={this.state.thirdTrophy}
                                                                     alt=" trophée"
-                                                                    width={100}
-                                                                    className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__pulse"
+                                                                    style={{width: "80px"}}
+                                                                    className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__flipInY "
                                                                 />
                                                                 <div className="d-block2 text-truncate mb-1">
                                                                     <br />
@@ -208,7 +208,7 @@ export default class Trophy extends Component {
                                                                     src={this.state.quadTrophy}
                                                                     alt=" trophée"
                                                                     width={100}
-                                                                    className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__pulse"
+                                                                    className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__flipInY"
                                                                 />
                                                                 <div className="d-block2 text-truncate mb-1">
                                                                     <br />
@@ -228,7 +228,7 @@ export default class Trophy extends Component {
                                                                     src={this.state.fiveTrophy}
                                                                     alt=" trophée"
                                                                     width={100}
-                                                                    className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__pulse"
+                                                                    className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__flipInY"
                                                                 />
                                                                 <div className="d-block2 text-truncate mb-1">
                                                                     <br />
@@ -248,7 +248,7 @@ export default class Trophy extends Component {
                                                                     src={this.state.sixTrophy}
                                                                     alt="trophée"
                                                                     width={100}
-                                                                    className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__pulse"
+                                                                    className="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm animate__animated animate__flipInY"
                                                                 />
                                                                 <div className="d-block2 text-truncate mb-1">
                                                                     <br />

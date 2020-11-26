@@ -36,12 +36,22 @@ export default class AnnoncesRow extends Component {
             });
             idCategorie = res.data['idCategorie'];
         })
-        /* eslint eqeqeq: 0 */  
+
         axios.get('http://localhost:8000/api/categories')
         .then(res => {
             res.data['hydra:member'].map(e => {
                 if(e.id == idCategorie){
                     this.setState({nomCategorie: e.titre})
+                }
+                return true
+            })
+        })
+
+        axios.get('http://localhost:8000/api/users')
+        .then(res => {
+            res.data['hydra:member'].map(e => {
+                if(e.id == this.props.idUserEnvoi){
+                    this.setState({pseudo: e.pseudo})
                 }
                 return true
             })
