@@ -383,7 +383,7 @@ export default class SectionContentTchat extends Component {
                             null
                         } 
                             {this.state.allBullesMessages.map(e => (
-                                <BulleMessage idProfil={e.idUser} nomMoi={this.state.nom} prenomMoi={this.state.prenom} photoMoi={this.state.photo} message={e.message} dateTime={e.dateMsg}></BulleMessage>
+                                <BulleMessage idMessage={e.id} idProfil={e.idUser} nomMoi={this.state.nom} prenomMoi={this.state.prenom} photoMoi={this.state.photo} message={e.message} dateTime={e.dateMsg}></BulleMessage>
                             ))}
                         </div>
                                        
