@@ -1,3 +1,32 @@
 .cursorPointer:hover{
     cursor: pointer;
 }
+
+.ReactPasswordStrength-input {
+    width: 435px;
+    font-size: 15px;
+}
+
+.ReactPasswordStrength-strength-bar{
+    left: -45px;
+}
+
+.ReactPasswordStrength.is-strength-0 .ReactPasswordStrength-strength-desc{
+    width: auto;
+}
+    
+.ReactPasswordStrength.is-strength-1 .ReactPasswordStrength-strength-desc{
+    width: auto;
+}
+
+.ReactPasswordStrength.is-strength-2 .ReactPasswordStrength-strength-desc{
+    width: auto;
+}
+    
+.ReactPasswordStrength.is-strength-3 .ReactPasswordStrength-strength-desc{
+    width: auto;
+}
+    
+.ReactPasswordStrength.is-strength-4 .ReactPasswordStrength-strength-desc{
+    width: auto;
+}
