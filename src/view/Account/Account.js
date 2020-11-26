@@ -8,6 +8,7 @@ import ProfilInfoGauche from '../../components/ProfilInfoGauche/ProfilInfoGauche
 //Inclus les modules
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 
 export default class Account extends Component {
@@ -26,7 +27,8 @@ export default class Account extends Component {
       description:"",
       motDePasse:"",
       images: [],
-      titrePhoto: ""
+      titrePhoto: "",
+      isRedirectDelete: false
     }
 
     this.changePseudo = this.changePseudo.bind(this);
@@ -39,6 +41,7 @@ export default class Account extends Component {
     this.changeDescription = this.changeDescription.bind(this);
     this.changePassword = this.changePassword.bind(this);
     this.addModification = this.addModification.bind(this);
+    this.deleteMyProfil = this.deleteMyProfil.bind(this);
   }
 
 
@@ -152,6 +155,88 @@ export default class Account extends Component {
     })
   }
 
+  deleteMyProfil(){
+
+    //USER
+    axios.delete('http://localhost:8000/api/users/' + localStorage.getItem('ID'))
+    .then(res =>{
+      console.log("ok");
+    })
+
+    //ANNONCE
+    
+    axios.get('http://localhost:8000/api/annonces')
+    .then(res => {
+      res.data['hydra:member'].map(e => {
+        if(e.idUser == localStorage.getItem('ID')){
+          axios.delete('http://localhost:8000/api/annonces' + e.id)
+          .then(res => {
+            console.log("annonces OK");
+          })
+        }
+      })
+    });
+
+    //AVIS
+    axios.get('http://localhost:8000/api/avis')
+    .then(res => {
+      res.data['hydra:member'].map(e => {
+        if(e.idUser == localStorage.getItem('ID')){
+          axios.delete('http://localhost:8000/api/avis' + e.id)
+          .then(res => {
+            console.log("avis OK");
+          })
+        }
+      })
+    });
+
+    //MESSAGERIE
+    axios.get('http://localhost:8000/api/messageries')
+    .then(res => {
+      res.data['hydra:member'].map(e => {
+        if(e.idUser == localStorage.getItem('ID')){
+
+          axios.delete('http://localhost:8000/api/messageries' + e.id)
+          .then(res => {
+            console.log("Messagerie OK");
+          })
+        }
+      })
+    });
+
+    //SALON
+    axios.get('http://localhost:8000/api/salons')
+    .then(res => {
+      res.data['hydra:member'].map(e => {
+        if(e.idUser1 == localStorage.getItem('ID') || e.idUser2 == localStorage.getItem('ID')){
+          console.log(e.id);
+          
+          axios.delete('http://localhost:8000/api/salons' + e.id)
+          .then(res => {
+            console.log("Salon OK");
+          })
+        }
+      })
+    });
+
+    //SWAP
+    axios.get('http://localhost:8000/api/swaps')
+    .then(res => {
+      res.data['hydra:member'].map(e => {
+        if(e.idUser == localStorage.getItem('ID')){
+          axios.delete('http://localhost:8000/api/swaps' + e.id)
+          .then(res => {
+            console.log("Salon OK");
+          })
+        }
+      })
+      this.setState({isRedirectDelete: true});
+    });
+
+
+
+  }
+
 
 
 
@@ -161,7 +246,9 @@ export default class Account extends Component {
 
         {/* HEADER */}
         <Header></Header>
-
+        {this.state.isRedirectDelete ? 
+          <Redirect to={process.env.PUBLIC_URL + "/Logout"}></Redirect>
+        :
         <div>
           {/* ./Infos compte */}
           <div className="container">
@@ -282,7 +369,7 @@ export default class Account extends Component {
                       <button type="button" className="btn-enregistrer" onClick={this.addModification}>
                         &nbsp;Enregistrer&nbsp;
               </button>
-                      <button type="button" className="btn btn-dark ">
+                      <button type="button" onClick={this.deleteMyProfil} className="btn btn-dark ">
                         <svg
                           width="1.5em"
                           height="1.3em"
@@ -308,7 +395,8 @@ export default class Account extends Component {
           <br />
           <br />
           {/*Fin infos compte */}
-        </div>;
+        </div>
+        }
 
 
 
