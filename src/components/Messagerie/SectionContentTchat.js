@@ -391,9 +391,8 @@ export default class SectionContentTchat extends Component {
                             <textarea className="send-message-text" value={this.state.myMessage} onChange={this.changeMessage} defaultValue={""} placeholder="Répondre..." />
                             <label className="upload-file">
                                 <input type="file" required />
-                                <i className="fa fa-paperclip" />
                             </label>
-                            <button type="button" id="messageTchat" onClick={this.sendMessage} className="send-message-button btn-danger">
+                            <button type="button" id="messageTchat" onClick={this.sendMessage} className="send-message-button btn-secondary">
                                 <i className="fa fa-send" />
                             </button>
                         </div>

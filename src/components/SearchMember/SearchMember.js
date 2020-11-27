@@ -24,7 +24,7 @@ export default class SearchMember extends Component {
                             type="text"
                             className="form-control-ann"
                             placeholder="Entrez votre recherche..."
-                            id="inputSearchMember"
+                            id="inputSearchHome"
                         />
                     </div>
                 </div>

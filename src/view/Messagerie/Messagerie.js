@@ -70,7 +70,7 @@ export default class Messagerie extends Component {
                                 <div className="panel messages-panel border">
                                     <div className="contacts-list">
                                         <div className="inbox-categories">
-                                            <div data-toggle="tab" data-target="#inbox" className="active">Reception</div>
+                                            <div data-toggle="tab" data-target="#inbox" className="active"><i class="fa fa-envelope"></i>&nbsp;&nbsp;BOITE DE RECEPTION</div>
                                         </div>
                                     
                                         <div className="tab-content">
