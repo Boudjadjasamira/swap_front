@@ -34,7 +34,7 @@ export default class RecoveryPassword extends Component {
 
         //verification des mots
         if(this.state.passwordConf == this.state.passwordFirst){
-            axios.patch('http://localhost:8000/api/users/' + this.state.idUser, {
+            axios.patch('http://51.68.44.146:8000/api/users/' + this.state.idUser, {
                 tokenGenPasswordRecovery: null,
                 motDePasse: this.state.passwordConf
             }, {
@@ -58,7 +58,7 @@ export default class RecoveryPassword extends Component {
         const recupCleToken = window.location.pathname.toString().split('-')[1];
 
         //recuperation de l'id user en fonction du token
-        axios.get('http://localhost:8000/api/users')
+        axios.get('http://51.68.44.146:8000/api/users')
         .then(res => {
             res.data['hydra:member'].map(e => {
                 if(e.tokenGenPasswordRecovery == recupCleToken){

@@ -49,7 +49,7 @@ export default class Account extends Component {
 
     document.title = "Profil - Informations"
     //Requete pour recuperer les infos utilisateurs/ID
-    axios.get(`http://localhost:8000/api/users/` + localStorage.getItem('ID'))
+    axios.get(`http://51.68.44.146:8000/api/users/` + localStorage.getItem('ID'))
     .then(res =>
         this.setState({
           pseudo: res.data.pseudo,
@@ -120,7 +120,7 @@ export default class Account extends Component {
 
   addModification() {
 //Requete pour mettre à jour les infos utilisateurs
-    axios.patch("http://localhost:8000/api/users/" + localStorage.getItem('ID'), {
+    axios.patch("http://51.68.44.146:8000/api/users/" + localStorage.getItem('ID'), {
       pseudo: this.state.pseudo.toString(),
       sexe: Boolean(Number(this.state.selectedSexe)),
       nom: this.state.nom.toString(),
@@ -158,18 +158,18 @@ export default class Account extends Component {
   deleteMyProfil(){
 
     //USER
-    axios.delete('http://localhost:8000/api/users/' + localStorage.getItem('ID'))
+    axios.delete('http://51.68.44.146:8000/api/users/' + localStorage.getItem('ID'))
     .then(res =>{
       console.log("ok");
     })
 
     //ANNONCE
     
-    axios.get('http://localhost:8000/api/annonces')
+    axios.get('http://51.68.44.146:8000/api/annonces')
     .then(res => {
       res.data['hydra:member'].map(e => {
         if(e.idUser == localStorage.getItem('ID')){
-          axios.delete('http://localhost:8000/api/annonces' + e.id)
+          axios.delete('http://51.68.44.146:8000/api/annonces' + e.id)
           .then(res => {
             console.log("annonces OK");
           })
@@ -178,11 +178,11 @@ export default class Account extends Component {
     });
 
     //AVIS
-    axios.get('http://localhost:8000/api/avis')
+    axios.get('http://51.68.44.146:8000/api/avis')
     .then(res => {
       res.data['hydra:member'].map(e => {
         if(e.idUser == localStorage.getItem('ID')){
-          axios.delete('http://localhost:8000/api/avis' + e.id)
+          axios.delete('http://51.68.44.146:8000/api/avis' + e.id)
           .then(res => {
             console.log("avis OK");
           })
@@ -191,12 +191,12 @@ export default class Account extends Component {
     });
 
     //MESSAGERIE
-    axios.get('http://localhost:8000/api/messageries')
+    axios.get('http://51.68.44.146:8000/api/messageries')
     .then(res => {
       res.data['hydra:member'].map(e => {
         if(e.idUser == localStorage.getItem('ID')){
 
-          axios.delete('http://localhost:8000/api/messageries' + e.id)
+          axios.delete('http://51.68.44.146:8000/api/messageries' + e.id)
           .then(res => {
             console.log("Messagerie OK");
           })
@@ -205,13 +205,13 @@ export default class Account extends Component {
     });
 
     //SALON
-    axios.get('http://localhost:8000/api/salons')
+    axios.get('http://51.68.44.146:8000/api/salons')
     .then(res => {
       res.data['hydra:member'].map(e => {
         if(e.idUser1 == localStorage.getItem('ID') || e.idUser2 == localStorage.getItem('ID')){
           console.log(e.id);
           
-          axios.delete('http://localhost:8000/api/salons' + e.id)
+          axios.delete('http://51.68.44.146:8000/api/salons' + e.id)
           .then(res => {
             console.log("Salon OK");
           })
@@ -220,11 +220,11 @@ export default class Account extends Component {
     });
 
     //SWAP
-    axios.get('http://localhost:8000/api/swaps')
+    axios.get('http://51.68.44.146:8000/api/swaps')
     .then(res => {
       res.data['hydra:member'].map(e => {
         if(e.idUser == localStorage.getItem('ID')){
-          axios.delete('http://localhost:8000/api/swaps' + e.id)
+          axios.delete('http://51.68.44.146:8000/api/swaps' + e.id)
           .then(res => {
             console.log("Salon OK");
           })

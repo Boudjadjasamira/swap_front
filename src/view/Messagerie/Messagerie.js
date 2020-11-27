@@ -28,7 +28,7 @@ export default class Messagerie extends Component {
 
     let salonsTemp = [];
     //recuperation de toutes les conversations
-    axios.get(('http://localhost:8000/api/salons'))
+    axios.get(('http://51.68.44.146:8000/api/salons'))
     .then(res => {
         res.data['hydra:member'].map(row => {
             if((row.idUser1 == localStorage.getItem('ID')) || (row.idUser2 == localStorage.getItem('ID'))){

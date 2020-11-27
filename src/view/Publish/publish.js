@@ -41,7 +41,7 @@ export default class Publish extends Component {
   componentDidMount(){
     document.title = "Profil - Ajouter une annonce"
     //Recuperation des categories
-    axios.get(`http://localhost:8000/api/categories`)
+    axios.get(`http://51.68.44.146:8000/api/categories`)
     .then(res => {
       this.setState({allCategorie: res.data["hydra:member"]});
     })
@@ -100,7 +100,7 @@ export default class Publish extends Component {
           formData.append('files', image);
         });
 
-        axios.post('http://localhost:8000/uploadAnnonces.php', formData)
+        axios.post('http://51.68.44.146:8000/uploadAnnonces.php', formData)
         .then(res => {
             console.log({res});
         }).catch(err => {
@@ -116,7 +116,7 @@ export default class Publish extends Component {
         }
 
         //Ajout dans la base
-        axios.post("http://localhost:8000/api/annonces",  {
+        axios.post("http://51.68.44.146:8000/api/annonces",  {
           titre: this.state.titre.toString(),
           idCategorie: this.state.categorieS,
           description: this.state.description.toString(),

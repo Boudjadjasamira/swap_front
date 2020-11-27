@@ -49,7 +49,7 @@ export default class SingleAnnonce extends Component {
     if(localStorage.getItem('ID')*1 == 0){
       this.setState({isMyAnnonce: true});
     }
-    axios.get('http://localhost:8000/api/annonces/' + search)
+    axios.get('http://51.68.44.146:8000/api/annonces/' + search)
     .then(( res => {
         this.setState({
           titre: res.data["titre"],
@@ -72,7 +72,7 @@ export default class SingleAnnonce extends Component {
 
      /* eslint eqeqeq: 0 */  
     //recuperation de toutes les categories
-    axios.get(`http://localhost:8000/api/categories`)
+    axios.get(`http://51.68.44.146:8000/api/categories`)
      .then(res => {
       res.data['hydra:member'].forEach(
         element => {
@@ -84,7 +84,7 @@ export default class SingleAnnonce extends Component {
     });
 
     //recuperation du pseudo
-    axios.get(`http://localhost:8000/api/users`)
+    axios.get(`http://51.68.44.146:8000/api/users`)
      .then(res => {
       res.data['hydra:member'].forEach(
         element => {
@@ -97,7 +97,7 @@ export default class SingleAnnonce extends Component {
     });
 
     //recuperation des annonces de l'utilisateurs connecté
-    axios.get(`http://localhost:8000/api/annonces`)
+    axios.get(`http://51.68.44.146:8000/api/annonces`)
       .then(res => {
         let tabTempAnnonce = [];
         res.data['hydra:member'].forEach(
@@ -113,7 +113,7 @@ export default class SingleAnnonce extends Component {
     let verifSalon = true;
     let idSalonRecup = 0;
         //Verification pour savoir la conversation existe
-        axios.get('http://localhost:8000/api/salons')
+        axios.get('http://51.68.44.146:8000/api/salons')
         .then( res => {
           res.data['hydra:member'].map(e => {
             if((e.idUser1 == this.state.idUser) && (e.idUser2 == localStorage.getItem('ID')) && (e.idAnnonce == this.state.idAnnonce)){
@@ -132,7 +132,7 @@ export default class SingleAnnonce extends Component {
 
 
 
-          axios.get('http://localhost:8000/api/swaps')
+          axios.get('http://51.68.44.146:8000/api/swaps')
           .then(res => {
             res.data['hydra:member'].map(k => {
               if(k.idSalon == idSalonRecup && k.isClotured == true && k.isAccepted == true){
@@ -175,7 +175,7 @@ export default class SingleAnnonce extends Component {
     });
 
     //Verification pour savoir la conversation existe
-    axios.get('http://localhost:8000/api/salons')
+    axios.get('http://51.68.44.146:8000/api/salons')
     .then( res => {
       res.data['hydra:member'].map(e => {
         if((e.idUser1 == this.state.idUser) && (e.idUser2 == localStorage.getItem('ID')) && (e.idAnnonce == this.state.idAnnonce)){
@@ -191,7 +191,7 @@ export default class SingleAnnonce extends Component {
       console.log(verifSalon);
       console.log(idSalonRecup);
 
-      axios.post('http://localhost:8000/api/swaps', {
+      axios.post('http://51.68.44.146:8000/api/swaps', {
         idUser: localStorage.getItem('ID')*1,
         idSalon: idSalonRecup*1,
         idService: this.state.serviceSelected*1,
@@ -263,7 +263,7 @@ export default class SingleAnnonce extends Component {
     }
 
     //Verification pour savoir la conversation existe
-    axios.get('http://localhost:8000/api/salons')
+    axios.get('http://51.68.44.146:8000/api/salons')
       .then( res => {
         res.data['hydra:member'].map(e => {
           if((e.idUser1 == this.state.idUser) && (e.idUser2 == localStorage.getItem('ID')) && (e.idAnnonce == this.state.idAnnonce)){
@@ -279,13 +279,13 @@ export default class SingleAnnonce extends Component {
         //si le salon existe pas alors creation du salon
         if(verifSalon == false){
           //création du salon de conversation
-          axios.post('http://localhost:8000/api/salons', {idUser1: this.state.idUser, idUser2: localStorage.getItem('ID')*1, idAnnonce: this.state.idAnnonce*1})
+          axios.post('http://51.68.44.146:8000/api/salons', {idUser1: this.state.idUser, idUser2: localStorage.getItem('ID')*1, idAnnonce: this.state.idAnnonce*1})
           .then(res => {
             //recuperation de l'id salon qui vient d'etre cree
             
             idSalonRecup = res.data['id'];
             //Envoi du message dans le chat
-              axios.post('http://localhost:8000/api/messageries', {idSalon: idSalonRecup, idUser: localStorage.getItem('ID')*1, message: this.state.contactMessage, dateMsg: getDateTime()})
+              axios.post('http://51.68.44.146:8000/api/messageries', {idSalon: idSalonRecup, idUser: localStorage.getItem('ID')*1, message: this.state.contactMessage, dateMsg: getDateTime()})
               .then(res => {
                 Swal.fire({
                 title: 'Swap Envoyé !',
@@ -306,7 +306,7 @@ export default class SingleAnnonce extends Component {
           });
         }else{
           //Envoi du message dans le chat
-            axios.post('http://localhost:8000/api/messageries', {idSalon: idSalonRecup, idUser: localStorage.getItem('ID')*1, message: this.state.contactMessage, dateMsg: getDateTime()})
+            axios.post('http://51.68.44.146:8000/api/messageries', {idSalon: idSalonRecup, idUser: localStorage.getItem('ID')*1, message: this.state.contactMessage, dateMsg: getDateTime()})
             .then(res => {
               Swal.fire({
               title: 'Swap Envoyé !',
@@ -357,7 +357,7 @@ export default class SingleAnnonce extends Component {
        return dateTime;
     }
 
-    axios.post('http://localhost:8000/api/avis', {
+    axios.post('http://51.68.44.146:8000/api/avis', {
       idUser: localStorage.getItem('ID')*1,
       avis: this.state.myAvis,
       dateAvis: getDateTime(),
@@ -400,7 +400,7 @@ export default class SingleAnnonce extends Component {
                     <div className="view">
                       <img
                         className="d-block w-100"
-                        src={"http://localhost:8000/uploads/annonces/" + this.state.photo}
+                        src={"http://51.68.44.146:8000/uploads/annonces/" + this.state.photo}
                         alt={this.state.photo}
                       />
                       <div className="mask rgba-black-light" />

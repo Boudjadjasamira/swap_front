@@ -32,7 +32,7 @@ export default class UserRowMember extends Component {
             modalEdite: "enabledUserModel" + this.props.idPersonne
         }); 
         /* eslint eqeqeq: 0 */
-        axios.get('http://localhost:8000/api/users/' + this.props.idPersonne)
+        axios.get('http://51.68.44.146:8000/api/users/' + this.props.idPersonne)
         .then(res => {
             this.setState({actifUser: res.data.actif})
             if(res.data.actif == false){
@@ -59,7 +59,7 @@ export default class UserRowMember extends Component {
             this.setState({labelIsActif: "Désactiver"})
         }
 
-        axios.patch('http://localhost:8000/api/users/' + this.state.idMembre, {
+        axios.patch('http://51.68.44.146:8000/api/users/' + this.state.idMembre, {
             actif: activerPersonne
         }, { headers: {
             "Content-type":"application/merge-patch+json"
@@ -83,7 +83,7 @@ export default class UserRowMember extends Component {
             showConfirmButton: true,
         });
 
-        axios.patch('http://localhost:8000/api/users/' + this.state.idMembre, {
+        axios.patch('http://51.68.44.146:8000/api/users/' + this.state.idMembre, {
             pseudo: this.state.newPseudoPersonne,
             mail: this.state.newMailPersonne
         }, { headers: {

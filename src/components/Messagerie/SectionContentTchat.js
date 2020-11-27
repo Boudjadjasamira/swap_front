@@ -30,7 +30,7 @@ export default class SectionContentTchat extends Component {
         let idSalonOK = 0;
         let idUserAutre = 0;
 
-        axios.get('http://localhost:8000/api/messageries')
+        axios.get('http://51.68.44.146:8000/api/messageries')
         .then(res => {
             res.data['hydra:member'].map(e => {
                 if(e.idSalon == this.props.idContent){
@@ -47,7 +47,7 @@ export default class SectionContentTchat extends Component {
             this.setState({allBullesMessages: bulleMessageTemp});
 
             //Recuperation de l'avatar + nom + prenom
-            axios.get('http://localhost:8000/api/users/' + localStorage.getItem('ID'))
+            axios.get('http://51.68.44.146:8000/api/users/' + localStorage.getItem('ID'))
             .then(res => {
                 this.setState({
                     photo: res.data['photo'],
@@ -57,7 +57,7 @@ export default class SectionContentTchat extends Component {
             });
 
             //Recuperation de l'avatar + nom + prenom
-            axios.get('http://localhost:8000/api/users/' + idUserAutre)
+            axios.get('http://51.68.44.146:8000/api/users/' + idUserAutre)
             .then(res => {
                 this.setState({
                     nomEnFace: res.data['nom'],
@@ -66,7 +66,7 @@ export default class SectionContentTchat extends Component {
             });
 
 
-            axios.get('http://localhost:8000/api/swaps')
+            axios.get('http://51.68.44.146:8000/api/swaps')
             .then(res => {
                 res.data['hydra:member'].map(k => {
                     if(k.idSalon == idSalonOK && k.isClotured == false){
@@ -124,14 +124,14 @@ export default class SectionContentTchat extends Component {
             allowOutsideClick: false
           });
 
-        axios.post('http://localhost:8000/api/messageries', {idSalon: this.props.idContent, idUser: localStorage.getItem('ID')*1, message: this.state.myMessage, dateMsg: getDateTime()})
+        axios.post('http://51.68.44.146:8000/api/messageries', {idSalon: this.props.idContent, idUser: localStorage.getItem('ID')*1, message: this.state.myMessage, dateMsg: getDateTime()})
         .then(res => {
 
           this.setState({myMessage: ""});
 
           let bulleMessageTemp = [];
 
-          axios.get('http://localhost:8000/api/messageries')
+          axios.get('http://51.68.44.146:8000/api/messageries')
           .then(res => {
               res.data['hydra:member'].map(e => {
                   if(e.idSalon == this.props.idContent){
@@ -146,7 +146,7 @@ export default class SectionContentTchat extends Component {
               this.setState({allBullesMessages: bulleMessageTemp});
   
                 //Recuperation de l'avatar + nom + prenom
-                axios.get('http://localhost:8000/api/users/' + localStorage.getItem('ID'))
+                axios.get('http://51.68.44.146:8000/api/users/' + localStorage.getItem('ID'))
                 .then(res => {
                     this.setState({
                         photo: res.data['photo'],
@@ -203,14 +203,14 @@ export default class SectionContentTchat extends Component {
             allowOutsideClick: false
         });
 
-        axios.patch('http://localhost:8000/api/swaps/' + this.state.swapEnCours, {
+        axios.patch('http://51.68.44.146:8000/api/swaps/' + this.state.swapEnCours, {
             isAccepted: true
         },{
         headers: {
             'Content-Type': 'application/merge-patch+json'
         }}).then(res =>{
             
-            axios.patch('http://localhost:8000/api/swaps/' + this.state.swapEnCours, {
+            axios.patch('http://51.68.44.146:8000/api/swaps/' + this.state.swapEnCours, {
                 isClotured: true
             },{
             headers: {
@@ -219,14 +219,14 @@ export default class SectionContentTchat extends Component {
 
                 this.setState({isSwapVisible: false})
 
-                axios.post('http://localhost:8000/api/messageries', {idSalon: this.props.idContent, idUser: localStorage.getItem('ID')*1, message: "Swap accepté, laissez un avis sur la page l'annonce", dateMsg: getDateTime()})
+                axios.post('http://51.68.44.146:8000/api/messageries', {idSalon: this.props.idContent, idUser: localStorage.getItem('ID')*1, message: "Swap accepté, laissez un avis sur la page l'annonce", dateMsg: getDateTime()})
                 .then(res => {
         
                   this.setState({myMessage: ""});
         
                   let bulleMessageTemp = [];
         
-                  axios.get('http://localhost:8000/api/messageries')
+                  axios.get('http://51.68.44.146:8000/api/messageries')
                   .then(res => {
                       res.data['hydra:member'].map(e => {
                           if(e.idSalon == this.props.idContent){
@@ -241,7 +241,7 @@ export default class SectionContentTchat extends Component {
                       this.setState({allBullesMessages: bulleMessageTemp});
           
                         //Recuperation de l'avatar + nom + prenom
-                        axios.get('http://localhost:8000/api/users/' + localStorage.getItem('ID'))
+                        axios.get('http://51.68.44.146:8000/api/users/' + localStorage.getItem('ID'))
                         .then(res => {
                             this.setState({
                                 photo: res.data['photo'],
@@ -305,7 +305,7 @@ export default class SectionContentTchat extends Component {
             allowOutsideClick: false
         });
 
-        axios.patch('http://localhost:8000/api/swaps/' + this.state.swapEnCours, {
+        axios.patch('http://51.68.44.146:8000/api/swaps/' + this.state.swapEnCours, {
             isClotured: true
         },{
         headers: {
@@ -313,14 +313,14 @@ export default class SectionContentTchat extends Component {
         }}).then(res => {
             this.setState({isSwapVisible: false})
 
-            axios.post('http://localhost:8000/api/messageries', {idSalon: this.props.idContent, idUser: localStorage.getItem('ID')*1, message: "Swap refusé", dateMsg: getDateTime()})
+            axios.post('http://51.68.44.146:8000/api/messageries', {idSalon: this.props.idContent, idUser: localStorage.getItem('ID')*1, message: "Swap refusé", dateMsg: getDateTime()})
             .then(res => {
     
               this.setState({myMessage: ""});
     
               let bulleMessageTemp = [];
     
-              axios.get('http://localhost:8000/api/messageries')
+              axios.get('http://51.68.44.146:8000/api/messageries')
               .then(res => {
                   res.data['hydra:member'].map(e => {
                       if(e.idSalon == this.props.idContent){
@@ -335,7 +335,7 @@ export default class SectionContentTchat extends Component {
                   this.setState({allBullesMessages: bulleMessageTemp});
       
                     //Recuperation de l'avatar + nom + prenom
-                    axios.get('http://localhost:8000/api/users/' + localStorage.getItem('ID'))
+                    axios.get('http://51.68.44.146:8000/api/users/' + localStorage.getItem('ID'))
                     .then(res => {
                         this.setState({
                             photo: res.data['photo'],

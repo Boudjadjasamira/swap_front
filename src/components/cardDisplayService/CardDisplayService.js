@@ -34,7 +34,7 @@ export default class CardDisplayService extends Component {
             }
         );
         
-        axios.get('http://localhost:8000/api/users')
+        axios.get('http://51.68.44.146:8000/api/users')
         .then(res => {
             res.data['hydra:member'].map(e => {
                 if(e.id == this.props.idUserEnvoi){
@@ -48,7 +48,7 @@ export default class CardDisplayService extends Component {
 
     //Requete pour supprimer les annonces 
     deleteAnnonce() {
-        axios.delete('http://localhost:8000/api/annonces/' + this.props.idAnnonce)
+        axios.delete('http://51.68.44.146:8000/api/annonces/' + this.props.idAnnonce)
             .then(res => {
                 this.setState({ effectRemove: "animate__animated animate__fadeOutRight" });
 
@@ -67,7 +67,7 @@ export default class CardDisplayService extends Component {
             showConfirmButton: false,
             allowOutsideClick: false
         })
-        axios.patch('http://localhost:8000/api/annonces/'+ this.props.idAnnonce, {
+        axios.patch('http://51.68.44.146:8000/api/annonces/'+ this.props.idAnnonce, {
             description: this.state.nouvelleDescription,
             titre: this.state.nouveauTitre, 
         },{
@@ -99,7 +99,7 @@ export default class CardDisplayService extends Component {
         return (
             <div> 
                 <section data-type={this.props.typeAnnonce} className={"search-result-item border " + this.state.effectRemove}>
-                    <img className="image-annonce image-link" src={"http://localhost:8000/uploads/annonces/" + this.props.photoAnnonce} alt="imageAnnonce"/>
+                    <img className="image-annonce image-link" src={"http://51.68.44.146:8000/uploads/annonces/" + this.props.photoAnnonce} alt="imageAnnonce"/>
                     <div className="search-result-item-body ">
                         <div className="row">
                             <div className="col-sm-9">

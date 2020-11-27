@@ -42,7 +42,7 @@ export default class login extends Component {
       allowOutsideClick: false
     });
 
-    axios.post('http://localhost:8000/api/login', {
+    axios.post('http://51.68.44.146:8000/api/login', {
       pseudo: this.state.pseudo,
       motDePasse: this.state.password
     }, { headers : {"Content-Type": "application/json"}})

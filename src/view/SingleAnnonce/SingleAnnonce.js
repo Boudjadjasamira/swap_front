@@ -22,7 +22,7 @@ export default class SingleAnnonce extends Component {
   componentDidMount(){
     const search = window.location.pathname.toString().split('-')[1];
 
-    axios.get('http://localhost:8000/api/annonces/' + search)
+    axios.get('http://51.68.44.146:8000/api/annonces/' + search)
     .then(( res => {
       if(res.data.latitude > 0){
         this.setState({laMap: <MapSingleAn positionEnvoi={[res.data.latitude * 1, res.data.longitude * 1]} villeEnvoi={res.data.ville}></MapSingleAn>})

@@ -88,7 +88,7 @@ export default class Register extends Component {
             }
              /* eslint eqeqeq: 0 */  
             //Ajout dans la base
-            axios.post("http://localhost:8000/api/users",  {
+            axios.post("http://51.68.44.146:8000/api/users",  {
                 pseudo: this.state.pseudo,
                 nom: this.state.nom,
                 prenom: this.state.prenom,

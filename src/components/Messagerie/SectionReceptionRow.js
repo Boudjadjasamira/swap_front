@@ -19,7 +19,7 @@ export default class SectionReceptionRow extends Component {
 
     componentDidMount(){
         let recupIDPseudoEnFace = 0;
-        axios.get('http://localhost:8000/api/salons/' + this.props.idRow)
+        axios.get('http://51.68.44.146:8000/api/salons/' + this.props.idRow)
         .then(res => {
             if(res.data['idUser1'] == localStorage.getItem('ID')*1){
                 recupIDPseudoEnFace = res.data['idUser2'];
@@ -28,7 +28,7 @@ export default class SectionReceptionRow extends Component {
             }
             
             //Recuperation de l'avatar + nom + prenom
-            axios.get('http://localhost:8000/api/users/' + recupIDPseudoEnFace)
+            axios.get('http://51.68.44.146:8000/api/users/' + recupIDPseudoEnFace)
             .then(res => {
                 this.setState({
                     photo: res.data['photo'],
@@ -41,7 +41,7 @@ export default class SectionReceptionRow extends Component {
             let lastDateTimeTemp = "";
             let compteurMessageTemp = 0;
             //recuperation du dernier message et heure
-            axios.get('http://localhost:8000/api/messageries')
+            axios.get('http://51.68.44.146:8000/api/messageries')
             .then(res => {
                 res.data['hydra:member'].map(e => {
                     if(e.idSalon == this.props.idRow){
@@ -89,7 +89,7 @@ export default class SectionReceptionRow extends Component {
                     <div className="message-count"> 
                          {this.state.compteurMessage}
                     </div>
-                    <img alt={this.state.photo} className="img-circle medium-image" src={"http://localhost:8000/uploads/avatars/" + this.state.photo} />
+                    <img alt={this.state.photo} className="img-circle medium-image" src={"http://51.68.44.146:8000/uploads/avatars/" + this.state.photo} />
                     <div className="vcentered info-combo">
                         <h3 className="no-margin-bottom name"> {this.state.nom} {this.state.prenom} </h3>
                         <h5>{this.state.lastMessage}</h5>

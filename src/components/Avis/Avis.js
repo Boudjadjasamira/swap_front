@@ -17,7 +17,7 @@ export default class Avis extends Component {
     }
 
     componentDidMount(){
-        axios.get('http://localhost:8000/api/avis')
+        axios.get('http://51.68.44.146:8000/api/avis')
         .then(res => {
             let tabTemp = [];
             let tabNote = [];
@@ -36,18 +36,18 @@ export default class Avis extends Component {
         let leursAvisTemp = [];
         let leursNotesTemp = [];
 
-        axios.get('http://localhost:8000/api/salons')
+        axios.get('http://51.68.44.146:8000/api/salons')
         .then(res => {
             res.data['hydra:member'].map(e => {
                 if(e.idUser1 == localStorage.getItem('ID') || (e.idUser2 == localStorage.getItem('ID'))){
         
-                    axios.get('http://localhost:8000/api/swaps')
+                    axios.get('http://51.68.44.146:8000/api/swaps')
                     .then(res2 => {
                         
                         res2.data['hydra:member'].map(k =>{
                             if(k.idSalon == e.id && k.isClotured == true && k.idUser != localStorage.getItem('ID')){
                                 
-                                axios.get('http://localhost:8000/api/avis')
+                                axios.get('http://51.68.44.146:8000/api/avis')
                                 .then(res3 => {
                                     
                                     res3.data['hydra:member'].map(j => {
@@ -59,7 +59,7 @@ export default class Avis extends Component {
                                                 leursNotesTemp.push(i);
                                             }
 
-                                            axios.get('http://localhost:8000/api/users')
+                                            axios.get('http://51.68.44.146:8000/api/users')
                                             .then(res4 => {
                                                 res4.data['hydra:member'].map(l => {
                                                     if(l.id == j.idUser){

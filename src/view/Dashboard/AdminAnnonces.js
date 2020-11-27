@@ -18,7 +18,7 @@ export default class AdminAnnonces extends Component {
     
     componentDidMount(){
         document.title = "Dashboard - Annonces"
-        axios.get('http://localhost:8000/api/annonces')
+        axios.get('http://51.68.44.146:8000/api/annonces')
         .then((res => {
             this.setState({allAnnonces: res.data['hydra:member'], showLoading: false});
         }))
