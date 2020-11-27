@@ -33,13 +33,13 @@ export default class Home extends Component {
   componentDidMount() {
     document.title = "Home"
     //Requete pour récuperer toutes les catégories
-    axios.get(`http://51.68.44.146:8000/api/categories`)
+    axios.get(`http://51.68.44.146:8000/api/categories`, {headers: {"Access-Control-Allow-Origin": "*"}})
     .then(res => {
       this.setState({ allCategories: res.data['hydra:member'] });
     })
      
     //recuperation de toutes les annonces
-    axios.get(`http://51.68.44.146:8000/api/annonces`)
+    axios.get(`http://51.68.44.146:8000/api/annonces`, {headers: {"Access-Control-Allow-Origin": "*"}})
     .then(res => {
         this.setState({ allAnnonces: res.data['hydra:member'], showLoading: false });
     })
