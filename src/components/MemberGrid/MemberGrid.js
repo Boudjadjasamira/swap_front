@@ -16,13 +16,7 @@ export default class MemberGrid extends Component {
                       <p className="text-muted">@{this.props.pseudoMembre}</p>
                       <p className="text-muted"><i className="mdi mdi-map-marker" />{this.props.CPMembre}</p>
                     </div>
-                    <div className="team-social-icon p-2">
-                      <ul className="blog-details-icons list-inline mb-0">
-                        <li className="list-inline-item"><a href="http://www.facebook.com/sharer.php?u=http://www.swap.fr/monProfil"><i className="mdi mdi-facebook" /></a></li>
-                        <li className="list-inline-item"><a href="https://twitter.com/intent/tweet"><i className="mdi mdi-twitter" /></a></li>
-                        <li className="list-inline-item"><a href="#" className><i className="mdi mdi-whatsapp" /></a></li>
-                        <li className="list-inline-item"><a href="#" className><i className="mdi mdi-instagram" /></a></li>
-                      </ul>              
+                    <div className="team-social-icon p-2 ml-2">            
                       <ul className="employers-icons list-inline mb-1">
                           <li className="list-inline-item"><a href="#" className="text-warning"><i className="mdi mdi-star f-19"></i></a></li>
                           <li className="list-inline-item"><a href="#" className="text-warning"><i className="mdi mdi-star f-19"></i></a></li>

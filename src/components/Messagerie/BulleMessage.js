@@ -49,8 +49,8 @@ export default class BulleMessage extends Component {
                         <img alt={this.state.photo} className="img-circle medium-image" src={"http://localhost:8000/uploads/avatars/" + this.state.photoProfil}/>
                             <div className="message-body">
                                 <div className="message-info">
-                                    <h4> {this.state.nom} {this.state.prenom} </h4>
-                                    <h5><i className="fa fa-clock-o" />{this.state.dateMessage}</h5>
+                                    <h5 style={{paddingLeft:'16px'}}><i className="fa fa-clock-o" />{this.state.dateMessage}</h5>
+                                    <h5 style={{paddingLeft:'10px'}}> {this.state.nom} {this.state.prenom} </h5>
                                 </div>
                                 <hr/>
                                 <div className="message-text">
@@ -67,14 +67,14 @@ export default class BulleMessage extends Component {
                             <div className="message-body">
                                 <div className="message-body-inner">
                                     <div className="message-info">
-                                        <h4> {this.props.nomMoi} {this.props.prenomMoi} </h4>
-                                        <h5><i className="fa fa-clock-o" />{this.state.dateMessage}</h5>
+                                        <h5 style={{paddingRight:'10px'}}> {this.props.nomMoi} {this.props.prenomMoi} </h5>
+                                        <h5 style={{paddingRight:'16px'}}><i className="fa fa-clock-o" />{this.state.dateMessage}</h5>
                                     </div>
                                     <hr />
                                     <div className="message-text">
                                         {this.props.message}
                                     </div>
-                                    <i onClick={this.deleteMyMessage} className="fa fa-trash"></i>
+                                    <i onClick={this.deleteMyMessage} className="material-icons" data-toggle="tooltip" title="Supprimer" style={{cursor:'pointer',fontSize:'20px', paddingLeft:'6px'}}>delete</i>
                                 </div>
                             </div>
                             <br />

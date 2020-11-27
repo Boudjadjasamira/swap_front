@@ -18,11 +18,14 @@ export default class Myprofil extends Component {
       dateInscription: "",
       photo: "",
       imgLoaded: true,
-      allAnnonces: []
+      allAnnonces: [],
+      certification: "assets/icone/validate.png",
+      isVisibleBadge:false
     };
   }
 
   componentDidMount(){
+
     //Recuperation des infos
     axios.get(`http://localhost:8000/api/users/` + localStorage.getItem('ID'))
     .then(res =>
@@ -41,11 +44,30 @@ export default class Myprofil extends Component {
         res.data['hydra:member'].map(e => {
             if(e.idUser == localStorage.getItem('ID')){
                 tabTempAnnoncesByUserID.push(e)
-            } return true
-            /* eslint eqeqeq: 0 */
+            } return true            
         })
         this.setState({ allAnnonces: tabTempAnnoncesByUserID });
-    })
+  })
+
+  //attribution certification
+  let compteurAnnonces1 = 0;
+  
+  axios.get('http://localhost:8000/api/annonces')
+        .then(res => {
+            res.data['hydra:member'].map(e => {
+                if(e.idUser == localStorage.getItem('ID')){
+                    compteurAnnonces1++
+                }
+            })
+
+            if(compteurAnnonces1 == 5){
+                this.setState({certification: process.env.PUBLIC_URL + "assets/icone/validate.png"});
+            }else{
+                this.setState({isVisibleBadge: true})
+            }
+        });
+
+   
     
   }
 
@@ -62,10 +84,17 @@ export default class Myprofil extends Component {
           <div className="container ">
             <div className="text-center-profil">
               <div className="item">
+                {/* On affiche le badge lorsque l'user à 5 et plus d'annonces*/}
+              {this.state.isVisibleBadge ? null :
                 <span className="notify-badge-profil">
-                  <img src="assets/icone/validate.png" alt="#" style={{ width: 60 }} />
+                  {/* on laisse l'image charger le temps d'entrer dans la condition */}  
+                {this.state.imgLoaded ? 
+                    <div></div>
+                  :              
+                  <img src={this.state.certification} alt="#" style={{ width: 60 }} />
+                }
                 </span>
-                
+              }
                 {this.state.imgLoaded ? 
                     <div class="loadingio-spinner-spin-gkmwr87oy9"><div class="ldio-qorx55o730n"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>
                   :

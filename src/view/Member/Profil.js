@@ -18,7 +18,9 @@ export default class Myprofil extends Component {
       dateInscription: "",
       photo: "",
       allAnnonces: [],
-      imgLoaded: true
+      imgLoaded: true,
+      certification: "assets/icone/validate.png",
+      isVisibleBadge:false
     };
   }
 
@@ -43,10 +45,27 @@ export default class Myprofil extends Component {
             if(e.idUser == search.toString()){
                 tabTempAnnoncesByUserID.push(e)
             } return true
-            /* eslint eqeqeq: 0 */
         })
         this.setState({ allAnnonces: tabTempAnnoncesByUserID });
     })
+
+    //attribution certification
+    let compteurAnnonces1 = 0;
+    
+    axios.get('http://localhost:8000/api/annonces')
+          .then(res => {
+              res.data['hydra:member'].map(e => {
+                  if(e.idUser == search.toString()){
+                      compteurAnnonces1++
+                  }
+              })
+
+              if(compteurAnnonces1 == 5){
+                  this.setState({certification: process.env.PUBLIC_URL + "assets/icone/validate.png"});
+              }else{
+                  this.setState({isVisibleBadge: true})
+              }
+          });
   }
 
   render() {
@@ -61,10 +80,18 @@ export default class Myprofil extends Component {
         <div className="container profile shadow-lg p-3 mb-5 bg-white rounded w-50 p-3">
           <div className="container ">
             <div className="text-center-profil">
-              <div className="item">
+            <div className="item">
+                {/* On affiche le badge lorsque l'user à 5 et plus d'annonces*/}
+              {this.state.isVisibleBadge ? null :
                 <span className="notify-badge-profil">
-                  <img src="assets/icone/validate.png" alt="#" style={{ width: 60 }} />
+                  {/* on laisse l'image charger le temps d'entrer dans la condition */}  
+                {this.state.imgLoaded ? 
+                    <div></div>
+                  :              
+                  <img src={this.state.certification} alt="#" style={{ width: 60 }} />
+                }
                 </span>
+              }
                 {this.state.imgLoaded ? 
                     <div class="loadingio-spinner-spin-gkmwr87oy9"><div class="ldio-qorx55o730n"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>
                   :
