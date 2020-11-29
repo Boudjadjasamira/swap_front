@@ -59,10 +59,10 @@ export default class UserRowMember extends Component {
             this.setState({labelIsActif: "Désactiver"})
         }
 
-        axios.patch('http://149.91.89.142:8000/api/users/' + this.state.idMembre, {
+        axios.put('http://149.91.89.142:8000/api/users/' + this.state.idMembre, {
             actif: activerPersonne
         }, { headers: {
-            "Content-type":"application/merge-patch+json"
+            "Content-type":"application/json"
         }}).then(res => {
             console.log(res.data);
         })
@@ -83,11 +83,11 @@ export default class UserRowMember extends Component {
             showConfirmButton: true,
         });
 
-        axios.patch('http://149.91.89.142:8000/api/users/' + this.state.idMembre, {
+        axios.put('http://149.91.89.142:8000/api/users/' + this.state.idMembre, {
             pseudo: this.state.newPseudoPersonne,
             mail: this.state.newMailPersonne
         }, { headers: {
-            "Content-type":"application/merge-patch+json"
+            "Content-type":"application/json"
         }}).then(res => {
             this.setState({pseudoDeBase: this.state.newPseudoPersonne,mailDeBase: this.state.newMailPersonne})
         })

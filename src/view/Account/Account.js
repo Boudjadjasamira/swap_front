@@ -120,7 +120,7 @@ export default class Account extends Component {
 
   addModification() {
 //Requete pour mettre à jour les infos utilisateurs
-    axios.patch("http://149.91.89.142:8000/api/users/" + localStorage.getItem('ID'), {
+    axios.put("http://149.91.89.142:8000/api/users/" + localStorage.getItem('ID'), {
       pseudo: this.state.pseudo.toString(),
       sexe: Boolean(Number(this.state.selectedSexe)),
       nom: this.state.nom.toString(),
@@ -132,7 +132,7 @@ export default class Account extends Component {
       motDePasse: this.state.motDePasse.toString(),
     },{
     headers: {
-          'Content-Type': 'application/merge-patch+json'
+          'Content-Type': 'application/json'
     }})
     .then(res => {
       console.log(res);

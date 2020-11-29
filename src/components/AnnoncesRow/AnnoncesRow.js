@@ -77,11 +77,11 @@ export default class AnnoncesRow extends Component {
     }
 
     updateAnnonces(){
-        axios.patch('http://149.91.89.142:8000/api/annonces/' + this.props.idAnnonces, {
+        axios.put('http://149.91.89.142:8000/api/annonces/' + this.props.idAnnonces, {
             description: this.state.nouvelleDescription
         },{
             headers: {
-                'Content-Type': 'application/merge-patch+json'
+                'Content-Type': 'application/json'
             }
         }
         ).then(res => console.log(res));

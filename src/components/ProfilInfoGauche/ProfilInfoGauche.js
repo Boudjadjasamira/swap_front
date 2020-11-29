@@ -61,11 +61,11 @@ export default class ProfilInfoGauche extends Component {
             console.error({err});
         });
     
-        axios.patch('http://149.91.89.142:8000/api/users/' + localStorage.getItem('ID'), {
+        axios.put('http://149.91.89.142:8000/api/users/' + localStorage.getItem('ID'), {
           photo: e.target.files[0].name
         },{
           headers: {
-              'Content-Type': 'application/merge-patch+json'
+              'Content-Type': 'application/json'
           }})
         .then(res => {
             console.log({res});

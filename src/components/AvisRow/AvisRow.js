@@ -75,11 +75,11 @@ export default class AvisRow extends Component {
     }
 
     editAvis(){
-        axios.patch('http://localhost:8000/api/avis/' + this.state.idAvis, {
+        axios.put('http://localhost:8000/api/avis/' + this.state.idAvis, {
             avis: this.state.nouvelleAvis
         },{
             headers: {
-                'Content-Type': 'application/merge-patch+json'
+                'Content-Type': 'application/json'
             }
         }
         ).then(res => {

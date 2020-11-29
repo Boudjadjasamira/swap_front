@@ -61,11 +61,11 @@ export default class ForgotPassword extends Component {
             keyToken: tokenToSend
           }).then(res => {
 
-            axios.patch('http://149.91.89.142:8000/api/users/' + idRecupByMail, {
+            axios.put('http://149.91.89.142:8000/api/users/' + idRecupByMail, {
               tokenGenPasswordRecovery: tokenToSend
             },{
               headers: {
-                    'Content-Type': 'application/merge-patch+json'
+                    'Content-Type': 'application/json'
               }}).then(res2 => {
                 Swal.fire({
                   icon: 'success',

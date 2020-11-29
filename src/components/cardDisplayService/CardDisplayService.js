@@ -67,12 +67,12 @@ export default class CardDisplayService extends Component {
             showConfirmButton: false,
             allowOutsideClick: false
         })
-        axios.patch('http://149.91.89.142:8000/api/annonces/'+ this.props.idAnnonce, {
+        axios.put('http://149.91.89.142:8000/api/annonces/'+ this.props.idAnnonce, {
             description: this.state.nouvelleDescription,
             titre: this.state.nouveauTitre, 
         },{
             headers: {
-                'Content-Type': 'application/merge-patch+json'
+                'Content-Type': 'application/json'
             }
         })
         .then(res => {

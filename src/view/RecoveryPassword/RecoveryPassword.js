@@ -34,12 +34,12 @@ export default class RecoveryPassword extends Component {
 
         //verification des mots
         if(this.state.passwordConf == this.state.passwordFirst){
-            axios.patch('http://149.91.89.142:8000/api/users/' + this.state.idUser, {
+            axios.put('http://149.91.89.142:8000/api/users/' + this.state.idUser, {
                 tokenGenPasswordRecovery: null,
                 motDePasse: this.state.passwordConf
             }, {
                 headers: {
-                    'Content-Type': 'application/merge-patch+json'
+                    'Content-Type': 'application/json'
                 }
             }).then(res =>{
                 this.setState({isRedirect: true});

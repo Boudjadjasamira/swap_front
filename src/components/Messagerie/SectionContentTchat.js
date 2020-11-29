@@ -17,7 +17,9 @@ export default class SectionContentTchat extends Component {
             nomEnFace: "",
             prenomEnFace: "",
             isAttenteReponse: false,
-            swapEnCours: 0
+            swapEnCours: 0,
+            swapServiceEntre: "",
+            swapServiceSorti: ""
         }
         this.changeMessage = this.changeMessage.bind(this);
         this.sendMessage = this.sendMessage.bind(this);
@@ -75,6 +77,17 @@ export default class SectionContentTchat extends Component {
                             this.setState({isAttenteReponse: true});
                         }
                         this.setState({swapEnCours: k.id});
+                        axios.get('http://149.91.89.142:8000/api/annonces/' + k.idService)
+                        .then(res => {
+                            this.setState({swapServiceEntre: res.data.titre})
+                        })
+                        axios.get('http://149.91.89.142:8000/api/salons/' + k.idSalon)
+                        .then(res => {
+                            axios.get('http://149.91.89.142:8000/api/annonces/' + res.data.idAnnonce)
+                            .then(res => {
+                                this.setState({swapServiceSorti: res.data.titre})
+                            })
+                        })
                     }
                 })
             })
@@ -203,18 +216,19 @@ export default class SectionContentTchat extends Component {
             allowOutsideClick: false
         });
 
-        axios.patch('http://149.91.89.142:8000/api/swaps/' + this.state.swapEnCours, {
+
+        axios.put('http://149.91.89.142:8000/api/swaps/' + this.state.swapEnCours, {
             isAccepted: true
         },{
-        headers: {
-            'Content-Type': 'application/merge-patch+json'
+            headers: {
+                'Content-Type': 'application/json'
         }}).then(res =>{
             
-            axios.patch('http://149.91.89.142:8000/api/swaps/' + this.state.swapEnCours, {
+            axios.put('http://149.91.89.142:8000/api/swaps/' + this.state.swapEnCours, {
                 isClotured: true
             },{
             headers: {
-                'Content-Type': 'application/merge-patch+json'
+                'Content-Type': 'application/json',
             }}).then(res => {
 
                 this.setState({isSwapVisible: false})
@@ -305,11 +319,11 @@ export default class SectionContentTchat extends Component {
             allowOutsideClick: false
         });
 
-        axios.patch('http://149.91.89.142:8000/api/swaps/' + this.state.swapEnCours, {
+        axios.put('http://149.91.89.142:8000/api/swaps/' + this.state.swapEnCours, {
             isClotured: true
         },{
         headers: {
-            'Content-Type': 'application/merge-patch+json'
+            'Content-Type': 'application/json'
         }}).then(res => {
             this.setState({isSwapVisible: false})
 
@@ -367,7 +381,7 @@ export default class SectionContentTchat extends Component {
                         {this.state.isSwapVisible ? 
                             <div className="alert alert-info text-center" role="alert">
                                 <h5 className="alert-heading text-center">Nouvelle proposition de swap !</h5>
-                                <p className="mt-2 mb-2">{this.state.nomEnFace} {this.state.prenomEnFace} souhaite échanger ce service : (titreService) contre (titreService)</p>
+                                <p className="mt-2 mb-2">{this.state.nomEnFace} {this.state.prenomEnFace} souhaite échanger ce service : {this.state.swapServiceEntre} contre {this.state.swapServiceSorti}</p>
                                 {this.state.isAttenteReponse ? 
                                     <div>
                                         <p>Reponse en attente...</p>
