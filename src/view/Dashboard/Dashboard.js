@@ -20,7 +20,7 @@ export default class Dashboard extends Component {
       
     componentDidMount() {
         document.title = "Dashboard";
-        axios.get(`http://51.68.44.146:8000/api/contacts`)
+        axios.get(`http://149.91.89.142:8000/api/contacts`)
         .then(res => {
             this.setState({ allContact: res.data['hydra:member'], showLoading: false });
         })

@@ -32,7 +32,7 @@ export default class Trophy extends Component {
         let compteurAvis = 0;
 
         // TROPHE 1 
-        axios.get('http://51.68.44.146:8000/api/users/' + localStorage.getItem('ID'))
+        axios.get('http://149.91.89.142:8000/api/users/' + localStorage.getItem('ID'))
         .then(res => {
             if(res.data.nom.toString().length > 0 && res.data.prenom.toString().length > 0 && res.data.codePostal.toString().length > 0 && res.data.mail.toString().length > 0 && res.data.photo.toString().length > 0){
                 this.setState({firstTrophy: process.env.PUBLIC_URL + "assets/trophy/user.png"})
@@ -42,7 +42,7 @@ export default class Trophy extends Component {
         });
 
         // TROPHE 2
-        axios.get('http://51.68.44.146:8000/api/swaps')
+        axios.get('http://149.91.89.142:8000/api/swaps')
         .then(res => {
             res.data['hydra:member'].map(e => {
                 if(e.idUser == localStorage.getItem('ID')){
@@ -65,7 +65,7 @@ export default class Trophy extends Component {
         });
 
         // TROPHE 3
-        axios.get('http://51.68.44.146:8000/api/annonces')
+        axios.get('http://149.91.89.142:8000/api/annonces')
         .then(res => {
             res.data['hydra:member'].map(e => {
                 if(e.idUser == localStorage.getItem('ID')){
@@ -82,7 +82,7 @@ export default class Trophy extends Component {
 
 
         // TROPHE 5
-        axios.get('http://51.68.44.146:8000/api/messageries')
+        axios.get('http://149.91.89.142:8000/api/messageries')
         .then(res => {
             res.data['hydra:member'].map(e => {
                 if(e.idUser == localStorage.getItem('ID')){
@@ -97,7 +97,7 @@ export default class Trophy extends Component {
             }
         });
 
-        axios.get('http://51.68.44.146:8000/api/avis')
+        axios.get('http://149.91.89.142:8000/api/avis')
         .then(res => {
             res.data['hydra:member'].map(e => {
                 if(e.idUser == localStorage.getItem('ID')){

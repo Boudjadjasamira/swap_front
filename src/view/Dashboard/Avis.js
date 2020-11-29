@@ -19,7 +19,7 @@ export default class Avis extends Component {
     }
 
     componentDidMount(){
-        axios.get('http://51.68.44.146:8000/api/avis')
+        axios.get('http://149.91.89.142:8000/api/avis')
         .then( res => {
             this.setState({allAvis: res.data['hydra:member'], showLoading: false});
         });

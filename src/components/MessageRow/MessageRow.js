@@ -25,7 +25,7 @@ export default class MessageRow extends Component {
       
     
     componentDidMount(){
-        axios.get(`http://51.68.44.146:8000/api/contacts/` + this.props.idContact)
+        axios.get(`http://149.91.89.142:8000/api/contacts/` + this.props.idContact)
         .then(res =>
             this.setState({
               nom: res.data.nom,
@@ -43,7 +43,7 @@ export default class MessageRow extends Component {
     }
 
     deleteContact(){
-        axios.delete('http://51.68.44.146:8000/api/contacts/' + this.state.idContact)
+        axios.delete('http://149.91.89.142:8000/api/contacts/' + this.state.idContact)
         .then((res => 
             this.setState({
                 supprimerLaLigne: "none"
@@ -81,7 +81,7 @@ export default class MessageRow extends Component {
                 <td>{this.state.prenom}</td>
                 <td>{this.state.categorie}</td>
                 <td>{this.state.message}</td>
-                <td><SRLWrapper options={options}><img className="image-contact" src={"http://51.68.44.146:8000/uploads/contacts/" + this.state.photo} data-attribute="SRL" alt="Piece-jointe" /></SRLWrapper></td>
+                <td><SRLWrapper options={options}><img className="image-contact" src={"http://149.91.89.142:8000/uploads/contacts/" + this.state.photo} data-attribute="SRL" alt="Piece-jointe" /></SRLWrapper></td>
                 <td>
                     <a href={"#" + this.state.modalNameDelete} className="delete" data-toggle="modal">
                         <i className="material-icons" data-toggle="tooltip" title="Supprimer">delete</i>

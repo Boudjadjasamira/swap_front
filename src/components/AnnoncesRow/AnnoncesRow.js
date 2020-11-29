@@ -25,7 +25,7 @@ export default class AnnoncesRow extends Component {
 
         var idCategorie = 0;
     
-        axios.get('http://51.68.44.146:8000/api/annonces/' + this.props.idAnnonces)
+        axios.get('http://149.91.89.142:8000/api/annonces/' + this.props.idAnnonces)
         .then(res => {
             this.setState({
                 pseudo: res.data['pseudo'],
@@ -37,7 +37,7 @@ export default class AnnoncesRow extends Component {
             idCategorie = res.data['idCategorie'];
         })
 
-        axios.get('http://51.68.44.146:8000/api/categories')
+        axios.get('http://149.91.89.142:8000/api/categories')
         .then(res => {
             res.data['hydra:member'].map(e => {
                 if(e.id == idCategorie){
@@ -47,7 +47,7 @@ export default class AnnoncesRow extends Component {
             })
         })
 
-        axios.get('http://51.68.44.146:8000/api/users')
+        axios.get('http://149.91.89.142:8000/api/users')
         .then(res => {
             res.data['hydra:member'].map(e => {
                 if(e.id == this.props.idUserEnvoi){
@@ -60,7 +60,7 @@ export default class AnnoncesRow extends Component {
     }
 
     deleteAnnonces(){
-        axios.delete('http://51.68.44.146:8000/api/annonces/' + this.state.idAnnonce)
+        axios.delete('http://149.91.89.142:8000/api/annonces/' + this.state.idAnnonce)
         .then((res => 
             this.setState({
                 supprimerLaLigne: "none"
@@ -77,7 +77,7 @@ export default class AnnoncesRow extends Component {
     }
 
     updateAnnonces(){
-        axios.patch('http://51.68.44.146:8000/api/annonces/' + this.props.idAnnonces, {
+        axios.patch('http://149.91.89.142:8000/api/annonces/' + this.props.idAnnonces, {
             description: this.state.nouvelleDescription
         },{
             headers: {

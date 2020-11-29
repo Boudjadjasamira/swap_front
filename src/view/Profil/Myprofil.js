@@ -27,7 +27,7 @@ export default class Myprofil extends Component {
   componentDidMount(){
 
     //Recuperation des infos
-    axios.get(`http://51.68.44.146:8000/api/users/` + localStorage.getItem('ID'))
+    axios.get(`http://149.91.89.142:8000/api/users/` + localStorage.getItem('ID'))
     .then(res =>
         this.setState({
           pseudo: res.data.pseudo,
@@ -38,7 +38,7 @@ export default class Myprofil extends Component {
     )
 
     //recuperation de toutes les annonces
-    axios.get(`http://51.68.44.146:8000/api/annonces`)
+    axios.get(`http://149.91.89.142:8000/api/annonces`)
     .then(res => {
         var tabTempAnnoncesByUserID = [];
         res.data['hydra:member'].map(e => {
@@ -52,7 +52,7 @@ export default class Myprofil extends Component {
   //attribution certification
   let compteurAnnonces1 = 0;
   
-  axios.get('http://51.68.44.146:8000/api/annonces')
+  axios.get('http://149.91.89.142:8000/api/annonces')
         .then(res => {
             res.data['hydra:member'].map(e => {
                 if(e.idUser == localStorage.getItem('ID')){
@@ -98,9 +98,9 @@ export default class Myprofil extends Component {
                 {this.state.imgLoaded ? 
                     <div class="loadingio-spinner-spin-gkmwr87oy9"><div class="ldio-qorx55o730n"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>
                   :
-                    <img className="image-avatar" src={"http://51.68.44.146:8000/uploads/avatars/" + this.state.photo} width="240px" />
+                    <img className="image-avatar" src={"http://149.91.89.142:8000/uploads/avatars/" + this.state.photo} width="240px" />
                 }
-                <img style={{display: "none"}} onLoad={() => this.setState({imgLoaded: false})} className="image-avatar" src={"http://51.68.44.146:8000/uploads/avatars/" + this.state.photo} alt={this.state.photo} />
+                <img style={{display: "none"}} onLoad={() => this.setState({imgLoaded: false})} className="image-avatar" src={"http://149.91.89.142:8000/uploads/avatars/" + this.state.photo} alt={this.state.photo} />
 
                 <br />
                 <br />

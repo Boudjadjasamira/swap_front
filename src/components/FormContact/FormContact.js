@@ -72,14 +72,14 @@ export default class FormContact extends Component {
           formData.append('files', image);
         });
     
-        axios.post('http://51.68.44.146:8000/uploadContacts.php', formData)
+        axios.post('http://149.91.89.142:8000/uploadContacts.php', formData)
         .then(res => {
             console.log({res});
         }).catch(err => {
             console.error({err});
         });
 
-        axios.post("http://51.68.44.146:8000/api/contacts", {
+        axios.post("http://149.91.89.142:8000/api/contacts", {
             nom: this.state.nom,
             prenom: this.state.prenom,
             categorie: this.state.categorie,

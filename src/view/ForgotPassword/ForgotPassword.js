@@ -46,7 +46,7 @@ export default class ForgotPassword extends Component {
     let idRecupByMail = 0;
     let tokenToSend = token().toString();
 
-    axios.get('http://51.68.44.146:8000/api/users')
+    axios.get('http://149.91.89.142:8000/api/users')
     .then(res => {
       res.data['hydra:member'].map(e => {
         if(e.mail.toString() == this.state.mailForgot.toString()){
@@ -56,12 +56,12 @@ export default class ForgotPassword extends Component {
       });
 
       if(verifMail == true){
-        axios.post('http://51.68.44.146:8000/mail/sender', {
+        axios.post('http://149.91.89.142:8000/mail/sender', {
             mailForgot: this.state.mailForgot,
             keyToken: tokenToSend
           }).then(res => {
 
-            axios.patch('http://51.68.44.146:8000/api/users/' + idRecupByMail, {
+            axios.patch('http://149.91.89.142:8000/api/users/' + idRecupByMail, {
               tokenGenPasswordRecovery: tokenToSend
             },{
               headers: {

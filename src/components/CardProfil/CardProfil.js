@@ -12,7 +12,7 @@ export default class CardProfil extends Component {
     }
 
     componentDidMount(){
-        axios.get('http://51.68.44.146:8000/api/categories/' + this.props.categorieEnvoi)
+        axios.get('http://149.91.89.142:8000/api/categories/' + this.props.categorieEnvoi)
             .then(res => {
                 console.log(res.data['titre']);
                 this.setState({labelCategorie: res.data['titre']});
@@ -24,7 +24,7 @@ export default class CardProfil extends Component {
             <div > 
                 <section data-type={this.props.typeAnnonce} className={"search-result-item border"}>
                       
-                        <img className="image-annonce image-link" src={"http://51.68.44.146:8000/uploads/annonces/" + this.props.photoAnnonce} alt={this.props.photoAnnonce}/>
+                        <img className="image-annonce image-link" src={"http://149.91.89.142:8000/uploads/annonces/" + this.props.photoAnnonce} alt={this.props.photoAnnonce}/>
                         
                         <div className="search-result-item-body ">
                             <div className="row">

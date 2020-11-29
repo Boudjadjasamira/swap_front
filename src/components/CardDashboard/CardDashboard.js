@@ -16,21 +16,21 @@ export default class CardDashboard extends Component {
       
     componentDidMount() {
         document.title = "Dashboard";
-        axios.get(`http://51.68.44.146:8000/api/contacts`)
+        axios.get(`http://149.91.89.142:8000/api/contacts`)
         .then(res => {
             this.setState({ nombreMessagesContact: res.data['hydra:member'].length.toString() });
         })
 
-        axios.get(`http://51.68.44.146:8000/api/annonces`)
+        axios.get(`http://149.91.89.142:8000/api/annonces`)
         .then(res => {
             this.setState({ nombreAnnonces: res.data['hydra:member'].length.toString() });
         })
 
-        axios.get(`http://51.68.44.146:8000/api/users`)
+        axios.get(`http://149.91.89.142:8000/api/users`)
         .then(res => {
             this.setState({ nombreUtilisateurs: res.data['hydra:member'].length.toString() });
         })  
-        axios.get(`http://51.68.44.146:8000/api/avis`)
+        axios.get(`http://149.91.89.142:8000/api/avis`)
         .then(res => {
             this.setState({ nombreAvis: res.data['hydra:member'].length.toString() });
         })         

@@ -24,7 +24,7 @@ export default class Member extends Component {
     componentDidMount(){
         document.title = "Profil - Membres";
         
-        axios.get(`http://51.68.44.146:8000/api/users`)
+        axios.get(`http://149.91.89.142:8000/api/users`)
         .then(res => {
             this.setState({ allUsers: res.data['hydra:member']});
             if(res.data['hydra:member'].length > 0){

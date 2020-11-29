@@ -29,13 +29,13 @@ export default class Annonces extends Component {
   componentDidMount() {
     document.title = "Annonces";
 
-    axios.get(`http://51.68.44.146:8000/api/categories`)
+    axios.get(`http://149.91.89.142:8000/api/categories`)
     .then(res => {
       this.setState({ allCategories: res.data['hydra:member'] });
     })
 
     //recuperation de toutes les annonces
-    axios.get(`http://51.68.44.146:8000/api/annonces`)
+    axios.get(`http://149.91.89.142:8000/api/annonces`)
       .then(res => {
         this.setState({ allAnnonces: res.data['hydra:member'], showLoading: false });
       })

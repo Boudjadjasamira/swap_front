@@ -34,7 +34,7 @@ export default class AvisRow extends Component {
 
         this.setState({note: tabNote});
 
-        axios.get(`http://51.68.44.146:8000/api/avis/`+ this.props.idAvis)
+        axios.get(`http://149.91.89.142:8000/api/avis/`+ this.props.idAvis)
         .then(res => {
                 this.setState({
                     idUserEnvoi: res.data.pseudo,
@@ -47,7 +47,7 @@ export default class AvisRow extends Component {
             }
         )
 
-        axios.get('http://51.68.44.146:8000/api/users')
+        axios.get('http://149.91.89.142:8000/api/users')
         .then(res => {
             res.data['hydra:member'].map(e => {
                 if(e.id == this.props.idUserEnvoi){
@@ -60,7 +60,7 @@ export default class AvisRow extends Component {
     }
 
     deleteAvis(){
-        axios.delete('http://51.68.44.146:8000/api/avis/' + this.state.idAvis)
+        axios.delete('http://149.91.89.142:8000/api/avis/' + this.state.idAvis)
         .then((res => 
             this.setState({
                 supprimerLaLigne: "none"

@@ -19,7 +19,7 @@ export default class ProfilInfoGauche extends Component {
 
     componentDidMount(){
         //Recuperation des infos
-        axios.get(`http://51.68.44.146:8000/api/users/` + localStorage.getItem('ID'))
+        axios.get(`http://149.91.89.142:8000/api/users/` + localStorage.getItem('ID'))
         .then(res =>
             this.setState({
               pseudo: res.data.pseudo,
@@ -29,7 +29,7 @@ export default class ProfilInfoGauche extends Component {
 
         let compteurDeTchat = 0;
 
-        axios.get('http://51.68.44.146:8000/api/salons')
+        axios.get('http://149.91.89.142:8000/api/salons')
         .then(res => {
           res.data['hydra:member'].map(e => {
             if((e.idUser1 == localStorage.getItem('ID') || (e.idUser2 == localStorage.getItem('ID')))){
@@ -54,14 +54,14 @@ export default class ProfilInfoGauche extends Component {
           formData.append('files', image);
         });
     
-        axios.post('http://51.68.44.146:8000/uploadAvatar.php', formData)
+        axios.post('http://149.91.89.142:8000/uploadAvatar.php', formData)
         .then(res => {
             console.log({res});
         }).catch(err => {
             console.error({err});
         });
     
-        axios.patch('http://51.68.44.146:8000/api/users/' + localStorage.getItem('ID'), {
+        axios.patch('http://149.91.89.142:8000/api/users/' + localStorage.getItem('ID'), {
           photo: e.target.files[0].name
         },{
           headers: {
@@ -109,10 +109,10 @@ export default class ProfilInfoGauche extends Component {
                       {this.state.imgLoaded ? 
                           <div class="loadingio-spinner-spin-gkmwr87oy9"><div class="ldio-qorx55o730n"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>
                         :
-                        <img className="image-avatar" src={"http://51.68.44.146:8000/uploads/avatars/" + this.state.titrePhoto} width="240px" />
+                        <img className="image-avatar" src={"http://149.91.89.142:8000/uploads/avatars/" + this.state.titrePhoto} width="240px" />
                       }
 
-                      <img style={{display:"none"}} onLoad={() => this.setState({imgLoaded: false})} src={"http://51.68.44.146:8000/uploads/avatars/" + this.state.titrePhoto} width="240px" />
+                      <img style={{display:"none"}} onLoad={() => this.setState({imgLoaded: false})} src={"http://149.91.89.142:8000/uploads/avatars/" + this.state.titrePhoto} width="240px" />
                       
                       <br />
                       <br />

@@ -10,7 +10,7 @@ export default class MemberGrid extends Component {
                 <div className="text-center card-box2 border">
                   <div className="member-card pt-2 pb-2  p-5 text-center">
                     <div className="thumb-lg member-thumb mx-auto">
-                      <img src={"http://51.68.44.146:8000/uploads/avatars/" + this.props.photoMembre} alt={this.props.photoMembre} className="rounded-circle img-thumbnail"/>
+                      <img src={"http://149.91.89.142:8000/uploads/avatars/" + this.props.photoMembre} alt={this.props.photoMembre} className="rounded-circle img-thumbnail"/>
                     </div>
                     <div>
                       <p className="text-muted">@{this.props.pseudoMembre}</p>

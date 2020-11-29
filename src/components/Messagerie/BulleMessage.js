@@ -24,7 +24,7 @@ export default class BulleMessage extends Component {
         this.setState({dateMessage: jours+"/"+mois+"/"+yearAnnonce});
 
         //Recuperation de l'avatar + nom + prenom
-        axios.get('http://51.68.44.146:8000/api/users/' + this.props.idProfil)
+        axios.get('http://149.91.89.142:8000/api/users/' + this.props.idProfil)
         .then(res => {
             this.setState({
                 photoProfil: res.data['photo'],
@@ -35,7 +35,7 @@ export default class BulleMessage extends Component {
     }
 
     deleteMyMessage(){
-        axios.delete('http://51.68.44.146:8000/api/messageries/' + this.state.idMessage)
+        axios.delete('http://149.91.89.142:8000/api/messageries/' + this.state.idMessage)
         .then(res => {
             this.setState({isVisible: false})
         })
@@ -46,7 +46,7 @@ export default class BulleMessage extends Component {
             <div> 
                 {this.props.idProfil != localStorage.getItem('ID') ? 
                     <div className="message info">
-                        <img alt={this.state.photo} className="img-circle medium-image" src={"http://51.68.44.146:8000/uploads/avatars/" + this.state.photoProfil}/>
+                        <img alt={this.state.photo} className="img-circle medium-image" src={"http://149.91.89.142:8000/uploads/avatars/" + this.state.photoProfil}/>
                             <div className="message-body">
                                 <div className="message-info">
                                     <h5 style={{paddingLeft:'16px'}}><i className="fa fa-clock-o" />{this.state.dateMessage}</h5>
@@ -63,7 +63,7 @@ export default class BulleMessage extends Component {
                     <div>  
                         {this.state.isVisible ? 
                         <div className="message my-message">
-                            <img alt={this.props.photoMoi} className="img-circle medium-image" src={"http://51.68.44.146:8000/uploads/avatars/" + this.props.photoMoi}/>
+                            <img alt={this.props.photoMoi} className="img-circle medium-image" src={"http://149.91.89.142:8000/uploads/avatars/" + this.props.photoMoi}/>
                             <div className="message-body">
                                 <div className="message-body-inner">
                                     <div className="message-info">

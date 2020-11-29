@@ -28,7 +28,7 @@ export default class Membres extends Component {
     }
 
     componentDidMount(){
-        axios.get('http://51.68.44.146:8000/api/users')
+        axios.get('http://149.91.89.142:8000/api/users')
         .then( res => {
             this.setState({allMembers: res.data['hydra:member'], showLoading: false});
         });
@@ -68,7 +68,7 @@ export default class Membres extends Component {
          /* eslint eqeqeq: 0 */  
 
         //Ajout dans la base
-        axios.post("http://51.68.44.146:8000/api/users",  {
+        axios.post("http://149.91.89.142:8000/api/users",  {
             pseudo: this.state.pseudoPersonne,
             mail: this.state.mailPersonne,
             motDePasse: this.state.passwordProvisoire,

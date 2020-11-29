@@ -31,7 +31,7 @@ export default class CardAnnonce extends Component {
             }
         );
         
-        axios.get('http://51.68.44.146:8000/api/users')
+        axios.get('http://149.91.89.142:8000/api/users')
         .then(res => {
             res.data['hydra:member'].map(e => {
                 if(e.id == this.props.idUserEnvoi){
@@ -43,7 +43,7 @@ export default class CardAnnonce extends Component {
     }
 
     deleteAnnonce() {
-        axios.delete('http://51.68.44.146:8000/api/annonces/' + this.props.idAnnonce)
+        axios.delete('http://149.91.89.142:8000/api/annonces/' + this.props.idAnnonce)
             .then(res => {
                 this.setState({ effectRemove: "animate__animated animate__fadeOutRight" });
 
@@ -60,7 +60,7 @@ export default class CardAnnonce extends Component {
                       
                             <img
                             className="image-annonce image-link"
-                            src={"http://51.68.44.146:8000/uploads/annonces/" + this.props.photoAnnonce}
+                            src={"http://149.91.89.142:8000/uploads/annonces/" + this.props.photoAnnonce}
                             alt="imageAnnonce"
                             />
                         

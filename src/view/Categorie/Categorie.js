@@ -34,7 +34,7 @@ export default class Annonces extends Component {
     var annoncesTrier = [];
     var idCategorie = 0;
 /* eslint eqeqeq: 0 */
-    axios.get(`http://51.68.44.146:8000/api/categories`)
+    axios.get(`http://149.91.89.142:8000/api/categories`)
     .then(res => {
       this.setState({ allCategories: res.data['hydra:member'] });
       res.data['hydra:member'].map(e => {
@@ -44,7 +44,7 @@ export default class Annonces extends Component {
       });
 
     });
-    axios.get(`http://51.68.44.146:8000/api/annonces`)
+    axios.get(`http://149.91.89.142:8000/api/annonces`)
     .then(res => {
         res.data['hydra:member'].map(e => {
             if(e['idCategorie'] == idCategorie){
