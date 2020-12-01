@@ -10,7 +10,8 @@ export default class CardDashboard extends Component {
           nombreMessagesContact: 0,
           nombreAnnonces: 0,
           nombreUtilisateurs: 0,
-          nombreAvis: 0
+          nombreAvis: 0,
+          dateToday : new Date().toLocaleString(),
         }
     }
       
@@ -33,16 +34,37 @@ export default class CardDashboard extends Component {
         axios.get(`http://149.91.89.142:8000/api/avis`)
         .then(res => {
             this.setState({ nombreAvis: res.data['hydra:member'].length.toString() });
-        })         
+        })     
+        
+        //Requete pour recuperer les infos utilisateurs/ID
+        axios.get(`http://149.91.89.142:8000/api/users/` + localStorage.getItem('ID'))
+        .then(res =>
+            this.setState({
+            pseudo: res.data.pseudo,
+            nom: res.data.nom,
+            prenom: res.data.prenom,
+            mail: res.data.mail,
+            codePostal: res.data.codePostal,
+            description: res.data.description,
+            titrePhoto: res.data.photo
+            })
+        )
+  
     } 
 
     render() {
         return (
             <div className="container-fluid">
-                <nav className="navbar navbar-light bg-light nav justify-content-center">
+                <nav className="navbarDash navbar-light bg-light nav justify-content-between">
+                <p className="text-white  " style={{paddingTop:'60px',paddingLeft:'30px', paddingRight:'200px'}}>Nous sommes le  {this.state.dateToday} &nbsp;</p>
                     <Link to={process.env.PUBLIC_URL + "/"}>
-                        <img src="../assets/img/logo.png" alt="logo" width="80%" />
+                        <img  src="../assets/img/swap_light.png" alt="logo" width="60%" style={{paddingBottom:'15px', paddingRight:'50px'}}/>
                     </Link> 
+                    <p className="text-white  " style={{paddingTop:'60px',paddingRight:'20px'}}>Bienvenue {this.state.pseudo} &nbsp;
+                    <Link type="button" className="btn btn-secondary"  to={process.env.PUBLIC_URL + "/Logout"}>
+                    <p className="text-white ">Déconnexion </p> 
+                    </Link></p> 
+                    
                 </nav>
                 <div className="row">
                     <div className="col-lg-3 col-sm-6">

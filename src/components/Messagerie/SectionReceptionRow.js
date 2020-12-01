@@ -13,8 +13,12 @@ export default class SectionReceptionRow extends Component {
             lastMessage: "",
             dateHeureLastMessage: "",
             nom: "",
-            prenom:""
+            prenom:"",
+            isVisible: true,
+
+
         }
+        this.deleteConversation = this.deleteConversation.bind(this);
     }
 
     componentDidMount(){
@@ -81,24 +85,39 @@ export default class SectionReceptionRow extends Component {
             
         });
     }
+        
+        //Suppression du salon (Conversation entiere)
+        deleteConversation(){            
+            axios.delete('http://149.91.89.142:8000/api/salons/' + this.props.idRow)
+            .then(res => {
+                this.setState({isVisible: false})
+            })           
+
+        }
 
     render() {
         return (
             <div> 
-                <li data-target={"#inbox-message-" + this.props.idRow}>
-                    <div className="message-count"> 
-                         {this.state.compteurMessage}
-                    </div>
-                    <img alt={this.state.photo} className="img-circle medium-image" src={"http://149.91.89.142:8000/uploads/avatars/" + this.state.photo} />
-                    <div className="vcentered info-combo">
-                        <h3 className="no-margin-bottom name"> {this.state.nom} {this.state.prenom} </h3>
-                        <h5>{this.state.lastMessage}</h5>
-                    </div>
-                    <div className="contacts-add">
-                        <span className="message-time">{this.state.dateHeureLastMessage}</span>
-                    </div>
-                </li>
-          </div>
+                {this.state.isVisible ? 
+                    <li data-target={"#inbox-message-" + this.props.idRow}>
+                        <div className="message-count"> 
+                            {this.state.compteurMessage}
+                        </div>
+                        <img alt={this.state.photo} className="img-circle medium-image" src={"http://149.91.89.142:8000/uploads/avatars/" + this.state.photo} />
+                        <div className="vcentered info-combo">
+                            <h3 className="no-margin-bottom name"> {this.state.nom} {this.state.prenom}  </h3>
+                            <h5>{this.state.lastMessage}</h5>
+                            
+                        </div>
+                        <div className="contacts-add">
+                            <span className="message-time">{this.state.dateHeureLastMessage}</span> 
+                            <i onClick={this.deleteConversation} className="material-icons" data-toggle="tooltip" title="Supprimer" style={{cursor:'pointer',fontSize:'20px', paddingLeft:'6px', color:'grey'}}>delete</i>
+                        </div>                    
+                    </li>   
+                    :null
+                }                             
+            </div>
+          
         )
     }
 };
