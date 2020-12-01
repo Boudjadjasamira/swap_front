@@ -381,7 +381,7 @@ export default class SectionContentTchat extends Component {
                         {this.state.isSwapVisible ? 
                             <div className="alert alert-info text-center" role="alert">
                                 <h5 className="alert-heading text-center">Nouvelle proposition de swap !</h5>
-                                <p className="mt-2 mb-2">{this.state.nomEnFace} {this.state.prenomEnFace} souhaite échanger ce service : {this.state.swapServiceEntre} contre {this.state.swapServiceSorti}</p>
+                                <p className="mt-2 mb-2">{this.state.nomEnFace} {this.state.prenomEnFace} souhaite échanger: {this.state.swapServiceEntre} contre {this.state.swapServiceSorti}</p>
                                 {this.state.isAttenteReponse ? 
                                     <div>
                                         <p>Reponse en attente...</p>
