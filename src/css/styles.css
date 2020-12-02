@@ -354,7 +354,7 @@ iframe {
 
 .btn.focus, .btn:focus {
   outline: 0;
-  box-shadow: transparent !important;
+  box-shadow: 0 0 0 .2rem rgba(255, 255, 255, 0);
 }
 
 .login100-form-btn:hover {

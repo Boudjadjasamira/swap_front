@@ -71,7 +71,6 @@ export default class SingleAnnonce extends Component {
         }
     }));
 
-     /* eslint eqeqeq: 0 */  
     //recuperation de toutes les categories
     axios.get(`http://149.91.89.142:8000/api/categories`)
      .then(res => {
@@ -201,17 +200,11 @@ export default class SingleAnnonce extends Component {
       }).then(res => {
         Swal.fire({
           title: 'Swap Envoyé !',
-          width: 200,
-          paddingRight: '',
+          width: 300,
           background: 'white',
           timer: 2200,
           showConfirmButton: false,
-          backdrop: `
-            rgba(0,0,123,0.4)
-            url("https://i.gifer.com/ZIb4.gif")
-            center center
-            no-repeat
-          `
+          backdrop: `#21252952`
         });
       })
     });
@@ -289,18 +282,12 @@ export default class SingleAnnonce extends Component {
               axios.post('http://149.91.89.142:8000/api/messageries', {idSalon: idSalonRecup, idUser: localStorage.getItem('ID')*1, message: this.state.contactMessage, dateMsg: getDateTime()})
               .then(res => {
                 Swal.fire({
-                title: 'Swap Envoyé !',
-                width: 200,
-                paddingRight: '',
+                title: 'Message Envoyé !',
+                width: 300,
                 background: 'white',
                 timer: 2200,
                 showConfirmButton: false,
-                backdrop: `
-                  rgba(0,0,123,0.4)
-                  url("https://i.gifer.com/ZIb4.gif")
-                  center center
-                  no-repeat
-                `
+                backdrop:`#21252952`
                 })
               })
 
@@ -310,18 +297,12 @@ export default class SingleAnnonce extends Component {
             axios.post('http://149.91.89.142:8000/api/messageries', {idSalon: idSalonRecup, idUser: localStorage.getItem('ID')*1, message: this.state.contactMessage, dateMsg: getDateTime()})
             .then(res => {
               Swal.fire({
-              title: 'Swap Envoyé !',
-              width: 200,
-              paddingRight: '',
+              title: 'Message Envoyé !',
+              width: 300,
               background: 'white',
               timer: 2200,
               showConfirmButton: false,
-              backdrop: `
-                rgba(0,0,123,0.4)
-                url("https://i.gifer.com/ZIb4.gif")
-                center center
-                no-repeat
-              `
+              backdrop:`#21252952`
               })
             })
           }
@@ -367,17 +348,11 @@ export default class SingleAnnonce extends Component {
     }).then(res => {
       Swal.fire({
         title: 'Avis Envoyé !',
-        width: 200,
-        paddingRight: '',
+        width: 300,
         background: 'white',
         timer: 2200,
         showConfirmButton: false,
-        backdrop: `
-          rgba(0,0,123,0.4)
-          url("https://i.gifer.com/ZIb4.gif")
-          center center
-          no-repeat
-        `
+        backdrop: `#21252952`
         })
     })
 
@@ -548,7 +523,6 @@ export default class SingleAnnonce extends Component {
               </div>
               </div>
             </div>
-
         </div>
     );
   }
