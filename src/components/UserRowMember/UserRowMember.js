@@ -106,15 +106,18 @@ export default class UserRowMember extends Component {
                 <td>{this.state.mailDeBase}</td>
                 <td>                                        
                     <div className="center">
-                        <input type="checkbox" name />
+                        <input type="checkbox" />
                     </div>
+                </td>
+                <td>                                        
+                    (TODO : GetRole)
                 </td>
                 <td>
                     <a href={"#" + this.state.modalEdite} className="edit" data-toggle="modal">
                         <i className="material-icons" data-toggle="tooltip" title="Edit"></i>Editer
                     </a>
                     <a href={"#" + this.state.modalDisabled} className="edit" data-toggle="modal">
-                        <i className="material-icons" data-toggle="tooltip" title="Edit"></i>{this.state.labelIsActif}
+                        <i className="material-icons" data-toggle="tooltip" title="Statut"></i>{this.state.labelIsActif}
                     </a>
                 </td>
 

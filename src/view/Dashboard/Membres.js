@@ -97,7 +97,7 @@ export default class Membres extends Component {
     
     render() {
     return (
-        <div className="body" id="bodyHome">
+        <div>
             <CardDashboard></CardDashboard>
             <div className="container-fluid">
                 <div className="table-responsive">
@@ -129,6 +129,7 @@ export default class Membres extends Component {
                                     <th>Pseudo</th>
                                     <th>Email</th>
                                     <th>Certifié</th>
+                                    <th>Role</th>
                                     <th>Options</th>
                                 </tr>
                             </thead> 

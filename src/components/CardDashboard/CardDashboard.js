@@ -11,7 +11,7 @@ export default class CardDashboard extends Component {
           nombreAnnonces: 0,
           nombreUtilisateurs: 0,
           nombreAvis: 0,
-          dateToday : new Date().toLocaleString(),
+          date : new Date()
         }
     }
       
@@ -49,14 +49,32 @@ export default class CardDashboard extends Component {
             titrePhoto: res.data.photo
             })
         )
-  
+
+        this.timerID = setInterval(
+            () => this.tick(),
+            1000
+          );     
+        
     } 
 
-    render() {
+    componentWillUnmount() {
+        clearInterval(this.timerID);
+      }
+
+      tick() {
+        this.setState({
+          date: new Date()
+        });
+      }
+    
+
+    render() {        
+            const  d = new Date();
+            const  laDate = ('0' + d.getDate()).slice(-2) + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + d.getFullYear();         
         return (
             <div className="container-fluid">
                 <nav className="navbarDash navbar-light bg-light nav justify-content-between">
-                <p className="text-white  " style={{paddingTop:'60px',paddingLeft:'30px', paddingRight:'200px'}}>Nous sommes le  {this.state.dateToday} &nbsp;</p>
+                <p className="text-white  " style={{paddingTop:'60px',paddingLeft:'30px', paddingRight:'200px'}}>Nous sommes le {laDate}, il est {this.state.date.toLocaleTimeString()} &nbsp;</p>
                     <Link to={process.env.PUBLIC_URL + "/"}>
                         <img  src="../assets/img/swap_light.png" alt="logo" width="60%" style={{paddingBottom:'15px', paddingRight:'50px'}}/>
                     </Link> 
