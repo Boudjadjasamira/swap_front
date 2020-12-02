@@ -91,8 +91,7 @@ export default class SectionReceptionRow extends Component {
             axios.delete('http://149.91.89.142:8000/api/salons/' + this.props.idRow)
             .then(res => {
                 this.setState({isVisible: false})
-            })           
-
+            })
         }
 
     render() {

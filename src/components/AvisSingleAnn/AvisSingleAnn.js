@@ -58,9 +58,8 @@ export default class AvisSingleAnn extends Component {
         return (
 
  
-  <div className="collapse p-1" id="collapseExample">
-        <div className="container w-50 p-1">
-            <div className="media border p-3 flex-column flex-md-row">
+    <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div className="media  p-3 flex-column flex-md-row">
                 <div className="media-body align-self-center">
                     <p>Avis posté le {this.props.dateAvis} par {this.state.pseudo}</p>
                     <div className="container">
@@ -75,7 +74,6 @@ export default class AvisSingleAnn extends Component {
                     <p className="text-justify">{this.state.avis}</p>
                 </div>
             </div>
-        </div>  
     </div>    
      
         )

@@ -352,6 +352,11 @@ iframe {
   border-radius: 25px;
 }
 
+.btn.focus, .btn:focus {
+  outline: 0;
+  box-shadow: transparent !important;
+}
+
 .login100-form-btn:hover {
   background: #333333;
 }

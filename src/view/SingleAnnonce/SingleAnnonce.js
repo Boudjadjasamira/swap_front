@@ -54,13 +54,22 @@ export default class SingleAnnonce extends Component {
 
         {this.state.laMap}
 
-        <button class="btn btn-outline-dark" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style={{marginLeft:'480px'}}>
-        Voir les avis    
-        </button>
-        
-        {this.state.allAvis.map(e => (
-          <AvisSingleAnn idAvis={e.id} idUserEnvoi={e.idUser} avis={e.avis} dateAvis={e.dateAvis} note={e.note}></AvisSingleAnn>
-        ))}
+        <div className="container">
+          <div class="accordion" id="accordionExample" style={{paddingLeft:'150px', paddingRight:'150px'}} >
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                  <button class="btn btn-block text-center" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  <p>Voir les avis</p>
+                  </button>
+                </h2>
+              </div>        
+                {this.state.allAvis.map(e => (
+                  <AvisSingleAnn idAvis={e.id} idUserEnvoi={e.idUser} avis={e.avis} dateAvis={e.dateAvis} note={e.note}></AvisSingleAnn>
+                ))}
+            </div>
+          </div>
+        </div>
 
 
         {/* FOOTER */}
