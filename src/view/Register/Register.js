@@ -66,10 +66,7 @@ export default class Register extends Component {
         this.setState({prenom: e.target.value});
     }
 
-    addUser(){
-
-        
-
+    addUser(){       
         //verification du mot de passe$
         if(this.state.password == this.state.confirmPassword){
             const d = new Date();

@@ -15,7 +15,8 @@ export default class CardDisplayService extends Component {
             categorieLabel: this.props.categorieEnvoi,
             nouvelleDescription: this.props.descriptionEnvoi,
             nouveauTitre: this.props.titreEnvoi,
-            editModalTitre: "editModal" + this.props.idAnnonce
+            editModalTitre: "editModal" + this.props.idAnnonce,
+            deletModalTitre:"deleteModal" + this.props.idAnnonce
         }
 
         this.deleteAnnonce = this.deleteAnnonce.bind(this);
@@ -115,7 +116,7 @@ export default class CardDisplayService extends Component {
                                 <span className="badge badge-pill bg-warning text-white fw-normal pull-right">{this.state.categorieLabel}</span>
                                 <p className="value3 mt-sm">Le {this.props.dateEnvoi}</p>
                                 <p className="value3 mt-sm">Ville : {this.props.villeEnvoi}</p>
-                                <button className="btn btn-outline-dark btn-sm" onClick={this.deleteAnnonce}>
+                                <button type="button" className="btn btn-outline-dark btn-sm" data-toggle="modal" data-target={ "#" + this.state.deletModalTitre}>
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
                                     </svg>
@@ -157,6 +158,24 @@ export default class CardDisplayService extends Component {
                             </div>
                         </div>
                     </div>
+                    {/* MODAL DELETE */}
+                <div id={this.state.deletModalTitre} className="modal fade">
+                    <div className="modal-dialog">
+                        <div className="modal-content">  
+                            <div className="modal-header">
+                                <h4 className="modal-title">Supprimer l'annonce</h4>
+                                <button type="button" className="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+                            <div className="modal-body">
+                                <p>Etes-vous sur ? Cette action est irréversible !</p>
+                            </div>
+                            <div className="modal-footer">
+                                <input type="button" className="btn btn-default" data-dismiss="modal" defaultValue="Annuler"/>
+                                <input type="submit" className="btn btn-danger" data-dismiss="modal" onClick={this.deleteAnnonce} defaultValue="Supprimer"/>
+                            </div>           
+                        </div>
+                    </div>
+                </div>
 
                 < br />
             </div>

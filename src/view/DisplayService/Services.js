@@ -6,10 +6,10 @@ import Header from '../../view/Common/Header';
 import Footer from '../../view/Common/Footer';
 //Inclu Axios
 import axios from 'axios';
-
+//Inclu les components
 import ProfilInfoGauche from '../../components/ProfilInfoGauche/ProfilInfoGauche';
 import CardDisplayService from '../../components/cardDisplayService/CardDisplayService';
-
+//Import du css loader
 import '../../css/loading.css';
 
 export default class Services extends Component {
@@ -27,7 +27,7 @@ export default class Services extends Component {
   componentDidMount() {
     document.title = "Profil - Mes services"
 
-     //recuperation de toutes les annonces
+     //recuperation de toutes les catégories
      axios.get(`http://149.91.89.142:8000/api/categories`)
      .then(res => {
        this.setState({ allCategories: res.data['hydra:member'] });
@@ -42,7 +42,6 @@ export default class Services extends Component {
                 tabTempAnnoncesByUserID.push(e)
                 this.setState({listeAnnonceAffiche: false});
             } return true
-            /* eslint eqeqeq: 0 */
         })
         this.setState({ allAnnonces: tabTempAnnoncesByUserID });
     })
@@ -66,7 +65,7 @@ export default class Services extends Component {
                             <ProfilInfoGauche></ProfilInfoGauche>
                         </div>
 
-                        {/* module colonn droite */}
+                        {/* module colonne droite */}
                         <div className="col-md-9 personal-info">
                             {this.state.listeAnnonceAffiche ? 
                                 <div className="text-center">
