@@ -41,8 +41,6 @@ export default class login extends Component {
       showConfirmButton: false,
       allowOutsideClick: false
     });
-
-
   
     axios.post('http://149.91.89.142:8000/api/login', {
       pseudo: this.state.pseudo,
