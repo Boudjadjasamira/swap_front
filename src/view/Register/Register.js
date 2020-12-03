@@ -8,6 +8,7 @@ import { Redirect } from 'react-router-dom';
 import Tilt from 'react-parallax-tilt';
 import ReactPasswordStrength from 'react-password-strength';
 import './Register.css';
+import sha1 from 'js-sha1';
 
 export default class Register extends Component {
 
@@ -83,14 +84,14 @@ export default class Register extends Component {
             if(this.state.isWoman == 1){
                 photoRegisterBase = "avatar_man.png";
             }
-             /* eslint eqeqeq: 0 */  
+             
             //Ajout dans la base
             axios.post("http://149.91.89.142:8000/api/users",  {
                 pseudo: this.state.pseudo,
                 nom: this.state.nom,
                 prenom: this.state.prenom,
                 mail: this.state.mail,
-                motDePasse: this.state.password,
+                motDePasse: sha1(this.state.password),
                 dateInscription: laDate.toString(),
                 photo: photoRegisterBase.toString(),
                 sexe: this.state.isWoman,
@@ -128,8 +129,6 @@ export default class Register extends Component {
                 allowOutsideClick: false
             });
         }
-
-        
     }
 
 

@@ -6,8 +6,8 @@ import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import Tilt from 'react-parallax-tilt';
-
 import '../../css/loading.css';
+import sha1 from 'js-sha1';
 
 export default class login extends Component {
 
@@ -42,9 +42,11 @@ export default class login extends Component {
       allowOutsideClick: false
     });
 
+
+  
     axios.post('http://149.91.89.142:8000/api/login', {
       pseudo: this.state.pseudo,
-      motDePasse: this.state.password
+      motDePasse: sha1(this.state.password)
     }, { headers : {"Content-Type": "application/json"}})
     .then(res => {
         if(res.data.user > 0){

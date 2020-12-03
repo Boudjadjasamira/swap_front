@@ -12,12 +12,20 @@ export default class ProfilInfoGauche extends Component {
             pseudo: "",
             titrePhoto: "",
             nombreDeTchatEnCours: 0,
-            imgLoaded: true
+            imgLoaded: true,
+            isAdmin: false
         };
         this.changePicture = this.changePicture.bind(this);
     }
 
     componentDidMount(){
+
+      if(localStorage.getItem('isAdmin').toString() === "true"){
+        this.setState({isAdmin: true})
+      }
+
+
+
         //Recuperation des infos
         axios.get(`http://149.91.89.142:8000/api/users/` + localStorage.getItem('ID'))
         .then(res =>
@@ -229,6 +237,15 @@ export default class ProfilInfoGauche extends Component {
                           <Link to={process.env.PUBLIC_URL + "/Trophy"}> Trophées</Link>
                         </span>
                         <br />
+                        
+                          {this.state.isAdmin ? 
+                            <div>
+                              <Link to={process.env.PUBLIC_URL + "/Dashboard"}>Dashboard</Link>
+                            </div>
+                            :
+                            null
+                          }
+                        
                       </div>
                     </div>
                   </div>
