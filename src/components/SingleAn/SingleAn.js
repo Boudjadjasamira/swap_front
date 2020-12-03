@@ -163,6 +163,32 @@ export default class SingleAnnonce extends Component {
   }
 
   openModalConfirm(){
+    function getDateTime() {
+      var now     = new Date(); 
+      var year    = now.getFullYear();
+      var month   = now.getMonth()+1; 
+      var day     = now.getDate();
+      var hour    = now.getHours();
+      var minute  = now.getMinutes();
+      var second  = now.getSeconds(); 
+      if(month.toString().length == 1) {
+           month = '0'+month;
+      }
+      if(day.toString().length == 1) {
+           day = '0'+day;
+      }   
+      if(hour.toString().length == 1) {
+           hour = '0'+hour;
+      }
+      if(minute.toString().length == 1) {
+           minute = '0'+minute;
+      }
+      if(second.toString().length == 1) {
+           second = '0'+second;
+      }   
+      var dateTime = year+'/'+month+'/'+day+' '+hour+':'+minute+':'+second;   
+       return dateTime;
+    }
 
     let verifSalon = false;
     let idSalonRecup = 0;
@@ -174,40 +200,52 @@ export default class SingleAnnonce extends Component {
       allowOutsideClick: false
     });
 
-    //Verification pour savoir la conversation existe
-    axios.get('http://149.91.89.142:8000/api/salons')
-    .then( res => {
-      res.data['hydra:member'].map(e => {
-        if((e.idUser1 == this.state.idUser) && (e.idUser2 == localStorage.getItem('ID')) && (e.idAnnonce == this.state.idAnnonce)){
-          verifSalon = true;
-          idSalonRecup = e.id;
-        }
-        if((e.idUser1 == localStorage.getItem('ID')) && (e.idUser2 == this.state.idUser) && (e.idAnnonce == this.state.idAnnonce)){
-          verifSalon = true;
-          idSalonRecup = e.id;
-        }
-      })
+     //création du salon de conversation
+     axios.post('http://149.91.89.142:8000/api/salons', {idUser1: this.state.idUser, idUser2: localStorage.getItem('ID')*1, idAnnonce: this.state.idAnnonce*1})
+     .then(res => {
+       //recuperation de l'id salon qui vient d'etre cree
+       idSalonRecup = res.data['id'];
 
-      console.log(verifSalon);
-      console.log(idSalonRecup);
+        axios.post('http://149.91.89.142:8000/api/messageries', {idSalon: idSalonRecup, idUser: localStorage.getItem('ID')*1, message: "Nouveau swap", dateMsg: getDateTime()})
+        .then(res => {
+                 //Verification pour savoir la conversation existe
+        axios.get('http://149.91.89.142:8000/api/salons')
+        .then( res => {
+          res.data['hydra:member'].map(e => {
+            if((e.idUser1 == this.state.idUser) && (e.idUser2 == localStorage.getItem('ID')) && (e.idAnnonce == this.state.idAnnonce)){
+              verifSalon = true;
+              idSalonRecup = e.id;
+            }
+            if((e.idUser1 == localStorage.getItem('ID')) && (e.idUser2 == this.state.idUser) && (e.idAnnonce == this.state.idAnnonce)){
+              verifSalon = true;
+              idSalonRecup = e.id;
+            }
+          })
 
-      axios.post('http://149.91.89.142:8000/api/swaps', {
-        idUser: localStorage.getItem('ID')*1,
-        idSalon: idSalonRecup*1,
-        idService: this.state.serviceSelected*1,
-        isAccepted: false,
-        isClotured: false
-      }).then(res => {
-        Swal.fire({
-          title: 'Swap Envoyé !',
-          width: 300,
-          background: 'white',
-          timer: 2200,
-          showConfirmButton: false,
-          backdrop: `#21252952`
+          axios.post('http://149.91.89.142:8000/api/swaps', {
+            idUser: localStorage.getItem('ID')*1,
+            idSalon: idSalonRecup*1,
+            idService: this.state.serviceSelected*1,
+            isAccepted: false,
+            isClotured: false
+          }).then(res => {
+            Swal.fire({
+              title: 'Swap Envoyé !',
+              width: 300,
+              background: 'white',
+              timer: 2200,
+              showConfirmButton: false,
+              backdrop: `#21252952`
+            });
+          })
         });
-      })
-    });
+        })
+
+       
+
+     });
+
+    
           
 
 

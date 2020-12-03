@@ -31,7 +31,8 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    document.title = "Home"
+    document.title = "Home";
+
     //Requete pour récuperer toutes les catégories
     axios.get(`http://149.91.89.142:8000/api/categories`)
     .then(res => {

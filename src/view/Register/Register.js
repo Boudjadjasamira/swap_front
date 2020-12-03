@@ -94,7 +94,8 @@ export default class Register extends Component {
                 dateInscription: laDate.toString(),
                 photo: photoRegisterBase.toString(),
                 sexe: this.state.isWoman,
-                actif: true
+                actif: true,
+                isAdmin:false
             })
             .then(res => {
                 Swal.fire({

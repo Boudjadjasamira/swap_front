@@ -13,23 +13,29 @@ export default class UserRowMember extends Component {
             actifUser: false,
             labelIsActif: "Désactiver",
             modalEdite: "",
+            modalAdmin: "",
             newPseudoPersonne: "",
             changeMailPersonne: "",
             pseudoDeBase: this.props.pseudoPersonne,
-            mailDeBase: this.props.mailPersonne
+            mailDeBase: this.props.mailPersonne,
+            labelChangeAdmin: "Désactiver"
         }
         this.desactivePersonne = this.desactivePersonne.bind(this);
         this.editPersonne = this.editPersonne.bind(this);
+        this.changeRole = this.changeRole.bind(this);
 
         this.changePseudoPersonne = this.changePseudoPersonne.bind(this);
         this.changeMailPersonne = this.changeMailPersonne.bind(this);
+
+
     }
 
     componentDidMount(){
         this.setState({
             idMembre: this.props.idPersonne,
             modalDisabled: "disabledUserModel" + this.props.idPersonne,
-            modalEdite: "enabledUserModel" + this.props.idPersonne
+            modalEdite: "enabledUserModel" + this.props.idPersonne,
+            modalAdmin: "adminUserModel" + this.props.idPersonne
         }); 
         /* eslint eqeqeq: 0 */
         axios.get('http://149.91.89.142:8000/api/users/' + this.props.idPersonne)
@@ -37,6 +43,9 @@ export default class UserRowMember extends Component {
             this.setState({actifUser: res.data.actif})
             if(res.data.actif == false){
                 this.setState({labelIsActif: "Activer"})
+            }
+            if(res.data.isAdmin == false){
+                this.setState({labelChangeAdmin: "Activer"})
             }
         })
     }
@@ -99,6 +108,39 @@ export default class UserRowMember extends Component {
         });
     }
 
+    changeRole(){
+
+        let activerRole = true;
+
+        if(this.state.labelChangeAdmin == "Désactiver"){
+            activerRole = false;
+            this.setState({labelChangeAdmin: "Activer"})
+        }else{
+            this.setState({labelChangeAdmin: "Désactiver"})
+        }
+
+        Swal.fire({
+            icon: 'information',
+            title: "Modification en cours...",
+            allowOutsideClick: false,
+            showConfirmButton: true,
+        });
+
+        axios.put('http://149.91.89.142:8000/api/users/' + this.state.idMembre, {
+            isAdmin: activerRole
+        }, { headers: {
+            "Content-type":"application/json"
+        }}).then(res => {
+            
+        })
+
+        Swal.fire({
+            icon: 'success',
+            title: "Modification effectuée",
+            showConfirmButton: true,
+        });
+    }
+
     render(){
         return (
             <tr>
@@ -110,7 +152,9 @@ export default class UserRowMember extends Component {
                     </div>
                 </td>
                 <td>                                        
-                    (TODO : GetRole)
+                    <a href={"#" + this.state.modalAdmin} className="edit" data-toggle="modal">
+                        <i className="material-icons" data-toggle="tooltip" title="Role"></i>{this.state.labelChangeAdmin}
+                    </a>
                 </td>
                 <td>
                     <a href={"#" + this.state.modalEdite} className="edit" data-toggle="modal">
@@ -162,6 +206,24 @@ export default class UserRowMember extends Component {
                             <div className="modal-footer">
                                 <input type="button" className="btn btn-default" data-dismiss="modal" defaultValue="Annuler"/>
                                 <input type="submit" className="btn btn-danger" data-dismiss="modal" onClick={this.desactivePersonne} defaultValue="Supprimer"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id={this.state.modalAdmin} className="modal fade">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h4 className="modal-title">Changer le role de {this.props.nomPersonne} {this.props.prenomPersonne} - {this.props.mailPersonne}</h4>
+                                <button type="button" className="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+                            <div className="modal-body">
+                                <p>Etes-vous sur ? </p>
+                            </div>
+                            <div className="modal-footer">
+                                <input type="button" className="btn btn-default" data-dismiss="modal" defaultValue="Annuler"/>
+                                <input type="submit" className="btn btn-danger" data-dismiss="modal" onClick={this.changeRole} defaultValue="Changer le role"/>
                             </div>
                         </div>
                     </div>

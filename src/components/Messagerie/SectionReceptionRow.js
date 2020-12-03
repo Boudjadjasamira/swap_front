@@ -86,13 +86,24 @@ export default class SectionReceptionRow extends Component {
         });
     }
         
-        //Suppression du salon (Conversation entiere)
-        deleteConversation(){            
-            axios.delete('http://149.91.89.142:8000/api/salons/' + this.props.idRow)
-            .then(res => {
-                this.setState({isVisible: false})
+    //Suppression du salon (Conversation entiere)
+    deleteConversation(){   
+        axios.get('http://149.91.89.142:8000/api/messageries')
+        .then(res => {
+            res.data['hydra:member'].map(e => {
+                if(e.idSalon == this.props.idRow){
+                    axios.delete('http://149.91.89.142:8000/api/messageries/' + e.id)
+                    .then(res => {
+                        axios.delete('http://149.91.89.142:8000/api/salons/' + this.props.idRow)
+                        .then(res => {
+                            this.setState({isVisible: false})
+                            window.location.reload(false);
+                        })
+                    })
+                }
             })
-        }
+        })         
+    }
 
     render() {
         return (

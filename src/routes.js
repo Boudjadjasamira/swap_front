@@ -46,6 +46,30 @@ export default function Routes() {
         )
     }
 
+    //Verification de connexion
+    function isLoggedAdmin(){
+        let verifLogged = false;
+
+        //Si je suis connecte et que je suis a true avec isAdmin
+        //Alors c'est bon
+        if(localStorage.getItem('isAdmin').toString() === "true" && localStorage.getItem('ID') > 0){
+            verifLogged = true
+        }
+
+        return verifLogged;
+    }
+
+    function PrivateRouteAdmin({ component: Component, ...rest }) {
+        return (
+            <Route
+                {...rest}
+                render={props => isLoggedAdmin()
+                    ? <Component {...props} />
+                    : <Redirect to="" />}
+            />
+        )
+    }
+
     return (
         <Switch>
             
@@ -80,10 +104,10 @@ export default function Routes() {
             <PrivateRoute path="/Messagerie" component={Messagerie} />
 
             {/* ROUTE ADMIN SECURE */}
-            <PrivateRoute path="/Dashboard" component={Dashboard} />
-            <PrivateRoute path="/Dashboard-Avis" component={Avis} />
-            <PrivateRoute path="/Dashboard-AdminAnnonces" component={AdminAnnonces} />
-            <PrivateRoute path="/Dashboard-Membres" component={Membres} />
+            <PrivateRouteAdmin path="/Dashboard" component={Dashboard} />
+            <PrivateRouteAdmin path="/Dashboard-Avis" component={Avis} />
+            <PrivateRouteAdmin path="/Dashboard-AdminAnnonces" component={AdminAnnonces} />
+            <PrivateRouteAdmin path="/Dashboard-Membres" component={Membres} />
 
             {/* AUTRE ROUTE*/}
             <Route path='*' exact={true} component={Erreur404} />

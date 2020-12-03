@@ -59,6 +59,7 @@ export default class login extends Component {
           }else{
             localStorage.setItem('connected', "1");
             localStorage.setItem('ID', res.data.user);
+            localStorage.setItem('isAdmin', res.data.isAdmin);
             this.setState({redirection: true});
             Swal.fire({
               icon: 'success',
@@ -66,7 +67,7 @@ export default class login extends Component {
               showConfirmButton: false,
               timer: 2500,
               allowOutsideClick: false
-          });
+            });
           }
         }else{
           Swal.fire({

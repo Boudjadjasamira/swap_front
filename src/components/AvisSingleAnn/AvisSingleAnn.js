@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //importation de axios
 import axios from 'axios';
+import { findRenderedDOMComponentWithClass } from 'react-dom/test-utils';
 
 export default class AvisSingleAnn extends Component {
  
@@ -13,7 +14,7 @@ export default class AvisSingleAnn extends Component {
             dateAvis: "",
             note: true,
             idAvis: this.props.idAvis, 
-            note: []
+            note: [],
         }
 
     }
@@ -47,35 +48,30 @@ export default class AvisSingleAnn extends Component {
                 return true
             })
         })
+
+        let tabTemp = [];
        
     }
-
-
-
     
     render() {
-
         return (
-
- 
-    <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
-            <div className="media  p-3 flex-column flex-md-row">
-                <div className="media-body align-self-center">
-                    <p>Avis posté le {this.props.dateAvis} par {this.state.pseudo}</p>
-                    <div className="container">
-                        <div className="row">
-                            <ul className="employers-icons list-inline mb-1">
-                                {this.state.note.map(e => (
-                                    <li className="list-inline-item"><a href="#" className="text-warning"><i className="mdi mdi-star f-19"></i></a></li>
-                                ))}
-                            </ul>
+            <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div className="media p-3 flex-column flex-md-row">
+                    <div className="media-body align-self-center">
+                        <p>Avis posté le {this.props.dateAvis} par {this.state.pseudo}</p>
+                        <div className="container">
+                            <div className="row">
+                                <ul className="employers-icons list-inline mb-1">
+                                    {this.state.note.map(e => (
+                                         <li className="list-inline-item"><a href="#" className="text-warning"><i className="mdi mdi-star f-19"></i></a></li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
+                        <p className="text-justify">{this.state.avis}</p>
                     </div>
-                    <p className="text-justify">{this.state.avis}</p>
                 </div>
-            </div>
-    </div>    
-     
+            </div>    
         )
     }    
 };

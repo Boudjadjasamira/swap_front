@@ -22,12 +22,15 @@ export default class SingleAnnonce extends Component {
       IdUserEnvoi: "",
       avis: "",
       dateAvis: "",
-      note: true
+      note: true,
+      idAnnonce: 0
     }
   }
 
   componentDidMount(){
     const search = window.location.pathname.toString().split('-')[1];
+
+    this.setState({idAnnonce: search});
 
     axios.get('http://149.91.89.142:8000/api/annonces/' + search)
     .then(( res => {
@@ -37,11 +40,26 @@ export default class SingleAnnonce extends Component {
     }));
 
 
-      axios.get('http://149.91.89.142:8000/api/avis')
-      .then( res => {
-          this.setState({allAvis: res.data['hydra:member'], showLoading: false});
-      });
-  
+    let tabTemp = [];
+    
+    axios.get('http://149.91.89.142:8000/api/swaps')
+    .then(res => {
+        res.data['hydra:member'].map(e => {
+            if(e.idService == search){
+                axios.get('http://149.91.89.142:8000/api/avis')
+                .then(res2 => {
+                    res2.data['hydra:member'].map( k => {
+                        if(e.id == k.idSwap){
+                            tabTemp.push(k);
+                        }
+                    })
+                    this.setState({allAvis: tabTemp, showLoading: false});
+                })
+            }
+            return true;
+        })
+    })
+
   }
   
   render() {
