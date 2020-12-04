@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import Tilt from 'react-parallax-tilt';
 import '../../css/loading.css';
 import sha1 from 'js-sha1';
+import { v4 as uuidv4 } from 'uuid';
 
 export default class login extends Component {
 
@@ -60,6 +61,7 @@ export default class login extends Component {
             localStorage.setItem('connected', "1");
             localStorage.setItem('ID', res.data.user);
             localStorage.setItem('isAdmin', res.data.isAdmin);
+            localStorage.setItem('token', uuidv4().toString())
             this.setState({redirection: true});
             Swal.fire({
               icon: 'success',
